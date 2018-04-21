@@ -10,7 +10,7 @@ require('./chupe.css');
 * @return {Chupe} the root component for the application.
 */
 function Chupe(props) {
-  return <div> <header cl assName="Header"> Welcome to Chupe</header> </div>;
+  return <div> <header className="Header"> Welcome to Chupe</header> </div>;
 }
 
 export default Chupe;
