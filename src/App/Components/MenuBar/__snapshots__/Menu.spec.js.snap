@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu Bar should match snapshot 1`] = `
+<div>
+   
+  <header
+    className="Header"
+    id="chupe-header"
+  >
+     Users 
+  </header>
+   
+</div>
+`;

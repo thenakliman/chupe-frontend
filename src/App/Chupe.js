@@ -1,6 +1,5 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
-
-require('./chupe.css');
+import MenuBar from './Components/MenuBar/Menu'
 
 /**
 * Root component of the application.
@@ -10,7 +9,7 @@ require('./chupe.css');
 * @return {Chupe} the root component for the application.
 */
 function Chupe(props) {
-  return <div> <header className="Header"> Welcome to Chupe</header> </div>;
+  return (<div> <MenuBar /> </div>)
 }
 
 export default Chupe;
