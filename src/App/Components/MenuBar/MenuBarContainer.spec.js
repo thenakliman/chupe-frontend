@@ -1,30 +1,30 @@
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux'
+import {mount} from 'enzyme';
+/* eslint-disable */
+import {Provider} from 'react-redux';
 import React from 'react';
-import { shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import {shallow} from 'enzyme';
 import MenuBarContainer from './MenuBarContainer';
+/* eslint-enable */
 import MenuBar from './Menu';
 import configureStore from 'redux-mock-store';
 import * as UserActions from '../../Actions/userActions';
 
 
-describe("Menu Bar container", () => {
-
+describe('Menu Bar container', () => {
   let store;
 
   beforeEach(() => {
     const initialState = {
-      'users': [{'user1': 'user1Data'}]
+      'users': [{'user1': 'user1Data'}],
     };
 
     store = configureStore()(initialState);
     spyOn(store, 'dispatch');
-  })
+  });
 
   it('should get user be called on click', () => {
     const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
-    spyOn(UserActions, 'getUsers').and.returnValue(action);
+    spyOn(UserActions, 'getAllUsers').and.returnValue(action);
 
     const container = mount(
       <Provider store={store}>
@@ -34,6 +34,6 @@ describe("Menu Bar container", () => {
     const props = container.find(MenuBar).props();
     props.getUsers();
     expect(store.dispatch).toHaveBeenCalledWith(action);
-    expect(UserActions.getUsers).toHaveBeenCalledWith();
+    expect(UserActions.getAllUsers).toHaveBeenCalledWith();
   });
 });

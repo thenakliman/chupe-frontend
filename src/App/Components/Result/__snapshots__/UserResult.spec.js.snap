@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User result component snapshot should match the snapshot 1`] = `
+<div
+  className="UserResult"
+>
+  <ul
+    id="all-users-list"
+  >
+    <li
+      key="undefined"
+    >
+       
+       
+    </li>
+    <li
+      key="undefined"
+    >
+       
+       
+    </li>
+  </ul>
+</div>
+`;

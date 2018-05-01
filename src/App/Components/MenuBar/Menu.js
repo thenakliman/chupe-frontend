@@ -1,20 +1,34 @@
 import React from 'react';
-import propTypes from 'prop-types'
+import propTypes from 'prop-types';
 
-require("./Menu.css")
+require('./Menu.css');
 
 
+/**
+* User result component of the application.
+*
+* @author: thenakliman
+*/
 class MenuBar extends React.Component {
+    /**
+    * User result component of the application.
+    *
+    * @return {Object} UserResult component.
+    */
     render() {
-        console.log(this.props);
         return (
-            <div> <header id="chupe-header" className="Header" onClick={this.props.getUsers}> Users </header> </div>
-        )
+            <div>
+                <header id="chupe-header" className="Header"
+                                onClick={this.props.getUsers}>
+                    Users
+                </header>
+            </div>
+        );
     }
 }
 
 MenuBar.propTypes = {
-  getUsers: propTypes.func.isRequired
-}
+  getUsers: propTypes.func.isRequired,
+};
 
 export default MenuBar;
