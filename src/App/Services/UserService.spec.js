@@ -9,7 +9,7 @@ describe('User Service', () => {
         const userData = {
             data: [{'user1': 'user1Data'}, {'user2': 'user2Data'}]};
 
-        mock.onGet('http://localhost:8080/api/v1/users').reply(200, userData);
+        mock.onGet('/api/v1/users').reply(200, userData);
 
         UserService.getUsers(0, 'any').then((response) => {
             expect(response.data).toEqual(userData.data);
@@ -19,7 +19,7 @@ describe('User Service', () => {
 
     it('Response of getUsers call fails', async () => {
         let mock = new MockAdapter(axios);
-        mock.onGet('http://localhost:8080/api/v1/users').reply(404);
+        mock.onGet('/api/v1/users').reply(404);
         spyOn(console, 'log');
         await UserService.getUsers();
         expect(console.log)

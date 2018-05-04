@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const CHUPE_USER_URL='http://localhost:8080/api/v1';
+const CHUPE_USER_URL='/api/v1';
 
 export const UserService = {
   getUsers() {
