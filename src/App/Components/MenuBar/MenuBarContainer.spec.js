@@ -8,6 +8,7 @@ import MenuBarContainer from './MenuBarContainer';
 import MenuBar from './Menu';
 import configureStore from 'redux-mock-store';
 import * as UserActions from '../../Actions/userActions';
+import * as QuestionActions from '../../Actions/questionActions';
 
 
 describe('Menu Bar container', () => {
@@ -35,5 +36,20 @@ describe('Menu Bar container', () => {
     props.getUsers();
     expect(store.dispatch).toHaveBeenCalledWith(action);
     expect(UserActions.getAllUsers).toHaveBeenCalledWith();
+  });
+
+  it('should get questions be called on click', () => {
+    const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
+    spyOn(QuestionActions, 'getAllQuestions').and.returnValue(action);
+
+    const container = mount(
+      <Provider store={store}>
+        <MenuBarContainer/>
+      </Provider>);
+
+    const props = container.find(MenuBar).props();
+    props.getQuestions();
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+    expect(QuestionActions.getAllQuestions).toHaveBeenCalledWith();
   });
 });

@@ -23,7 +23,7 @@ class MenuBar extends React.Component {
                      className="Tab">
                         Users
                     </span>
-                    <span id="questions-tab" onClick={this.props.getUsers}
+                    <span id="questions-tab" onClick={this.props.getQuestions}
                      className="Tab">
                         Questions
                     </span>
@@ -35,6 +35,7 @@ class MenuBar extends React.Component {
 
 MenuBar.propTypes = {
   getUsers: propTypes.func.isRequired,
+  getQuestions: propTypes.func.isRequired,
 };
 
 export default MenuBar;

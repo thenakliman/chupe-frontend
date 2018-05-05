@@ -16,7 +16,6 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
     <span
       className="Tab"
       id="questions-tab"
-      onClick={[Function]}
     >
       Questions
     </span>
