@@ -9,7 +9,7 @@ export const addQuestions = (questions) => ({
 
 export const getAllQuestions = () => async (dispatch) => {
   try {
-    const questions = await QuestionService.getAllQuestions();
+    const questions = await QuestionService.getQuestions();
     dispatch(addQuestions(questions));
   } catch (error) {
     console.log('Error on fetching questions');

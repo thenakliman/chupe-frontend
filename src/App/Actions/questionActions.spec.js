@@ -26,9 +26,9 @@ describe('ADD_QUESTIONS action', () => {
 
   it('Should dispatch action for fetching questions', async () => {
     const testQuestions = [{'question': 'My Question'}];
-    spyOn(QuestionService, 'getAllQuestions').and.returnValues(testQuestions);
+    spyOn(QuestionService, 'getQuestions').and.returnValues(testQuestions);
     await store.dispatch(getAllQuestions(testQuestions));
-    expect(QuestionService.getAllQuestions).toHaveBeenCalledWith();
+    expect(QuestionService.getQuestions).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
       {
         type: ActionTypes.ADD_QUESTIONS,
@@ -38,10 +38,10 @@ describe('ADD_QUESTIONS action', () => {
   });
 
   it('Should show console error on dispatch failure', async () => {
-    spyOn(QuestionService, 'getAllQuestions').and.throwError(10);
+    spyOn(QuestionService, 'getQuestions').and.throwError(10);
     spyOn(console, 'log');
     await store.dispatch(getAllQuestions());
-    expect(QuestionService.getAllQuestions).toHaveBeenCalledWith();
+    expect(QuestionService.getQuestions).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([]);
  });
 });
