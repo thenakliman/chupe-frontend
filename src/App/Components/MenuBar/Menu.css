@@ -11,8 +11,12 @@
     background-color: #20232a;
     color: #fff;
     width: 100%;
-    padding: .5rem;
     text-align: left;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.Tab {
+    padding: .8rem 30rem;
+    text-align: center;
 }
