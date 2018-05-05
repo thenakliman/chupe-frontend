@@ -8,6 +8,7 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
   >
     <div
       className="Tab"
+      id="user-tab"
       onClick={[Function]}
     >
       Users
