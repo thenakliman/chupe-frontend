@@ -19,10 +19,14 @@ class MenuBar extends React.Component {
         return (
             <div>
                 <header id="chupe-header" className="Header">
-                    <div id="user-tab" onClick={this.props.getUsers}
+                    <span id="users-tab" onClick={this.props.getUsers}
                      className="Tab">
                         Users
-                    </div>
+                    </span>
+                    <span id="questions-tab" onClick={this.props.getUsers}
+                     className="Tab">
+                        Questions
+                    </span>
                 </header>
             </div>
         );

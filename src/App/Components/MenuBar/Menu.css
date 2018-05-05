@@ -10,6 +10,7 @@
     position: fixed;
     background-color: #20232a;
     color: #fff;
+    padding: 0.8rem;
     width: 100%;
     text-align: left;
     font-weight: 700;
@@ -17,6 +18,6 @@
 }
 
 .Tab {
-    padding: .8rem 30rem;
+    padding: .8rem 4rem;
     text-align: center;
 }
