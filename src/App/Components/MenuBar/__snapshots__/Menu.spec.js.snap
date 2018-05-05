@@ -5,9 +5,20 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
   <header
     className="Header"
     id="chupe-header"
-    onClick={[Function]}
   >
-    Users
+    <span
+      className="Tab"
+      id="users-tab"
+      onClick={[Function]}
+    >
+      Users
+    </span>
+    <span
+      className="Tab"
+      id="questions-tab"
+    >
+      Questions
+    </span>
   </header>
 </div>
 `;

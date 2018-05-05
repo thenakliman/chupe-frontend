@@ -18,9 +18,15 @@ class MenuBar extends React.Component {
     render() {
         return (
             <div>
-                <header id="chupe-header" className="Header"
-                                onClick={this.props.getUsers}>
-                    Users
+                <header id="chupe-header" className="Header">
+                    <span id="users-tab" onClick={this.props.getUsers}
+                     className="Tab">
+                        Users
+                    </span>
+                    <span id="questions-tab" onClick={this.props.getQuestions}
+                     className="Tab">
+                        Questions
+                    </span>
                 </header>
             </div>
         );
@@ -29,6 +35,7 @@ class MenuBar extends React.Component {
 
 MenuBar.propTypes = {
   getUsers: propTypes.func.isRequired,
+  getQuestions: propTypes.func.isRequired,
 };
 
 export default MenuBar;

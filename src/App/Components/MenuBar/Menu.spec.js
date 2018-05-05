@@ -15,4 +15,16 @@ describe('Menu Bar Component', () => {
     const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
     expect(wrapper.find('.Header').get(0).props.id).toEqual('chupe-header');
   });
+
+  it('Should display div with Tab class and id user-tab', () => {
+    const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
+    expect(wrapper.find('.Tab').get(0).props.id).toEqual('users-tab');
+  });
+
+  it('Should display div with Tab class and id questions-tab', () => {
+    const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
+    expect(wrapper.find('.Tab').get(1).props.id).toEqual('questions-tab');
+  });
 });
+
+

@@ -10,9 +10,14 @@
     position: fixed;
     background-color: #20232a;
     color: #fff;
+    padding: 0.8rem;
     width: 100%;
-    padding: .5rem;
     text-align: left;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.Tab {
+    padding: .8rem 4rem;
+    text-align: center;
 }
