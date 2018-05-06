@@ -5,24 +5,41 @@ import toJson from 'enzyme-to-json';
 
 describe('Menu Bar Snapshot', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
+    const wrapper = shallow(
+        <MenuBar
+            getUsers={()=>{}}
+            getQuestions={()=>{}}
+        />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
 
 describe('Menu Bar Component', () => {
   it('Should display div with class', () => {
-    const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
+    const wrapper = shallow(
+        <MenuBar
+            getUsers={()=>{}}
+            getQuestions={()=>{}}
+        />);
     expect(wrapper.find('.Header').get(0).props.id).toEqual('chupe-header');
   });
 
   it('Should display div with Tab class and id user-tab', () => {
-    const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
+    const wrapper = shallow(
+        <MenuBar
+            getUsers={()=>{}}
+            getQuestions={()=>{}}
+        />);
+
     expect(wrapper.find('.Tab').get(0).props.id).toEqual('users-tab');
   });
 
   it('Should display div with Tab class and id questions-tab', () => {
-    const wrapper = shallow(<MenuBar getUsers={()=>{}}/>);
+    const wrapper = shallow(
+        <MenuBar
+            getUsers={()=>{}}
+            getQuestions={()=>{}}
+        />);
     expect(wrapper.find('.Tab').get(1).props.id).toEqual('questions-tab');
   });
 });
