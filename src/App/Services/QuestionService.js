@@ -14,4 +14,6 @@ export const QuestionService = {
           console.log(error.message);
       });
   },
+  askQuestion() {
+  },
 };
