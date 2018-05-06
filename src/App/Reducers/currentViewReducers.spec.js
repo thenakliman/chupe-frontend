@@ -1,4 +1,5 @@
 import {currentView} from './currentViewReducers';
+import {RESULT_COMPONENTS} from '../Components/constants'
 
 describe('current view reducer', () => {
     it('should store view parameter comes in action', () => {
@@ -33,6 +34,6 @@ describe('current view reducer', () => {
                     payload: 'FAKE_PAYLOAD',
                 }
         );
-        expect(nextState).toEqual({view: null});
+        expect(nextState).toEqual({view: RESULT_COMPONENTS.USER_COMPONENT});
     });
 });
