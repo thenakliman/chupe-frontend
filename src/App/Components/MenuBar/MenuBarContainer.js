@@ -1,14 +1,14 @@
 import {connect} from 'react-redux';
-import MenuBar from './Menu';
-import {getAllUsers} from '../../Actions/userActions';
-import {getAllQuestions} from '../../Actions/questionActions';
+import {MenuBar} from './Menu';
+import {changeCurrentView} from '../../Actions/currentViewActions';
+import {RESULT_COMPONENTS} from '../constants';
 
 const mapDispatchToProps = (dispatch) => ({
-    getUsers: () => {
-        dispatch(getAllUsers());
+    showUserTab: () => {
+        dispatch(changeCurrentView(RESULT_COMPONENTS.USER_COMPONENT));
     },
-    getQuestions: () => {
-        dispatch(getAllQuestions());
+    showQuestionTab: () => {
+        dispatch(changeCurrentView(RESULT_COMPONENTS.QUESTION_COMPONENT));
     },
 });
 

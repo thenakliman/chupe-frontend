@@ -5,10 +5,8 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import MenuBarContainer from './MenuBarContainer';
 /* eslint-enable */
-import MenuBar from './Menu';
+import {MenuBar} from './Menu';
 import configureStore from 'redux-mock-store';
-import * as UserActions from '../../Actions/userActions';
-import * as QuestionActions from '../../Actions/questionActions';
 
 
 describe('Menu Bar container', () => {
@@ -23,33 +21,32 @@ describe('Menu Bar container', () => {
     spyOn(store, 'dispatch');
   });
 
-  it('should get user be called on click', () => {
-    const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
-    spyOn(UserActions, 'getAllUsers').and.returnValue(action);
-
+  it('should dispatch action on user tab click', () => {
     const container = mount(
       <Provider store={store}>
         <MenuBarContainer/>
       </Provider>);
 
     const props = container.find(MenuBar).props();
-    props.getUsers();
-    expect(store.dispatch).toHaveBeenCalledWith(action);
-    expect(UserActions.getAllUsers).toHaveBeenCalledWith();
+    props.showUserTab();
+    expect(store.dispatch).toHaveBeenCalledWith(
+    {
+        type: 'CHANGE_RESULT_VIEW',
+        payload: 'USER_COMPONENT',
+    });
   });
-
-  it('should get questions be called on click', () => {
-    const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
-    spyOn(QuestionActions, 'getAllQuestions').and.returnValue(action);
-
+  it('should dispatch action on questions tab click', () => {
     const container = mount(
       <Provider store={store}>
         <MenuBarContainer/>
       </Provider>);
 
     const props = container.find(MenuBar).props();
-    props.getQuestions();
-    expect(store.dispatch).toHaveBeenCalledWith(action);
-    expect(QuestionActions.getAllQuestions).toHaveBeenCalledWith();
+    props.showQuestionTab();
+    expect(store.dispatch).toHaveBeenCalledWith(
+    {
+        type: 'CHANGE_RESULT_VIEW',
+        payload: 'QUESTION_COMPONENT',
+    });
   });
 });

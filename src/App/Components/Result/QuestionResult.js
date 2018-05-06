@@ -7,13 +7,15 @@ import propTypes from 'prop-types';
 export class QuestionResult extends React.Component {
     /** Get all questions on component mount */
     componentDidMount() {
-        this.props.getQuestions();
+        // TODO(thenaliman): Uncomment it once backend api has been implemented
+        // this.props.getQuestions();
     }
     /** Returns input field in form with a button.
     *
     * @return {object} Component for asking question.
     */
     render() {
+        console.log('in question result component');
         return (
             <div id='ask-question-div' className='input-field-for-question'>
                 <form id="ask-question-form">

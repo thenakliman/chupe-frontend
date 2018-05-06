@@ -9,7 +9,6 @@ import thunk from 'redux-thunk';
 describe('SHOW QUESTIONS action', () => {
   it('Should return ADD_QUESTIONS action with question payload', () => {
     const testQuestions = [{'question': 'Who am i?'}];
-    console.log(addQuestions);
     const questions = addQuestions(testQuestions);
     expect(questions.type).toEqual(ActionTypes.ADD_QUESTIONS);
     expect(questions.payload).toEqual(testQuestions);

@@ -9,7 +9,7 @@ require('./Menu.css');
 *
 * @author: thenakliman
 */
-class MenuBar extends React.Component {
+export class MenuBar extends React.Component {
     /**
     * User result component of the application.
     *
@@ -19,11 +19,12 @@ class MenuBar extends React.Component {
         return (
             <div>
                 <header id="chupe-header" className="Header">
-                    <span id="users-tab" onClick={this.props.getUsers}
+                    <span id="users-tab" onClick={this.props.showUserTab}
                      className="Tab">
                         Users
                     </span>
-                    <span id="questions-tab" onClick={this.props.getQuestions}
+                    <span id="questions-tab"
+                           onClick={this.props.showQuestionTab}
                      className="Tab">
                         Questions
                     </span>
@@ -34,8 +35,6 @@ class MenuBar extends React.Component {
 }
 
 MenuBar.propTypes = {
-  getUsers: propTypes.func.isRequired,
-  getQuestions: propTypes.func.isRequired,
+  showUserTab: propTypes.func.isRequired,
+  showQuestionTab: propTypes.func.isRequired,
 };
-
-export default MenuBar;

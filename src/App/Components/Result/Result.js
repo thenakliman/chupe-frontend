@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 /* eslint-disable */
 import UserResultContainer from './UserResultContainer';
-import {QuestionResultContainer} from './QuestionResultContainer';
+import QuestionResultContainer from './QuestionResultContainer';
 /* eslint-enable */
 import {RESULT_COMPONENTS} from './../constants';
 
