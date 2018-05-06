@@ -6,7 +6,7 @@ import toJson from 'enzyme-to-json';
 describe('User result component snapshot', () => {
     it('should match the snapshot', () => {
         const users = [{'username': 'user1'}, {'username': 'user2'}];
-        const wrapper = shallow(<UserResult users={users}/>);
+        const wrapper = shallow(<UserResult users={users} getUsers={()=>{}}/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });
@@ -18,8 +18,17 @@ describe('User result component', () => {
             {'username': 'user2'},
             {'username': 'user3'},
         ];
-        const wrapper = shallow(<UserResult users = {users}/>);
+        const wrapper = shallow(
+            <UserResult users = {users} getUsers={()=>{}}/>);
+
         expect(wrapper.find('#all-users-list').get(0).props.children.length)
             .toEqual(3);
+    });
+
+    it('Component did mount', () => {
+        const users = [{'username': 'user1'}];
+        const getUsers = jest.fn();
+        shallow(<UserResult users={users} getUsers={getUsers} />);
+        expect(getUsers).toHaveBeenCalledWith();
     });
 });

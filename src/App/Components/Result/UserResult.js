@@ -9,6 +9,10 @@ require('./UserResult.css');
 * @author: thenakliman
 */
 export class UserResult extends React.Component {
+/** Fetch users from the backend and update in the store. */
+  componentDidMount() {
+    this.props.getUsers();
+  }
 /**
 * User result component of the application.
 *
@@ -32,4 +36,5 @@ export class UserResult extends React.Component {
 
 UserResult.propTypes = {
   users: propTypes.arrayOf(propTypes.object).isRequired,
+  getUsers: propTypes.func.isRequired,
 };
