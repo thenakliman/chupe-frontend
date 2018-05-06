@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import MenuBarContainer from './Components/MenuBar/MenuBarContainer';
-import UserResultContainer from './Components/Result/UserResultContainer';
+import {Result} from './Components/Result/Result';
 /* eslint-enable */
 
 require('./Chupe.css');
@@ -20,7 +20,7 @@ function Chupe(props) {
         <MenuBarContainer />
       </div>
       <div>
-        <UserResultContainer />
+        <Result/>
       </div>
     </div>);
 }
