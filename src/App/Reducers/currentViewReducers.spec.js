@@ -1,4 +1,4 @@
-import {currentView} from './currentView';
+import {currentView} from './currentViewReducers';
 
 describe('current view reducer', () => {
     it('should store view parameter comes in action', () => {
