@@ -46,4 +46,17 @@ describe('Question Result container', () => {
     props.askQuestion();
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
+
+  it('should get Questions be called on component mount', () => {
+    const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
+    spyOn(QuestionActions, 'getAllQuestions').and.returnValue(action);
+
+    mount(
+      <Provider store={store}>
+        <QuestionResultContainer/>
+      </Provider>);
+
+    expect(QuestionActions.getAllQuestions).toHaveBeenCalledWith();
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
 });

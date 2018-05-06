@@ -5,6 +5,10 @@ import propTypes from 'prop-types';
 * question.
 */
 export class QuestionResult extends React.Component {
+    /** Get all questions on component mount */
+    componentDidMount() {
+        this.props.getQuestions();
+    }
     /** Returns input field in form with a button.
     *
     * @return {object} Component for asking question.
@@ -26,5 +30,6 @@ export class QuestionResult extends React.Component {
 }
 
 QuestionResult.propTypes = {
+    getQuestions: propTypes.func.isRequired,
     askQuestion: propTypes.func.isRequired,
 };

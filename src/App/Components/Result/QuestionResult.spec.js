@@ -4,7 +4,8 @@ import {shallow, mount} from 'enzyme';
 
 describe('Question result', () => {
     it('Should display input text field', () => {
-        const wrapper = shallow(<QuestionResult askQuestion={()=>{}} />);
+        const wrapper = shallow(
+            <QuestionResult askQuestion={()=>{}} getQuestions={()=>{}}/>);
         expect(
             wrapper.find('#ask-question-input-field')
                 .get(0)
@@ -15,9 +16,19 @@ describe('Question result', () => {
 
     it('Should call method on click', () => {
         const askQuestion = jest.fn();
-        const container = mount(<QuestionResult askQuestion={askQuestion}/>);
+        const container = mount(
+            <QuestionResult askQuestion={askQuestion} getQuestions={()=>{}}/>);
         const props = container.find(QuestionResult).props();
         props.askQuestion();
         expect(props.askQuestion).toHaveBeenCalledWith();
+    });
+    it('Component did mount', () => {
+        const getQuestions = jest.fn();
+        const askQuestion = jest.fn();
+        shallow(<QuestionResult
+             getQuestions={getQuestions}
+             askQuestion={askQuestion} />);
+
+        expect(getQuestions).toHaveBeenCalledWith();
     });
 });
