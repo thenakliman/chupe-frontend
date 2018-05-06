@@ -34,6 +34,34 @@ describe('current view reducer', () => {
                     payload: 'FAKE_PAYLOAD',
                 }
         );
-        expect(nextState).toEqual({view: RESULT_COMPONENTS.USER_COMPONENT});
+        expect(nextState).toEqual(
+            {
+                view: RESULT_COMPONENTS.USER_COMPONENT,
+                isWaitingForResponse: false,
+            }
+        );
+    });
+    it('should store loader visibility parameter comes in action', () => {
+        const initialStoreState = {isWaitingForResponse: false};
+        const nextState = currentView(
+                initialStoreState,
+                {
+                    type: 'UPDATE_LOADER_STATUS',
+                    payload: true,
+                }
+        );
+        initialStoreState.isWaitingForResponse = true;
+        expect(nextState).toEqual(initialStoreState);
+    });
+    it('should provide existing loader visibility for other actions', () => {
+        const initialStoreState = {isWaitingForResponse: false};
+        const nextState = currentView(
+                initialStoreState,
+                {
+                    type: 'INCORRECT_ACTION',
+                    payload: 'FAKE_PAYLOAD',
+                }
+        );
+        expect(nextState).toEqual(initialStoreState);
     });
 });
