@@ -1,5 +1,5 @@
 import {currentView} from './currentViewReducers';
-import {RESULT_COMPONENTS} from '../Components/constants'
+import {RESULT_COMPONENTS} from '../Components/constants';
 
 describe('current view reducer', () => {
     it('should store view parameter comes in action', () => {
