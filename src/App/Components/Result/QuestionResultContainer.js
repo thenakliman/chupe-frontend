@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'; // eslint-disable-line no-unused-vars
+import {connect} from 'react-redux';
+import {QuestionResult} from './QuestionResult';
+import {askQuestion} from '../../Actions/questionActions';
 
-/** It is dummy Component for question container */
-export class QuestionResultContainer extends React.Component {
-    /** It is dummy method for question container */
-    render() {
-        <div/>;
-    }
-}
+export const mapDispatchToProps = (dispatch) => ({
+    askQuestion: (question) => {
+        dispatch(askQuestion(question));
+    },
+});
+
+export default connect(null, mapDispatchToProps)(QuestionResult);
