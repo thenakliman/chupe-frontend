@@ -5,4 +5,4 @@ export const mapStateToProps = (state) => ({
     view: state.currentView.view,
 });
 
-connect(mapStateToProps, null)(Result);
+export default connect(mapStateToProps, null)(Result);

@@ -1,7 +1,8 @@
 import {ActionTypes} from '../Actions/ActionTypes';
+import {RESULT_COMPONENTS} from '../Components/constants'
 
 const initialCurrentView = {
-    view: null,
+    view: RESULT_COMPONENTS.USER_COMPONENT,
 };
 
 export const currentView = (state=initialCurrentView, action) => {
