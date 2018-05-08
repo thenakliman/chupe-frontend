@@ -6,7 +6,7 @@ export const QuestionService = {
   getQuestions() {
       return axios({
         method: 'get',
-        url: `${CHUPE_QUESTION_URL}/questions`,
+        url: `${CHUPE_QUESTION_URL}/question`,
         headers: {'Content-Type': 'application/json'},
       })
       .then((response)=>response.data)
@@ -14,6 +14,16 @@ export const QuestionService = {
           console.log(error.message);
       });
   },
-  askQuestion() {
+  askQuestion(question) {
+      return axios({
+        method: 'post',
+        url: `${CHUPE_QUESTION_URL}/question`,
+        headers: {'Content-Type': 'application/json'},
+        data: question,
+      })
+      .then((response)=>response)
+      .catch((error) => {
+          console.log(error.message);
+      });
   },
 };
