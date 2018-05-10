@@ -4,6 +4,10 @@ import {QuestionResult} from './QuestionResult';
 import {askQuestion} from '../../Actions/questionActions';
 import {getAllQuestions} from '../../Actions/questionActions';
 
+const mapStateToProps = (state) => ({
+    users: state.users.usersData,
+});
+
 export const mapDispatchToProps = (dispatch) => ({
     askQuestion: (question) => {
         dispatch(askQuestion(question));
@@ -13,4 +17,4 @@ export const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(null, mapDispatchToProps)(QuestionResult);
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionResult);

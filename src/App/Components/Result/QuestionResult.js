@@ -8,20 +8,65 @@ require('./QuestionResult.css');
 * question.
 */
 export class QuestionResult extends React.Component {
+    /** Constructor defining the default values for the fields.
+    * @param {Object} props, properties for the component.
+    */
     constructor(props) {
         super(props);
-        this.state = {question: 'add your question here'};
+        this.state = {
+            question: '',
+            description: '',
+            owner: '',
+            assignedTo: '',
+        };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleQuestionSummary = this.handleQuestionSummary.bind(this);
+        this.handleQuestionDescription = this
+            .handleQuestionDescription.bind(this);
+
+        this.handleOwnerChange = this.handleOwnerChange.bind(this);
+        this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     /** Get all questions on component mount */
     componentDidMount() {
-        // TODO(thenaliman): Uncomment it once backend api has been implemented
-        // this.props.getQuestions();
+         this.props.getQuestions();
     }
 
-    handleChange(event) {
+    /** Handle changes on the question fields
+    * @param {object} event containing new modified value
+    */
+    handleQuestionSummary(event) {
         this.setState({question: event.target.value});
+    }
+
+    /** Handle changes on the question description fields
+    * @param {object} event containing new modified value
+    */
+    handleQuestionDescription(event) {
+        this.setState({description: event.target.value});
+    }
+
+    /** Handle changes on the question owner fields
+    * @param {object} event containing new modified value
+    */
+    handleOwnerChange(event) {
+        this.setState({owner: event.target.value});
+    }
+
+    /** Handle changes on the question assigned to fields
+    * @param {object} event containing new modified value
+    */
+    handleAssignedToChange(event) {
+        this.setState({assignedTo: event.target.value});
+    }
+
+    /** Handles submit of the form
+    * @param {object} event containing new modified value
+    */
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.askQuestion(this.state);
     }
     /** Returns input field in form with a button.
     *
@@ -30,11 +75,41 @@ export class QuestionResult extends React.Component {
     render() {
         return (
             <div id='ask-question-div' className='input-field-for-question'>
-                <form id="ask-question-form" onSubmit = {this.props.askQuestion}>
+                <form id="ask-question-form" onSubmit = {this.handleSubmit}>
                     <input type="text"
                         id="ask-question-input-field"
-                        value={this.state.value} />
-                    <button type="button" value="Submit">
+                        value={this.state.value}
+                        onChange={this.handleQuestionSummary}
+                    />
+                    <textarea id='question-description-textarea'
+                        value={this.state.value}
+                        onChange={this.handleQuestionDescription}
+                    />
+
+                    <select id='question-owner'
+                        value={this.state.value}
+                        onChange={this.handleOwnerChange}>
+                     {
+                         this.props.users.map((user) =>(
+                             <option key={`${user.userName}`}>
+                                {user.userName}
+                             </option>))
+                     }
+                     </select>
+                    <select id='question-assigned-to'
+                        value={this.state.value}
+                        onChange={this.handleAssignedToChange}>
+                     {
+                         this.props.users.map((user) =>(
+                             <option key={`${user.userName}`}>
+                                {user.userName}
+                             </option>))
+                     }
+                     </select>
+                    <button id="ask-question-submit-button"
+                        type="submit"
+                        value="Submit">
+
                         Ask Question
                     </button>
                 </form>
@@ -46,4 +121,5 @@ export class QuestionResult extends React.Component {
 QuestionResult.propTypes = {
     getQuestions: propTypes.func.isRequired,
     askQuestion: propTypes.func.isRequired,
+    users: propTypes.arrayOf(propTypes.object).isRequired,
 };
