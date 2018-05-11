@@ -1,5 +1,5 @@
 import React from 'react';// eslint-disable-line no-unused-vars
-import {QuestionList} from './QuestionList';
+import {AskQuestion} from './AskQuestion';
 import {shallow, mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 
@@ -7,7 +7,7 @@ describe('Question Result component snapshot', () => {
     it('should match the snapshot', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(
-            <QuestionList
+            <AskQuestion
                 getQuestions={()=>{}}
                 askQuestion={()=>{}}
                 users={users}
@@ -20,7 +20,7 @@ describe('Question result', () => {
     it('Should display input text field', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(
-            <QuestionList
+            <AskQuestion
                 askQuestion={()=>{}}
                 getQuestions={()=>{}}
                 users={users} />);
@@ -36,12 +36,12 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const askQuestion = jest.fn();
         const container = mount(
-            <QuestionList
+            <AskQuestion
                 askQuestion={askQuestion}
                 getQuestions={()=>{}}
                 users={users}
             />);
-        const props = container.find(QuestionList).props();
+        const props = container.find(AskQuestion).props();
         props.askQuestion();
         expect(props.askQuestion).toHaveBeenCalledWith();
     });
@@ -50,7 +50,7 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const getQuestions = jest.fn();
         const askQuestion = jest.fn();
-        shallow(<QuestionList
+        shallow(<AskQuestion
              getQuestions={getQuestions}
              askQuestion={askQuestion}
              users={users} />);
@@ -59,7 +59,7 @@ describe('Question result', () => {
     });
     it('Component should have required questions properties', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
-        const wrapper = shallow(<QuestionList
+        const wrapper = shallow(<AskQuestion
              getQuestions={()=>{}}
              askQuestion={()=>{}}
              users={users} />);
@@ -74,7 +74,7 @@ describe('Question result', () => {
     it('Should call on click of button', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
-        const container = mount(<QuestionList
+        const container = mount(<AskQuestion
             getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
@@ -91,7 +91,7 @@ describe('Question result', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const event = {target: {value: 'Description'}};
-        const container = mount(<QuestionList
+        const container = mount(<AskQuestion
             getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
@@ -110,7 +110,7 @@ describe('Question result', () => {
         const askQuestion = jest.fn();
         const event = {target: {value: 'user1'}};
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
-        const container = mount(<QuestionList
+        const container = mount(<AskQuestion
             getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
@@ -127,7 +127,7 @@ describe('Question result', () => {
         const askQuestion = jest.fn();
         const event = {target: {value: 'user1234'}};
         const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
-        const container = mount(<QuestionList
+        const container = mount(<AskQuestion
             getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}

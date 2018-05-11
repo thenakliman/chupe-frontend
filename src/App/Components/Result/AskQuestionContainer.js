@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {connect} from 'react-redux';
-import {QuestionList} from './QuestionList';
+import {AskQuestion} from './AskQuestion';
 import {askQuestion} from '../../Actions/questionActions';
 import {getAllQuestions} from '../../Actions/questionActions';
 
@@ -17,4 +17,4 @@ export const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(QuestionList);
+export default connect(mapStateToProps, mapDispatchToProps)(AskQuestion);

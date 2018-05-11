@@ -3,9 +3,9 @@ import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {shallow} from 'enzyme';
-import QuestionListContainer from './QuestionListContainer';
+import AskQuestionContainer from './AskQuestionContainer';
 /* eslint-enable */
-import {QuestionList} from './QuestionList';
+import {AskQuestion} from './AskQuestion';
 import configureStore from 'redux-mock-store';
 import * as QuestionActions from '../../Actions/questionActions';
 
@@ -31,10 +31,10 @@ describe('Question Result container', () => {
 
     const container = mount(
       <Provider store={store}>
-        <QuestionListContainer/>
+        <AskQuestionContainer/>
       </Provider>);
 
-    const props = container.find(QuestionList).props();
+    const props = container.find(AskQuestion).props();
     props.askQuestion(question);
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
@@ -44,10 +44,10 @@ describe('Question Result container', () => {
 
     const container = mount(
       <Provider store={store}>
-        <QuestionListContainer/>
+        <AskQuestionContainer/>
       </Provider>);
 
-    const props = container.find(QuestionList).props();
+    const props = container.find(AskQuestion).props();
     props.askQuestion();
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
@@ -58,7 +58,7 @@ describe('Question Result container', () => {
 
     mount(
       <Provider store={store}>
-        <QuestionListContainer/>
+        <AskQuestionContainer/>
       </Provider>);
 
     expect(QuestionActions.getAllQuestions).toHaveBeenCalledWith();
@@ -69,10 +69,10 @@ describe('Question Result container', () => {
     spyOn(QuestionActions, 'getAllQuestions');
     const container = mount(
       <Provider store={store}>
-        <QuestionListContainer/>
+        <AskQuestionContainer/>
       </Provider>);
 
-    expect(container.find(QuestionList).props().users)
+    expect(container.find(AskQuestion).props().users)
         .toEqual(initialState.users.usersData);
   });
 });

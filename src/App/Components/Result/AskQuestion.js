@@ -1,13 +1,13 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import propTypes from 'prop-types';
 
-require('./QuestionList.css');
+require('./AskQuestion.css');
 
 
-/** QuestionList component with input field having for asking
+/** AskQuestion component with input field having for asking
 * question.
 */
-export class QuestionList extends React.Component {
+export class AskQuestion extends React.Component {
     /** Constructor defining the default values for the fields.
     * @param {Object} props, properties for the component.
     */
@@ -118,7 +118,7 @@ export class QuestionList extends React.Component {
     }
 }
 
-QuestionList.propTypes = {
+AskQuestion.propTypes = {
     getQuestions: propTypes.func.isRequired,
     askQuestion: propTypes.func.isRequired,
     users: propTypes.arrayOf(propTypes.object).isRequired,
