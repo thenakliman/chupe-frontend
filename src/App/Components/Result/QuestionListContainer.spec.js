@@ -3,9 +3,9 @@ import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {shallow} from 'enzyme';
-import QuestionResultContainer from './QuestionResultContainer';
+import QuestionListContainer from './QuestionListContainer';
 /* eslint-enable */
-import {QuestionResult} from './QuestionResult';
+import {QuestionList} from './QuestionList';
 import configureStore from 'redux-mock-store';
 import * as QuestionActions from '../../Actions/questionActions';
 
@@ -31,10 +31,10 @@ describe('Question Result container', () => {
 
     const container = mount(
       <Provider store={store}>
-        <QuestionResultContainer/>
+        <QuestionListContainer/>
       </Provider>);
 
-    const props = container.find(QuestionResult).props();
+    const props = container.find(QuestionList).props();
     props.askQuestion(question);
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
@@ -44,10 +44,10 @@ describe('Question Result container', () => {
 
     const container = mount(
       <Provider store={store}>
-        <QuestionResultContainer/>
+        <QuestionListContainer/>
       </Provider>);
 
-    const props = container.find(QuestionResult).props();
+    const props = container.find(QuestionList).props();
     props.askQuestion();
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
@@ -58,7 +58,7 @@ describe('Question Result container', () => {
 
     mount(
       <Provider store={store}>
-        <QuestionResultContainer/>
+        <QuestionListContainer/>
       </Provider>);
 
     expect(QuestionActions.getAllQuestions).toHaveBeenCalledWith();
@@ -69,10 +69,10 @@ describe('Question Result container', () => {
     spyOn(QuestionActions, 'getAllQuestions');
     const container = mount(
       <Provider store={store}>
-        <QuestionResultContainer/>
+        <QuestionListContainer/>
       </Provider>);
 
-    expect(container.find(QuestionResult).props().users)
+    expect(container.find(QuestionList).props().users)
         .toEqual(initialState.users.usersData);
   });
 });
