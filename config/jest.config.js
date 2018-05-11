@@ -2,10 +2,15 @@ module.exports = {
   "rootDir": "../",
   "verbose": true,
   "collectCoverage": true,
-  "testRegex": "spec.js$",
-  "collectCoverageFrom": ["*src/**/*.{js/jsx}"],
+  "testPathIgnorePatterns": ["/node_modules/"],
+  "collectCoverageFrom": ["./src/**/*.js"],
   "setupFiles": ["<rootDir>/config/setup.js"],
   "moduleNameMapper": {
         "\\.(css|scss|jpg|png)$": "identity-obj-proxy"
-      }
+      },
+  "collectCoverageFrom": [
+    "src/**/*.{js,jsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**"
+  ]
 }
