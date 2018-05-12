@@ -1,0 +1,17 @@
+.question-result-container {
+    margin-top: 4rem;
+}
+
+table {
+    border: .1px solid black;
+    border-collapse: collapse;
+    border-spacing: 1rem;
+    background-color: #f1f1c1;
+    text-align: center;
+    width: 100%;
+}
+
+th, td {
+    border: .1px solid black;
+    padding: .5rem 4rem;
+}

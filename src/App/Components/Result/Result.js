@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 /* eslint-disable */
 import UserResultContainer from './UserResultContainer';
 import AskQuestionContainer from './AskQuestionContainer';
+import QuestionContainer from './QuestionContainer';
 /* eslint-enable */
 import {RESULT_COMPONENTS} from './../constants';
 
@@ -21,7 +22,13 @@ export class Result extends React.Component {
         switch (this.props.view) {
             case RESULT_COMPONENTS.QUESTION_COMPONENT:
                 return (
-                    <div id='question-result-container'>
+                    <div id='list-question-result-container'>
+                        <QuestionContainer/>
+                    </div>
+                );
+            case RESULT_COMPONENTS.ASK_QUESTION_COMPONENT:
+                return (
+                    <div id='ask-question-result-container'>
                         <AskQuestionContainer />;
                     </div>
                 );

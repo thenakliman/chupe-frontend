@@ -15,15 +15,11 @@ describe('updates result correctly on click', () => {
         ).toEqual('user-result-container');
   });
 
-  it('Question component is displayed if view is QUESTION_COMPONENT', () => {
-        const view = RESULT_COMPONENTS.QUESTION_COMPONENT;
+  it('ASK Question component is displayed for ask question', () => {
+        const view = RESULT_COMPONENTS.ASK_QUESTION_COMPONENT;
         const wrapper = shallow(<Result view={view}/>);
-        expect(
-            wrapper.find('#question-result-container')
-                .get(0)
-                .props
-                .id
-        ).toEqual('question-result-container');
+        expect(wrapper.find('#ask-question-result-container').length)
+            .toEqual(1);
   });
 
   it('User component is displayed if view is USER_COMPONENT', () => {
@@ -34,5 +30,11 @@ describe('updates result correctly on click', () => {
             .props
             .id
         ).toEqual('user-result-container');
+  });
+  it('Question component is displayed for QUESTION', () => {
+        const view = RESULT_COMPONENTS.QUESTION_COMPONENT;
+        const wrapper = shallow(<Result view={view}/>);
+        expect(wrapper.find('#list-question-result-container').length)
+            .toEqual(1);
   });
 });
