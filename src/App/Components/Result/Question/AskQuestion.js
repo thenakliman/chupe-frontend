@@ -13,12 +13,7 @@ export class AskQuestion extends React.Component {
     */
     constructor(props) {
         super(props);
-        this.state = {
-            question: '',
-            description: '',
-            owner: '',
-            assignedTo: '',
-        };
+        this.state = this.getInitialState();
 
         this.handleQuestionSummary = this.handleQuestionSummary.bind(this);
         this.handleQuestionDescription = this
@@ -27,6 +22,16 @@ export class AskQuestion extends React.Component {
         this.handleOwnerChange = this.handleOwnerChange.bind(this);
         this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getInitialState = this.getInitialState.bind(this);
+    }
+
+    getInitialState() {
+        return  {
+            question: '',
+            description: '',
+            owner: '',
+            assignedTo: '',
+        }
     }
 
     /** Handle changes on the question fields
@@ -63,6 +68,7 @@ export class AskQuestion extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.askQuestion(this.state);
+        this.setState(this.getInitialState());
     }
     /** Returns input field in form with a button.
     *

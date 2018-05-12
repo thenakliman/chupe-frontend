@@ -139,4 +139,20 @@ describe('Question result', () => {
             'owner': '',
             'question': ''});
     });
+    it('should reset state on submit', () => {
+        const askQuestion = jest.fn();
+        const event = {target: {value: 'user1234'}};
+        const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
+        const container = mount(<AskQuestion
+            askQuestion={askQuestion}
+            users={users}
+        />);
+        container.find('#question-assigned-to').simulate('change', event);
+        container.find('#ask-question-submit-button').simulate('submit');
+        expect(container.state()).toEqual({
+            'assignedTo': '',
+            'description': '',
+            'owner': '',
+            'question': ''});
+    });
 });
