@@ -87,6 +87,25 @@ describe('Question result', () => {
             'owner': '',
             'question': ''});
     });
+    it('should set question text field', () => {
+        const askQuestion = jest.fn();
+        const users = [{'userName': 'user1'}, {'userName': 'user2'}];
+        const event = {target: {value: 'why oh why?'}};
+        const container = mount(<AskQuestion
+            getQuestions={()=>{}}
+            askQuestion={askQuestion}
+            users={users}
+        />);
+        container.find('#ask-question-input-field')
+            .simulate('change', event);
+
+        container.find('#ask-question-input-field').simulate('submit');
+        expect(askQuestion).toHaveBeenCalledWith({
+            'assignedTo': '',
+            'description': '',
+            'owner': '',
+            'question': event.target.value});
+    });
     it('should set text field', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
