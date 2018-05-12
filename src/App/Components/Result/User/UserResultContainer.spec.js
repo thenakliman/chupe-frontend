@@ -7,7 +7,7 @@ import UserResultContainer from './UserResultContainer';
 /* eslint-enable */
 import {mapStateToProps} from './UserResultContainer';
 import configureStore from 'redux-mock-store';
-import * as UserActions from '../../Actions/userActions';
+import * as UserActions from '../../../Actions/userActions';
 
 
 describe('User Result Container', () => {

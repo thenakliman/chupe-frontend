@@ -1,6 +1,6 @@
 import {UserResult} from './UserResult';
 import {connect} from 'react-redux';
-import {getAllUsers} from '../../Actions/userActions';
+import {getAllUsers} from '../../../Actions/userActions';
 
 export const mapStateToProps = (state) => ({
     users: state.users.usersData,
