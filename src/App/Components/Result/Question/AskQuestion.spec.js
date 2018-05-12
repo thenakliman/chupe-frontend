@@ -16,6 +16,17 @@ describe('Question Result component snapshot', () => {
 });
 
 describe('Question result', () => {
+  let initialState;
+
+    beforeEach(() => {
+        initialState = {
+          question: 'q1',
+          description: 'd1',
+          owner: 'o1',
+          assignedTo: 'a1',
+        };
+    });
+
     it('Should display input text field', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(
@@ -56,21 +67,19 @@ describe('Question result', () => {
             assignedTo: '',
         });
     });
-    it('Should call on click of button', () => {
+    it('should not call submit if any field is empty', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
             users={users}
         />);
-
-        container.find('#ask-question-submit-button').simulate('submit');
-        expect(askQuestion).toHaveBeenCalledWith({
-            'assignedTo': '',
-            'description': '',
-            'owner': '',
-            'question': ''});
+        const state = Object.assign({}, initialState, {question: ''});
+        container.setState(state);
+        container.find('#ask-question-input-field').simulate('submit');
+        expect(askQuestion).not.toHaveBeenCalled();
     });
+
     it('should set question text field', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
@@ -79,16 +88,16 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             users={users}
         />);
+        const state = Object.assign({}, initialState, {question: ''});
+        container.setState(state);
         container.find('#ask-question-input-field')
             .simulate('change', event);
 
         container.find('#ask-question-input-field').simulate('submit');
-        expect(askQuestion).toHaveBeenCalledWith({
-            'assignedTo': '',
-            'description': '',
-            'owner': '',
-            'question': event.target.value});
+        expect(askQuestion).toHaveBeenCalledWith(
+            Object.assign({}, initialState, {'question': event.target.value}));
     });
+
     it('should set text field', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
@@ -97,16 +106,19 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             users={users}
         />);
+        const state = Object.assign({}, initialState, {description: ''});
+        container.setState(state);
         container.find('#question-description-textarea')
             .simulate('change', event);
 
         container.find('#ask-question-submit-button').simulate('submit');
-        expect(askQuestion).toHaveBeenCalledWith({
-            'assignedTo': '',
-            'description': 'Description',
-            'owner': '',
-            'question': ''});
+        expect(askQuestion).toHaveBeenCalledWith(
+            Object.assign(
+                {},
+                initialState,
+                {'description': event.target.value}));
     });
+
     it('should select owner field', () => {
         const askQuestion = jest.fn();
         const event = {target: {value: 'user1'}};
@@ -115,14 +127,14 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             users={users}
         />);
+        const state = Object.assign({}, initialState, {owner: ''});
+        container.setState(state);
         container.find('#question-owner').simulate('change', event);
         container.find('#ask-question-submit-button').simulate('submit');
-        expect(askQuestion).toHaveBeenCalledWith({
-            'assignedTo': '',
-            'description': '',
-            'owner': 'user1',
-            'question': ''});
+        expect(askQuestion).toHaveBeenCalledWith(
+            Object.assign({}, initialState, {'owner': event.target.value}));
     });
+
     it('should select assigned to field', () => {
         const askQuestion = jest.fn();
         const event = {target: {value: 'user1234'}};
@@ -131,28 +143,14 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             users={users}
         />);
+        const state = Object.assign({}, initialState, {assignedTo: ''});
+        container.setState(state);
         container.find('#question-assigned-to').simulate('change', event);
         container.find('#ask-question-submit-button').simulate('submit');
-        expect(askQuestion).toHaveBeenCalledWith({
-            'assignedTo': 'user1234',
-            'description': '',
-            'owner': '',
-            'question': ''});
-    });
-    it('should reset state on submit', () => {
-        const askQuestion = jest.fn();
-        const event = {target: {value: 'user1234'}};
-        const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
-        const container = mount(<AskQuestion
-            askQuestion={askQuestion}
-            users={users}
-        />);
-        container.find('#question-assigned-to').simulate('change', event);
-        container.find('#ask-question-submit-button').simulate('submit');
-        expect(container.state()).toEqual({
-            'assignedTo': '',
-            'description': '',
-            'owner': '',
-            'question': ''});
+        expect(askQuestion).toHaveBeenCalledWith(
+            Object.assign(
+                {},
+                initialState,
+                {'assignedTo': event.target.value}));
     });
 });

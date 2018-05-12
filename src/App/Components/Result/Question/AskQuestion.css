@@ -16,12 +16,15 @@ label{
 
 input {
   width: 45rem;
+  border-radius: 0px;
+  border: 1px solid rgb(180, 180, 180);
+  height: 1.5rem;
 }
 
 textarea {
+  border: 1px solid rgb(180, 180, 180);
   width: 45rem;
   height: 20rem;
-  padding: 0.3rem;
 }
 
 select {

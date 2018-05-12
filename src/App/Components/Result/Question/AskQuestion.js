@@ -23,6 +23,7 @@ export class AskQuestion extends React.Component {
         this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getInitialState = this.getInitialState.bind(this);
+        this.validateForm = this.validateForm.bind(this);
     }
 
     /** Provide the initial state to the component
@@ -64,12 +65,26 @@ export class AskQuestion extends React.Component {
     handleAssignedToChange(event) {
         this.setState({assignedTo: event.target.value});
     }
+    /** Validates form data
+    * @return {bool} return whether data is valid or not
+    */
+    validateForm() {
+        return (
+            this.state.question =='' ||
+            this.state.description == '' ||
+            this.state.owner == '' ||
+            this.state.assignedTo == '');
+    }
 
     /** Handles submit of the form
     * @param {object} event containing new modified value
     */
     handleSubmit(event) {
         event.preventDefault();
+        const hasError = this.validateForm();
+        if (hasError) {
+            return;
+        }
         this.props.askQuestion(this.state);
         this.setState(this.getInitialState());
     }
@@ -105,14 +120,15 @@ export class AskQuestion extends React.Component {
                         Owner:
                     </label>
                     <select id='question-owner'
-                        value={this.state.value}
-                        onChange={this.handleOwnerChange}>
-                     {
-                         this.props.users.map((user) =>(
-                             <option key={`${user.userName}`}>
-                                {user.userName}
-                             </option>))
-                     }
+                      value={this.state.value}
+                      onChange={this.handleOwnerChange}>
+                        <option value="">select owner</option>
+                        {
+                           this.props.users.map((user) =>(
+                              <option key={`${user.userName}`}>
+                                 {user.userName}
+                              </option>))
+                        }
                      </select>
                   </p>
                   <p>
@@ -120,14 +136,15 @@ export class AskQuestion extends React.Component {
                         Assigned TO:
                     </label>
                     <select id='question-assigned-to'
-                        value={this.state.value}
-                        onChange={this.handleAssignedToChange}>
-                     {
-                         this.props.users.map((user) =>(
+                      value={this.state.value}
+                      onChange={this.handleAssignedToChange}>
+                        <option value="">assign to user</option>
+                        {
+                           this.props.users.map((user) =>(
                              <option key={`${user.userName}`}>
                                 {user.userName}
                              </option>))
-                     }
+                        }
                      </select>
                   </p>
                   <div className="ask-question-submit-button">

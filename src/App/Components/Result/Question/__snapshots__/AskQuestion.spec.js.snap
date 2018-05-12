@@ -37,6 +37,11 @@ exports[`Question Result component snapshot should match the snapshot 1`] = `
         onChange={[Function]}
       >
         <option
+          value=""
+        >
+          select owner
+        </option>
+        <option
           key="user1"
         >
           user1
@@ -56,6 +61,11 @@ exports[`Question Result component snapshot should match the snapshot 1`] = `
         id="question-assigned-to"
         onChange={[Function]}
       >
+        <option
+          value=""
+        >
+          assign to user
+        </option>
         <option
           key="user1"
         >
