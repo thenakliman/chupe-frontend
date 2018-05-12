@@ -8,7 +8,6 @@ describe('Question Result component snapshot', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(
             <AskQuestion
-                getQuestions={()=>{}}
                 askQuestion={()=>{}}
                 users={users}
             />);
@@ -22,7 +21,6 @@ describe('Question result', () => {
         const wrapper = shallow(
             <AskQuestion
                 askQuestion={()=>{}}
-                getQuestions={()=>{}}
                 users={users} />);
         expect(
             wrapper.find('#ask-question-input-field')
@@ -38,7 +36,6 @@ describe('Question result', () => {
         const container = mount(
             <AskQuestion
                 askQuestion={askQuestion}
-                getQuestions={()=>{}}
                 users={users}
             />);
         const props = container.find(AskQuestion).props();
@@ -46,21 +43,9 @@ describe('Question result', () => {
         expect(props.askQuestion).toHaveBeenCalledWith();
     });
 
-    it('Component did mount', () => {
-        const users = [{'userName': 'user1'}, {'userName': 'user2'}];
-        const getQuestions = jest.fn();
-        const askQuestion = jest.fn();
-        shallow(<AskQuestion
-             getQuestions={getQuestions}
-             askQuestion={askQuestion}
-             users={users} />);
-
-        expect(getQuestions).toHaveBeenCalledWith();
-    });
     it('Component should have required questions properties', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(<AskQuestion
-             getQuestions={()=>{}}
              askQuestion={()=>{}}
              users={users} />);
 
@@ -75,7 +60,6 @@ describe('Question result', () => {
         const askQuestion = jest.fn();
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
-            getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
         />);
@@ -92,7 +76,6 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const event = {target: {value: 'why oh why?'}};
         const container = mount(<AskQuestion
-            getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
         />);
@@ -111,7 +94,6 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const event = {target: {value: 'Description'}};
         const container = mount(<AskQuestion
-            getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
         />);
@@ -130,7 +112,6 @@ describe('Question result', () => {
         const event = {target: {value: 'user1'}};
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
-            getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
         />);
@@ -147,7 +128,6 @@ describe('Question result', () => {
         const event = {target: {value: 'user1234'}};
         const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
-            getQuestions={()=>{}}
             askQuestion={askQuestion}
             users={users}
         />);

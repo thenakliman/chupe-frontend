@@ -28,10 +28,6 @@ export class AskQuestion extends React.Component {
         this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    /** Get all questions on component mount */
-    componentDidMount() {
-         this.props.getQuestions();
-    }
 
     /** Handle changes on the question fields
     * @param {object} event containing new modified value
@@ -119,7 +115,6 @@ export class AskQuestion extends React.Component {
 }
 
 AskQuestion.propTypes = {
-    getQuestions: propTypes.func.isRequired,
     askQuestion: propTypes.func.isRequired,
     users: propTypes.arrayOf(propTypes.object).isRequired,
 };

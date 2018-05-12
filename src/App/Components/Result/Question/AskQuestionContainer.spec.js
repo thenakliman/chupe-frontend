@@ -52,19 +52,6 @@ describe('Question Result container', () => {
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
 
-  it('should get Questions be called on component mount', () => {
-    const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
-    spyOn(QuestionActions, 'getAllQuestions').and.returnValue(action);
-
-    mount(
-      <Provider store={store}>
-        <AskQuestionContainer/>
-      </Provider>);
-
-    expect(QuestionActions.getAllQuestions).toHaveBeenCalledWith();
-    expect(store.dispatch).toHaveBeenCalledWith(action);
-  });
-
   it('should return all users called on component mount', () => {
     spyOn(QuestionActions, 'getAllQuestions');
     const container = mount(
