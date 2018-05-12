@@ -29,14 +29,14 @@ export class Result extends React.Component {
             case RESULT_COMPONENTS.ASK_QUESTION_COMPONENT:
                 return (
                     <div id='ask-question-result-container'>
-                        <AskQuestionContainer />;
+                        <AskQuestionContainer />
                     </div>
                 );
             case RESULT_COMPONENTS.USER_COMPONENT:
             default:
                 return (
                     <div id='user-result-container'>
-                        <UserResultContainer />;
+                        <UserResultContainer />
                     </div>
                 );
         }

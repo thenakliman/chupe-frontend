@@ -25,13 +25,16 @@ export class AskQuestion extends React.Component {
         this.getInitialState = this.getInitialState.bind(this);
     }
 
+    /** Provide the initial state to the component
+    * @return {Object} initial state of the component
+    */
     getInitialState() {
-        return  {
+        return {
             question: '',
             description: '',
             owner: '',
             assignedTo: '',
-        }
+        };
     }
 
     /** Handle changes on the question fields
@@ -78,16 +81,29 @@ export class AskQuestion extends React.Component {
         return (
             <div id='ask-question-div' className='input-field-for-question'>
                 <form id="ask-question-form" onSubmit = {this.handleSubmit}>
+                  <p>
+                    <label>
+                      Question:
+                    </label>
                     <input type="text"
                         id="ask-question-input-field"
                         value={this.state.value}
                         onChange={this.handleQuestionSummary}
                     />
+                  </p>
+                  <p>
+                    <label>
+                        Description:
+                    </label>
                     <textarea id='question-description-textarea'
                         value={this.state.value}
                         onChange={this.handleQuestionDescription}
                     />
-
+                  </p>
+                  <p>
+                    <label>
+                        Owner:
+                    </label>
                     <select id='question-owner'
                         value={this.state.value}
                         onChange={this.handleOwnerChange}>
@@ -98,6 +114,11 @@ export class AskQuestion extends React.Component {
                              </option>))
                      }
                      </select>
+                  </p>
+                  <p>
+                    <label>
+                        Assigned TO:
+                    </label>
                     <select id='question-assigned-to'
                         value={this.state.value}
                         onChange={this.handleAssignedToChange}>
@@ -108,12 +129,14 @@ export class AskQuestion extends React.Component {
                              </option>))
                      }
                      </select>
+                  </p>
+                  <div className="ask-question-submit-button">
                     <button id="ask-question-submit-button"
                         type="submit"
                         value="Submit">
-
                         Ask Question
                     </button>
+                  </div>
                 </form>
             </div>
         );
