@@ -39,7 +39,7 @@ describe('Question Result container', () => {
     expect(store.dispatch).toHaveBeenCalledWith({});
   });
 
-  it('should ask questions be called on click', () => {
+  it('should dispatch change view on submit on click', () => {
     spyOn(QuestionActions, 'askQuestion').and.returnValue({});
 
     const container = mount(

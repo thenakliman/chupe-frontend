@@ -78,6 +78,10 @@ describe('ASK_QUESTIONS action', () => {
           type: ActionTypes.UPDATE_LOADER_STATUS,
           payload: false,
       },
+      {
+         type: ActionTypes.CHANGE_RESULT_VIEW,
+         payload: "QUESTION_COMPONENT",
+      }
     ]);
   });
   it('Should dispatch update loader status even on failure', async () => {
