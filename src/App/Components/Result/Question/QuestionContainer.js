@@ -1,7 +1,7 @@
 import {Question} from './Question';
 import {connect} from 'react-redux';
-import {RESULT_COMPONENTS} from '../constants';
-import {changeCurrentView} from '../../Actions/currentViewActions';
+import {RESULT_COMPONENTS} from '../../constants';
+import {changeCurrentView} from '../../../Actions/currentViewActions';
 
 
 const mapStateToProps = (state) => ({

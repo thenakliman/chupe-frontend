@@ -7,7 +7,7 @@ import AskQuestionContainer from './AskQuestionContainer';
 /* eslint-enable */
 import {AskQuestion} from './AskQuestion';
 import configureStore from 'redux-mock-store';
-import * as QuestionActions from '../../Actions/questionActions';
+import * as QuestionActions from '../../../Actions/questionActions';
 
 
 describe('Question Result container', () => {

@@ -2,8 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 /* eslint-disable */
 import UserResultContainer from './UserResultContainer';
-import AskQuestionContainer from './AskQuestionContainer';
-import QuestionContainer from './QuestionContainer';
+import AskQuestionContainer from './Question/AskQuestionContainer';
+import QuestionContainer from './Question/QuestionContainer';
 /* eslint-enable */
 import {RESULT_COMPONENTS} from './../constants';
 
