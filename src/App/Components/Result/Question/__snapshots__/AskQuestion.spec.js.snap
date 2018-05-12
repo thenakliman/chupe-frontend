@@ -9,52 +9,76 @@ exports[`Question Result component snapshot should match the snapshot 1`] = `
     id="ask-question-form"
     onSubmit={[Function]}
   >
-    <input
-      id="ask-question-input-field"
-      onChange={[Function]}
-      type="text"
-    />
-    <textarea
-      id="question-description-textarea"
-      onChange={[Function]}
-    />
-    <select
-      id="question-owner"
-      onChange={[Function]}
+    <p>
+      <label>
+        Question:
+      </label>
+      <input
+        id="ask-question-input-field"
+        onChange={[Function]}
+        type="text"
+      />
+    </p>
+    <p>
+      <label>
+        Description:
+      </label>
+      <textarea
+        id="question-description-textarea"
+        onChange={[Function]}
+      />
+    </p>
+    <p>
+      <label>
+        Owner:
+      </label>
+      <select
+        id="question-owner"
+        onChange={[Function]}
+      >
+        <option
+          key="user1"
+        >
+          user1
+        </option>
+        <option
+          key="user2"
+        >
+          user2
+        </option>
+      </select>
+    </p>
+    <p>
+      <label>
+        Assigned TO:
+      </label>
+      <select
+        id="question-assigned-to"
+        onChange={[Function]}
+      >
+        <option
+          key="user1"
+        >
+          user1
+        </option>
+        <option
+          key="user2"
+        >
+          user2
+        </option>
+      </select>
+    </p>
+    <div
+      className="ask-question-submit-button"
     >
-      <option
-        key="user1"
+      <button
+        id="ask-question-submit-button"
+        type="submit"
+        value="Submit"
       >
-        user1
-      </option>
-      <option
-        key="user2"
-      >
-        user2
-      </option>
-    </select>
-    <select
-      id="question-assigned-to"
-      onChange={[Function]}
-    >
-      <option
-        key="user1"
-      >
-        user1
-      </option>
-      <option
-        key="user2"
-      >
-        user2
-      </option>
-    </select>
-    <button
-      id="ask-question-submit-button"
-      type="submit"
-      value="Submit"
-    >
-      Ask Question
-    </button>
+        Ask Question
+      </button>
+    </div>
   </form>
 </div>
 `;
