@@ -4,7 +4,12 @@ import {shallow} from 'enzyme';
 
 describe('List Questions', () => {
   it('should have a button', () => {
-    const wrapper = shallow(<Question questions={[{}]} askQuestion={()=>{}}/>);
+    const wrapper = shallow(
+        <Question
+            questions={[{}]}
+            askQuestion={()=>{}}
+            getQuestions={()=>{}}
+        />);
     expect(wrapper.find('#ask-question-button').length).toEqual(1);
   });
 
@@ -17,6 +22,7 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             askQuestion={()=>{}}
+            getQuestions={()=>{}}
         />);
 
     expect(wrapper.find('#all-question-ordered-list').props().children.length)
@@ -33,9 +39,25 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             askQuestion={askQuestion}
+            getQuestions={()=>{}}
         />);
 
     expect(wrapper.find('#ask-question-button').simulate('click'));
     expect(askQuestion).toHaveBeenCalledWith();
+  });
+
+  it('should call get questions on component mount', () => {
+    const getQuestions = jest.fn();
+    const questions = [
+      {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
+      {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
+    ];
+    shallow(
+        <Question
+            questions={questions}
+            askQuestion={()=>{}}
+            getQuestions={getQuestions}
+        />);
+    expect(getQuestions).toHaveBeenCalledWith();
   });
 });

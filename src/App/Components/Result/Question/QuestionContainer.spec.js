@@ -1,4 +1,3 @@
-
 import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
@@ -8,6 +7,7 @@ import QuestionContainer from './QuestionContainer';
 /* eslint-enable */
 import configureStore from 'redux-mock-store';
 import {Question} from './Question';
+import * as QuestionActions from '../../../Actions/questionActions';
 
 
 describe('Question Result container', () => {
@@ -37,7 +37,7 @@ describe('Question Result container', () => {
         .toEqual(initialState.questions.questionsData);
   });
 
-  it('Should have questions property', () => {
+  it('Should dispatch ask question action', () => {
     const container = mount(
       <Provider store={store}>
         <QuestionContainer/>
@@ -47,5 +47,16 @@ describe('Question Result container', () => {
     expect(store.dispatch).toHaveBeenCalledWith({
         'payload': 'ASK_QUESTION_COMPONENT',
         'type': 'CHANGE_RESULT_VIEW'});
+  });
+
+  it('Should dispatch get questions', () => {
+    spyOn(QuestionActions, 'getAllQuestions');
+    const container = mount(
+      <Provider store={store}>
+        <QuestionContainer/>
+      </Provider>);
+
+    container.find(Question).props().getQuestions();
+    expect(QuestionActions.getAllQuestions).toHaveBeenCalled();
   });
 });

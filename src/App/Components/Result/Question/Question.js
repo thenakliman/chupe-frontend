@@ -5,6 +5,11 @@ require('./Question.css');
 
 /** Question component displaying questions on click. */
 export class Question extends React.Component {
+    /** Get all question on component mount */
+    componentDidMount() {
+        this.props.getQuestions();
+    }
+
     /** returns Question component
     * @return {Object} Question component
     */
@@ -51,4 +56,5 @@ export class Question extends React.Component {
 Question.propTypes = {
     questions: propTypes.arrayOf(propTypes.object).isRequired,
     askQuestion: propTypes.func.isRequired,
+    getQuestions: propTypes.func.isRequired,
 };
