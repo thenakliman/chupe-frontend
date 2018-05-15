@@ -147,9 +147,10 @@ export class AskQuestion extends React.Component {
                         }
                      </select>
                   </p>
-                  <div className="ask-question-submit-button">
+                  <div>
                     <button id="ask-question-submit-button"
                         type="submit"
+                        className="ask-question-submit-button"
                         value="Submit">
                         Ask Question
                     </button>

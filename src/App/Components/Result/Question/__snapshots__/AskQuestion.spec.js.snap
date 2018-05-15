@@ -78,10 +78,9 @@ exports[`Question Result component snapshot should match the snapshot 1`] = `
         </option>
       </select>
     </p>
-    <div
-      className="ask-question-submit-button"
-    >
+    <div>
       <button
+        className="ask-question-submit-button"
         id="ask-question-submit-button"
         type="submit"
         value="Submit"

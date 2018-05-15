@@ -80,8 +80,8 @@ describe('ASK_QUESTIONS action', () => {
       },
       {
          type: ActionTypes.CHANGE_RESULT_VIEW,
-         payload: "QUESTION_COMPONENT",
-      }
+         payload: 'QUESTION_COMPONENT',
+      },
     ]);
   });
   it('Should dispatch update loader status even on failure', async () => {

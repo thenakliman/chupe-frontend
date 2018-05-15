@@ -18,6 +18,7 @@ export class Question extends React.Component {
             <div className='question-result-container'>
                 <div>
                     <button id='ask-question-button'
+                        className='ask-question-button'
                         type="button"
                         onClick={this.props.askQuestion}
                     >
