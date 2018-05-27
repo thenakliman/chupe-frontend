@@ -13,6 +13,16 @@
     background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
 }
 
+.view-question-button {
+    border-radius: 0.25rem;
+    border: 1px solid #28a745;
+    background-color: #28a745;
+    padding: 0.4rem 1rem;
+    float: right;
+    color: white;
+    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+}
+
 table {
     border: .1px solid black;
     border-collapse: collapse;

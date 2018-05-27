@@ -43,6 +43,13 @@ export class Question extends React.Component {
                                 <td> {question.question} </td>
                                 <td> {question.owner}</td>
                                 <td> {question.assignedTo} </td>
+                                <td>
+                                    <button id='view-question-button'
+                                            className='view-question-button'
+                                            type='button'>
+                                        View
+                                    </button>
+                                </td>
                          </tr>
                          ))
                      }
