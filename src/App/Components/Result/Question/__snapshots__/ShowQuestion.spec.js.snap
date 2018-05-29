@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show Question component snapshot should match the snapshot 1`] = `
+<div
+  className="show-question"
+>
+  <p>
+    <label
+      htmlFor="show-question-input-field-id"
+    >
+      Question:
+    </label>
+    <input
+      id="show-question-input-field-id"
+      readOnly={true}
+      type="text"
+      value="q"
+    />
+  </p>
+  <p>
+    <label
+      htmlFor="show-question-description-input-field-id"
+    >
+      Description:
+    </label>
+    <input
+      id="show-question-description-input-field-id"
+      readOnly={true}
+      type="text"
+      value="d"
+    />
+  </p>
+  <p>
+    <label>
+      Assigned To:
+    </label>
+    <select
+      id="show-question-assigned-to-input-field-id"
+    >
+      <option
+        value=""
+      >
+        at
+      </option>
+    </select>
+  </p>
+  <p>
+    <label>
+      Owner:
+    </label>
+    <select
+      id="show-question-owner-input-field-id"
+    >
+      <option
+        value=""
+      />
+    </select>
+  </p>
+</div>
+`;

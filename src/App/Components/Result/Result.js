@@ -4,6 +4,7 @@ import propTypes from 'prop-types';
 import UserResultContainer from './User/UserResultContainer';
 import AskQuestionContainer from './Question/AskQuestionContainer';
 import QuestionContainer from './Question/QuestionContainer';
+import ShowQuestionContainer from './Question/ShowQuestionContainer';
 /* eslint-enable */
 import {RESULT_COMPONENTS} from './../constants';
 
@@ -30,6 +31,12 @@ export class Result extends React.Component {
                 return (
                     <div id='ask-question-result-container'>
                         <AskQuestionContainer />
+                    </div>
+                );
+            case RESULT_COMPONENTS.SHOW_QUESTION_COMPONENT:
+                return (
+                    <div id='show-question-result-container'>
+                        <ShowQuestionContainer />
                     </div>
                 );
             case RESULT_COMPONENTS.USER_COMPONENT:

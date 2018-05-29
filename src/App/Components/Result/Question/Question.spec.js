@@ -8,6 +8,7 @@ describe('List Questions', () => {
         <Question
             questions={[{}]}
             askQuestion={()=>{}}
+            showQuestion={()=>{}}
             getQuestions={()=>{}}
         />);
     expect(wrapper.find('#ask-question-button').length).toEqual(1);
@@ -22,6 +23,7 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             askQuestion={()=>{}}
+            showQuestion={()=>{}}
             getQuestions={()=>{}}
         />);
 
@@ -39,11 +41,30 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             askQuestion={askQuestion}
+            showQuestion={()=>{}}
             getQuestions={()=>{}}
         />);
 
     expect(wrapper.find('#ask-question-button').simulate('click'));
     expect(askQuestion).toHaveBeenCalledWith();
+  });
+
+  it('should call show question', () => {
+    const showQuestionMock = jest.fn();
+    const questions = [
+      {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
+      {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
+    ];
+    const wrapper = shallow(
+        <Question
+            questions={questions}
+            askQuestion={()=>{}}
+            getQuestions={()=>{}}
+            showQuestion={showQuestionMock}
+        />);
+
+    expect(wrapper.find('#view-question-button-1').simulate('click'));
+    expect(showQuestionMock).toHaveBeenCalledWith(1);
   });
 
   it('should call get questions on component mount', () => {
@@ -54,6 +75,7 @@ describe('List Questions', () => {
     ];
     shallow(
         <Question
+            showQuestion={()=>{}}
             questions={questions}
             askQuestion={()=>{}}
             getQuestions={getQuestions}

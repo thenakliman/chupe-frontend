@@ -31,10 +31,17 @@ describe('updates result correctly on click', () => {
             .id
         ).toEqual('user-result-container');
   });
+
   it('Question component is displayed for QUESTION', () => {
         const view = RESULT_COMPONENTS.QUESTION_COMPONENT;
         const wrapper = shallow(<Result view={view}/>);
         expect(wrapper.find('#list-question-result-container').length)
             .toEqual(1);
+  });
+
+  it('Question component is displayed for show QUESTION', () => {
+      const wrapper = shallow(<Result view={RESULT_COMPONENTS.SHOW_QUESTION_COMPONENT}/>);
+      expect(wrapper.find('#show-question-result-container').length)
+          .toEqual(1);
   });
 });

@@ -38,6 +38,7 @@ describe('current view reducer', () => {
             {
                 view: RESULT_COMPONENTS.USER_COMPONENT,
                 isWaitingForResponse: false,
+                currentQuestion: null,
             }
         );
     });
@@ -55,6 +56,49 @@ describe('current view reducer', () => {
     });
     it('should provide existing loader visibility for other actions', () => {
         const initialStoreState = {isWaitingForResponse: false};
+        const nextState = currentView(
+                initialStoreState,
+                {
+                    type: 'INCORRECT_ACTION',
+                    payload: 'FAKE_PAYLOAD',
+                }
+        );
+        expect(nextState).toEqual(initialStoreState);
+    });
+
+    it('should provide default currentQuestion for empty store and other actions', () => {
+        const nextState = currentView(
+                undefined,
+                {
+                    type: 'INCORRECT_ACTION',
+                    payload: 'FAKE_PAYLOAD',
+                }
+        );
+        expect(nextState).toEqual(
+            {
+                view: RESULT_COMPONENTS.USER_COMPONENT,
+                isWaitingForResponse: false,
+                currentQuestion: null
+            }
+        );
+    });
+
+    it('should store current Question parameter comes in action', () => {
+        const currentQuestionId = 1;
+        const initialStoreState = {currentQuestion: null};
+        const nextState = currentView(
+                initialStoreState,
+                {
+                    type: 'SET_CURRENT_QUESTION',
+                    payload: currentQuestionId,
+                }
+        );
+        initialStoreState.view = currentQuestionId;
+        expect(nextState).toEqual({currentQuestion: currentQuestionId});
+    });
+
+    it('should provide existing view for actions other than SET_CURRENT_QUESTION', () => {
+        const initialStoreState = {view: 'fakeTab', currentQuestion: null};
         const nextState = currentView(
                 initialStoreState,
                 {

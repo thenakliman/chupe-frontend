@@ -1,5 +1,5 @@
 import {ActionTypes} from './ActionTypes';
-import {changeCurrentView} from './currentViewActions';
+import {changeCurrentView, setCurrentQuestion} from './currentViewActions';
 
 describe('current view action creator', () => {
     it('should create action with given data in payload', () => {
@@ -11,5 +11,15 @@ describe('current view action creator', () => {
                 payload: nextView,
             }
         );
+    });
+
+    it('should create set current question action with given data in payload', () => {
+      const currentQuestionID = 1;
+      const action = setCurrentQuestion(currentQuestionID);
+      expect(action).toEqual(
+        {
+            type: ActionTypes.SET_CURRENT_QUESTION,
+            payload: currentQuestionID,
+        });
     });
 });
