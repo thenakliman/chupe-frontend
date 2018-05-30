@@ -25,7 +25,7 @@ export class ShowQuestion extends React.Component {
           <label htmlFor="show-question-description-input-field-id">
             Description:
           </label>
-          <input type="text"
+          <textarea type="text"
             id="show-question-description-input-field-id"
             readOnly
             value={this.props.description} />
