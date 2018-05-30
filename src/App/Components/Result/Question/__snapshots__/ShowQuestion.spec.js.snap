@@ -35,6 +35,7 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
       Assigned To:
     </label>
     <select
+      disabled={true}
       id="show-question-assigned-to-input-field-id"
     >
       <option
@@ -49,6 +50,7 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
       Owner:
     </label>
     <select
+      disabled={true}
       id="show-question-owner-input-field-id"
     >
       <option

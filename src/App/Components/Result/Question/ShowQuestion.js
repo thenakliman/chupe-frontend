@@ -34,7 +34,8 @@ export class ShowQuestion extends React.Component {
             <label>
               Assigned To:
             </label>
-            <select id='show-question-assigned-to-input-field-id'>
+            <select disabled={true}
+                    id='show-question-assigned-to-input-field-id'>
               <option value="">{this.props.assignedTo}</option>
             </select>
         </p>
@@ -42,7 +43,8 @@ export class ShowQuestion extends React.Component {
             <label>
               Owner:
             </label>
-            <select id='show-question-owner-input-field-id'>
+            <select disabled={true}
+                    id='show-question-owner-input-field-id'>
               <option value="">{this.props.owner}</option>
             </select>
         </p>
