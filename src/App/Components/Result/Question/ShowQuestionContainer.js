@@ -1,12 +1,21 @@
 import {ShowQuestion} from './ShowQuestion';
 import {connect} from 'react-redux';
 
-const mapStateToProps = (state) => ({
-    id: state.currentView.currentQuestion,
-    question: state.questions.questionsData[state.currentView.currentQuestion].question,
-    description: state.questions.questionsData[state.currentView.currentQuestion].description,
-    assignedTo: state.questions.questionsData[state.currentView.currentQuestion].assignedTo,
-    owner: state.questions.questionsData[state.currentView.currentQuestion].owner,
-})
+/** Maps state of the ShowQuestion component from store
+
+  @param {object} state of the store
+  @return {object} question metadata
+*/
+function mapStateToProps(state) {
+    const currentQuestionId = state.currentView.currentQuestion;
+    const currentQuestion = state.questions.questionsData[currentQuestionId];
+    return {
+      id: currentQuestionId,
+      question: currentQuestion.question,
+      description: currentQuestion.description,
+      assignedTo: currentQuestion.assignedTo,
+      owner: currentQuestion.owner,
+    };
+};
 
 export default connect(mapStateToProps)(ShowQuestion);

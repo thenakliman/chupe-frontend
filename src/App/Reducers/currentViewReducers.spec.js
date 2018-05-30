@@ -66,7 +66,7 @@ describe('current view reducer', () => {
         expect(nextState).toEqual(initialStoreState);
     });
 
-    it('should provide default currentQuestion for empty store and other actions', () => {
+    it('should provide default currentQuestion for empty actions', () => {
         const nextState = currentView(
                 undefined,
                 {
@@ -78,7 +78,7 @@ describe('current view reducer', () => {
             {
                 view: RESULT_COMPONENTS.USER_COMPONENT,
                 isWaitingForResponse: false,
-                currentQuestion: null
+                currentQuestion: null,
             }
         );
     });
@@ -97,7 +97,7 @@ describe('current view reducer', () => {
         expect(nextState).toEqual({currentQuestion: currentQuestionId});
     });
 
-    it('should provide existing view for actions other than SET_CURRENT_QUESTION', () => {
+    it('should provide existing view for fake payload', () => {
         const initialStoreState = {view: 'fakeTab', currentQuestion: null};
         const nextState = currentView(
                 initialStoreState,

@@ -13,7 +13,7 @@ describe('current view action creator', () => {
         );
     });
 
-    it('should create set current question action with given data in payload', () => {
+    it('should return set current question action with id in payload', () => {
       const currentQuestionID = 1;
       const action = setCurrentQuestion(currentQuestionID);
       expect(action).toEqual(

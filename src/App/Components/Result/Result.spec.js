@@ -40,7 +40,11 @@ describe('updates result correctly on click', () => {
   });
 
   it('Question component is displayed for show QUESTION', () => {
-      const wrapper = shallow(<Result view={RESULT_COMPONENTS.SHOW_QUESTION_COMPONENT}/>);
+      const wrapper = shallow(
+          <Result
+          view={RESULT_COMPONENTS.SHOW_QUESTION_COMPONENT}/>
+      );
+
       expect(wrapper.find('#show-question-result-container').length)
           .toEqual(1);
   });

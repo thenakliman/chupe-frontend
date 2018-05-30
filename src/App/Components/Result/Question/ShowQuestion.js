@@ -1,8 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
-require('./ShowQuestion.css')
+require('./ShowQuestion.css');
 
+/** Question component */
 export class ShowQuestion extends React.Component {
+  /** Renders show question component
+      @return {object} returns ShowQuestion component
+  */
   render() {
     return (
       <div className='show-question'>
@@ -51,5 +55,5 @@ ShowQuestion.propTypes = {
   question: propTypes.string.isRequired,
   description: propTypes.string.isRequired,
   assignedTo: propTypes.string.isRequired,
-  owner: propTypes.string.isRequired
-}
+  owner: propTypes.string.isRequired,
+};

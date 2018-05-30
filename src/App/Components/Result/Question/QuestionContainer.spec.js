@@ -8,7 +8,6 @@ import QuestionContainer from './QuestionContainer';
 import configureStore from 'redux-mock-store';
 import {Question} from './Question';
 import * as QuestionActions from '../../../Actions/questionActions';
-import * as CurrentViewActions from '../../../Actions/currentViewActions';
 
 
 describe('Question Result container', () => {
@@ -61,10 +60,10 @@ describe('Question Result container', () => {
         {
           'payload': componentID,
           'type': 'SET_CURRENT_QUESTION',
-        })
+        });
     expect(store.dispatch).toHaveBeenCalledWith({
           'payload': 'SHOW_QUESTION_COMPONENT',
-          'type': 'CHANGE_RESULT_VIEW'
+          'type': 'CHANGE_RESULT_VIEW',
         });
   });
 
@@ -78,5 +77,4 @@ describe('Question Result container', () => {
     container.find(Question).props().getQuestions();
     expect(QuestionActions.getAllQuestions).toHaveBeenCalled();
   });
-
 });
