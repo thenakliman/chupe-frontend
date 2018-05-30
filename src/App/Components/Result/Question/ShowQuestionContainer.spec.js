@@ -17,14 +17,14 @@ describe('Question Result container', () => {
     initialState = {
         'questions': {
             'questionsData': [{
-              id: 1,
+              id: 10,
               question: 'when?',
               owner: 'o1',
               assignedTo: 'at',
               description: 'd1'}],
         },
         'currentView': {
-            currentQuestion: 0,
+            currentQuestion: 10,
         },
     };
 

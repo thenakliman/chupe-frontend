@@ -7,10 +7,10 @@ import {connect} from 'react-redux';
   @return {object} question metadata
 */
 function mapStateToProps(state) {
-    const currentQuestionId = state.currentView.currentQuestion;
-    const currentQuestion = state.questions.questionsData[currentQuestionId];
+    const currentQuestion = state.questions.questionsData.find(
+        question => question.id === state.currentView.currentQuestion);
     return {
-      id: currentQuestionId,
+      id: currentQuestion.id,
       question: currentQuestion.question,
       description: currentQuestion.description,
       assignedTo: currentQuestion.assignedTo,
