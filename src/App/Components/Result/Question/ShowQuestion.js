@@ -51,7 +51,7 @@ export class ShowQuestion extends React.Component {
         <p>
             <button id='show-question-edit-button-id'
                     onClick={this.props.setEditingQuestion}>
-              Edit
+              {this.props.isEditing?'Save':'Edit'}
             </button>
         </p>
       </div>

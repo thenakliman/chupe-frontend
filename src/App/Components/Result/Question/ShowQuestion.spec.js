@@ -153,4 +153,34 @@ describe('Show question component', () => {
     expect(wrapper.find('#show-question-assigned-to-input-field-id')
       .get(0).props.disabled).toEqual(false);
   });
+
+  it('should have button name save if edit is enabled', () => {
+    const mockSetEditingQuestion = jest.fn();
+    const wrapper = shallow(
+        <ShowQuestion
+          question=''
+          description=''
+          assignedTo=''
+          owner='iAmOwner'
+          isEditing={true}
+          setEditingQuestion={mockSetEditingQuestion} />
+    );
+    expect(wrapper.find('#show-question-edit-button-id')
+      .get(0).props.children).toEqual('Save');
+  });
+
+  it('should have button name Edit if edit is enabled', () => {
+    const mockSetEditingQuestion = jest.fn();
+    const wrapper = shallow(
+        <ShowQuestion
+          question=''
+          description=''
+          assignedTo=''
+          owner='iAmOwner'
+          isEditing={false}
+          setEditingQuestion={mockSetEditingQuestion} />
+    );
+    expect(wrapper.find('#show-question-edit-button-id')
+      .get(0).props.children).toEqual('Edit');
+  });
 });
