@@ -13,3 +13,10 @@ export const setCurrentQuestion = (questionID) => {
         payload: questionID,
     };
 };
+
+export const setIsEditingQuestion = (isEditing) => {
+    return {
+        type: ActionTypes.SET_IS_EDITING_QUESTION,
+        payload: isEditing,
+    };
+};
