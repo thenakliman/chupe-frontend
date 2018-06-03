@@ -1,5 +1,6 @@
 import {ShowQuestion} from './ShowQuestion';
 import {connect} from 'react-redux';
+import {setIsEditingQuestion} from '../../../Actions/currentViewActions';
 
 /** Maps state of the ShowQuestion component from store
 
@@ -15,7 +16,14 @@ function mapStateToProps(state) {
       description: currentQuestion.description,
       assignedTo: currentQuestion.assignedTo,
       owner: currentQuestion.owner,
+      isEditing: state.currentView.isEditingQuestion,
     };
 };
 
-export default connect(mapStateToProps)(ShowQuestion);
+const mapDispatchToProps = (dispatch) => ({
+  setEditingQuestion: () => {
+      dispatch(setIsEditingQuestion(true));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShowQuestion);

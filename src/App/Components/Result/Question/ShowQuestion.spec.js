@@ -12,7 +12,9 @@ describe('Show Question component snapshot', () => {
               question='q'
               description='d'
               assignedTo='at'
-              owner=''/>);
+              owner=''
+              isEditing={false}
+              setEditingQuestion={jest.fn()} />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });
@@ -25,7 +27,9 @@ describe('Show question component', () => {
           question='my-question'
           description=''
           assignedTo=''
-          owner=''/>
+          owner=''
+          isEditing={false}
+          setEditingQuestion={jest.fn()} />
     );
 
     expect(wrapper.find(
@@ -38,7 +42,9 @@ describe('Show question component', () => {
           question=''
           description='question description'
           assignedTo=''
-          owner=''/>
+          owner=''
+          isEditing={false}
+          setEditingQuestion={jest.fn()} />
     );
     expect(wrapper.find(
         '#show-question-description-input-field-id').length).toEqual(1);
@@ -50,7 +56,9 @@ describe('Show question component', () => {
           question=''
           description=''
           assignedTo='Lucky Bond'
-          owner=''/>
+          owner=''
+          isEditing={false}
+          setEditingQuestion={jest.fn()} />
     );
     expect(wrapper.find(
         '#show-question-assigned-to-input-field-id').length).toEqual(1);
@@ -62,9 +70,87 @@ describe('Show question component', () => {
           question=''
           description=''
           assignedTo=''
-          owner='iAmOwner'/>
+          owner='iAmOwner'
+          isEditing={false}
+          setEditingQuestion={jest.fn()} />
     );
     expect(wrapper.find(
         '#show-question-assigned-to-input-field-id').length).toEqual(1);
+  });
+
+  it('should have edit button', () => {
+    const wrapper = shallow(
+        <ShowQuestion
+          question=''
+          description=''
+          assignedTo=''
+          owner='iAmOwner'
+          isEditing={false}
+          setEditingQuestion={jest.fn()} />
+    );
+    expect(wrapper.find(
+        '#show-question-edit-button-id').length).toEqual(1);
+  });
+
+  it('should dispatch action on click of edit button', () => {
+    const mockSetEditingQuestion = jest.fn();
+    const wrapper = shallow(
+        <ShowQuestion
+          question=''
+          description=''
+          assignedTo=''
+          owner='iAmOwner'
+          isEditing={false}
+          setEditingQuestion={mockSetEditingQuestion} />
+    );
+    wrapper.find('#show-question-edit-button-id').simulate('click');
+    expect(mockSetEditingQuestion).toHaveBeenCalledWith();
+  });
+
+  it('should disable input fields on isEditing is false', () => {
+    const mockSetEditingQuestion = jest.fn();
+    const wrapper = shallow(
+        <ShowQuestion
+          question=''
+          description=''
+          assignedTo=''
+          owner='iAmOwner'
+          isEditing={false}
+          setEditingQuestion={mockSetEditingQuestion} />
+    );
+    expect(wrapper.find('#show-question-input-field-id')
+      .get(0).props.disabled).toEqual(true);
+
+    expect(wrapper.find('#show-question-description-input-field-id')
+      .get(0).props.disabled).toEqual(true);
+
+    expect(wrapper.find('#show-question-owner-input-field-id')
+      .get(0).props.disabled).toEqual(true);
+
+    expect(wrapper.find('#show-question-assigned-to-input-field-id')
+      .get(0).props.disabled).toEqual(true);
+  });
+
+  it('should enable input fields on isEditing is true', () => {
+    const mockSetEditingQuestion = jest.fn();
+    const wrapper = shallow(
+        <ShowQuestion
+          question=''
+          description=''
+          assignedTo=''
+          owner='iAmOwner'
+          isEditing={true}
+          setEditingQuestion={mockSetEditingQuestion} />
+    );
+    expect(wrapper.find('#show-question-input-field-id')
+      .get(0).props.disabled).toEqual(false);
+
+    expect(wrapper.find('#show-question-description-input-field-id')
+      .get(0).props.disabled).toEqual(false);
+
+    expect(wrapper.find('#show-question-owner-input-field-id')
+      .get(0).props.disabled).toEqual(false);
+    expect(wrapper.find('#show-question-assigned-to-input-field-id')
+      .get(0).props.disabled).toEqual(false);
   });
 });

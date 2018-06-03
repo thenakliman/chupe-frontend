@@ -25,6 +25,7 @@ describe('Question Result container', () => {
         },
         'currentView': {
             currentQuestion: 10,
+            isEditingQuestion: true,
         },
     };
 
@@ -54,6 +55,22 @@ describe('Question Result container', () => {
     expect(props.description)
       .toEqual(initialState.questions.questionsData[0].description);
 
+    expect(props.isEditing)
+      .toEqual(initialState.currentView.isEditingQuestion);
+
     expect(store.dispatch).not.toHaveBeenCalled();
+  });
+
+  it('should dispatch an set isEditingQuestion on click of edit button', () => {
+    const container = mount(
+      <Provider store={store}>
+        <ShowQuestionContainer/>
+      </Provider>);
+
+    container.find(ShowQuestion).props().setEditingQuestion(true);
+    expect(store.dispatch).toHaveBeenCalledWith({
+      'payload': true,
+      'type': 'SET_IS_EDITING_QUESTION',
+      });
   });
 });

@@ -17,7 +17,7 @@ export class ShowQuestion extends React.Component {
           <input type="text"
               id="show-question-input-field-id"
               value={this.props.question}
-              readOnly
+              disabled={!this.props.isEditing}
           />
 
         </p>
@@ -27,14 +27,14 @@ export class ShowQuestion extends React.Component {
           </label>
           <textarea type="text"
             id="show-question-description-input-field-id"
-            readOnly
+            disabled={!this.props.isEditing}
             value={this.props.description} />
         </p>
         <p>
             <label>
               Assigned To:
             </label>
-            <select disabled={true}
+            <select disabled={!this.props.isEditing}
                     id='show-question-assigned-to-input-field-id'>
               <option value="">{this.props.assignedTo}</option>
             </select>
@@ -43,10 +43,16 @@ export class ShowQuestion extends React.Component {
             <label>
               Owner:
             </label>
-            <select disabled={true}
+            <select disabled={!this.props.isEditing}
                     id='show-question-owner-input-field-id'>
               <option value="">{this.props.owner}</option>
             </select>
+        </p>
+        <p>
+            <button id='show-question-edit-button-id'
+                    onClick={this.props.setEditingQuestion}>
+              Edit
+            </button>
         </p>
       </div>
     );
@@ -58,4 +64,6 @@ ShowQuestion.propTypes = {
   description: propTypes.string.isRequired,
   assignedTo: propTypes.string.isRequired,
   owner: propTypes.string.isRequired,
+  isEditing: propTypes.bool.isRequired,
+  setEditingQuestion: propTypes.func.isRequired,
 };
