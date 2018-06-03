@@ -39,6 +39,7 @@ describe('current view reducer', () => {
                 view: RESULT_COMPONENTS.USER_COMPONENT,
                 isWaitingForResponse: false,
                 currentQuestion: null,
+                isEditingQuestion: false,
             }
         );
     });
@@ -79,6 +80,7 @@ describe('current view reducer', () => {
                 view: RESULT_COMPONENTS.USER_COMPONENT,
                 isWaitingForResponse: false,
                 currentQuestion: null,
+                isEditingQuestion: false,
             }
         );
     });
@@ -95,6 +97,19 @@ describe('current view reducer', () => {
         );
         initialStoreState.view = currentQuestionId;
         expect(nextState).toEqual({currentQuestion: currentQuestionId});
+    });
+
+    it('should store current Question parameter comes in action', () => {
+        const isEditing = true;
+        const initialStoreState = {isEditingQuestion: false};
+        const nextState = currentView(
+                initialStoreState,
+                {
+                    type: 'SET_IS_EDITING_QUESTION',
+                    payload: isEditing,
+                }
+        );
+        expect(nextState).toEqual({isEditingQuestion: isEditing});
     });
 
     it('should provide existing view for fake payload', () => {
