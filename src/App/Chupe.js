@@ -19,7 +19,7 @@ function Chupe(props) {
       <div>
         <MenuBarContainer />
       </div>
-      <div>
+      <div className='result-container'>
         <ResultContainer/>
       </div>
     </div>);
