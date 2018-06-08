@@ -33,3 +33,21 @@ export const askQuestion = (question) => async (dispatch) => {
     dispatch(updateLoaderStatus(false));
   }
 };
+
+export const updateQuestion = (questions, newQuestion) => async (dispatch) => {
+  try {
+    dispatch(updateLoaderStatus(true));
+    await QuestionService.updateQuestion(newQuestion);
+    const newQuestions = questions.map((question) => {
+        if (question.id === newQuestion.id) {
+            return Object.assign({}, newQuestion);
+        } else {
+            return Object.assign({}, question);
+        }
+    });
+    dispatch(addQuestions(newQuestions));
+    dispatch(updateLoaderStatus(false));
+  } catch (error) {
+    dispatch(updateLoaderStatus(false));
+  }
+};

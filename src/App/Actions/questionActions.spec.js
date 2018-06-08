@@ -2,7 +2,9 @@ import {addQuestions} from './questionActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
 import {getAllQuestions} from './questionActions';
-import {askQuestion, updateLoaderStatus} from './questionActions';
+import {askQuestion,
+        updateLoaderStatus,
+        updateQuestion} from './questionActions';
 import {QuestionService} from '../Services/QuestionService';
 import thunk from 'redux-thunk';
 
@@ -93,6 +95,43 @@ describe('ASK_QUESTIONS action', () => {
       {
           type: ActionTypes.UPDATE_LOADER_STATUS,
           payload: true,
+      },
+      {
+          type: ActionTypes.UPDATE_LOADER_STATUS,
+          payload: false,
+      },
+    ]);
+  });
+  it('Should dispatch update loader status on failure', async () => {
+    const testQuestion = {'question': 'My Question'};
+    spyOn(QuestionService, 'updateQuestion').and.throwError(10);
+    await store.dispatch(updateQuestion([], testQuestion));
+    expect(QuestionService.updateQuestion).toHaveBeenCalledWith(testQuestion);
+    expect(store.getActions()).toEqual([
+      {
+          type: ActionTypes.UPDATE_LOADER_STATUS,
+          payload: true,
+      },
+      {
+          type: ActionTypes.UPDATE_LOADER_STATUS,
+          payload: false,
+      },
+    ]);
+  });
+  it('Should dispatch update loader and addQuestions', async () => {
+    const questions = [{id: 2, q: 10}, {id: 1, q: 20}];
+    const testQuestion = {id: 1, q: 30};
+    spyOn(QuestionService, 'updateQuestion').and.returnValues(undefined);
+    await store.dispatch(updateQuestion(questions, testQuestion));
+    expect(QuestionService.updateQuestion).toHaveBeenCalledWith(testQuestion);
+    expect(store.getActions()).toEqual([
+      {
+          type: ActionTypes.UPDATE_LOADER_STATUS,
+          payload: true,
+      },
+      {
+          type: ActionTypes.ADD_QUESTIONS,
+          payload: [questions[0], testQuestion],
       },
       {
           type: ActionTypes.UPDATE_LOADER_STATUS,

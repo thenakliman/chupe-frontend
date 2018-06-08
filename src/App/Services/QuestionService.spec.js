@@ -48,4 +48,27 @@ describe('Question Service', () => {
         expect(console.log)
             .toHaveBeenCalledWith('Request failed with status code 404');
     });
+
+    it('Return 204 when update question is called', (done) => {
+        let mock = new MockAdapter(axios);
+        const questionData = {data: {question: 'what?', id: 1}};
+
+        mock.onPut('/api/v1/question/1', questionData.data)
+            .reply(204);
+
+        QuestionService.updateQuestion(questionData.data).then((response) => {
+            expect(response.data).toEqual(undefined);
+            expect(response.status).toEqual(204);
+            done();
+        });
+    });
+    it('Response of updateQuestions call fails', async () => {
+        let mock = new MockAdapter(axios);
+        const questionData = {data: {'question': 'what?', 'id': 1}};
+        mock.onPut('/api/v1/question/1', questionData.data).reply(500);
+        spyOn(console, 'log');
+        await QuestionService.updateQuestion(questionData.data);
+        expect(console.log)
+            .toHaveBeenCalledWith('Request failed with status code 500');
+    });
 });

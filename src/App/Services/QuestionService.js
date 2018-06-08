@@ -26,4 +26,16 @@ export const QuestionService = {
           console.log(error.message);
       });
   },
+  updateQuestion(question) {
+      return axios({
+        method: 'put',
+        url: `${CHUPE_QUESTION_URL}/question/${question.id}`,
+        headers: {'Content-Type': 'application/json'},
+        data: question,
+      })
+      .then((response)=>response)
+      .catch((error) => {
+          console.log(error.message);
+      });
+  },
 };
