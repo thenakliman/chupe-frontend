@@ -180,7 +180,9 @@ export class ShowQuestion extends React.Component {
         <p>
             <button id='show-question-edit-button-id'
                     type='submit'
-                    value='Submit'>
+                    value='Submit'
+                    className='submit-button'
+                    >
               {this.props.isEditing?'Save':'Edit'}
             </button>
         </p>

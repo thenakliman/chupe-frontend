@@ -70,6 +70,7 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
     </p>
     <p>
       <button
+        className="submit-button"
         id="show-question-edit-button-id"
         type="submit"
         value="Submit"
