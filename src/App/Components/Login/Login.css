@@ -1,5 +1,6 @@
 .get-started-button {
-    margin: 2rem 52.5rem;
+    margin: 2rem auto;
+    display: table;
     padding: 0.8rem 2rem;
     border-radius: 0.25rem;
     border: 1px solid #28a745;
@@ -9,5 +10,6 @@
 }
 
 .login-page-icon {
-    padding: 1rem 40rem;
+    display: table;
+    margin: 0rem auto;
 }
