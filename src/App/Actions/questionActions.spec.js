@@ -80,15 +80,12 @@ describe('ASK_QUESTIONS action', () => {
           type: ActionTypes.UPDATE_LOADER_STATUS,
           payload: false,
       },
-      {
-         type: ActionTypes.CHANGE_RESULT_VIEW,
-         payload: 'QUESTION_COMPONENT',
-      },
     ]);
   });
   it('Should dispatch update loader status even on failure', async () => {
     const testQuestion = {'question': 'My Question'};
     spyOn(QuestionService, 'askQuestion').and.throwError(10);
+    spyOn(console, 'log');
     await store.dispatch(askQuestion(testQuestion));
     expect(QuestionService.askQuestion).toHaveBeenCalledWith(testQuestion);
     expect(store.getActions()).toEqual([
@@ -101,6 +98,8 @@ describe('ASK_QUESTIONS action', () => {
           payload: false,
       },
     ]);
+
+    expect(console.log).toHaveBeenCalledWith('Error in asking question');
   });
   it('Should dispatch update loader status on failure', async () => {
     const testQuestion = {'question': 'My Question'};

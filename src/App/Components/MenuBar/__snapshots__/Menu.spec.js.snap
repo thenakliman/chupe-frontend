@@ -6,20 +6,20 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
     className="Header"
     id="chupe-header"
   >
-    <span
+    <a
       className="Tab"
+      href="#/users"
       id="users-tab"
-      onClick={[Function]}
     >
       Users
-    </span>
-    <span
+    </a>
+    <a
       className="Tab"
+      href="#/questions"
       id="questions-tab"
-      onClick={[Function]}
     >
       Questions
-    </span>
+    </a>
   </header>
 </div>
 `;

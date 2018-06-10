@@ -25,18 +25,21 @@ export class ShowQuestion extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.getInitialState = this.getInitialState.bind(this);
       this.validateForm = this.validateForm.bind(this);
+      this.currentQuestion = this.getInitialState();
   }
 
   /** Provide the initial state to the component
   * @return {Object} initial state of the component
   */
   getInitialState() {
+    const question = this.props.questions.find(
+        (question) => question.id == this.props.match.params.id);
     return {
-        question: this.props.question,
-        description: this.props.description,
-        owner: this.props.owner,
-        assignedTo: this.props.assignedTo,
-        id: this.props.id,
+        question: question.question,
+        description: question.description,
+        owner: question.owner,
+        assignedTo: question.assignedTo,
+        id: question.id,
     };
   }
 
@@ -144,14 +147,14 @@ export class ShowQuestion extends React.Component {
                     onChange={this.handleAssignedToChange}>
             {
               this.props.isEditing &&
-                 (<option value="">{this.props.owner}</option>) &&
+                 (<option value="">{this.currentQuestion.owner}</option>) &&
                  this.props.users.map((user) =>
-                 (user.username!=this.props.owner &&
+                 (user.username!=this.currentQuestion.owner &&
                    <option key={`${user.userName}`}>
                       {user.userName}
                    </option>)) ||
                (!this.props.isEditing &&
-                  <option value="">{this.props.assignedTo}</option>)
+                  <option value="">{this.currentQuestion.assignedTo}</option>)
             }
             </select>
         </p>
@@ -166,14 +169,14 @@ export class ShowQuestion extends React.Component {
                     >
               {
                 this.props.isEditing &&
-                   (<option value="">{this.props.owner}</option>) &&
+                   (<option value="">{this.currentQuestion.owner}</option>) &&
                    this.props.users.map((user) =>
-                   ( user.username!=this.props.assignedTo &&
+                   ( user.username!=this.currentQuestion.assignedTo &&
                      <option key={`${user.userName}`}>
                         {user.userName}
                      </option>)) ||
                  (!this.props.isEditing &&
-                    <option value="">{this.props.owner}</option>)
+                    <option value="">{this.currentQuestion.owner}</option>)
               }
             </select>
         </p>
@@ -193,11 +196,6 @@ export class ShowQuestion extends React.Component {
 }
 
 ShowQuestion.propTypes = {
-  id: propTypes.number.isRequired,
-  question: propTypes.string.isRequired,
-  description: propTypes.string.isRequired,
-  assignedTo: propTypes.string.isRequired,
-  owner: propTypes.string.isRequired,
   isEditing: propTypes.bool.isRequired,
   users: propTypes.arrayOf(propTypes.object).isRequired,
   questions: propTypes.arrayOf(propTypes.object).isRequired,

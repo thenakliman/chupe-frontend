@@ -1,5 +1,4 @@
 import React from 'react';
-import propTypes from 'prop-types';
 
 require('./Menu.css');
 
@@ -19,22 +18,14 @@ export class MenuBar extends React.Component {
         return (
             <div>
                 <header id="chupe-header" className="Header">
-                    <span id="users-tab" onClick={this.props.showUserTab}
-                     className="Tab">
-                        Users
-                    </span>
-                    <span id="questions-tab"
-                           onClick={this.props.showQuestionTab}
-                     className="Tab">
-                        Questions
-                    </span>
+                    <a href='#/users' id="users-tab" className='Tab'>
+                         Users
+                    </a>
+                    <a href='#/questions' id="questions-tab" className='Tab'>
+                         Questions
+                    </a>
                 </header>
             </div>
         );
     }
 }
-
-MenuBar.propTypes = {
-  showUserTab: propTypes.func.isRequired,
-  showQuestionTab: propTypes.func.isRequired,
-};

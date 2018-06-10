@@ -7,7 +7,6 @@
 }
 
 .Header {
-    position: fixed;
     background-color: #20232a;
     color: #fff;
     padding: 0.8rem;
@@ -20,4 +19,6 @@
 .Tab {
     padding: .8rem 4rem;
     text-align: center;
+    color: white;
+    text-decoration: none;
 }

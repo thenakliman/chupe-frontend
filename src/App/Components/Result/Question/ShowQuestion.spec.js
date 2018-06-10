@@ -5,22 +5,34 @@ import {ShowQuestion} from './ShowQuestion';
 import {shallow, mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 
+const questions = [{
+    question: 'question1',
+    id: 1,
+    description: 'test-description1',
+    owner: 'owner-1',
+    assignedTo: 'assigned-1',
+  },
+  {
+    question: 'question2',
+    id: 2,
+    description: 'test-description2',
+    owner: 'owner-2',
+    assignedTo: 'assigned-2',
+  }];
+
 const users = [{'userName': 'user1'}, {'userName': 'user2'}];
 
 describe('Show Question component snapshot', () => {
     it('should match the snapshot', () => {
         const wrapper = shallow(
             <ShowQuestion
-              question='q'
-              description='d'
-              assignedTo='at'
-              owner=''
               users={users}
               isEditing={false}
-              id={10}
-              questions={[{id: 2}]}
+              questions={questions}
               setEditingQuestion={()=>{}}
-              updateQuestion={()=>{}}/>);
+              updateQuestion={()=>{}}
+              match={{params: {id: 2}}}
+        />);
 
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -31,16 +43,13 @@ describe('Show question component', () => {
   it('should have question input field', () => {
     const wrapper = shallow(
         <ShowQuestion
-          question='my-question'
-          description=''
-          assignedTo=''
-          owner=''
           isEditing={false}
-          id={10}
           users= {users}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-          setEditingQuestion={jest.fn()} />
+          setEditingQuestion={jest.fn()}
+          match={{params: {id: 2}}}
+        />
     );
 
     expect(wrapper.find(
@@ -50,16 +59,11 @@ describe('Show question component', () => {
   it('should have question description', () => {
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description='question description'
-          assignedTo=''
-          owner=''
           isEditing={false}
-          id={10}
           users= {users}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-
+          match={{params: {id: 2}}}
           setEditingQuestion={jest.fn()} />
     );
     expect(wrapper.find(
@@ -69,15 +73,11 @@ describe('Show question component', () => {
   it('should have assigned to select field', () => {
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo='Lucky Bond'
-          owner=''
-          id={10}
           users= {users}
           isEditing={false}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
+          match={{params: {id: 2}}}
           setEditingQuestion={jest.fn()} />
     );
     expect(wrapper.find(
@@ -87,16 +87,13 @@ describe('Show question component', () => {
   it('should have owner select field', () => {
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
-          id={10}
           users= {users}
           isEditing={false}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-          setEditingQuestion={jest.fn()} />
+          setEditingQuestion={jest.fn()}
+          match={{params: {id: 2}}}
+        />
     );
     expect(wrapper.find(
         '#show-question-assigned-to-input-field-id').length).toEqual(1);
@@ -105,16 +102,13 @@ describe('Show question component', () => {
   it('should have edit button', () => {
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
-          id={10}
           users= {users}
           isEditing={false}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-          setEditingQuestion={jest.fn()} />
+          setEditingQuestion={jest.fn()}
+          match={{params: {id: 2}}}
+        />
     );
     expect(wrapper.find(
         '#show-question-edit-button-id').length).toEqual(1);
@@ -124,16 +118,13 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = mount(
         <ShowQuestion
-          question='q1'
-          description='d1'
-          assignedTo='a1'
-          owner='iAmOwner'
-          id={10}
           users= {users}
-          isEditing={false}
-          questions={[]}
+          isEditing={false}id
+          questions={questions}
           updateQuestion={()=>{}}
-          setEditingQuestion={mockSetEditingQuestion} />
+          setEditingQuestion={mockSetEditingQuestion}
+          match={{params: {id: 2}}}
+        />
     );
     wrapper.find('#show-question-edit-button-id').simulate('submit');
     expect(wrapper.find('#show-question-edit-button-id').get(0).props.children)
@@ -145,15 +136,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          id={10}
-          assignedTo=''
-          owner='iAmOwner'
           users= {users}
           isEditing={false}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-input-field-id')
@@ -173,15 +160,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          users= {users}
-          id={10}
-          owner='iAmOwner'
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
+          users={users}
           isEditing={true}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-input-field-id')
@@ -200,15 +183,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
-          id={10}
           users= {users}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           isEditing={true}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-edit-button-id')
@@ -219,15 +198,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          id={10}
           users= {users}
-          owner='iAmOwner'
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           isEditing={false}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-edit-button-id')
@@ -238,15 +213,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
           isEditing={true}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-          id={10}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-assigned-to-input-field-id')
@@ -257,15 +228,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
-          id={10}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           isEditing={true}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-owner-input-field-id')
@@ -275,23 +242,19 @@ describe('Show question component', () => {
   it('Component should have required questions properties', () => {
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
-          id={10}
           isEditing={true}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={()=>{}} />
     );
     expect(wrapper.state()).toEqual({
-      id: 10,
-      question: '',
-      description: '',
-      owner: 'iAmOwner',
-      assignedTo: '',
+      id: 2,
+      question: 'question2',
+      description: 'test-description2',
+      owner: 'owner-2',
+      assignedTo: 'assigned-2',
     });
   });
 
@@ -299,15 +262,11 @@ describe('Show question component', () => {
     const mockSetEditingQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='iAmOwner'
-          id={10}
           isEditing={true}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={mockSetEditingQuestion}/>
     );
     wrapper.find('#show-question-edit-button-id').simulate('submit');
@@ -318,15 +277,11 @@ describe('Show question component', () => {
     const event = {target: {value: 'why oh why?'}};
     const container = mount(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner=''
-          id={10}
           isEditing={true}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={()=>{}}/>
     );
     container.find('#show-question-input-field-id')
@@ -334,11 +289,11 @@ describe('Show question component', () => {
 
     container.find('#show-question-input-field-id').simulate('submit');
     expect(container.state()).toEqual({
-       'assignedTo': '',
-       'description': '',
-       'id': 10,
-       'owner': '',
-       'question': 'why oh why?',
+       'assignedTo': 'assigned-2',
+       'description': 'test-description2',
+       'id': 2,
+       'owner': 'owner-2',
+       'question': event.target.value,
     });
   });
 
@@ -346,15 +301,11 @@ describe('Show question component', () => {
     const event = {target: {value: 'why oh why?'}};
     const container = mount(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner=''
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-          id={10}
           isEditing={true}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={()=>{}}/>
     );
     container.find('#show-question-description-input-field-id')
@@ -363,11 +314,11 @@ describe('Show question component', () => {
     container.find('#show-question-description-input-field-id')
       .simulate('submit');
     expect(container.state()).toEqual({
-       'assignedTo': '',
-       'description': 'why oh why?',
-       'id': 10,
-       'owner': '',
-       'question': '',
+       'assignedTo': 'assigned-2',
+       'description': event.target.value,
+       'id': 2,
+       'owner': 'owner-2',
+       'question': 'question2',
     });
   });
 
@@ -375,15 +326,11 @@ describe('Show question component', () => {
     const event = {target: {value: 'user1'}};
     const container = mount(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo='user2'
-          owner=''
-          id={10}
           isEditing={true}
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={()=>{}}/>
     );
     container.find('#show-question-assigned-to-input-field-id')
@@ -392,11 +339,11 @@ describe('Show question component', () => {
     container.find('#show-question-assigned-to-input-field-id')
       .simulate('submit');
     expect(container.state()).toEqual({
-       'assignedTo': 'user1',
-       'description': '',
-       'id': 10,
-       'owner': '',
-       'question': '',
+       'assignedTo': event.target.value,
+       'description': 'test-description2',
+       'id': 2,
+       'owner': 'owner-2',
+       'question': 'question2',
     });
   });
 
@@ -404,15 +351,11 @@ describe('Show question component', () => {
     const event = {target: {value: 'user1'}};
     const container = mount(
         <ShowQuestion
-          question=''
-          description=''
-          assignedTo=''
-          owner='user1234'
-          questions={[]}
+          questions={questions}
           updateQuestion={()=>{}}
-          id={10}
           isEditing={true}
           users={users}
+          match={{params: {id: 2}}}
           setEditingQuestion={()=>{}}/>
     );
     container.find('#show-question-owner-input-field-id')
@@ -420,26 +363,21 @@ describe('Show question component', () => {
 
     container.find('#show-question-owner-input-field-id').simulate('submit');
     expect(container.state()).toEqual({
-       'assignedTo': '',
-       'description': '',
-       'id': 10,
-       'owner': 'user1',
-       'question': '',
+       'assignedTo': 'assigned-2',
+       'description': 'test-description2',
+       'id': 2,
+       'owner': event.target.value,
+       'question': 'question2',
     });
   });
 
     it('should dispatch add question on submit', () => {
       const mockUpdateQuestion = jest.fn();
-      const questions = [{id: 2}, {id: 3}];
       const container = mount(
           <ShowQuestion
-            question='q1'
-            description='d1'
-            assignedTo='a1'
-            owner='o1'
-            id={10}
             isEditing={true}
             users={users}
+            match={{params: {id: 2}}}
             questions={questions}
             updateQuestion={mockUpdateQuestion}
             setEditingQuestion={()=>{}}
@@ -448,11 +386,11 @@ describe('Show question component', () => {
 
       container.find('#show-question-edit-button-id').simulate('submit');
       const expQuestion = {
-          question: 'q1',
-          description: 'd1',
-          assignedTo: 'a1',
-          owner: 'o1',
-          id: 10,
+          question: 'question2',
+          description: 'test-description2',
+          assignedTo: 'assigned-2',
+          owner: 'owner-2',
+          id: 2,
       };
       expect(mockUpdateQuestion).toHaveBeenCalledWith(questions, expQuestion);
     });
@@ -462,13 +400,9 @@ describe('Show question component', () => {
       const questions = [{id: 2}, {id: 3}];
       const container = mount(
           <ShowQuestion
-            question='q1'
-            description='d1'
-            assignedTo='a1'
-            owner='o1'
-            id={10}
             isEditing={false}
             users={users}
+            match={{params: {id: 2}}}
             questions={questions}
             setEditingQuestion={()=>{}}
             updateQuestion={mockUpdateQuestion}

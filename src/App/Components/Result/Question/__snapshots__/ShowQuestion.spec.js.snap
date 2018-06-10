@@ -19,7 +19,7 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
         id="show-question-input-field-id"
         onChange={[Function]}
         type="text"
-        value="q"
+        value="question2"
       />
     </p>
     <p>
@@ -33,7 +33,7 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
         id="show-question-description-input-field-id"
         onChange={[Function]}
         type="text"
-        value="d"
+        value="test-description2"
       />
     </p>
     <p>
@@ -44,12 +44,12 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
         disabled={true}
         id="show-question-assigned-to-input-field-id"
         onChange={[Function]}
-        value="at"
+        value="assigned-2"
       >
         <option
           value=""
         >
-          at
+          assigned-2
         </option>
       </select>
     </p>
@@ -61,11 +61,13 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
         disabled={true}
         id="show-question-owner-input-field-id"
         onChange={[Function]}
-        value=""
+        value="owner-2"
       >
         <option
           value=""
-        />
+        >
+          owner-2
+        </option>
       </select>
     </p>
     <p>

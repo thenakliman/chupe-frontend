@@ -37,36 +37,6 @@ describe('Question Result container', () => {
         .toEqual(initialState.questions.questionsData);
   });
 
-  it('Should dispatch ask question action', () => {
-    const container = mount(
-      <Provider store={store}>
-        <QuestionContainer/>
-      </Provider>);
-
-    container.find(Question).props().askQuestion();
-    expect(store.dispatch).toHaveBeenCalledWith({
-        'payload': 'ASK_QUESTION_COMPONENT',
-        'type': 'CHANGE_RESULT_VIEW'});
-  });
-
-  it('Should dispatch show question action', () => {
-    const container = mount(
-      <Provider store={store}>
-        <QuestionContainer />
-      </Provider>);
-    const componentID = 10;
-    container.find(Question).props().showQuestion(componentID);
-    expect(store.dispatch).toHaveBeenCalledWith(
-        {
-          'payload': componentID,
-          'type': 'SET_CURRENT_QUESTION',
-        });
-    expect(store.dispatch).toHaveBeenCalledWith({
-          'payload': 'SHOW_QUESTION_COMPONENT',
-          'type': 'CHANGE_RESULT_VIEW',
-        });
-  });
-
   it('Should dispatch get questions', () => {
     spyOn(QuestionActions, 'getAllQuestions');
     const container = mount(

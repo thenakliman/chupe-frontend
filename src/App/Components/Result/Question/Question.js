@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import {history} from '../../../utils/history';
 
 require('./Question.css');
 
@@ -20,7 +21,7 @@ export class Question extends React.Component {
               <button id='ask-question-button'
                 className='ask-question-button'
                 type="button"
-                onClick={this.props.askQuestion}
+                onClick={()=> history.push('/question/ask')}
               >
                 Ask Question
               </button>
@@ -48,7 +49,8 @@ export class Question extends React.Component {
                                   className='view-question-button'
                                   type='button'
                                   onClick={
-                                    ()=>this.props.showQuestion(question.id)}
+                                    ()=> history.push(
+                                      '/question/' + question.id + '/view')}
                           >
                               View
                           </button>
@@ -66,7 +68,5 @@ export class Question extends React.Component {
 
 Question.propTypes = {
     questions: propTypes.arrayOf(propTypes.object).isRequired,
-    askQuestion: propTypes.func.isRequired,
     getQuestions: propTypes.func.isRequired,
-    showQuestion: propTypes.func.isRequired,
 };

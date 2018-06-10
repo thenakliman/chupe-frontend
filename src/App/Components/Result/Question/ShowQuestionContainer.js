@@ -8,22 +8,15 @@ import {updateQuestion} from '../../../Actions/questionActions';
   @param {object} state of the store
   @return {object} question metadata
 */
-function mapStateToProps(state) {
-    const currentQuestion = state.questions.questionsData.find(
-        (question) => question.id === state.currentView.currentQuestion);
+export function mapStateToProps(state) {
     return {
-      id: currentQuestion.id,
-      question: currentQuestion.question,
-      description: currentQuestion.description,
-      assignedTo: currentQuestion.assignedTo,
-      owner: currentQuestion.owner,
       isEditing: state.currentView.isEditingQuestion,
       users: state.users.usersData,
       questions: state.questions.questionsData,
     };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   setEditingQuestion: (isEditing) => {
       dispatch(setIsEditingQuestion(isEditing));
   },

@@ -1,14 +1,13 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {Question} from './Question'; // eslint-disable-line no-unused-vars
 import {shallow} from 'enzyme';
+import * as History from './../../../utils/history';
 
 describe('List Questions', () => {
   it('should have a button', () => {
     const wrapper = shallow(
         <Question
             questions={[{}]}
-            askQuestion={()=>{}}
-            showQuestion={()=>{}}
             getQuestions={()=>{}}
         />);
     expect(wrapper.find('#ask-question-button').length).toEqual(1);
@@ -22,8 +21,6 @@ describe('List Questions', () => {
     const wrapper = shallow(
         <Question
             questions={questions}
-            askQuestion={()=>{}}
-            showQuestion={()=>{}}
             getQuestions={()=>{}}
         />);
 
@@ -31,8 +28,8 @@ describe('List Questions', () => {
             .toEqual(2);
   });
 
-  it('should call ask question', () => {
-    const askQuestion = jest.fn();
+  it('should redirect to ask question', () => {
+    History.history = {push: jest.fn()};
     const questions = [
       {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
       {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
@@ -40,17 +37,16 @@ describe('List Questions', () => {
     const wrapper = shallow(
         <Question
             questions={questions}
-            askQuestion={askQuestion}
-            showQuestion={()=>{}}
             getQuestions={()=>{}}
         />);
 
     expect(wrapper.find('#ask-question-button').simulate('click'));
-    expect(askQuestion).toHaveBeenCalledWith();
+    expect(History.history.push).toHaveBeenCalledWith('/question/ask');
   });
 
   it('should call show question', () => {
-    const showQuestionMock = jest.fn();
+    History.history = {push: jest.fn()};
+
     const questions = [
       {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
       {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
@@ -58,13 +54,11 @@ describe('List Questions', () => {
     const wrapper = shallow(
         <Question
             questions={questions}
-            askQuestion={()=>{}}
             getQuestions={()=>{}}
-            showQuestion={showQuestionMock}
         />);
 
-    expect(wrapper.find('#view-question-button-1').simulate('click'));
-    expect(showQuestionMock).toHaveBeenCalledWith(1);
+    expect(wrapper.find('#view-question-button-2').simulate('click'));
+    expect(History.history.push).toHaveBeenCalledWith('/question/2/view');
   });
 
   it('should call get questions on component mount', () => {
@@ -75,9 +69,7 @@ describe('List Questions', () => {
     ];
     shallow(
         <Question
-            showQuestion={()=>{}}
             questions={questions}
-            askQuestion={()=>{}}
             getQuestions={getQuestions}
         />);
     expect(getQuestions).toHaveBeenCalledWith();

@@ -6,16 +6,44 @@ import {Provider} from 'react-redux'; // eslint-disable-line no-unused-vars
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {rootReducers} from './App/Reducers/reducers';
+import {connectRouter} from 'connected-react-router';
+/* eslint-disable */
+import {ConnectedRouter} from 'connected-react-router';
+import {Route} from 'react-router';
+/* eslint-disable */
+import {Login} from './App/Components/Login/Login';
+import UserResultContainer from
+    './App/Components/Result/User/UserResultContainer';
 
+import QuestionContainer from
+    './App/Components/Result/Question/QuestionContainer';
+
+import AskQuestionContainer from
+    './App/Components/Result/Question/AskQuestionContainer';
+
+import ShowQuestionContainer from
+    './App/Components/Result/Question/ShowQuestionContainer';
+
+import {MenuBar} from './App/Components/MenuBar/Menu';
+import {history} from './App/utils/history';
 
 const store = createStore(
-    rootReducers,
+    connectRouter(history)(rootReducers),
     composeWithDevTools(applyMiddleware(thunk))
 );
 
 render(
   <Provider store={store}>
-      <Chupe />
+    <ConnectedRouter history={history}>
+       <div>
+         <Route exact path="/" component={Login} />
+         <Route component={MenuBar}/>
+         <Route path="/users" component={UserResultContainer}/>
+         <Route path="/questions" component={QuestionContainer}/>
+         <Route path="/question/:id/view" component={ShowQuestionContainer}/>
+         <Route exact path="/question/ask" component={AskQuestionContainer}/>
+       </div>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
