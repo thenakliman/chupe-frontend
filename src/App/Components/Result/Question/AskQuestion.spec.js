@@ -2,7 +2,6 @@ import React from 'react';// eslint-disable-line no-unused-vars
 import {AskQuestion} from './AskQuestion';
 import {shallow, mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
-import * as History from '../../../utils/history';
 
 describe('Question Result component snapshot', () => {
     it('should match the snapshot', () => {
@@ -101,7 +100,6 @@ describe('Question result', () => {
 
     it('should set text field', () => {
         const askQuestion = jest.fn();
-        History.history = {push: jest.fn()};
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const event = {target: {value: 'Description'}};
         const container = mount(<AskQuestion
@@ -119,12 +117,10 @@ describe('Question result', () => {
                 {},
                 initialState,
                 {'description': event.target.value}));
-        expect(History.history.push).toHaveBeenCalledWith('/questions');
     });
 
     it('should select owner field', () => {
         const askQuestion = jest.fn();
-        History.history = {push: jest.fn()};
         const event = {target: {value: 'user1'}};
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
@@ -137,12 +133,10 @@ describe('Question result', () => {
         container.find('#ask-question-submit-button').simulate('submit');
         expect(askQuestion).toHaveBeenCalledWith(
             Object.assign({}, initialState, {'owner': event.target.value}));
-        expect(History.history.push).toHaveBeenCalledWith('/questions');
     });
 
     it('should select assigned to field', () => {
         const askQuestion = jest.fn();
-        History.history = {push: jest.fn()};
         const event = {target: {value: 'user1234'}};
         const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
@@ -158,6 +152,5 @@ describe('Question result', () => {
                 {},
                 initialState,
                 {'assignedTo': event.target.value}));
-        expect(History.history.push).toHaveBeenCalledWith('/questions');
     });
 });

@@ -7,6 +7,8 @@ import {askQuestion,
         updateQuestion} from './questionActions';
 import {QuestionService} from '../Services/QuestionService';
 import thunk from 'redux-thunk';
+import * as History from '../utils/history';
+
 
 describe('SHOW QUESTIONS action', () => {
   it('Should return ADD_QUESTIONS action with question payload', () => {
@@ -67,6 +69,7 @@ describe('ASK_QUESTIONS action', () => {
 
 
   it('Should dispatch action for asking questions', async () => {
+    History.history = {push: jest.fn()};
     const testQuestion = {'question': 'My Question'};
     spyOn(QuestionService, 'askQuestion').and.returnValues(testQuestion);
     await store.dispatch(askQuestion(testQuestion));
@@ -81,6 +84,7 @@ describe('ASK_QUESTIONS action', () => {
           payload: false,
       },
     ]);
+    expect(History.history.push).toHaveBeenCalledWith('/questions');
   });
   it('Should dispatch update loader status even on failure', async () => {
     const testQuestion = {'question': 'My Question'};

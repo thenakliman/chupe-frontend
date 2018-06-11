@@ -1,5 +1,6 @@
 import {ActionTypes} from './ActionTypes';
 import {QuestionService} from '../Services/QuestionService';
+import {history} from '../utils/history';
 
 
 export const addQuestions = (questions) => ({
@@ -25,6 +26,8 @@ export const askQuestion = (question) => async (dispatch) => {
   try {
     dispatch(updateLoaderStatus(true));
     await QuestionService.askQuestion(question);
+    // todo(thenakliman): Verify that it ok to keep this here
+    history.push('/questions');
   } catch (error) {
     console.log('Error in asking question');
   } finally {

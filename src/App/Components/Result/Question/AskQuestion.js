@@ -1,6 +1,5 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import propTypes from 'prop-types';
-import {history} from '../../../utils/history';
 
 require('./AskQuestion.css');
 
@@ -88,7 +87,6 @@ export class AskQuestion extends React.Component {
         }
         this.props.askQuestion(this.state);
         this.setState(this.getInitialState());
-        history.push('/questions');
     }
     /** Returns input field in form with a button.
     *
