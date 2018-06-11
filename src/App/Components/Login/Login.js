@@ -23,8 +23,8 @@ export class Login extends React.Component {
   render() {
     return (
       <div>
-        <form id='login-form-id'>
-            <div className='login-page-username'>
+        <form id='login-form-id' className='login-form'>
+            <div className='login-page-username-div'>
               <div>
                 <label>Username</label>
               </div>
@@ -34,7 +34,7 @@ export class Login extends React.Component {
                        className='login-page-input'/>
               </div>
             </div>
-            <div className='login-page-password'>
+            <div className='login-page-password-div'>
               <div>
                 <label>
                   Password

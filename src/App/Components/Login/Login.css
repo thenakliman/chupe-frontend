@@ -10,35 +10,23 @@
     background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
 }
 
-.login-page-icon {
-    display: table;
-    margin: 0rem auto;
-}
-
-.login-page-form {
-    margin: 10rem auto;
-}
-
-
 .login-page-input {
   padding: 0.5rem;
+  width: 20rem !important;
 }
 
-.login-page-username {
+.login-page-username-div {
   margin: 3rem;
   margin-top: 20rem;
 }
 
-.login-page-password {
+.login-page-password-div {
   margin: 3rem;
 }
 
-form {
+.login-form {
   text-align: left !important;
   margin: 10rem auto;
   display: table;
   border: 1px solid black;
-}
-input {
-  width: 20rem !important;
 }
