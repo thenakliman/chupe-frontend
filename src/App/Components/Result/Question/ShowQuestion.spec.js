@@ -221,7 +221,7 @@ describe('Show question component', () => {
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-assigned-to-input-field-id')
-      .get(0).props.children.length).toEqual(2);questions
+      .get(0).props.children.length).toEqual(2); questions;
   });
 
   it('should show all users for owner if edit is enabled', () => {

@@ -5,7 +5,7 @@ import * as History from '../../utils/history';
 describe('Login page', () => {
   it('should display an icon on load of the page', () => {
     const wrapper = shallow(<Login />);
-    expect(wrapper.find('#login-page-icon-id').length).toEqual(1);
+    expect(wrapper.find('#login-form-id').length).toEqual(1);
   });
 
   it('should have get started button', () => {
@@ -18,5 +18,21 @@ describe('Login page', () => {
     const wrapper = shallow(<Login/>);
     wrapper.find('#login-page-get-started-button-id').simulate('click');
     expect(History.history.push).toHaveBeenCalledWith('/users');
+  });
+
+  it('should have input field for username', () => {
+    const wrapper = shallow(<Login/>);
+    expect(wrapper.find('#login-page-username-field-id').length).toEqual(1);
+  });
+
+  it('should have input field for password', () => {
+    const wrapper = shallow(<Login/>);
+    expect(wrapper.find('#login-page-password-field-id').length).toEqual(1);
+  });
+
+  it('should have input field for password', () => {
+    const wrapper = shallow(<Login/>);
+    expect(wrapper.find('#login-page-password-field-id')
+        .get(0).props.type).toEqual('password');
   });
 });

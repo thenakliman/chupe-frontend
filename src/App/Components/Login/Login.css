@@ -1,5 +1,6 @@
 .get-started-button {
     margin: 2rem auto;
+    margin-bottom: 6rem;
     display: table;
     padding: 0.8rem 2rem;
     border-radius: 0.25rem;
@@ -12,4 +13,32 @@
 .login-page-icon {
     display: table;
     margin: 0rem auto;
+}
+
+.login-page-form {
+    margin: 10rem auto;
+}
+
+
+.login-page-input {
+  padding: 0.5rem;
+}
+
+.login-page-username {
+  margin: 3rem;
+  margin-top: 20rem;
+}
+
+.login-page-password {
+  margin: 3rem;
+}
+
+form {
+  text-align: left !important;
+  margin: 10rem auto;
+  display: table;
+  border: 1px solid black;
+}
+input {
+  width: 20rem !important;
 }
