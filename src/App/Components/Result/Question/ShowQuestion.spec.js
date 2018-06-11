@@ -221,7 +221,7 @@ describe('Show question component', () => {
           setEditingQuestion={mockSetEditingQuestion} />
     );
     expect(wrapper.find('#show-question-assigned-to-input-field-id')
-      .get(0).props.children.length).toEqual(2);
+      .get(0).props.children.length).toEqual(2);questions
   });
 
   it('should show all users for owner if edit is enabled', () => {
@@ -397,13 +397,37 @@ describe('Show question component', () => {
 
     it('should not dispatch add question on submit if editing is false', () => {
       const mockUpdateQuestion = jest.fn();
-      const questions = [{id: 2}, {id: 3}];
       const container = mount(
           <ShowQuestion
             isEditing={false}
             users={users}
             match={{params: {id: 2}}}
             questions={questions}
+            setEditingQuestion={()=>{}}
+            updateQuestion={mockUpdateQuestion}
+            />
+      );
+
+      container.find('#show-question-edit-button-id').simulate('submit');
+
+      expect(mockUpdateQuestion).not.toHaveBeenCalled();
+    });
+
+    it('should not dispatch add question if there are empty fields', () => {
+      const mockUpdateQuestion = jest.fn();
+      const questionWithEmptyFields = [{
+          id: 2,
+          description: '',
+          question: '',
+          assignedTo: '',
+          owner: ''}];
+
+      const container = mount(
+          <ShowQuestion
+            isEditing={false}
+            users={users}
+            match={{params: {id: 2}}}
+            questions={questionWithEmptyFields}
             setEditingQuestion={()=>{}}
             updateQuestion={mockUpdateQuestion}
             />
