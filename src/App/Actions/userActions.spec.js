@@ -35,4 +35,12 @@ describe('Get_USER action', () => {
     ]);
     expect(UserService.getUsers).toHaveBeenCalledWith();
   });
+
+  it('Should show error message if failed to get user', async () => {
+    spyOn(console, 'log');
+    spyOn(UserService, 'getUsers').and.throwError('failed');
+    await store.dispatch(getAllUsers());
+    expect(UserService.getUsers).toHaveBeenCalledWith();
+    expect(console.log).toHaveBeenCalledWith('Error on fetching users');
+  });
 });
