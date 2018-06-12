@@ -1,9 +1,7 @@
 import {ActionTypes} from '../Actions/ActionTypes';
 
 const initialStore = {
-  loggedInUserDetails: {
     userName: null,
-  },
 };
 
 export const loggedInUserDetails = (state=initialStore, action) => {
@@ -12,7 +10,7 @@ export const loggedInUserDetails = (state=initialStore, action) => {
         return Object.assign(
             {},
             state,
-            {loggedInUserDetails: {userName: action.payload}});
+            {userName: action.payload});
     default:
         return {...state};
   }

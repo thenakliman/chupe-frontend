@@ -10,7 +10,7 @@ import {connectRouter} from 'connected-react-router';
 import {ConnectedRouter} from 'connected-react-router';
 import {Route} from 'react-router';
 /* eslint-disable */
-import {Login} from './App/Components/Login/Login';
+import LoginContainer from './App/Components/Login/LoginContainer';
 import UserResultContainer from
     './App/Components/Result/User/UserResultContainer';
 
@@ -35,7 +35,7 @@ render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
        <div>
-         <Route exact path="/" component={Login} />
+         <Route exact path="/" component={LoginContainer} />
          <Route component={MenuBar}/>
          <Route path="/users" component={UserResultContainer}/>
          <Route path="/questions" component={QuestionContainer}/>

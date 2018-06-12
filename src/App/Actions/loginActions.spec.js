@@ -1,5 +1,5 @@
 import {setUsername} from './loginActions';
-import * as ActionTypes from './ActionTypes';
+import {ActionTypes} from './ActionTypes';
 describe('Login Actions', () => {
   it('should create an action with given username', () => {
       const username = 'test-username';

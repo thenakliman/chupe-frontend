@@ -1,5 +1,6 @@
 import React from 'react';
 import {history} from '../../utils/history';
+import propTypes from 'prop-types';
 
 require('./Login.css');
 
@@ -10,11 +11,22 @@ export class Login extends React.Component {
    */
   constructor(props) {
     super(props);
+    this.state = {username: '', password: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUsername = this.handleUsername.bind(this);
+  }
+
+
+  /** Handle changes on the question fields
+  * @param {object} event containing new modified value
+  */
+  handleUsername(event) {
+      this.setState({username: event.target.value});
   }
 
   /** handle starting of the app */
   handleSubmit() {
+      this.props.setUsername(this.state.username);
       history.push('/users');
   }
   /** Renders Login component.
@@ -31,6 +43,8 @@ export class Login extends React.Component {
               <div>
                 <input id='login-page-username-field-id'
                        type='text'
+                       value={this.state.value}
+                       onChange={this.handleUsername}
                        className='login-page-input'/>
               </div>
             </div>
@@ -59,6 +73,10 @@ export class Login extends React.Component {
     );
   }
 }
+
+Login.propTypes = {
+  setUsername: propTypes.func.isRequired,
+};
 /*
         <div>
           <img id='login-page-icon-id'
