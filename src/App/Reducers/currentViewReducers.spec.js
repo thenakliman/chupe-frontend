@@ -23,7 +23,6 @@ describe('current view reducer', () => {
         expect(nextState).toEqual(
             {
                 isWaitingForResponse: false,
-                currentQuestion: null,
                 isEditingQuestion: false,
             }
         );
@@ -63,24 +62,9 @@ describe('current view reducer', () => {
         expect(nextState).toEqual(
             {
                 isWaitingForResponse: false,
-                currentQuestion: null,
                 isEditingQuestion: false,
             }
         );
-    });
-
-    it('should store current Question parameter comes in action', () => {
-        const currentQuestionId = 1;
-        const initialStoreState = {currentQuestion: null};
-        const nextState = currentView(
-                initialStoreState,
-                {
-                    type: 'SET_CURRENT_QUESTION',
-                    payload: currentQuestionId,
-                }
-        );
-        initialStoreState.view = currentQuestionId;
-        expect(nextState).toEqual({currentQuestion: currentQuestionId});
     });
 
     it('should store current Question parameter comes in action', () => {
@@ -97,7 +81,7 @@ describe('current view reducer', () => {
     });
 
     it('should provide existing view for fake payload', () => {
-        const initialStoreState = {view: 'fakeTab', currentQuestion: null};
+        const initialStoreState = {view: 'fakeTab'};
         const nextState = currentView(
                 initialStoreState,
                 {
