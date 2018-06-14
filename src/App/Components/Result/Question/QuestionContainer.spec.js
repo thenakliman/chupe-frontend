@@ -21,6 +21,9 @@ describe('Question Result container', () => {
                 {id: 1, question: 'when?', owner: 'o1'},
                 {id: 2, question: 'how?', owner: 'o2'}],
         },
+        'loggedInUserDetails': {
+          userName: 'o1',
+        },
     };
 
     store = configureStore()(initialState);
@@ -35,6 +38,16 @@ describe('Question Result container', () => {
 
     expect(container.find(Question).props().questions)
         .toEqual(initialState.questions.questionsData);
+  });
+
+  it('Should have logged in user username property', () => {
+    const container = mount(
+      <Provider store={store}>
+        <QuestionContainer/>
+      </Provider>);
+
+    expect(container.find(Question).props().loggedInUsername)
+        .toEqual(initialState.loggedInUserDetails.userName);
   });
 
   it('Should dispatch get questions', () => {

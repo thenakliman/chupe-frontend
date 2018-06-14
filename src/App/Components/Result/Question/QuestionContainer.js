@@ -5,6 +5,7 @@ import {getAllQuestions} from '../../../Actions/questionActions';
 
 const mapStateToProps = (state) => ({
     questions: state.questions.questionsData,
+    loggedInUsername: state.loggedInUserDetails.userName,
 });
 
 const mapDispatchToProps = (dispatch) => ({

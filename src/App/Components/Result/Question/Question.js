@@ -6,9 +6,28 @@ require('./Question.css');
 
 /** Question component displaying questions on click. */
 export class Question extends React.Component {
+    /** Constructor for the component
+     * @param {object} props are the properties for the component
+     */
+    constructor(props) {
+      super(props);
+      this.state = {questions: []};
+      this.filterOnOwner = this.filterOnOwner.bind(this);
+    }
+
     /** Get all question on component mount */
     componentDidMount() {
         this.props.getQuestions();
+        this.setState(Object.assign({}, {questions: this.props.questions}));
+    }
+
+    /** Filter component based on the owner */
+    filterOnOwner() {
+        const questions = [...this.props.questions];
+        const filteredQuestion = questions.filter((question) =>
+              question.owner === this.props.loggedInUsername);
+
+        this.setState({questions: filteredQuestion});
     }
 
     /** returns Question component
@@ -25,6 +44,13 @@ export class Question extends React.Component {
               >
                 Ask Question
               </button>
+              <button id='show-owner-question-button-id'
+                className='ask-question-button'
+                type="button"
+                onClick={this.filterOnOwner}
+              >
+                  Asked By Me
+              </button>
               </div>
               <div>
                 <table id='all-question-ordered-list'>
@@ -36,9 +62,9 @@ export class Question extends React.Component {
                       <th> Assigned To </th>
                         </tr>
                   </thead>
-                  <tbody>
+                  <tbody id='all-questions-table-id'>
                   {
-                    this.props.questions.map((question) =>(
+                    this.state.questions.map((question) =>(
                       <tr key={`${question.id}`}>
                         <td> {question.id} </td>
                         <td> {question.question} </td>
@@ -68,5 +94,6 @@ export class Question extends React.Component {
 
 Question.propTypes = {
     questions: propTypes.arrayOf(propTypes.object).isRequired,
+    loggedInUsername: propTypes.string.isRequired,
     getQuestions: propTypes.func.isRequired,
 };
