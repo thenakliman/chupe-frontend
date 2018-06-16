@@ -1,6 +1,6 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import {Question} from './Question'; // eslint-disable-line no-unused-vars
-import {shallow, mount} from 'enzyme';
+import {shallow} from 'enzyme';
 import * as History from './../../../utils/history';
 
 describe('List Questions', () => {
@@ -9,24 +9,49 @@ describe('List Questions', () => {
         <Question
             questions={[{}]}
             getQuestions={()=>{}}
-            loggedInUsername=''
+            loggedInUser=''
         />);
     expect(wrapper.find('#ask-question-button').length).toEqual(1);
+  });
+
+  it('should have a asked by me button', () => {
+    const wrapper = shallow(
+        <Question
+            questions={[{}]}
+            getQuestions={()=>{}}
+        />);
+    expect(wrapper.find('#asked-by-me-question-button').length).toEqual(1);
+  });
+
+  it('should have initial state contains default filter', () => {
+    const questions = [
+        {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
+        {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
+      ];
+      const wrapper = shallow(
+          <Question
+              questions={questions}
+              getQuestions={()=>{}}
+          />);
+
+      expect(wrapper.state()).toEqual({filter: null});
   });
 
   it('should have a questions', () => {
     const questions = [
       {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
       {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
+      {id: 3, question: 'how?', owner: 'user1', assignedTo: 'assignedUser2'},
     ];
     const wrapper = shallow(
         <Question
             questions={questions}
             getQuestions={()=>{}}
-            loggedInUsername=''
+            loggedInUser='user1'
         />);
 
-    expect(wrapper.find('#all-question-ordered-list').props().children.length)
+    expect(wrapper.find('#asked-by-me-question-button').simulate('click'));
+    expect(wrapper.find('tbody').props().children.length)
             .toEqual(2);
   });
 
@@ -80,34 +105,18 @@ describe('List Questions', () => {
     expect(getQuestions).toHaveBeenCalledWith();
   });
 
-  it('should set all questions to questions on state in constructor', () => {
+  it('should reset filter state on mount of component', () => {
+    const getQuestions = jest.fn();
     const questions = [
       {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
       {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
     ];
-    const container = mount(
+    shallow(
         <Question
-            loggedInUsername='user1'
             questions={questions}
-            getQuestions={()=>{}}
+            getQuestions={getQuestions}
+            loggedInUsername=''
         />);
-    expect(container.state().questions).toEqual(questions);
-  });
-
-  it('should set state of questions having given owner', () => {
-    const questions = [
-      {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
-      {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
-      {id: 3, question: 'okay?', owner: 'user1', assignedTo: 'assignedUser3'},
-    ];
-    const container = mount(
-        <Question
-            loggedInUsername='user1'
-            questions={questions}
-            getQuestions={()=>{}}
-        />);
-    container.find('#show-owner-question-button-id').simulate('click');
-    expect(container.find('#all-questions-table-id')
-        .get(0).props.children.length).toEqual(2);
+    expect(getQuestions).toHaveBeenCalledWith();
   });
 });

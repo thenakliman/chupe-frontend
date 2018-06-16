@@ -6,34 +6,44 @@ require('./Question.css');
 
 /** Question component displaying questions on click. */
 export class Question extends React.Component {
-    /** Constructor for the component
-     * @param {object} props are the properties for the component
+    /** Constructor for the Question component
+     * @param {object} props, properties of the component
      */
     constructor(props) {
       super(props);
-      this.state = {questions: []};
-      this.filterOnOwner = this.filterOnOwner.bind(this);
+      this.state = {filter: null};
+      this.setFilter = this.setFilter.bind(this);
+      this.filterByOwner = this.filterByOwner.bind(this);
     }
 
     /** Get all question on component mount */
     componentDidMount() {
         this.props.getQuestions();
-        this.setState(Object.assign({}, {questions: this.props.questions}));
+        this.setState({filter: null});
     }
 
-    /** Filter component based on the owner */
-    filterOnOwner() {
-        const questions = [...this.props.questions];
-        const filteredQuestion = questions.filter((question) =>
-              question.owner === this.props.loggedInUsername);
-
-        this.setState({questions: filteredQuestion});
+    /** set Filter for owner */
+    setFilter() {
+        this.setState({filter: {owner: this.props.loggedInUser}});
     }
 
+    /** Filter question based on owner
+     * @return {object} filtered questiosn
+     */
+    filterByOwner() {
+        const questionsCopy = [...this.props.questions];
+        if (!this.state.filter) {
+          return questionsCopy;
+        }
+
+        return (questionsCopy.filter(
+          (question) => question.owner == this.state.filter.owner));
+    }
     /** returns Question component
     * @return {Object} Question component
     */
     render() {
+        const questions = this.filterByOwner();
         return (
           <div className='question-result-container'>
             <div>
@@ -44,13 +54,15 @@ export class Question extends React.Component {
               >
                 Ask Question
               </button>
-              <button id='show-owner-question-button-id'
-                className='ask-question-button'
-                type="button"
-                onClick={this.filterOnOwner}
-              >
-                  Asked By Me
-              </button>
+              </div>
+              <div>
+                <button id='asked-by-me-question-button'
+                  className='ask-question-button'
+                  type="button"
+                  onClick={this.setFilter}
+                >
+                  Ask By Me
+                </button>
               </div>
               <div>
                 <table id='all-question-ordered-list'>
@@ -64,7 +76,7 @@ export class Question extends React.Component {
                   </thead>
                   <tbody id='all-questions-table-id'>
                   {
-                    this.state.questions.map((question) =>(
+                    questions.map((question) =>(
                       <tr key={`${question.id}`}>
                         <td> {question.id} </td>
                         <td> {question.question} </td>
@@ -94,6 +106,6 @@ export class Question extends React.Component {
 
 Question.propTypes = {
     questions: propTypes.arrayOf(propTypes.object).isRequired,
-    loggedInUsername: propTypes.string.isRequired,
+    loggedInUser: propTypes.string.isRequired,
     getQuestions: propTypes.func.isRequired,
 };

@@ -22,7 +22,7 @@ describe('Question Result container', () => {
                 {id: 2, question: 'how?', owner: 'o2'}],
         },
         'loggedInUserDetails': {
-          userName: 'o1',
+            userName: 'user1',
         },
     };
 
@@ -46,7 +46,7 @@ describe('Question Result container', () => {
         <QuestionContainer/>
       </Provider>);
 
-    expect(container.find(Question).props().loggedInUsername)
+    expect(container.find(Question).props().loggedInUser)
         .toEqual(initialState.loggedInUserDetails.userName);
   });
 
