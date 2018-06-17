@@ -12,8 +12,10 @@ export class Question extends React.Component {
     constructor(props) {
       super(props);
       this.state = {filter: null};
-      this.setFilter = this.setFilter.bind(this);
+      this.setOwnerFilter = this.setOwnerFilter.bind(this);
+      this.setAssignedToFilter = this.setAssignedToFilter.bind(this);
       this.filterByOwner = this.filterByOwner.bind(this);
+      this.filterByAssignedTo = this.filterByAssignedTo.bind(this);
     }
 
     /** Get all question on component mount */
@@ -23,27 +25,49 @@ export class Question extends React.Component {
     }
 
     /** set Filter for owner */
-    setFilter() {
+    setOwnerFilter() {
         this.setState({filter: {owner: this.props.loggedInUser}});
     }
 
+    /** set Filter for assigned to */
+    setAssignedToFilter() {
+        this.setState({filter: {assignedTo: this.props.loggedInUser}});
+    }
+
     /** Filter question based on owner
+     * @param {object} questions to be filtered
      * @return {object} filtered questiosn
      */
-    filterByOwner() {
-        const questionsCopy = [...this.props.questions];
-        if (!this.state.filter) {
+    filterByOwner(questions) {
+        const questionsCopy = [...questions];
+        if (!this.state.filter || !this.state.filter.owner) {
           return questionsCopy;
         }
 
         return (questionsCopy.filter(
           (question) => question.owner == this.state.filter.owner));
     }
+    /** Filter question based on Assigned to
+     * @param {object} questions to be filtered
+     * @return {object} filtered questiosn
+     */
+    filterByAssignedTo(questions) {
+        const questionsCopy = [...questions];
+        if (!this.state.filter || !this.state.filter.assignedTo) {
+          return questionsCopy;
+        }
+
+        return (questionsCopy.filter(
+          (question) => question.assignedTo == this.state.filter.assignedTo));
+    }
+
     /** returns Question component
     * @return {Object} Question component
     */
     render() {
-        const questions = this.filterByOwner();
+        let questions = this.props.questions;
+        questions = this.filterByOwner(questions);
+        questions = this.filterByAssignedTo(questions);
         return (
           <div className='question-result-container'>
             <div>
@@ -54,12 +78,21 @@ export class Question extends React.Component {
               >
                 Ask Question
               </button>
-              </div>
+            </div>
+            <div>
+              <button id='asked-to-me-question-button'
+                className='ask-question-button'
+                type="button"
+                onClick={this.setAssignedToFilter}
+              >
+                Asked to Me
+              </button>
+            </div>
               <div>
                 <button id='asked-by-me-question-button'
                   className='ask-question-button'
                   type="button"
-                  onClick={this.setFilter}
+                  onClick={this.setOwnerFilter}
                 >
                   Ask By Me
                 </button>

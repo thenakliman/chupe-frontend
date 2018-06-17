@@ -19,8 +19,19 @@ describe('List Questions', () => {
         <Question
             questions={[{}]}
             getQuestions={()=>{}}
+            loggedInUser='user1'
         />);
     expect(wrapper.find('#asked-by-me-question-button').length).toEqual(1);
+  });
+
+  it('should have a asked to me button', () => {
+    const wrapper = shallow(
+        <Question
+            questions={[{}]}
+            getQuestions={()=>{}}
+            loggedInUser='user1'
+        />);
+    expect(wrapper.find('#asked-to-me-question-button').length).toEqual(1);
   });
 
   it('should have initial state contains default filter', () => {
@@ -32,12 +43,13 @@ describe('List Questions', () => {
           <Question
               questions={questions}
               getQuestions={()=>{}}
+              loggedInUser='user1'
           />);
 
       expect(wrapper.state()).toEqual({filter: null});
   });
 
-  it('should have a questions', () => {
+  it('should filter based on owner field', () => {
     const questions = [
       {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
       {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
@@ -55,6 +67,24 @@ describe('List Questions', () => {
             .toEqual(2);
   });
 
+  it('should filter based on assigned  field', () => {
+    const questions = [
+      {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
+      {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
+      {id: 3, question: 'how?', owner: 'user1', assignedTo: 'assignedUser2'},
+    ];
+    const wrapper = shallow(
+        <Question
+            questions={questions}
+            getQuestions={()=>{}}
+            loggedInUser='assignedUser2'
+        />);
+
+    expect(wrapper.find('#asked-to-me-question-button').simulate('click'));
+    expect(wrapper.find('tbody').props().children.length)
+            .toEqual(2);
+  });
+
   it('should redirect to ask question', () => {
     History.history = {push: jest.fn()};
     const questions = [
@@ -65,7 +95,7 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             getQuestions={()=>{}}
-            loggedInUsername=''
+            loggedInUser=''
         />);
 
     expect(wrapper.find('#ask-question-button').simulate('click'));
@@ -83,7 +113,7 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             getQuestions={()=>{}}
-            loggedInUsername=''
+            loggedInUser=''
         />);
 
     expect(wrapper.find('#view-question-button-2').simulate('click'));
@@ -100,7 +130,7 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             getQuestions={getQuestions}
-            loggedInUsername=''
+            loggedInUser=''
         />);
     expect(getQuestions).toHaveBeenCalledWith();
   });
@@ -115,7 +145,7 @@ describe('List Questions', () => {
         <Question
             questions={questions}
             getQuestions={getQuestions}
-            loggedInUsername=''
+            loggedInUser=''
         />);
     expect(getQuestions).toHaveBeenCalledWith();
   });
