@@ -16,6 +16,7 @@ export class Question extends React.Component {
       this.setAssignedToFilter = this.setAssignedToFilter.bind(this);
       this.filterByOwner = this.filterByOwner.bind(this);
       this.filterByAssignedTo = this.filterByAssignedTo.bind(this);
+      this.resetFilter = this.resetFilter.bind(this);
     }
 
     /** Get all question on component mount */
@@ -27,6 +28,11 @@ export class Question extends React.Component {
     /** set Filter for owner */
     setOwnerFilter() {
         this.setState({filter: {owner: this.props.loggedInUser}});
+    }
+
+    /** reset Filter for owner */
+    resetFilter() {
+        this.setState({filter: null});
     }
 
     /** set Filter for assigned to */
@@ -96,7 +102,16 @@ export class Question extends React.Component {
                 >
                   Ask By Me
                 </button>
-              </div>
+            </div>
+            <div>
+              <button id='show-all-question-button'
+                className='ask-question-button'
+                type="button"
+                onClick={this.resetFilter}
+              >
+                Show All
+              </button>
+            </div>
               <div>
                 <table id='all-question-ordered-list'>
                   <thead>

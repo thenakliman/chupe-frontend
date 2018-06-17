@@ -24,6 +24,16 @@ describe('List Questions', () => {
     expect(wrapper.find('#asked-by-me-question-button').length).toEqual(1);
   });
 
+  it('should have a show all question button', () => {
+    const wrapper = shallow(
+        <Question
+            questions={[{}]}
+            getQuestions={()=>{}}
+            loggedInUser='user1'
+        />);
+    expect(wrapper.find('#show-all-question-button').length).toEqual(1);
+  });
+
   it('should have a asked to me button', () => {
     const wrapper = shallow(
         <Question
@@ -83,6 +93,24 @@ describe('List Questions', () => {
     expect(wrapper.find('#asked-to-me-question-button').simulate('click'));
     expect(wrapper.find('tbody').props().children.length)
             .toEqual(2);
+  });
+
+  it('should reset filter on show all question', () => {
+    const questions = [
+      {id: 1, question: 'when?', owner: 'user1', assignedTo: 'assignedUser1'},
+      {id: 2, question: 'how?', owner: 'user2', assignedTo: 'assignedUser2'},
+      {id: 3, question: 'how?', owner: 'user1', assignedTo: 'assignedUser2'},
+    ];
+    const wrapper = shallow(
+        <Question
+            questions={questions}
+            getQuestions={()=>{}}
+            loggedInUser='assignedUser2'
+        />);
+
+    wrapper.setState({filter: {owner: 'assignedUser2'}});
+    expect(wrapper.find('#show-all-question-button').simulate('click'));
+    expect(wrapper.state()).toEqual({filter: null});
   });
 
   it('should redirect to ask question', () => {
