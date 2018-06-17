@@ -78,7 +78,7 @@ export class Question extends React.Component {
           <div className='question-result-container'>
             <div>
               <button id='ask-question-button'
-                className='ask-question-button'
+                className='question-button'
                 type="button"
                 onClick={()=> history.push('/question/ask')}
               >
@@ -87,7 +87,7 @@ export class Question extends React.Component {
             </div>
             <div>
               <button id='asked-to-me-question-button'
-                className='ask-question-button'
+                className='question-button'
                 type="button"
                 onClick={this.setAssignedToFilter}
               >
@@ -96,7 +96,7 @@ export class Question extends React.Component {
             </div>
               <div>
                 <button id='asked-by-me-question-button'
-                  className='ask-question-button'
+                  className='question-button'
                   type="button"
                   onClick={this.setOwnerFilter}
                 >
@@ -105,7 +105,7 @@ export class Question extends React.Component {
             </div>
             <div>
               <button id='show-all-question-button'
-                className='ask-question-button'
+                className='question-button'
                 type="button"
                 onClick={this.resetFilter}
               >
