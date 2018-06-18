@@ -1,6 +1,6 @@
 import React from 'react';
 
-require('QuestionAnswerWrapper.css');
+require('./QuestionAnswerWrapper.css');
 
 /** Question answer header component. */
 export class QuestionAnswerWrapper extends React.Component {
@@ -13,11 +13,19 @@ export class QuestionAnswerWrapper extends React.Component {
            className='question-answer-wrapper'
       >
         <table id='question-wrappper-table-id'>
-          <thead>
-            {this.props.headerText}
+          <thead className='question-answer-header'>
+            <tr className='table-border'>
+              <th className='table-border'>
+                {this.props.headerText}
+              </th>
+            </tr>
           </thead>
-          <tbody>
-            {this.props.bodyText}
+          <tbody className='table-border'>
+            <tr className='table-border'>
+              <td className='table-border'>
+                {this.props.bodyText}
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -1,3 +1,14 @@
 .question-answer-wrapper {
-  border: 1px solid black;
+  width: 55%;
+  display: table;
+  margin: 2rem auto;
+}
+
+
+.question-answer-header {
+  background: rgb(239, 251, 239);
+}
+
+.table-border {
+  border: 1px solid rgb(129, 247, 129);
 }
