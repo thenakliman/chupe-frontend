@@ -25,12 +25,18 @@ describe('should have a box', () => {
   it('should show text in header of table from props', () => {
     const headerText = 'my-header';
     const wrapper = shallow(<QuestionAnswerWrapper headerText={headerText}/>);
-    expect(wrapper.find('thead').get(0).props.children).toEqual(headerText);
+    expect(
+      wrapper.find('#question-answer-wrapper-table-header-id')
+        .get(0).props.children
+    ).toEqual(headerText);
   });
 
   it('should show text in body of table from props', () => {
     const bodyText = 'my-body';
     const wrapper = shallow(<QuestionAnswerWrapper bodyText={bodyText}/>);
-    expect(wrapper.find('tbody').get(0).props.children) .toEqual(bodyText);
+    expect(
+      wrapper.find('#question-answer-wrapper-table-body-id')
+        .get(0).props.children
+    ).toEqual(bodyText);
   });
 });

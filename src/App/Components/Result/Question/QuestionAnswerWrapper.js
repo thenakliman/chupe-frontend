@@ -15,14 +15,16 @@ export class QuestionAnswerWrapper extends React.Component {
         <table id='question-wrappper-table-id'>
           <thead className='question-answer-header'>
             <tr className='table-border'>
-              <th className='table-border'>
+              <th className='table-border'
+                  id='question-answer-wrapper-table-header-id'>
                 {this.props.headerText}
               </th>
             </tr>
           </thead>
           <tbody className='table-border'>
             <tr className='table-border'>
-              <td className='table-border'>
+              <td className='table-border'
+                  id='question-answer-wrapper-table-body-id'>
                 {this.props.bodyText}
               </td>
             </tr>
