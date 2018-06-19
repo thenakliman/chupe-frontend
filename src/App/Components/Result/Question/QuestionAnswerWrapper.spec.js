@@ -22,11 +22,31 @@ describe('should have a box', () => {
     expect(shallow(<QuestionAnswerWrapper/>).find('tbody').length).toEqual(1);
   });
 
+  it('should have an edit text on the right', () => {
+    const wrapper = shallow(<QuestionAnswerWrapper headerText='' bodyText=''/>)
+        .find('#edit-question-answer-wrapper-content-id')
+
+    expect(wrapper.length).toEqual(1);
+  });
+
+  it('should change text from Edit to Save on click', () => {
+    const wrapper = shallow(<QuestionAnswerWrapper headerText='' bodyText=''/>)
+    expect(
+      wrapper.find('#edit-question-answer-wrapper-content-id')
+        .get(0).props.children).toEqual('Edit');
+
+    wrapper.find('#edit-question-answer-wrapper-content-id').simulate('click');
+
+    expect(
+      wrapper.find('#edit-question-answer-wrapper-content-id')
+        .get(0).props.children).toEqual('Save');
+  });
+
   it('should show text in header of table from props', () => {
     const headerText = 'my-header';
     const wrapper = shallow(<QuestionAnswerWrapper headerText={headerText}/>);
     expect(
-      wrapper.find('#question-answer-wrapper-table-header-id')
+      wrapper.find('#question-answer-wrapper-table-header-text-id')
         .get(0).props.children
     ).toEqual(headerText);
   });

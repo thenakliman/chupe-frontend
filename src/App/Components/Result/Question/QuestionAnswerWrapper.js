@@ -4,6 +4,15 @@ require('./QuestionAnswerWrapper.css');
 
 /** Question answer header component. */
 export class QuestionAnswerWrapper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleEditingMode = this.toggleEditingMode.bind(this);
+    this.state = {isEditingHeader: false};
+  }
+
+  toggleEditingMode() {
+    this.setState({isEditingHeader: !this.state.isEditingHeader});
+  }
   /** Provide rendering for the Question Answer
    * @return {object} returns QuestionAnswerWrapper
   */
@@ -17,7 +26,15 @@ export class QuestionAnswerWrapper extends React.Component {
             <tr className='table-border'>
               <th className='table-border'
                   id='question-answer-wrapper-table-header-id'>
-                {this.props.headerText}
+                <span id='question-answer-wrapper-table-header-text-id'>
+                    {this.props.headerText}
+                </span>
+                <span id='edit-question-answer-wrapper-content-id'
+                      className='edit-button'
+                      onClick={this.toggleEditingMode}
+                >
+                  {this.state.isEditingHeader?'Save':'Edit'}
+                </span>
               </th>
             </tr>
           </thead>

@@ -15,3 +15,8 @@
   text-align: left;
   font-weight: 500;
 }
+
+.edit-button {
+  float: right;
+  cursor: pointer;
+}
