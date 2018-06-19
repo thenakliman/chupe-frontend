@@ -4,6 +4,13 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
 <div
   className="show-question"
 >
+  <div>
+    <QuestionAnswerWrapper
+      bodyText="question2"
+      headerText="Asked By owner-2 to assigned-2"
+      id="question-answer-summary-wrapper-id"
+    />
+  </div>
   <form
     id="show-question-form"
     onSubmit={[Function]}

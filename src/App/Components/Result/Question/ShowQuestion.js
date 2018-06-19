@@ -1,5 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
+/* eslint-disable */
+import {QuestionAnswerWrapper} from './QuestionAnswerWrapper';
+/* eslint-enable */
 require('./ShowQuestion.css');
 
 /** Question component */
@@ -112,8 +115,16 @@ export class ShowQuestion extends React.Component {
       @return {object} returns ShowQuestion component
   */
   render() {
+    const headerText = ('Asked By ' + this.state.owner +
+                        ' to ' + this.state.assignedTo);
     return (
       <div className='show-question'>
+        <div>
+          <QuestionAnswerWrapper
+            headerText={headerText}
+            bodyText={this.state.question}
+            id='question-answer-summary-wrapper-id'/>
+        </div>
         <form id='show-question-form' onSubmit={this.handleSubmit}>
         <p>
           <label htmlFor="show-question-input-field-id">

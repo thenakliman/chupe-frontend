@@ -56,6 +56,26 @@ describe('Show question component', () => {
         '#show-question-input-field-id').length).toEqual(1);
   });
 
+  it('should have QuestionAnswerWrapper for question summary', () => {
+    const wrapper = shallow(
+        <ShowQuestion
+          isEditing={false}
+          users= {users}
+          questions={questions}
+          updateQuestion={()=>{}}
+          setEditingQuestion={jest.fn()}
+          match={{params: {id: 2}}}
+        />
+    );
+
+    const summaryWrapper = wrapper.find('#question-answer-summary-wrapper-id');
+    expect(summaryWrapper.length).toEqual(1);
+    expect(summaryWrapper.get(0).props.headerText
+        ).toEqual('Asked By owner-2 to assigned-2');
+
+    expect(summaryWrapper.get(0).props.bodyText).toEqual('question2');
+  });
+
   it('should have question description', () => {
     const wrapper = shallow(
         <ShowQuestion
