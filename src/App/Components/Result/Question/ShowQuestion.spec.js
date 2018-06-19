@@ -76,6 +76,28 @@ describe('Show question component', () => {
     expect(summaryWrapper.get(0).props.bodyText).toEqual('question2');
   });
 
+  it('should have QuestionAnswerWrapper for question description', () => {
+    const wrapper = shallow(
+        <ShowQuestion
+          isEditing={false}
+          users= {users}
+          questions={questions}
+          updateQuestion={()=>{}}
+          setEditingQuestion={jest.fn()}
+          match={{params: {id: 2}}}
+        />
+    );
+
+    const summaryWrapper = wrapper.find(
+      '#question-answer-description-wrapper-id');
+
+    expect(summaryWrapper.length).toEqual(1);
+    expect(summaryWrapper.get(0).props.headerText
+        ).toEqual('Description Added by owner-2');
+
+    expect(summaryWrapper.get(0).props.bodyText).toEqual('test-description2');
+  });
+
   it('should have question description', () => {
     const wrapper = shallow(
         <ShowQuestion

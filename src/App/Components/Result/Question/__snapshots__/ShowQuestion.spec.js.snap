@@ -11,6 +11,13 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
       id="question-answer-summary-wrapper-id"
     />
   </div>
+  <div>
+    <QuestionAnswerWrapper
+      bodyText="test-description2"
+      headerText="Description Added by owner-2"
+      id="question-answer-description-wrapper-id"
+    />
+  </div>
   <form
     id="show-question-form"
     onSubmit={[Function]}

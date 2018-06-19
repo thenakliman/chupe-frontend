@@ -125,6 +125,12 @@ export class ShowQuestion extends React.Component {
             bodyText={this.state.question}
             id='question-answer-summary-wrapper-id'/>
         </div>
+        <div>
+          <QuestionAnswerWrapper
+            headerText={'Description Added by ' + this.state.owner}
+            bodyText={this.state.description}
+            id='question-answer-description-wrapper-id'/>
+        </div>
         <form id='show-question-form' onSubmit={this.handleSubmit}>
         <p>
           <label htmlFor="show-question-input-field-id">
