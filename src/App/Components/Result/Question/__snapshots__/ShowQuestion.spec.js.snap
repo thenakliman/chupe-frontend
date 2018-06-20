@@ -9,6 +9,7 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
       bodyText="question2"
       headerText="Asked By owner-2 to assigned-2"
       id="question-answer-summary-wrapper-id"
+      saveHandler={[Function]}
     />
   </div>
   <div>
@@ -16,84 +17,8 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
       bodyText="test-description2"
       headerText="Description Added by owner-2"
       id="question-answer-description-wrapper-id"
+      saveHandler={[Function]}
     />
   </div>
-  <form
-    id="show-question-form"
-    onSubmit={[Function]}
-  >
-    <p>
-      <label
-        htmlFor="show-question-input-field-id"
-      >
-        Question:
-      </label>
-      <input
-        disabled={true}
-        id="show-question-input-field-id"
-        onChange={[Function]}
-        type="text"
-        value="question2"
-      />
-    </p>
-    <p>
-      <label
-        htmlFor="show-question-description-input-field-id"
-      >
-        Description:
-      </label>
-      <textarea
-        disabled={true}
-        id="show-question-description-input-field-id"
-        onChange={[Function]}
-        type="text"
-        value="test-description2"
-      />
-    </p>
-    <p>
-      <label>
-        Assigned To:
-      </label>
-      <select
-        disabled={true}
-        id="show-question-assigned-to-input-field-id"
-        onChange={[Function]}
-        value="assigned-2"
-      >
-        <option
-          value=""
-        >
-          assigned-2
-        </option>
-      </select>
-    </p>
-    <p>
-      <label>
-        Owner:
-      </label>
-      <select
-        disabled={true}
-        id="show-question-owner-input-field-id"
-        onChange={[Function]}
-        value="owner-2"
-      >
-        <option
-          value=""
-        >
-          owner-2
-        </option>
-      </select>
-    </p>
-    <p>
-      <button
-        className="submit-button"
-        id="show-question-edit-button-id"
-        type="submit"
-        value="Submit"
-      >
-        Edit
-      </button>
-    </p>
-  </form>
 </div>
 `;

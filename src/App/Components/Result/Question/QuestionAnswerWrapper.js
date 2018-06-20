@@ -26,6 +26,9 @@ export class QuestionAnswerWrapper extends React.Component {
 
   /** Toggle editing mode for the component. */
   toggleEditingMode() {
+    if (this.state.isEditingHeader) {
+      this.props.saveHandler(this.state.bodyText);
+    }
     this.setState({isEditingHeader: !this.state.isEditingHeader});
   }
 

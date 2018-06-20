@@ -66,7 +66,7 @@ describe('should have a box', () => {
 
   it('should save data to text area on click of save', () => {
     const wrapper = shallow(
-      <QuestionAnswerWrapper headerText='' bodyText=''/>);
+      <QuestionAnswerWrapper headerText='' bodyText='' saveHandler={()=>{}}/>);
 
     const bodyText = 'test value';
     wrapper.setState({isEditingHeader: true, bodyText: 'body text'});
@@ -96,5 +96,31 @@ describe('should have a box', () => {
       wrapper.find('#question-answer-wrapper-table-body-id')
         .get(0).props.children
     ).toEqual(bodyText);
+  });
+
+  it('should show call update method on clicked in editing mode', () => {
+    const bodyText = 'my-body';
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText={bodyText}
+            saveHandler={mockedSaveHandler}
+        />);
+    wrapper.setState({isEditingHeader: true});
+    wrapper.find('#edit-question-answer-wrapper-id').simulate('click');
+    expect(mockedSaveHandler).toHaveBeenCalledWith(bodyText);
+  });
+
+  it('should not call update method on click, if not in editing mode', () => {
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText='my-body'
+            saveHandler={mockedSaveHandler}
+        />);
+    wrapper.find('#edit-question-answer-wrapper-id').simulate('click');
+    expect(mockedSaveHandler).not.toHaveBeenCalled();
   });
 });

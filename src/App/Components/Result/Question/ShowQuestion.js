@@ -50,51 +50,56 @@ export class ShowQuestion extends React.Component {
   }
 
   /** Handle changes on the question fields
-  * @param {object} event containing new modified value
+  * @param {question} question with new modified value
   */
-  handleQuestionSummary(event) {
-      this.setState({question: event.target.value});
+  handleQuestionSummary(question) {
+    const completeQuestion = {
+        id: this.state.id,
+        question: question,
+        description: this.state.description,
+        assignedTo: this.state.assignedTo,
+        owner: this.state.owner,
+      };
+
+    this.handleSubmit(completeQuestion);
   }
 
   /** Handle changes on the question description fields
-  * @param {object} event containing new modified value
+  * @param {object} description new modified value
   */
-  handleQuestionDescription(event) {
-      this.setState({description: event.target.value});
+  handleQuestionDescription(description) {
+    const completeQuestion = {
+        id: this.state.id,
+        question: this.state.question,
+        description: description,
+        assignedTo: this.state.assignedTo,
+        owner: this.state.owner,
+      };
+
+    this.handleSubmit(completeQuestion);
   }
 
   /** Validates form data
+  * @param {object} questionData has question data
   * @return {bool} return whether data is valid or not
   */
-  validateForm() {
+  validateForm(questionData) {
       return (
-          this.state.question =='' ||
-          this.state.description == '' ||
-          this.state.owner == '' ||
-          this.state.assignedTo == '');
+          !questionData.question ||
+          !questionData.description ||
+          !questionData.owner ||
+          !questionData.assignedTo);
   }
 
   /** Handles submit of the form
-  * @param {object} event containing new modified value
+  * @param {object} question containing new modified value
   */
-  handleSubmit(event) {
-      event.preventDefault();
-      const hasError = this.validateForm();
+  handleSubmit(question) {
+      const hasError = this.validateForm(question);
       if (hasError) {
           return;
       }
-      if (this.props.isEditing) {
-        const question = {
-          id: this.state.id,
-          question: this.state.question,
-          description: this.state.description,
-          assignedTo: this.state.assignedTo,
-          owner: this.state.owner,
-        };
-        this.props.updateQuestion(this.props.questions, question);
-      }
-
-      this.props.setEditingQuestion(!this.props.isEditing);
+      this.props.updateQuestion(this.props.questions, question);
   }
   /** Renders show question component
       @return {object} returns ShowQuestion component
@@ -108,47 +113,17 @@ export class ShowQuestion extends React.Component {
           <QuestionAnswerWrapper
             headerText={headerText}
             bodyText={this.state.question}
+            saveHandler={this.handleQuestionSummary}
             id='question-answer-summary-wrapper-id'/>
         </div>
         <div>
           <QuestionAnswerWrapper
             headerText={'Description Added by ' + this.state.owner}
             bodyText={this.state.description}
-            id='question-answer-description-wrapper-id'/>
-        </div>
-        <form id='show-question-form' onSubmit={this.handleSubmit}>
-        <p>
-          <label htmlFor="show-question-input-field-id">
-            Question:
-          </label>
-          <input type="text"
-              id="show-question-input-field-id"
-              value={this.state.question}
-              onChange={this.handleQuestionSummary}
-              disabled={!this.props.isEditing}
+            id='question-answer-description-wrapper-id'
+            saveHandler={this.handleQuestionDescription}
           />
-
-        </p>
-        <p>
-          <label htmlFor="show-question-description-input-field-id">
-            Description:
-          </label>
-          <textarea type="text"
-            id="show-question-description-input-field-id"
-            disabled={!this.props.isEditing}
-            value={this.state.description}
-            onChange={this.handleQuestionDescription}/>
-        </p>
-        <p>
-            <button id='show-question-edit-button-id'
-                    type='submit'
-                    value='Submit'
-                    className='submit-button'
-                    >
-              {this.props.isEditing?'Save':'Edit'}
-            </button>
-        </p>
-      </form>
+        </div>
       </div>
     );
   }
