@@ -23,8 +23,6 @@ export class ShowQuestion extends React.Component {
       this.handleQuestionDescription = this
           .handleQuestionDescription.bind(this);
 
-      this.handleOwnerChange = this.handleOwnerChange.bind(this);
-      this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.getInitialState = this.getInitialState.bind(this);
       this.validateForm = this.validateForm.bind(this);
@@ -65,19 +63,6 @@ export class ShowQuestion extends React.Component {
       this.setState({description: event.target.value});
   }
 
-  /** Handle changes on the question owner fields
-  * @param {object} event containing new modified value
-  */
-  handleOwnerChange(event) {
-      this.setState({owner: event.target.value});
-  }
-
-  /** Handle changes on the question assigned to fields
-  * @param {object} event containing new modified value
-  */
-  handleAssignedToChange(event) {
-      this.setState({assignedTo: event.target.value});
-  }
   /** Validates form data
   * @return {bool} return whether data is valid or not
   */
@@ -153,49 +138,6 @@ export class ShowQuestion extends React.Component {
             disabled={!this.props.isEditing}
             value={this.state.description}
             onChange={this.handleQuestionDescription}/>
-        </p>
-        <p>
-            <label>
-              Assigned To:
-            </label>
-            <select disabled={!this.props.isEditing}
-                    id='show-question-assigned-to-input-field-id'
-                    value={this.state.assignedTo}
-                    onChange={this.handleAssignedToChange}>
-            {
-              this.props.isEditing &&
-                 (<option value="">{this.currentQuestion.owner}</option>) &&
-                 this.props.users.map((user) =>
-                 (user.username!=this.currentQuestion.owner &&
-                   <option key={`${user.userName}`}>
-                      {user.userName}
-                   </option>)) ||
-               (!this.props.isEditing &&
-                  <option value="">{this.currentQuestion.assignedTo}</option>)
-            }
-            </select>
-        </p>
-        <p>
-            <label>
-              Owner:
-            </label>
-            <select disabled={!this.props.isEditing}
-                    id='show-question-owner-input-field-id'
-                    value={this.state.owner}
-                    onChange={this.handleOwnerChange}
-                    >
-              {
-                this.props.isEditing &&
-                   (<option value="">{this.currentQuestion.owner}</option>) &&
-                   this.props.users.map((user) =>
-                   ( user.username!=this.currentQuestion.assignedTo &&
-                     <option key={`${user.userName}`}>
-                        {user.userName}
-                     </option>)) ||
-                 (!this.props.isEditing &&
-                    <option value="">{this.currentQuestion.owner}</option>)
-              }
-            </select>
         </p>
         <p>
             <button id='show-question-edit-button-id'

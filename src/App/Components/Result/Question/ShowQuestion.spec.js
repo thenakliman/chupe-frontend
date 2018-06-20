@@ -112,35 +112,6 @@ describe('Show question component', () => {
         '#show-question-description-input-field-id').length).toEqual(1);
   });
 
-  it('should have assigned to select field', () => {
-    const wrapper = shallow(
-        <ShowQuestion
-          users= {users}
-          isEditing={false}
-          questions={questions}
-          updateQuestion={()=>{}}
-          match={{params: {id: 2}}}
-          setEditingQuestion={jest.fn()} />
-    );
-    expect(wrapper.find(
-        '#show-question-assigned-to-input-field-id').length).toEqual(1);
-  });
-
-  it('should have owner select field', () => {
-    const wrapper = shallow(
-        <ShowQuestion
-          users= {users}
-          isEditing={false}
-          questions={questions}
-          updateQuestion={()=>{}}
-          setEditingQuestion={jest.fn()}
-          match={{params: {id: 2}}}
-        />
-    );
-    expect(wrapper.find(
-        '#show-question-assigned-to-input-field-id').length).toEqual(1);
-  });
-
   it('should have edit button', () => {
     const wrapper = shallow(
         <ShowQuestion
@@ -190,12 +161,6 @@ describe('Show question component', () => {
 
     expect(wrapper.find('#show-question-description-input-field-id')
       .get(0).props.disabled).toEqual(true);
-
-    expect(wrapper.find('#show-question-owner-input-field-id')
-      .get(0).props.disabled).toEqual(true);
-
-    expect(wrapper.find('#show-question-assigned-to-input-field-id')
-      .get(0).props.disabled).toEqual(true);
   });
 
   it('should enable input fields on isEditing is true', () => {
@@ -213,11 +178,6 @@ describe('Show question component', () => {
       .get(0).props.disabled).toEqual(false);
 
     expect(wrapper.find('#show-question-description-input-field-id')
-      .get(0).props.disabled).toEqual(false);
-
-    expect(wrapper.find('#show-question-owner-input-field-id')
-      .get(0).props.disabled).toEqual(false);
-    expect(wrapper.find('#show-question-assigned-to-input-field-id')
       .get(0).props.disabled).toEqual(false);
   });
 
@@ -249,36 +209,6 @@ describe('Show question component', () => {
     );
     expect(wrapper.find('#show-question-edit-button-id')
       .get(0).props.children).toEqual('Edit');
-  });
-
-  it('should show all users for assigned to if edit is enabled', () => {
-    const mockSetEditingQuestion = jest.fn();
-    const wrapper = shallow(
-        <ShowQuestion
-          isEditing={true}
-          questions={questions}
-          updateQuestion={()=>{}}
-          users={users}
-          match={{params: {id: 2}}}
-          setEditingQuestion={mockSetEditingQuestion} />
-    );
-    expect(wrapper.find('#show-question-assigned-to-input-field-id')
-      .get(0).props.children.length).toEqual(2); questions;
-  });
-
-  it('should show all users for owner if edit is enabled', () => {
-    const mockSetEditingQuestion = jest.fn();
-    const wrapper = shallow(
-        <ShowQuestion
-          questions={questions}
-          updateQuestion={()=>{}}
-          isEditing={true}
-          users={users}
-          match={{params: {id: 2}}}
-          setEditingQuestion={mockSetEditingQuestion} />
-    );
-    expect(wrapper.find('#show-question-owner-input-field-id')
-      .get(0).props.children.length).toEqual(2);
   });
 
   it('Component should have required questions properties', () => {
@@ -360,55 +290,6 @@ describe('Show question component', () => {
        'description': event.target.value,
        'id': 2,
        'owner': 'owner-2',
-       'question': 'question2',
-    });
-  });
-
-  it('should set question assigned to select field', () => {
-    const event = {target: {value: 'user1'}};
-    const container = mount(
-        <ShowQuestion
-          isEditing={true}
-          questions={questions}
-          updateQuestion={()=>{}}
-          users={users}
-          match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}}/>
-    );
-    container.find('#show-question-assigned-to-input-field-id')
-      .simulate('change', event);
-
-    container.find('#show-question-assigned-to-input-field-id')
-      .simulate('submit');
-    expect(container.state()).toEqual({
-       'assignedTo': event.target.value,
-       'description': 'test-description2',
-       'id': 2,
-       'owner': 'owner-2',
-       'question': 'question2',
-    });
-  });
-
-  it('should set question owner select field', () => {
-    const event = {target: {value: 'user1'}};
-    const container = mount(
-        <ShowQuestion
-          questions={questions}
-          updateQuestion={()=>{}}
-          isEditing={true}
-          users={users}
-          match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}}/>
-    );
-    container.find('#show-question-owner-input-field-id')
-      .simulate('change', event);
-
-    container.find('#show-question-owner-input-field-id').simulate('submit');
-    expect(container.state()).toEqual({
-       'assignedTo': 'assigned-2',
-       'description': 'test-description2',
-       'id': 2,
-       'owner': event.target.value,
        'question': 'question2',
     });
   });
