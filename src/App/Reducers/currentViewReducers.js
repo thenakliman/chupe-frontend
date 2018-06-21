@@ -2,7 +2,6 @@ import {ActionTypes} from '../Actions/ActionTypes';
 
 const initialCurrentView = {
     isWaitingForResponse: false,
-    isEditingQuestion: false,
 };
 
 export const currentView = (state=initialCurrentView, action) => {
@@ -12,12 +11,6 @@ export const currentView = (state=initialCurrentView, action) => {
                 {},
                 state,
                 {isWaitingForResponse: action.payload}
-            );
-        case ActionTypes.SET_IS_EDITING_QUESTION:
-            return Object.assign(
-                {},
-                state,
-                {isEditingQuestion: action.payload}
             );
         default:
             return {...state};

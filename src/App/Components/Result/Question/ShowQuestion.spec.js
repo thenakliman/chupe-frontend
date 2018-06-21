@@ -27,9 +27,7 @@ describe('Show Question component snapshot', () => {
         const wrapper = shallow(
             <ShowQuestion
               users={users}
-              isEditing={false}
               questions={questions}
-              setEditingQuestion={()=>{}}
               updateQuestion={()=>{}}
               match={{params: {id: 2}}}
         />);
@@ -43,11 +41,9 @@ describe('Show question component', () => {
   it('should have QuestionAnswerWrapper for question summary', () => {
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={false}
           users= {users}
           questions={questions}
           updateQuestion={()=>{}}
-          setEditingQuestion={jest.fn()}
           match={{params: {id: 2}}}
         />
     );
@@ -63,11 +59,9 @@ describe('Show question component', () => {
   it('should have QuestionAnswerWrapper for question description', () => {
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={false}
           users= {users}
           questions={questions}
           updateQuestion={()=>{}}
-          setEditingQuestion={jest.fn()}
           match={{params: {id: 2}}}
         />
     );
@@ -85,12 +79,11 @@ describe('Show question component', () => {
   it('Component should have required questions properties', () => {
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={true}
           questions={questions}
           updateQuestion={()=>{}}
           users={users}
           match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}} />
+        />
     );
     expect(wrapper.state()).toEqual({
       id: 2,
@@ -105,12 +98,11 @@ describe('Show question component', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={true}
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
           match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}} />
+        />
     );
 
     wrapper.find('#question-answer-summary-wrapper-id')
@@ -130,12 +122,11 @@ describe('Show question component', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={true}
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
           match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}} />
+        />
     );
 
     wrapper.find('#question-answer-summary-wrapper-id')
@@ -155,7 +146,6 @@ describe('Show question component', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={true}
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
@@ -180,12 +170,11 @@ describe('Show question component', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          isEditing={true}
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
           match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}} />
+        />
     );
     wrapper.find('#question-answer-description-wrapper-id')
         .get(0).props.saveHandler('');

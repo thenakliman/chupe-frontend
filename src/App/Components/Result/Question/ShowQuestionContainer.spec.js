@@ -5,7 +5,6 @@ import {shallow} from 'enzyme';
 import {mapStateToProps, mapDispatchToProps} from './ShowQuestionContainer';
 /* eslint-enable */
 import configureStore from 'redux-mock-store';
-import * as currentView from '../../../Actions/currentViewActions';
 import * as questionActions from '../../../Actions/questionActions';
 
 
@@ -45,20 +44,6 @@ describe('Question Result container', () => {
   it('Should have questions property', () => {
       const props = mapStateToProps(initialState);
       expect(props.questions).toEqual(initialState.questions.questionsData);
-  });
-
-  it('Should have isEditing property', () => {
-      const props = mapStateToProps(initialState);
-      expect(props.isEditing).toEqual(false);
-  });
-
-  it('should dispatch an set isEditingQuestion on click of edit button', () => {
-      const fakeAction = 'fakeAction';
-      spyOn(currentView, 'setIsEditingQuestion').and.returnValue(fakeAction);
-      const props = mapDispatchToProps(store.dispatch);
-      props.setEditingQuestion(true);
-      expect(currentView.setIsEditingQuestion).toHaveBeenCalledWith(true);
-      expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
 
   it('should dispatch an set updateQuestion on click of edit button', () => {

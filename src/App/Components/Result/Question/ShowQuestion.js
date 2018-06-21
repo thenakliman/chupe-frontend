@@ -130,9 +130,7 @@ export class ShowQuestion extends React.Component {
 }
 
 ShowQuestion.propTypes = {
-  isEditing: propTypes.bool.isRequired,
   users: propTypes.arrayOf(propTypes.object).isRequired,
   questions: propTypes.arrayOf(propTypes.object).isRequired,
-  setEditingQuestion: propTypes.func.isRequired,
   updateQuestion: propTypes.func.isRequired,
 };
