@@ -1,10 +1,12 @@
 import {ActionTypes} from '../Actions/ActionTypes';
 
-export const answers = (state, action) => {
+export const answers = (state=[], action) => {
+  console.log(state);
+
   switch (action.type) {
     case ActionTypes.ADD_ANSWERS:
-      return Object.assign({}, state, {answers: action.payload});
+      return [...action.payload];
     default:
-      return {...state};
+      return [...state];
   }
 };
