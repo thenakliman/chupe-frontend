@@ -46,6 +46,7 @@ export class ShowQuestion extends React.Component {
 
   /** Set initial state on component mount */
   componentDidMount() {
+     this.props.getAnswers(this.props.match.params.id);
      this.setState(this.getInitialState());
   }
 
@@ -124,6 +125,16 @@ export class ShowQuestion extends React.Component {
             saveHandler={this.handleQuestionDescription}
           />
         </div>
+        {this.props.answers.map((answer) => (
+          <div key={answer.id}>
+            <QuestionAnswerWrapper
+              headerText={'Answer Added by ' + this.state.owner}
+              bodyText={answer.answer}
+              saveHandler={this.handleQuestionDescription}
+              id={`show-question--answer-${answer.id}-id`}
+            />
+          </div>
+        ))}
       </div>
     );
   }
@@ -132,5 +143,7 @@ export class ShowQuestion extends React.Component {
 ShowQuestion.propTypes = {
   users: propTypes.arrayOf(propTypes.object).isRequired,
   questions: propTypes.arrayOf(propTypes.object).isRequired,
+  answers: propTypes.arrayOf(propTypes.object).isRequired,
   updateQuestion: propTypes.func.isRequired,
+  getAnswers: propTypes.func.isRequired,
 };

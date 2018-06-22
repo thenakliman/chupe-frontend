@@ -30,6 +30,8 @@ describe('Show Question component snapshot', () => {
               questions={questions}
               updateQuestion={()=>{}}
               match={{params: {id: 2}}}
+              getAnswers={()=>{}}
+              answers={[]}
         />);
 
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -45,6 +47,8 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={()=>{}}
           match={{params: {id: 2}}}
+          getAnswers={()=>{}}
+          answers={[]}
         />
     );
 
@@ -63,6 +67,8 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={()=>{}}
           match={{params: {id: 2}}}
+          getAnswers={()=>{}}
+          answers={[]}
         />
     );
 
@@ -83,6 +89,8 @@ describe('Show question component', () => {
           updateQuestion={()=>{}}
           users={users}
           match={{params: {id: 2}}}
+          getAnswers={()=>{}}
+          answers={[]}
         />
     );
     expect(wrapper.state()).toEqual({
@@ -102,6 +110,8 @@ describe('Show question component', () => {
           updateQuestion={mockedUpdateQuestion}
           users={users}
           match={{params: {id: 2}}}
+          getAnswers={()=>{}}
+          answers={[]}
         />
     );
 
@@ -125,6 +135,8 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
+          getAnswers={()=>{}}
+          answers={[]}
           match={{params: {id: 2}}}
         />
     );
@@ -150,7 +162,9 @@ describe('Show question component', () => {
           updateQuestion={mockedUpdateQuestion}
           users={users}
           match={{params: {id: 2}}}
-          setEditingQuestion={()=>{}} />
+          getAnswers={()=>{}}
+          answers={[]}
+        />
     );
     const description = 'test-10';
 
@@ -173,6 +187,8 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
+          getAnswers={()=>{}}
+          answers={[]}
           match={{params: {id: 2}}}
         />
     );
@@ -187,5 +203,39 @@ describe('Show question component', () => {
           owner: 'owner-2',
           assignedTo: 'assigned-2',
        });
+  });
+  it('should call getAnswers on mount of question', () => {
+    const mockedGetAnswers = jest.fn();
+    const questionId = 2;
+    shallow(
+        <ShowQuestion
+          questions={questions}
+          users={users}
+          getAnswers={mockedGetAnswers}
+          answers={[]}
+          match={{params: {id: questionId}}}
+          updateQuestion={()=>{}}
+        />
+    );
+
+    expect(mockedGetAnswers).toHaveBeenCalledWith(questionId);
+  });
+
+  it('should QuestionAnswerWrapper for each answer', () => {
+    const mockedGetAnswers = jest.fn();
+    const questionId = 2;
+    const answers = [{id: 1, answer: 'ans-1'}, {id: 20, answer: 'ans-2'}];
+    const wrapper = shallow(
+        <ShowQuestion
+          questions={questions}
+          users={users}
+          getAnswers={mockedGetAnswers}
+          answers={answers}
+          match={{params: {id: questionId}}}
+          updateQuestion={()=>{}}
+        />
+    );
+    expect(wrapper.find('#show-question--answer-1-id').length).toEqual(1);
+    expect(wrapper.find('#show-question--answer-20-id').length).toEqual(1);
   });
 });
