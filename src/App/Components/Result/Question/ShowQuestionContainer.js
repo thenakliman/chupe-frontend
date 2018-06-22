@@ -1,6 +1,7 @@
 import {ShowQuestion} from './ShowQuestion';
 import {connect} from 'react-redux';
 import {updateQuestion} from '../../../Actions/questionActions';
+import {getAnswers} from '../../../Actions/answerActions';
 
 /** Maps state of the ShowQuestion component from store
 
@@ -11,13 +12,15 @@ export function mapStateToProps(state) {
     return {
       users: state.users.usersData,
       questions: state.questions.questionsData,
+      answers: state.answers,
     };
 };
 
 export const mapDispatchToProps = (dispatch) => ({
-  updateQuestion: (questions, newQuestion) => {
-      dispatch(updateQuestion(questions, newQuestion));
-  },
+  updateQuestion: (questions, newQuestion) =>
+      dispatch(updateQuestion(questions, newQuestion)),
+
+  getAnswers: (questionId) => dispatch(getAnswers(questionId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowQuestion);

@@ -6,6 +6,7 @@ import {mapStateToProps, mapDispatchToProps} from './ShowQuestionContainer';
 /* eslint-enable */
 import configureStore from 'redux-mock-store';
 import * as questionActions from '../../../Actions/questionActions';
+import * as answerActions from '../../../Actions/answerActions';
 
 
 describe('Question Result container', () => {
@@ -30,6 +31,7 @@ describe('Question Result container', () => {
             currentQuestion: 10,
             isEditingQuestion: false,
         },
+        answers: null,
     };
 
     store = configureStore()(initialState);
@@ -46,6 +48,11 @@ describe('Question Result container', () => {
       expect(props.questions).toEqual(initialState.questions.questionsData);
   });
 
+  it('Should have answers property', () => {
+      const props = mapStateToProps(initialState);
+      expect(props.answers).toEqual(null);
+  });
+
   it('should dispatch an set updateQuestion on click of edit button', () => {
       const fakeAction = 'fakeAction';
       spyOn(questionActions, 'updateQuestion').and.returnValue(fakeAction);
@@ -53,6 +60,17 @@ describe('Question Result container', () => {
       props.updateQuestion('arg1', 'arg2');
       expect(questionActions.updateQuestion)
           .toHaveBeenCalledWith('arg1', 'arg2');
+      expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('should dispatch an get answers on mount', () => {
+      const fakeAction = 'fakeAction';
+      spyOn(answerActions, 'getAnswers').and.returnValue(fakeAction);
+      const questionId = 1101;
+      const props = mapDispatchToProps(store.dispatch);
+      props.getAnswers(questionId);
+
+      expect(answerActions.getAnswers).toHaveBeenCalledWith(questionId);
       expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
 });
