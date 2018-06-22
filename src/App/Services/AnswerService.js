@@ -6,7 +6,7 @@ export const AnswerService = {
   getAnswers(questionId) {
       return axios({
         method: 'get',
-        url: `${CHUPE_ANSWER_URL}/${questionId}`,
+        url: `${CHUPE_ANSWER_URL}?questionId=${questionId}`,
         headers: {'Content-Type': 'application/json'},
       })
       .then((response)=>response.data)

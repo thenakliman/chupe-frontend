@@ -11,7 +11,8 @@ describe('Question Service', () => {
 
         const questionId = 100;
 
-        mock.onGet('/api/v1/answers/' + questionId).reply(200, answerData);
+        mock.onGet('/api/v1/answers?questionId=' + questionId)
+            .reply(200, answerData);
 
         AnswerService.getAnswers(questionId).then((response) => {
             expect(response.data).toEqual(answerData.data);
@@ -21,7 +22,7 @@ describe('Question Service', () => {
 
     it('Response of getAnswers call fails', async () => {
         let mock = new MockAdapter(axios);
-        mock.onGet('/api/v1/answers/1').reply(404);
+        mock.onGet('/api/v1/answers?questionId=1').reply(404);
         spyOn(console, 'log');
         await AnswerService.getAnswers();
         expect(console.log)
