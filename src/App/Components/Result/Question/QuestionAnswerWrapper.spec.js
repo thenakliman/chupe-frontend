@@ -123,4 +123,27 @@ describe('should have a box', () => {
     wrapper.find('#edit-question-answer-wrapper-id').simulate('click');
     expect(mockedSaveHandler).not.toHaveBeenCalled();
   });
+
+  it('should set initial value of set editing mode from props', () => {
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText='my-body'
+            saveHandler={mockedSaveHandler}
+            isEditing={true}
+        />);
+    expect(wrapper.state().isEditingHeader).toEqual(true);
+  });
+
+  it('should set default value of isEditing to false', () => {
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText='my-body'
+            saveHandler={mockedSaveHandler}
+        />);
+    expect(wrapper.state().isEditingHeader).toEqual(false);
+  });
 });

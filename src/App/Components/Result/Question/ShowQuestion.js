@@ -136,6 +136,15 @@ export class ShowQuestion extends React.Component {
           </div>
         ))}
         <div>
+          <QuestionAnswerWrapper
+            headerText={'Description Added by ' + this.state.owner}
+            bodyText=''
+            isEditing={true}
+            id='show-question-answer--temporary-id'
+            saveHandler={this.handleQuestionDescription}
+          />
+        </div>
+        <div>
           <button id='show-question-reply-button-id' className='submit-button'>
             Reply
           </button>

@@ -11,7 +11,10 @@ export class QuestionAnswerWrapper extends React.Component {
     super(props);
     this.toggleEditingMode = this.toggleEditingMode.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.state = {isEditingHeader: false, bodyText: props.bodyText};
+    this.state = {
+      isEditingHeader: props.isEditing || false,
+      bodyText: props.bodyText,
+    };
   }
 
   // todo(thenakliman): optimization here by using some alternate approach.
@@ -69,6 +72,7 @@ export class QuestionAnswerWrapper extends React.Component {
                   id='question-answer-wrapper-table-body-id'>
                 {this.state.isEditingHeader?
                   <textarea id="question-answer-wrapper-table-textarea-id"
+                    placeholder="Answer the question"
                     className="description-textarea"
                     value={this.state.bodyText}
                     onChange={this.handleDescriptionChange}/>
