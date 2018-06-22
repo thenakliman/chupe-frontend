@@ -135,6 +135,11 @@ export class ShowQuestion extends React.Component {
             />
           </div>
         ))}
+        <div>
+          <button id='show-question-reply-button-id' className='submit-button'>
+            Reply
+          </button>
+        </div>
       </div>
     );
   }

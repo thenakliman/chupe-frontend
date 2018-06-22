@@ -238,4 +238,19 @@ describe('Show question component', () => {
     expect(wrapper.find('#show-question--answer-1-id').length).toEqual(1);
     expect(wrapper.find('#show-question--answer-20-id').length).toEqual(1);
   });
+
+  it('should have a reply button', () => {
+    const questionId = 2;
+    const wrapper = shallow(
+        <ShowQuestion
+          questions={questions}
+          users={users}
+          getAnswers={()=>{}}
+          answers={[]}
+          match={{params: {id: questionId}}}
+          updateQuestion={()=>{}}
+        />
+    );
+    expect(wrapper.find('#show-question-reply-button-id').length).toEqual(1);
+  });
 });
