@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import {AnswerService} from '../Services/AnswerService';
-import {getAnswers} from './answerActions';
+import {getAnswers, addAnswer} from './answerActions';
 
 describe('should create answer actions', () => {
   let store;
@@ -31,6 +31,28 @@ describe('should create answer actions', () => {
     spyOn(AnswerService, 'getAnswers').and.throwError('failed');
     await store.dispatch(getAnswers(questionId));
     expect(AnswerService.getAnswers).toHaveBeenCalledWith(questionId);
+    expect(console.log).toHaveBeenCalledWith('Error on fetching users');
+  });
+
+  it('should dispatch add answer action', async () => {
+    const answer = {id: 1011};
+    spyOn(AnswerService, 'addAnswer').and.returnValues(answer);
+
+    await store.dispatch(addAnswer(answer));
+
+    expect(AnswerService.addAnswer).toHaveBeenCalledWith(answer);
+    expect(store.getActions()).toEqual([{
+      type: 'ADD_ANSWER',
+      payload: answer,
+    }]);
+  });
+
+  it('Should show error message if failed to add Answer', async () => {
+    spyOn(console, 'log');
+    spyOn(AnswerService, 'addAnswer').and.throwError('failed');
+    const answer = {id: 1011};
+    await store.dispatch(addAnswer(answer));
+    expect(AnswerService.addAnswer).toHaveBeenCalledWith(answer);
     expect(console.log).toHaveBeenCalledWith('Error on fetching users');
   });
 });

@@ -19,11 +19,11 @@ export const AnswerService = {
         method: 'post',
         url: `${CHUPE_ANSWER_URL}`,
         data: answer,
-        headers: {'Content-Type': 'application/json'}
+        headers: {'Content-Type': 'application/json'},
       })
       .then((response)=>response.data)
       .catch((error) => {
           console.log(error.message);
       });
-  }
+  },
 };

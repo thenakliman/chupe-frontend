@@ -24,8 +24,6 @@ describe('Question Service', () => {
         let mock = new MockAdapter(axios);
         const answerData = {data: {id: 101}};
 
-        const questionId = 100;
-
         mock.onPost('/api/v1/answers')
             .reply(200, answerData);
 
