@@ -12,9 +12,9 @@ import * as UserActions from '../../../Actions/userActions';
 
 describe('User Result Container', () => {
   it('should return all the users', () => {
-    const initialState = {users: {usersData: [{'username': 'user1'}]}};
+    const initialState = {users: [{'username': 'user1'}]};
     const props = mapStateToProps(initialState);
-    expect(props.users).toEqual(initialState.users.usersData);
+    expect(props.users).toEqual(initialState.users);
   });
 });
 
@@ -24,9 +24,7 @@ describe('User result container', () => {
 
   beforeEach(() => {
     const initialState = {
-      'users': {
-        'usersData': [{'user1': 'user1Data'}],
-      },
+      users: [{'user1': 'user1Data'}],
     };
 
     store = configureStore()(initialState);

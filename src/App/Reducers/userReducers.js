@@ -1,14 +1,10 @@
 import {ActionTypes} from '../Actions/ActionTypes';
 
-const initialData = {
-  usersData: [],
-};
-
-export const users = (state=initialData, action) => {
+export const users = (state=[], action) => {
   switch (action.type) {
       case ActionTypes.ADD_USERS:
-        return Object.assign({}, state, {usersData: action.payload});
+        return [...action.payload];
       default:
-        return {...state};
+        return [...state];
   }
 };

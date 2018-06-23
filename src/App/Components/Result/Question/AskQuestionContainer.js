@@ -4,7 +4,7 @@ import {AskQuestion} from './AskQuestion';
 import {askQuestion} from '../../../Actions/questionActions';
 
 const mapStateToProps = (state) => ({
-    users: state.users.usersData,
+    users: state.users,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

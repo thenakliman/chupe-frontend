@@ -5,7 +5,7 @@ import {ActionTypes} from '../Actions/ActionTypes';
 describe('User reducer', () => {
   it('Check initial state is empty', () => {
       const nextState = users(undefined, {type: 'FAKE_ACTION'});
-      expect(nextState).toEqual({usersData: []});
+      expect(nextState).toEqual([]);
   });
 
   it('Check state is updated on ADD_USER action', () => {
@@ -14,8 +14,7 @@ describe('User reducer', () => {
           type: ActionTypes.ADD_USERS,
           payload: usersData,
       };
-      const nextState = users({'key1': 'data1'}, addUserAction);
-      const expectState = {'key1': 'data1', 'usersData': usersData};
-      expect(nextState).toEqual(expectState);
+      const nextState = users(['key1': 'data1'], addUserAction);
+      expect(nextState).toEqual(usersData);
   });
 });

@@ -22,9 +22,7 @@ describe('Question Result container', () => {
           assignedTo: 'at',
           description: 'd1',
           }],
-        users: {
-          usersData: [{'userName': 'user1'}, {'userName': 'user2'}],
-        },
+        users: [{'userName': 'user1'}, {'userName': 'user2'}],
         currentView: {
             currentQuestion: 10,
             isEditingQuestion: false,
@@ -38,7 +36,7 @@ describe('Question Result container', () => {
 
   it('Should have users property', () => {
       const props = mapStateToProps(initialState);
-      expect(props.users).toEqual(initialState.users.usersData);
+      expect(props.users).toEqual(initialState.users);
   });
 
   it('Should have questions property', () => {

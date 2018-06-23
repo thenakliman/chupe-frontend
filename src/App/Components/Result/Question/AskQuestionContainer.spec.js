@@ -16,9 +16,7 @@ describe('Question Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        'users': {
-            'usersData': [{'userName': 'user1'}, {'userName': 'user2'}],
-        },
+        'users': [{'userName': 'user1'}, {'userName': 'user2'}],
     };
 
     store = configureStore()(initialState);
@@ -60,6 +58,6 @@ describe('Question Result container', () => {
       </Provider>);
 
     expect(container.find(AskQuestion).props().users)
-        .toEqual(initialState.users.usersData);
+        .toEqual(initialState.users);
   });
 });

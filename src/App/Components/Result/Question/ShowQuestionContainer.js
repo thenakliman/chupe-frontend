@@ -10,7 +10,7 @@ import {getAnswers} from '../../../Actions/answerActions';
 */
 export function mapStateToProps(state) {
     return {
-      users: state.users.usersData,
+      users: state.users,
       questions: state.questions,
       answers: state.answers,
     };
