@@ -14,4 +14,16 @@ export const AnswerService = {
           console.log(error.message);
       });
   },
+  addAnswer(answer) {
+      return axios({
+        method: 'post',
+        url: `${CHUPE_ANSWER_URL}`,
+        data: answer,
+        headers: {'Content-Type': 'application/json'}
+      })
+      .then((response)=>response.data)
+      .catch((error) => {
+          console.log(error.message);
+      });
+  }
 };
