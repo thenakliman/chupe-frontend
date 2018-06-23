@@ -1,14 +1,10 @@
 import {ActionTypes} from '../Actions/ActionTypes';
 
-const initialData = {
-  questionsData: [],
-};
-
-export const questions = (state=initialData, action) => {
+export const questions = (state=[], action) => {
   switch (action.type) {
       case ActionTypes.ADD_QUESTIONS:
-        return Object.assign({}, state, {questionsData: action.payload});
+        return [...action.payload];
       default:
-        return {...state};
+        return [...state];
   }
 };

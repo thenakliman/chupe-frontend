@@ -11,7 +11,7 @@ import {getAnswers} from '../../../Actions/answerActions';
 export function mapStateToProps(state) {
     return {
       users: state.users.usersData,
-      questions: state.questions.questionsData,
+      questions: state.questions,
       answers: state.answers,
     };
 };

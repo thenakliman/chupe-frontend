@@ -5,7 +5,7 @@ import {ActionTypes} from '../Actions/ActionTypes';
 describe('Question reducer', () => {
   it('Check initial state is empty', () => {
       const nextState = questions(undefined, {type: 'FAKE_ACTION'});
-      expect(nextState).toEqual({questionsData: []});
+      expect(nextState).toEqual([]);
   });
 
   it('Check state is updated on ADD_QUESTIONS action', () => {
@@ -14,8 +14,7 @@ describe('Question reducer', () => {
           type: ActionTypes.ADD_QUESTIONS,
           payload: questionsData,
       };
-      const nextState = questions({'key1': 'data1'}, addQuestionsAction);
-      const expectState = {'key1': 'data1', 'questionsData': questionsData};
-      expect(nextState).toEqual(expectState);
+      const nextState = questions([{'key1': 'data1'}], addQuestionsAction);
+      expect(nextState).toEqual(questionsData);
   });
 });

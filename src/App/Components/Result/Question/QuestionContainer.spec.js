@@ -16,11 +16,10 @@ describe('Question Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        'questions': {
-            'questionsData': [
-                {id: 1, question: 'when?', owner: 'o1'},
-                {id: 2, question: 'how?', owner: 'o2'}],
-        },
+        'questions': [
+          {id: 1, question: 'when?', owner: 'o1'},
+          {id: 2, question: 'how?', owner: 'o2'},
+          ],
         'loggedInUserDetails': {
             userName: 'user1',
         },
@@ -37,7 +36,7 @@ describe('Question Result container', () => {
       </Provider>);
 
     expect(container.find(Question).props().questions)
-        .toEqual(initialState.questions.questionsData);
+        .toEqual(initialState.questions);
   });
 
   it('Should have logged in user username property', () => {

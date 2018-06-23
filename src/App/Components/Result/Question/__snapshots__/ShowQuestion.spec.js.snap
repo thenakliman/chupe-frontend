@@ -21,6 +21,15 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
     />
   </div>
   <div>
+    <QuestionAnswerWrapper
+      bodyText=""
+      headerText="Description Added by owner-2"
+      id="show-question-answer--temporary-id"
+      isEditing={true}
+      saveHandler={[Function]}
+    />
+  </div>
+  <div>
     <button
       className="submit-button"
       id="show-question-reply-button-id"

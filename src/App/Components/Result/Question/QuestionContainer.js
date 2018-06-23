@@ -4,7 +4,7 @@ import {getAllQuestions} from '../../../Actions/questionActions';
 
 
 const mapStateToProps = (state) => ({
-    questions: state.questions.questionsData,
+    questions: state.questions,
     loggedInUser: state.loggedInUserDetails.userName,
 });
 

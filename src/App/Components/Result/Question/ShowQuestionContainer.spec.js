@@ -15,15 +15,13 @@ describe('Question Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        questions: {
-            questionsData: [{
-              id: 10,
-              question: 'when?',
-              owner: 'o1',
-              assignedTo: 'at',
-              description: 'd1',
-              }],
-        },
+        questions: [{
+          id: 10,
+          question: 'when?',
+          owner: 'o1',
+          assignedTo: 'at',
+          description: 'd1',
+          }],
         users: {
           usersData: [{'userName': 'user1'}, {'userName': 'user2'}],
         },
@@ -45,7 +43,7 @@ describe('Question Result container', () => {
 
   it('Should have questions property', () => {
       const props = mapStateToProps(initialState);
-      expect(props.questions).toEqual(initialState.questions.questionsData);
+      expect(props.questions).toEqual(initialState.questions);
   });
 
   it('Should have answers property', () => {
