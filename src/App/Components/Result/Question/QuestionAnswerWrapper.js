@@ -89,7 +89,7 @@ export class QuestionAnswerWrapper extends React.Component {
         </table>
         <div> { this.state.isEditingHeader &&
           <button id='question-answer-wrapper-save-button-id'
-                  className='submit-button'
+                  className='question-answer-wrapper-save-button'
                   onClick={this.toggleEditingMode}
           >
             Reply
