@@ -1,7 +1,7 @@
 import {ShowQuestion} from './ShowQuestion';
 import {connect} from 'react-redux';
 import {updateQuestion} from '../../../Actions/questionActions';
-import {getAnswers} from '../../../Actions/answerActions';
+import {getAnswers, addAnswer} from '../../../Actions/answerActions';
 
 /** Maps state of the ShowQuestion component from store
 
@@ -21,6 +21,7 @@ export const mapDispatchToProps = (dispatch) => ({
       dispatch(updateQuestion(questions, newQuestion)),
 
   getAnswers: (questionId) => dispatch(getAnswers(questionId)),
+  addAnswer: (answer) => dispatch(addAnswer(answer)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowQuestion);

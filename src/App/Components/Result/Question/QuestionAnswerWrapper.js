@@ -32,7 +32,12 @@ export class QuestionAnswerWrapper extends React.Component {
     if (this.state.isEditingHeader) {
       this.props.saveHandler(this.state.bodyText);
     }
-    this.setState({isEditingHeader: !this.state.isEditingHeader});
+
+    if (!this.props.isEditing) {
+      this.setState({isEditingHeader: !this.state.isEditingHeader});
+    } else {
+      this.handleDescriptionChange({target: {value: ''}});
+    }
   }
 
   /** Handle change in description.
@@ -71,7 +76,8 @@ export class QuestionAnswerWrapper extends React.Component {
               <td className='table-border'
                   id='question-answer-wrapper-table-body-id'>
                 {this.state.isEditingHeader?
-                  <textarea id="question-answer-wrapper-table-textarea-id"
+                  <textarea
+                    id="question-answer-wrapper-table-textarea-id"
                     placeholder="Answer the question"
                     className="description-textarea"
                     value={this.state.bodyText}
@@ -81,6 +87,15 @@ export class QuestionAnswerWrapper extends React.Component {
             </tr>
           </tbody>
         </table>
+        <div> { this.state.isEditingHeader &&
+          <button id='question-answer-wrapper-save-button-id'
+                  className='submit-button'
+                  onClick={this.toggleEditingMode}
+          >
+            Reply
+          </button>
+        }
+        </div>
       </div>
     );
   }

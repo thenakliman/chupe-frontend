@@ -32,6 +32,7 @@ describe('Show Question component snapshot', () => {
               match={{params: {id: 2}}}
               getAnswers={()=>{}}
               answers={[]}
+              addAnswer={()=>{}}
         />);
 
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -49,6 +50,7 @@ describe('Show question component', () => {
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
           answers={[]}
+          addAnswer={()=>{}}
         />
     );
 
@@ -69,6 +71,7 @@ describe('Show question component', () => {
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
           answers={[]}
+          addAnswer={()=>{}}
         />
     );
 
@@ -91,6 +94,7 @@ describe('Show question component', () => {
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
           answers={[]}
+          addAnswer={()=>{}}
         />
     );
     expect(wrapper.state()).toEqual({
@@ -112,6 +116,7 @@ describe('Show question component', () => {
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
           answers={[]}
+          addAnswer={()=>{}}
         />
     );
 
@@ -138,6 +143,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: 2}}}
+          addAnswer={()=>{}}
         />
     );
 
@@ -164,6 +170,7 @@ describe('Show question component', () => {
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
           answers={[]}
+          addAnswer={()=>{}}
         />
     );
     const description = 'test-10';
@@ -190,6 +197,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: 2}}}
+          addAnswer={()=>{}}
         />
     );
     wrapper.find('#question-answer-description-wrapper-id')
@@ -215,6 +223,7 @@ describe('Show question component', () => {
           answers={[]}
           match={{params: {id: questionId}}}
           updateQuestion={()=>{}}
+          addAnswer={()=>{}}
         />
     );
 
@@ -233,25 +242,11 @@ describe('Show question component', () => {
           answers={answers}
           match={{params: {id: questionId}}}
           updateQuestion={()=>{}}
+          addAnswer={()=>{}}
         />
     );
     expect(wrapper.find('#show-question--answer-1-id').length).toEqual(1);
     expect(wrapper.find('#show-question--answer-20-id').length).toEqual(1);
-  });
-
-  it('should have a reply button', () => {
-    const questionId = 2;
-    const wrapper = shallow(
-        <ShowQuestion
-          questions={questions}
-          users={users}
-          getAnswers={()=>{}}
-          answers={[]}
-          match={{params: {id: questionId}}}
-          updateQuestion={()=>{}}
-        />
-    );
-    expect(wrapper.find('#show-question-reply-button-id').length).toEqual(1);
   });
 
   it('should have a temporary question answer wrapper', () => {
@@ -263,6 +258,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: questionId}}}
+          addAnswer={()=>{}}
           updateQuestion={()=>{}}
         />
     );
@@ -281,11 +277,35 @@ describe('Show question component', () => {
           answers={[]}
           match={{params: {id: questionId}}}
           updateQuestion={()=>{}}
+          addAnswer={()=>{}}
         />
     );
     expect(
       wrapper.find('#show-question-answer--temporary-id')
         .get(0).props.isEditing
     ).toEqual(true);
+  });
+
+  it('should call add answer on click of save on temporary', () => {
+    const questionId = 2;
+    const answer = 'answer 1';
+    const mockAddAnswer = jest.fn();
+    const wrapper = shallow(
+        <ShowQuestion
+          questions={questions}
+          users={users}
+          getAnswers={()=>{}}
+          answers={[]}
+          match={{params: {id: questionId}}}
+          updateQuestion={()=>{}}
+          addAnswer={mockAddAnswer}
+        />
+    );
+    wrapper.find(
+      '#show-question-answer--temporary-id').get(0).props.saveHandler(answer);
+    expect(mockAddAnswer).toHaveBeenCalledWith({
+      answer: 'answer 1',
+      answeredBy: 'owner-2',
+      questionId: 2});
   });
 });

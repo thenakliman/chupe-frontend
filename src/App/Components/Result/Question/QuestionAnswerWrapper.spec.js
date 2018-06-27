@@ -29,6 +29,27 @@ describe('should have a box', () => {
     expect(wrapper.length).toEqual(1);
   });
 
+  it('should not have an answer button if not editing', () => {
+    const wrapper = shallow(
+      <QuestionAnswerWrapper headerText=''
+                             bodyText=''
+                             isEditing={false}/>
+      ).find('#question-answer-wrapper-save-button-id');
+
+    expect(wrapper.length).toEqual(0);
+  });
+
+  it('should have an answer button if editing', () => {
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+          headerText=''
+          bodyText=''
+          isEditing={true}
+        />).find('#question-answer-wrapper-save-button-id');
+
+    expect(wrapper.length).toEqual(1);
+  });
+
   it('should change text from Edit to Save on click', () => {
     const wrapper = shallow(<QuestionAnswerWrapper headerText='' bodyText=''/>);
     expect(
@@ -98,7 +119,7 @@ describe('should have a box', () => {
     ).toEqual(bodyText);
   });
 
-  it('should show call update method on clicked in editing mode', () => {
+  it('should call update method on clicked in editing mode', () => {
     const bodyText = 'my-body';
     const mockedSaveHandler = jest.fn();
     const wrapper = shallow(
@@ -110,6 +131,51 @@ describe('should have a box', () => {
     wrapper.setState({isEditingHeader: true});
     wrapper.find('#edit-question-answer-wrapper-id').simulate('click');
     expect(mockedSaveHandler).toHaveBeenCalledWith(bodyText);
+  });
+
+  it('should call update method on clicked of reply button', () => {
+    const bodyText = 'my-body';
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText={bodyText}
+            isEditing={true}
+            saveHandler={mockedSaveHandler}
+        />);
+    wrapper.find('#question-answer-wrapper-save-button-id').simulate('click');
+    expect(mockedSaveHandler).toHaveBeenCalledWith(bodyText);
+  });
+
+  it('should not change editing mode on click of last reply button', () => {
+    const bodyText = 'my-body';
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText={bodyText}
+            isEditing={true}
+            saveHandler={mockedSaveHandler}
+        />);
+    wrapper.find('#question-answer-wrapper-save-button-id').simulate('click');
+    expect(mockedSaveHandler).toHaveBeenCalledWith(bodyText);
+  });
+
+  it('should remove text content on click of last reply button', () => {
+    const bodyText = 'my-body';
+    const mockedSaveHandler = jest.fn();
+    const wrapper = shallow(
+        <QuestionAnswerWrapper
+            headerText='abc'
+            bodyText={bodyText}
+            isEditing={true}
+            saveHandler={mockedSaveHandler}
+        />);
+    wrapper.find('#question-answer-wrapper-save-button-id').simulate('click');
+    expect(
+      wrapper.find(
+        '#question-answer-wrapper-table-textarea-id')
+      .get(0).props.value).toEqual('');
   });
 
   it('should not call update method on click, if not in editing mode', () => {

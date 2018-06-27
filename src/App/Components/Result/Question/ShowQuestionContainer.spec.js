@@ -69,4 +69,16 @@ describe('Question Result container', () => {
       expect(answerActions.getAnswers).toHaveBeenCalledWith(questionId);
       expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
+
+  it('should dispatch an get answers on mount', () => {
+      const fakeAction = 'fakeAction';
+      spyOn(answerActions, 'addAnswer').and.returnValue(fakeAction);
+      const props = mapDispatchToProps(store.dispatch);
+      const question = {id: 10};
+
+      props.addAnswer(question);
+
+      expect(answerActions.addAnswer).toHaveBeenCalledWith(question);
+      expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+  });
 });

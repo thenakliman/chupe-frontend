@@ -26,7 +26,21 @@ export class ShowQuestion extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.getInitialState = this.getInitialState.bind(this);
       this.validateForm = this.validateForm.bind(this);
+      this.addAnswer = this.addAnswer.bind(this);
       this.currentQuestion = this.getInitialState();
+  }
+
+  /** Add answer
+   * @param {string} answer, is the answer to the question.
+   */
+  addAnswer(answer) {
+    const completeAnswer = {
+      answer: answer,
+      answeredBy: this.state.owner,
+      questionId: this.props.match.params.id,
+    };
+
+    this.props.addAnswer(completeAnswer);
   }
 
   /** Provide the initial state to the component
@@ -141,13 +155,8 @@ export class ShowQuestion extends React.Component {
             bodyText=''
             isEditing={true}
             id='show-question-answer--temporary-id'
-            saveHandler={this.handleQuestionDescription}
+            saveHandler={this.addAnswer}
           />
-        </div>
-        <div>
-          <button id='show-question-reply-button-id' className='submit-button'>
-            Reply
-          </button>
         </div>
       </div>
     );
@@ -160,4 +169,5 @@ ShowQuestion.propTypes = {
   answers: propTypes.arrayOf(propTypes.object).isRequired,
   updateQuestion: propTypes.func.isRequired,
   getAnswers: propTypes.func.isRequired,
+  addAnswer: propTypes.func.isRequired,
 };
