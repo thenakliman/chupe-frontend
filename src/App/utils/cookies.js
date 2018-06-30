@@ -48,7 +48,6 @@ export const getToken = () => {
       !cookies.get(TOKEN_EXPIRY_COOKIE_KEY) ||
       cookies.get(TOKEN_EXPIRY_COOKIE_KEY) < Date.now()) {
     return null;
-    console.log(cookies.get(TOKEN_EXPIRY_COOKIE_KEY), Date.now());
   }
 
   return cookies.get(TOKEN_COOKIE_KEY);
