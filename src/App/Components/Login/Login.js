@@ -26,8 +26,11 @@ export class Login extends React.Component {
 
   /** handle starting of the app */
   handleSubmit() {
-      this.props.setUsername(this.state.username);
-      history.push('/users');
+      this.props.authenticate(this.state.username);
+
+      if(this.props.username) {
+        history.push('/users');
+      }
   }
   /** Renders Login component.
    * @return {object} returns login component
@@ -75,7 +78,7 @@ export class Login extends React.Component {
 }
 
 Login.propTypes = {
-  setUsername: propTypes.func.isRequired,
+  authenticate: propTypes.func.isRequired,
 };
 /*
         <div>

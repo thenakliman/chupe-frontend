@@ -27,16 +27,38 @@ describe('Login in  Container', () => {
   it('Should dispatch set username action', () => {
     const testAction = 'test-action';
     const username = 'test-username';
-    spyOn(LoginActions, 'setUsername').and.returnValue(testAction);
+    spyOn(LoginActions, 'authenticate').and.returnValue(testAction);
 
     const wrapper = mount(
       <Provider store={store}>
         <LoginContainer/>
       </Provider>);
 
-    wrapper.find(Login).props().setUsername(username);
+    wrapper.find(Login).props().authenticate(username);
 
-    expect(LoginActions.setUsername).toHaveBeenCalledWith(username);
+    expect(LoginActions.authenticate).toHaveBeenCalledWith(username);
     expect(store.dispatch).toHaveBeenCalledWith(testAction);
+  });
+
+  it('Should set username to null', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <LoginContainer/>
+      </Provider>);
+
+    expect(wrapper.find(Login).props().username).toEqual(null);
+  });
+
+  it('Should set username to valid value', () => {
+    const username = 'testUsername';
+    initialState.loggedInUserDetails.userName = username;
+    store = configureStore()(initialState);
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <LoginContainer/>
+      </Provider>);
+
+    expect(wrapper.find(Login).props().username).toEqual(username);
   });
 });
