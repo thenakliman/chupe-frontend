@@ -34,5 +34,11 @@ module.exports = {
           ]
       }
     ]
+  },
+  devServer: {
+    proxy: [{
+      context: ['/api', '/token'],
+      target: 'http://localhost:8080',
+    }]
   }
 }
