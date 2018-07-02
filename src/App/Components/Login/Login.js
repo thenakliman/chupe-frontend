@@ -28,7 +28,7 @@ export class Login extends React.Component {
   handleSubmit() {
       this.props.authenticate(this.state.username);
 
-      if(this.props.username) {
+      if (this.props.username) {
         history.push('/users');
       }
   }

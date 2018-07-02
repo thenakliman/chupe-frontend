@@ -47,7 +47,9 @@ describe('Login page', () => {
 
   it('should call authenticate on submit button', () => {
     const authenticate = jest.fn();
-    const wrapper = shallow(<Login authenticate={authenticate} username={null} />);
+    const wrapper = shallow(
+      <Login authenticate={authenticate} username={null} />);
+
     const username = 'my-username';
     wrapper.setState({username: username});
     wrapper.find('#login-page-get-started-button-id').simulate('click');

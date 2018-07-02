@@ -3,10 +3,15 @@ import axios from 'axios';
 
 const tokenURL = '/token';
 
-export function get(url) {
-    return axios.get(url)
+/** Return token from the header.
+ * @param {string} url for the token
+ * @return {string} token received
+ */
+export async function get(url) {
+    return await axios.get(url)
     .then((response)=>response.headers.authorization)
     .catch((error) => {
+        // todo(thenakliman): Add test for this branch
         console.log(error.message);
     });
 }
@@ -23,6 +28,7 @@ export async function getToken(username) {
   }
 
   token = await get(tokenURL + '?username=' + username);
+
   CookiesUtility.setCookies(token);
   return token;
 }

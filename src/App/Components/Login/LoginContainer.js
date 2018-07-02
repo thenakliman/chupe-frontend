@@ -3,8 +3,8 @@ import {Login} from './Login';
 import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => ({
-  username: state.loggedInUserDetails.userName
-})
+  username: state.loggedInUserDetails.userName,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   authenticate: (username) => dispatch(authenticate(username)),
