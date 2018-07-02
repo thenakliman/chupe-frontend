@@ -28,6 +28,12 @@ describe('getCookie', () => {
     cookies.cookies.set('expiryTime', Date.now()-10);
     expect(cookies.getToken()).toEqual(null);
   });
+
+  it('should return username', () => {
+    const username = 'TestUser';
+    cookies.cookies.set('username', username);
+    expect(cookies.getUsername()).toEqual(username);
+  });
 });
 
 describe('set cookies', () => {

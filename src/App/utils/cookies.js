@@ -43,6 +43,10 @@ const setUsername = (userName) => {
   setCookie(TOKEN_USERNAME_KEY, userName);
 };
 
+export const getUsername = () => {
+  return cookies.get(TOKEN_USERNAME_KEY);
+};
+
 export const getToken = () => {
   if (!cookies.get(TOKEN_COOKIE_KEY) ||
       !cookies.get(TOKEN_EXPIRY_COOKIE_KEY) ||
