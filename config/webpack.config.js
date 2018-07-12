@@ -40,5 +40,8 @@ module.exports = {
       context: ['/api', '/token'],
       target: 'http://localhost:8080',
     }]
+  },
+  externals: {
+    Config: JSON.stringify(process.env.mode == 'development' ? require('./config.dev.json') : require('./config.dev.json'))
   }
 }

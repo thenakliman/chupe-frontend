@@ -6,8 +6,8 @@ const TOKEN_EXPIRY_COOKIE_KEY = 'expiryTime';
 const TOKEN_USERNAME_KEY = 'username';
 const audience = 'chupe-frontend';
 const issuer = 'chupe';
-
 export let cookies = new Cookies();
+const Config = require('Config');
 
 const setCookie = (key, value) => {
   cookies.set(key, value);
@@ -15,7 +15,7 @@ const setCookie = (key, value) => {
 
 export const setCookies = (token) => {
   verify(token,
-         'chupe-key',
+         Config.signingKey,
          {
             algorithms: ['HS512'],
             audience: audience,
