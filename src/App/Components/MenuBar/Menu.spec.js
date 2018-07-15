@@ -34,13 +34,13 @@ describe('Menu Bar Component', () => {
     expect(wrapper.find('.Tab').get(0).props.id).toEqual('users-tab');
   });
 
-  it('Should display div with Tab class and id questions-tab', () => {
+  it('Should display div logout', () => {
     const wrapper = shallow(
         <MenuBar
             showUserTab={()=>{}}
             showQuestionTab={()=>{}}
         />);
-    expect(wrapper.find('.Tab').get(1).props.id).toEqual('questions-tab');
+    expect(wrapper.find('#menu-logout-container').length).toEqual(1);
   });
 });
 

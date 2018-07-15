@@ -7,6 +7,8 @@
 }
 
 .Header {
+    display: flex;
+    justify-content: space-between;
     background-color: #20232a;
     color: #fff;
     padding: 0.8rem;
@@ -21,4 +23,9 @@
     text-align: center;
     color: white;
     text-decoration: none;
+}
+
+#menu-logout-container {
+    font-size: 1rem;
+    font-weight: 100;
 }

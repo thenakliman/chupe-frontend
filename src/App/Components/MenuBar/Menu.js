@@ -18,12 +18,19 @@ export class MenuBar extends React.Component {
         return (
             <div>
                 <header id="chupe-header" className="Header">
-                    <a href='#/users' id="users-tab" className='Tab'>
-                         Users
-                    </a>
-                    <a href='#/questions' id="questions-tab" className='Tab'>
-                         Questions
-                    </a>
+                    <span>
+                      <a href='#/users' id="users-tab" className='Tab'>
+                           Users
+                      </a>
+                      <a href='#/questions' id="questions-tab" className='Tab'>
+                           Questions
+                      </a>
+                    </span>
+                    <span>
+                      <div id='menu-logout-container'>
+                        logout
+                      </div>
+                    </span>
                 </header>
             </div>
         );
