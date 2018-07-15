@@ -14,6 +14,7 @@ export class Login extends React.Component {
     this.state = {username: '', password: ''};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
   }
 
 
@@ -24,9 +25,16 @@ export class Login extends React.Component {
       this.setState({username: event.target.value});
   }
 
+  /** Handle changes on the question fields
+  * @param {object} event containing new modified value
+  */
+  handlePassword(event) {
+      this.setState({password: event.target.value});
+  }
+
   /** handle starting of the app */
   handleSubmit() {
-      this.props.authenticate(this.state.username);
+      this.props.authenticate(this.state.username, this.state.password);
 
       if (this.props.username) {
         history.push('/users');
@@ -60,6 +68,8 @@ export class Login extends React.Component {
               <div>
                 <input type='password'
                        id='login-page-password-field-id'
+                       onChange={this.handlePassword}
+                       value={this.state.value}
                        className='login-page-input'/>
               </div>
             </div>

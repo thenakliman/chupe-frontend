@@ -2,6 +2,8 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import {Login} from './Login'; // eslint-disable-line no-unused-vars
 import {shallow} from 'enzyme';
 import * as History from '../../utils/history';
+
+
 describe('Login page', () => {
   it('should display an icon on load of the page', () => {
     const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
@@ -45,14 +47,24 @@ describe('Login page', () => {
     expect(wrapper.state().username).toEqual(username);
   });
 
+  it('should update input field for password', () => {
+    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const password = 'my-password';
+    const event = {target: {value: password}};
+
+    wrapper.find('#login-page-password-field-id').simulate('change', event);
+    expect(wrapper.state().password).toEqual(password);
+  });
+
   it('should call authenticate on submit button', () => {
     const authenticate = jest.fn();
     const wrapper = shallow(
       <Login authenticate={authenticate} username={null} />);
 
     const username = 'my-username';
-    wrapper.setState({username: username});
+    const password = 'my-password';
+    wrapper.setState({username: username, password: password});
     wrapper.find('#login-page-get-started-button-id').simulate('click');
-    expect(authenticate).toHaveBeenCalledWith(username);
+    expect(authenticate).toHaveBeenCalledWith(username, password);
   });
 });

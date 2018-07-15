@@ -26,17 +26,18 @@ describe('Login in  Container', () => {
 
   it('Should dispatch set username action', () => {
     const testAction = 'test-action';
-    const username = 'test-username';
     spyOn(LoginActions, 'authenticate').and.returnValue(testAction);
 
     const wrapper = mount(
       <Provider store={store}>
         <LoginContainer/>
       </Provider>);
+    const username = 'test-username';
+    const password = 'test-password';
 
-    wrapper.find(Login).props().authenticate(username);
+    wrapper.find(Login).props().authenticate(username, password);
 
-    expect(LoginActions.authenticate).toHaveBeenCalledWith(username);
+    expect(LoginActions.authenticate).toHaveBeenCalledWith(username, password);
     expect(store.dispatch).toHaveBeenCalledWith(testAction);
   });
 
