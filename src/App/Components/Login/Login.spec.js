@@ -6,12 +6,12 @@ import * as History from '../../utils/history';
 
 describe('Login page', () => {
   it('should display an icon on load of the page', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     expect(wrapper.find('#login-form-id').length).toEqual(1);
   });
 
   it('should have get started button', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     expect(wrapper.find('#login-page-get-started-button-id').length).toEqual(1);
   });
 
@@ -23,23 +23,23 @@ describe('Login page', () => {
   });
 
   it('should have input field for username', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     expect(wrapper.find('#login-page-username-field-id').length).toEqual(1);
   });
 
   it('should have input field for password', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     expect(wrapper.find('#login-page-password-field-id').length).toEqual(1);
   });
 
   it('should have input field for password', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     expect(wrapper.find('#login-page-password-field-id')
         .get(0).props.type).toEqual('password');
   });
 
   it('should update input field for username', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     const username = 'my-username';
     const event = {target: {value: username}};
 
@@ -48,7 +48,7 @@ describe('Login page', () => {
   });
 
   it('should update input field for password', () => {
-    const wrapper = shallow(<Login authenticate={()=>{}} username={null}/>);
+    const wrapper = shallow(<Login authenticate={()=>{}} />);
     const password = 'my-password';
     const event = {target: {value: password}};
 
@@ -59,7 +59,7 @@ describe('Login page', () => {
   it('should call authenticate on submit button', () => {
     const authenticate = jest.fn();
     const wrapper = shallow(
-      <Login authenticate={authenticate} username={null} />);
+      <Login authenticate={authenticate} />);
 
     const username = 'my-username';
     const password = 'my-password';
