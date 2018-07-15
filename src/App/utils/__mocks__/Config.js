@@ -1,0 +1,6 @@
+/* eslint-disable */
+{
+  signingKey: '5C062F492D34669254A4765371FED7A7DB27572758FDDBF5286AF4BC22487F23';
+}
+
+/* eslint-enable */

@@ -36,10 +36,11 @@ describe('getCookie', () => {
   });
 });
 
+/* eslint-disable */
+const token = 'eyJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJjaHVwZS1mcm9udGVuZCIsInN1YiI6InByYXN1bl9oYXphcmkiLCJyb2xlcyI6WyJhZG1pbiJdLCJuYW1lIjoiUHJhc3VuIGhhemFyaSIsImlzcyI6ImNodXBlIiwiZXhwIjoxNTMwMzM2NDA0LCJpYXQiOjE1MzAzMzU4MDQsImVtYWlsIjoicGhhemFyaUBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoicHJhc3VuX2hhemFyaSJ9.jQrBmj8X9sN41zMyUFjB3dy53uASBravnsjNgahh09-HbHrdqu5MF2sBxL2YSluVJqRtR6SGzIcWrfuDNqIVJw';
+/* eslint-enable */
+
 describe('set cookies', () => {
-  /* eslint-disable */
-  const token = 'eyJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJjaHVwZS1mcm9udGVuZCIsInN1YiI6InByYXN1bl9oYXphcmkiLCJyb2xlcyI6WyJhZG1pbiJdLCJuYW1lIjoiUHJhc3VuIGhhemFyaSIsImlzcyI6ImNodXBlIiwiZXhwIjoxNTMwMzM2NDA0LCJpYXQiOjE1MzAzMzU4MDQsImVtYWlsIjoicGhhemFyaUBleGFtcGxlLmNvbSIsInVzZXJuYW1lIjoicHJhc3VuX2hhemFyaSJ9.jQrBmj8X9sN41zMyUFjB3dy53uASBravnsjNgahh09-HbHrdqu5MF2sBxL2YSluVJqRtR6SGzIcWrfuDNqIVJw';
-  /* eslint-enable */
   it('should set token cookies', () => {
     cookies.setCookies(token);
     expect(cookies.cookies.get('token')).toEqual(token);
@@ -53,5 +54,26 @@ describe('set cookies', () => {
   it('should set expiryTime cookies', () => {
     cookies.setCookies(token);
     expect(cookies.cookies.get('expiryTime')).toEqual('1530336404');
+  });
+});
+
+describe('remove cookies', () => {
+  beforeEach(() => {
+      cookies.setCookies(token);
+  });
+
+  it('should remove token cookies', () => {
+    cookies.removeCookies(token);
+    expect(cookies.cookies.get('token')).toEqual(undefined);
+  });
+
+  it('should set username cookies', () => {
+    cookies.removeCookies(token);
+    expect(cookies.cookies.get('username')).toEqual(undefined);
+  });
+
+  it('should set expiryTime cookies', () => {
+    cookies.removeCookies(token);
+    expect(cookies.cookies.get('expiryTime')).toEqual(undefined);
   });
 });

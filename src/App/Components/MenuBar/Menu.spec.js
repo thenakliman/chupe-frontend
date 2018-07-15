@@ -2,6 +2,8 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import {MenuBar} from './Menu'; // eslint-disable-line no-unused-vars
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
+import * as cookies from '../../utils/cookies';
+import * as History from '../../utils/history';
 
 describe('Menu Bar Snapshot', () => {
   it('should match snapshot', () => {
@@ -42,6 +44,20 @@ describe('Menu Bar Component', () => {
         />);
     expect(wrapper.find('#menu-logout-container').length).toEqual(1);
   });
+
+  it('Should should call removeCookies on click of logout', () => {
+    spyOn(cookies, 'removeCookies');
+    const pushMock = jest.fn();
+    History.history = {push: pushMock};
+    const wrapper = shallow(
+        <MenuBar
+            showUserTab={()=>{}}
+            showQuestionTab={()=>{}}
+        />);
+
+    wrapper.find('#menu-logout-container').simulate('click');
+
+    expect(cookies.removeCookies).toHaveBeenCalledWith();
+    expect(pushMock).toHaveBeenCalledWith('/');
+  });
 });
-
-

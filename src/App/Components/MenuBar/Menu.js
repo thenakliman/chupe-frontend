@@ -1,4 +1,6 @@
 import React from 'react';
+import {removeCookies} from '../../utils/cookies';
+import {history} from '../../utils/history';
 
 require('./Menu.css');
 
@@ -9,6 +11,11 @@ require('./Menu.css');
 * @author: thenakliman
 */
 export class MenuBar extends React.Component {
+    /** logout user session. */
+    logout() {
+      removeCookies();
+      history.push('/');
+    }
     /**
     * User result component of the application.
     *
@@ -27,7 +34,7 @@ export class MenuBar extends React.Component {
                       </a>
                     </span>
                     <span>
-                      <div id='menu-logout-container'>
+                      <div id='menu-logout-container' onClick={this.logout}>
                         logout
                       </div>
                     </span>

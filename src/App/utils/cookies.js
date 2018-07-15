@@ -13,6 +13,10 @@ const setCookie = (key, value) => {
   cookies.set(key, value);
 };
 
+const removeCookie = (key, value) => {
+  cookies.remove(key);
+};
+
 export const setCookies = (token) => {
   verify(token,
          Config.signingKey,
@@ -29,6 +33,12 @@ export const setCookies = (token) => {
   setToken(token);
   setTokenExpiryTime(decodedToken.exp);
   setUsername(decodedToken.username);
+};
+
+export const removeCookies = (token) => {
+  removeCookie(TOKEN_COOKIE_KEY);
+  removeCookie(TOKEN_EXPIRY_COOKIE_KEY);
+  removeCookie(TOKEN_USERNAME_KEY);
 };
 
 const setToken = (token) => {

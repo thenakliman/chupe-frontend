@@ -6,20 +6,30 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
     className="Header"
     id="chupe-header"
   >
-    <a
-      className="Tab"
-      href="#/users"
-      id="users-tab"
-    >
-      Users
-    </a>
-    <a
-      className="Tab"
-      href="#/questions"
-      id="questions-tab"
-    >
-      Questions
-    </a>
+    <span>
+      <a
+        className="Tab"
+        href="#/users"
+        id="users-tab"
+      >
+        Users
+      </a>
+      <a
+        className="Tab"
+        href="#/questions"
+        id="questions-tab"
+      >
+        Questions
+      </a>
+    </span>
+    <span>
+      <div
+        id="menu-logout-container"
+        onClick={[Function]}
+      >
+        logout
+      </div>
+    </span>
   </header>
 </div>
 `;
