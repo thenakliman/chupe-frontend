@@ -9,7 +9,6 @@ describe('Token Service', () => {
       const token = 'Test Token';
       spyOn(CookiesUtil, 'getToken').and.returnValue(token);
       const receivedToken = await TokenService.getToken();
-      console.log(receivedToken, token);
       expect(receivedToken).toEqual(token);
     });
   });
@@ -23,9 +22,14 @@ describe('Token Service', () => {
         spyOn(CookiesUtil, 'setCookies');
 
         const url = '/token?username=' + username;
-        mock.onGet(url).reply(200, {}, {authorization: token});
+        const headers = {
+          headers: {
+            Authorization: 'Basic aGF6YXJpX3NhaGFiOnVuZGVmaW5lZA==',
+          },
+        };
+        mock.onGet(url, headers).reply(200, {}, {authorization: token});
 
-        const receivedToken = await TokenService.getToken(username);
+        const receivedToken = await TokenService.getToken(username, 'abc123');
 
         expect(receivedToken).toEqual(token);
         expect(CookiesUtil.getToken).toHaveBeenCalledWith();

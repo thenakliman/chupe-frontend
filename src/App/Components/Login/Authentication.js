@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginContainer from './LoginContainer'
+import LoginContainer from './LoginContainer';
 
 export class RequireAuthentication extends React.Component {
   constructor(props) {
@@ -17,6 +17,6 @@ export class RequireAuthentication extends React.Component {
       <div>
         {!this.state.isAuthorized?<LoginContainer id='login-container' onAuthorization={this.setUserAuthorization}/>:null};
       </div>
-    )
+    );
   }
 }
