@@ -8,8 +8,8 @@ export const setUsername = (username) => {
   };
 };
 
-export const authenticate = (username) => async (dispatch) => {
-  const token = await TokenService.getToken(username);
+export const authenticate = (username, password) => async (dispatch) => {
+  const token = await TokenService.getToken(username, password);
   if (!token) {
     return false;
   }

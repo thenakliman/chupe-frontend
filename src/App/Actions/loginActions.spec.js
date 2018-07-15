@@ -13,26 +13,28 @@ describe('Login Actions', () => {
     store.clearActions();
   });
 
-  it('should call question service and dispatch set username', async () => {
-    const username = 'test-user';
+  it('should call token service to get token', async () => {
     spyOn(TokenService, 'getToken').and.returnValue('fakeToken');
 
-    await store.dispatch(authenticate(username));
+    const username = 'test-user';
+    const password = 'my-password';
+    await store.dispatch(authenticate(username, password));
 
-    expect(TokenService.getToken).toHaveBeenCalledWith(username);
+    expect(TokenService.getToken).toHaveBeenCalledWith(username, password);
     expect(store.getActions()).toEqual([{
         payload: username,
         type: ActionTypes.SET_USERNAME,
     }]);
   });
 
-  it('should call question service but not dispatch any action', async () => {
-    const username = 'test-user';
+  it('should call token service and not dispatch action', async () => {
     spyOn(TokenService, 'getToken').and.returnValue(null);
 
-    await store.dispatch(authenticate(username));
+    const username = 'test-user';
+    const password = 'my-password';
+    await store.dispatch(authenticate(username, password));
 
-    expect(TokenService.getToken).toHaveBeenCalledWith(username);
+    expect(TokenService.getToken).toHaveBeenCalledWith(username, password);
     expect(store.getActions()).toEqual([]);
   });
 });
