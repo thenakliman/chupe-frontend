@@ -1,5 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 import {RequireAuthentication} from './Authentication';
+/* eslint-enable */
 import {shallow} from 'enzyme';
 
 
