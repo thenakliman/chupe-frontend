@@ -8,6 +8,7 @@ import AskQuestionContainer from './AskQuestionContainer';
 import {AskQuestion} from './AskQuestion';
 import configureStore from 'redux-mock-store';
 import * as QuestionActions from '../../../Actions/questionActions';
+import * as UserActions from '../../../Actions/userActions';
 
 
 describe('Question Result container', () => {
@@ -59,5 +60,18 @@ describe('Question Result container', () => {
 
     expect(container.find(AskQuestion).props().users)
         .toEqual(initialState.users);
+  });
+
+  it('should call getUsers on mount of component', () => {
+    const action = 'some action';
+    spyOn(UserActions, 'getAllUsers').and.returnValue(action);
+    const container = mount(
+      <Provider store={store}>
+        <AskQuestionContainer/>
+      </Provider>);
+
+    container.find(AskQuestion).props().getAllUsers();
+
+    expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 });

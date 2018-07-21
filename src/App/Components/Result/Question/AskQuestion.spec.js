@@ -8,6 +8,7 @@ describe('Question Result component snapshot', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(
             <AskQuestion
+                getAllUsers={()=>{}}
                 askQuestion={()=>{}}
                 users={users}
             />);
@@ -31,6 +32,7 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(
             <AskQuestion
+                getAllUsers={()=>{}}
                 askQuestion={()=>{}}
                 users={users} />);
         expect(
@@ -47,6 +49,7 @@ describe('Question result', () => {
         const container = mount(
             <AskQuestion
                 askQuestion={askQuestion}
+                getAllUsers={()=>{}}
                 users={users}
             />);
         const props = container.find(AskQuestion).props();
@@ -58,6 +61,7 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const wrapper = shallow(<AskQuestion
              askQuestion={()=>{}}
+             getAllUsers={()=>{}}
              users={users} />);
 
         expect(wrapper.state()).toEqual({
@@ -72,6 +76,7 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
+            getAllUsers={()=>{}}
             users={users}
         />);
         const state = Object.assign({}, initialState, {question: ''});
@@ -86,6 +91,7 @@ describe('Question result', () => {
         const event = {target: {value: 'why oh why?'}};
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
+            getAllUsers={()=>{}}
             users={users}
         />);
         const state = Object.assign({}, initialState, {question: ''});
@@ -104,6 +110,7 @@ describe('Question result', () => {
         const event = {target: {value: 'Description'}};
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
+            getAllUsers={()=>{}}
             users={users}
         />);
         const state = Object.assign({}, initialState, {description: ''});
@@ -125,6 +132,7 @@ describe('Question result', () => {
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
+            getAllUsers={()=>{}}
             users={users}
         />);
         const state = Object.assign({}, initialState, {owner: ''});
@@ -141,6 +149,7 @@ describe('Question result', () => {
         const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
+            getAllUsers={()=>{}}
             users={users}
         />);
         const state = Object.assign({}, initialState, {assignedTo: ''});
@@ -152,5 +161,24 @@ describe('Question result', () => {
                 {},
                 initialState,
                 {'assignedTo': event.target.value}));
+    });
+
+    it('should call getAllUsers on component mount', () => {
+        const users = [{'userName': 'user1234'}, {'userName': 'user2'}];
+        const getAllUsers = jest.fn();
+        mount(<AskQuestion askQuestion={jest.fn()}
+                           getAllUsers={getAllUsers}
+                           users={users}/>);
+
+        expect(getAllUsers).not.toHaveBeenCalled();
+    });
+
+    it('should call getAllUsers on mount when users are not present', () => {
+        const getAllUsers = jest.fn();
+        mount(<AskQuestion askQuestion={jest.fn()}
+                           getAllUsers={getAllUsers}
+                           users={[]}/>);
+
+        expect(getAllUsers).toHaveBeenCalledWith();
     });
 });

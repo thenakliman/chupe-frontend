@@ -21,6 +21,9 @@ export class Question extends React.Component {
 
     /** Get all question on component mount */
     componentDidMount() {
+        /* todo(thenakliman): Optimization, get questions only if questions
+         * does not exist in redux
+         */
         this.props.getQuestions();
         this.setState({filter: null});
     }

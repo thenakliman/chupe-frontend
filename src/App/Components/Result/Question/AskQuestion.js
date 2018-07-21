@@ -26,6 +26,13 @@ export class AskQuestion extends React.Component {
         this.validateForm = this.validateForm.bind(this);
     }
 
+    /** Get users on component did mount */
+    componentDidMount() {
+      if (!this.props.users.length) {
+        this.props.getAllUsers();
+      }
+    }
+
     /** Provide the initial state to the component
     * @return {Object} initial state of the component
     */
@@ -164,4 +171,5 @@ export class AskQuestion extends React.Component {
 AskQuestion.propTypes = {
     askQuestion: propTypes.func.isRequired,
     users: propTypes.arrayOf(propTypes.object).isRequired,
+    getAllUsers: propTypes.func.isRequired,
 };
