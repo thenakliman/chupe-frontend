@@ -7,6 +7,7 @@ import {mapStateToProps, mapDispatchToProps} from './ShowQuestionContainer';
 import configureStore from 'redux-mock-store';
 import * as questionActions from '../../../Actions/questionActions';
 import * as answerActions from '../../../Actions/answerActions';
+import * as UserActions from '../../../Actions/userActions';
 
 
 describe('Question Result container', () => {
@@ -49,7 +50,7 @@ describe('Question Result container', () => {
       expect(props.answers).toEqual(null);
   });
 
-  it('should dispatch an set updateQuestion on click of edit button', () => {
+  it('should dispatch set updateQuestion on click of edit button', () => {
       const fakeAction = 'fakeAction';
       spyOn(questionActions, 'updateQuestion').and.returnValue(fakeAction);
       const props = mapDispatchToProps(store.dispatch);
@@ -79,6 +80,26 @@ describe('Question Result container', () => {
       props.addAnswer(question);
 
       expect(answerActions.addAnswer).toHaveBeenCalledWith(question);
+      expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('should call get all questions', () => {
+      const fakeAction = 'fakeAction';
+      spyOn(questionActions, 'getAllQuestions').and.returnValue(fakeAction);
+      const props = mapDispatchToProps(store.dispatch);
+
+      props.getAllQuestions();
+
+      expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('should call get all users', () => {
+      const fakeAction = 'fakeAction';
+      spyOn(UserActions, 'getAllUsers').and.returnValue(fakeAction);
+      const props = mapDispatchToProps(store.dispatch);
+
+      props.getAllUsers();
+
       expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
 });

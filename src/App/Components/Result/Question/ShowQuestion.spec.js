@@ -2,6 +2,7 @@
 import React from 'react';
 import {ShowQuestion} from './ShowQuestion';
 /* eslint-enable */
+import ReactDOM from 'react-dom';
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
 
@@ -33,6 +34,8 @@ describe('Show Question component snapshot', () => {
               getAnswers={()=>{}}
               answers={[]}
               addAnswer={()=>{}}
+              getAllUsers={()=>{}}
+              getAllQuestions={()=>{}}
         />);
 
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -51,6 +54,8 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
 
@@ -69,9 +74,11 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={()=>{}}
           match={{params: {id: 2}}}
-          getAnswers={()=>{}}
+          getAnswers={()=>{}}getAllUsers
           answers={[]}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
 
@@ -94,7 +101,9 @@ describe('Show question component', () => {
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
           answers={[]}
-          addAnswer={()=>{}}
+          addAnswer={()=>{}}getAllUsers
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
     expect(wrapper.state()).toEqual({
@@ -113,10 +122,12 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
-          match={{params: {id: 2}}}
+          match={{params: {id: 2}}}getAllUsers
           getAnswers={()=>{}}
           answers={[]}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
 
@@ -144,6 +155,8 @@ describe('Show question component', () => {
           answers={[]}
           match={{params: {id: 2}}}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
 
@@ -171,6 +184,8 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
     const description = 'test-10';
@@ -187,6 +202,7 @@ describe('Show question component', () => {
           assignedTo: 'assigned-2',
        });
   });
+
   it('Component should not call update method on empty description', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
@@ -198,6 +214,8 @@ describe('Show question component', () => {
           answers={[]}
           match={{params: {id: 2}}}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
     wrapper.find('#question-answer-description-wrapper-id')
@@ -211,23 +229,6 @@ describe('Show question component', () => {
           owner: 'owner-2',
           assignedTo: 'assigned-2',
        });
-  });
-  it('should call getAnswers on mount of question', () => {
-    const mockedGetAnswers = jest.fn();
-    const questionId = 2;
-    shallow(
-        <ShowQuestion
-          questions={questions}
-          users={users}
-          getAnswers={mockedGetAnswers}
-          answers={[]}
-          match={{params: {id: questionId}}}
-          updateQuestion={()=>{}}
-          addAnswer={()=>{}}
-        />
-    );
-
-    expect(mockedGetAnswers).toHaveBeenCalledWith(questionId);
   });
 
   it('should QuestionAnswerWrapper for each answer', () => {
@@ -243,6 +244,8 @@ describe('Show question component', () => {
           match={{params: {id: questionId}}}
           updateQuestion={()=>{}}
           addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
     expect(wrapper.find('#show-question--answer-1-id').length).toEqual(1);
@@ -260,6 +263,8 @@ describe('Show question component', () => {
           match={{params: {id: questionId}}}
           addAnswer={()=>{}}
           updateQuestion={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
 
@@ -277,6 +282,8 @@ describe('Show question component', () => {
           answers={[]}
           match={{params: {id: questionId}}}
           updateQuestion={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
           addAnswer={()=>{}}
         />
     );
@@ -299,6 +306,8 @@ describe('Show question component', () => {
           match={{params: {id: questionId}}}
           updateQuestion={()=>{}}
           addAnswer={mockAddAnswer}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
         />
     );
     wrapper.find(
@@ -307,5 +316,114 @@ describe('Show question component', () => {
       answer: 'answer 1',
       answeredBy: 'owner-2',
       questionId: 2});
+  });
+
+  describe('on mount', () => {
+    it('should call getAnswers on mount of question', () => {
+      const mockedGetAnswers = jest.fn();
+      const questionId = 2;
+      shallow(
+          <ShowQuestion
+            questions={questions}
+            users={users}
+            getAnswers={mockedGetAnswers}
+            answers={[]}
+            match={{params: {id: questionId}}}
+            updateQuestion={()=>{}}
+            addAnswer={()=>{}}
+            getAllUsers={()=>{}}
+            getAllQuestions={()=>{}}
+          />
+      );
+
+      expect(mockedGetAnswers).toHaveBeenCalledWith(questionId);
+    });
+
+    it('should not call get all questions when questions is in redux', () => {
+      const mockGetAllQuestions = jest.fn();
+      shallow(<ShowQuestion questions={questions}
+                            users={users}
+                            getAnswers={()=>{}}
+                            answers={[]}
+                            match={{params: {id: 10}}}
+                            updateQuestion={()=>{}}
+                            addAnswer={()=>{}}
+                            getAllUsers={()=>{}}
+                            getAllQuestions={mockGetAllQuestions}/>);
+
+      expect(mockGetAllQuestions).not.toHaveBeenCalled();
+    });
+
+    it('should call get all questions when questions are not in redux', () => {
+      const mockGetAllQuestions = jest.fn();
+      shallow(<ShowQuestion questions={[]}
+                            users={users}
+                            getAnswers={()=>{}}
+                            answers={[]}
+                            match={{params: {id: 10}}}
+                            updateQuestion={()=>{}}
+                            addAnswer={()=>{}}
+                            getAllUsers={()=>{}}
+                            getAllQuestions={mockGetAllQuestions}/>);
+
+      expect(mockGetAllQuestions).toHaveBeenCalledWith();
+    });
+
+    it('should call get all users when users are not in redux', () => {
+      const mockGetAllUsers = jest.fn();
+      shallow(<ShowQuestion questions={[]}
+                            users={[]}
+                            getAnswers={()=>{}}
+                            answers={[]}
+                            match={{params: {id: 10}}}
+                            updateQuestion={()=>{}}
+                            addAnswer={()=>{}}
+                            getAllQuestions={()=>{}}
+                            getAllUsers={mockGetAllUsers}/>);
+
+      expect(mockGetAllUsers).toHaveBeenCalled();
+    });
+
+    it('should not call get all users when users are in redux', () => {
+      const mockGetAllUsers = jest.fn();
+      shallow(<ShowQuestion questions={[]}
+                            users={users}
+                            getAnswers={()=>{}}
+                            answers={[]}
+                            match={{params: {id: 10}}}
+                            updateQuestion={()=>{}}
+                            addAnswer={()=>{}}
+                            getAllQuestions={()=>{}}
+                            getAllUsers={mockGetAllUsers} />);
+
+      expect(mockGetAllUsers).not.toHaveBeenCalled();
+    });
+  });
+
+  it('should set state on component update', () => {
+    const node = document.createElement('div');
+    const component = ReactDOM.render(<ShowQuestion questions={[]}
+                                                    users={[]}
+                                                    getAnswers={()=>{}}
+                                                    answers={[]}
+                                                    match={{params: {id: 1}}}
+                                                    updateQuestion={()=>{}}
+                                                    addAnswer={()=>{}}
+                                                    getAllQuestions={()=>{}}
+                                                    getAllUsers={()=>{}} />,
+                                       node);
+
+    ReactDOM.render(<ShowQuestion questions={questions}
+                                  users={users}
+                                  getAnswers={()=>{}}
+                                  answers={[]}
+                                  match={{params: {id: 1}}}
+                                  updateQuestion={()=>{}}
+                                  addAnswer={()=>{}}
+                                  getAllQuestions={()=>{}}
+                                  getAllUsers={()=>{}} />,
+                     node);
+
+    expect(component.state).toEqual(questions[0]);
   });
 });

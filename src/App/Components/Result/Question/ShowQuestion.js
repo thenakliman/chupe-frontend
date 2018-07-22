@@ -48,7 +48,7 @@ export class ShowQuestion extends React.Component {
   */
   getInitialState() {
     const question = this.props.questions.find(
-        (question) => question.id == this.props.match.params.id);
+        (question) => question.id == this.props.match.params.id) || {};
     return {
         question: question.question,
         description: question.description,
@@ -60,10 +60,29 @@ export class ShowQuestion extends React.Component {
 
   /** Set initial state on component mount */
   componentDidMount() {
+     if (!this.props.questions.length) {
+       this.props.getAllQuestions();
+     }
+
+     if (!this.props.users.length) {
+       this.props.getAllUsers();
+     }
+
      this.props.getAnswers(this.props.match.params.id);
      this.setState(this.getInitialState());
   }
 
+  /** component did update
+   *  @param {object} prevProps previous props
+   */
+  componentDidUpdate(prevProps) {
+    /* todo: Error prone code, correct this code by explicitly checking
+     * equality for each element of the array.
+     */
+    if (this.props.questions !== prevProps.questions) {
+      this.setState(this.getInitialState());
+    }
+  }
   /** Handle changes on the question fields
   * @param {question} question with new modified value
   */
@@ -122,6 +141,7 @@ export class ShowQuestion extends React.Component {
   render() {
     const headerText = ('Asked By ' + this.state.owner +
                         ' to ' + this.state.assignedTo);
+
     return (
       <div className='show-question'>
         <div>
@@ -170,4 +190,6 @@ ShowQuestion.propTypes = {
   updateQuestion: propTypes.func.isRequired,
   getAnswers: propTypes.func.isRequired,
   addAnswer: propTypes.func.isRequired,
+  getAllQuestions: propTypes.func.isRequired,
+  getAllUsers: propTypes.func.isRequired,
 };
