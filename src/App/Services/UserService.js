@@ -1,17 +1,9 @@
-const axios = require('axios');
+import {get} from './client';
 
 const CHUPE_USER_URL='/api/v1';
 
 export const UserService = {
-  getUsers() {
-      return axios({
-        method: 'get',
-        url: `${CHUPE_USER_URL}/users`,
-        headers: {'Content-Type': 'application/json'},
-      })
-      .then((response)=>response.data)
-      .catch((error) => {
-          console.log(error.message);
-      });
+  async getUsers() {
+      return await get(`${CHUPE_USER_URL}/users`);
   },
 };
