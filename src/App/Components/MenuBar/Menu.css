@@ -25,6 +25,14 @@
     text-decoration: none;
 }
 
+.Selected-Tab {
+    padding: .8rem 4rem;
+    text-align: center;
+    color: black;
+    background: white;
+    text-decoration: none;
+}
+
 #menu-logout-container {
     font-size: 1rem;
     font-weight: 100;

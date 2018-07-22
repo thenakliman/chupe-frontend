@@ -22,24 +22,29 @@ export class MenuBar extends React.Component {
     * @return {Object} UserResult component.
     */
     render() {
-        return (
-            <div>
-                <header id="chupe-header" className="Header">
-                    <span>
-                      <a href='#/users' id="users-tab" className='Tab'>
-                           Users
-                      </a>
-                      <a href='#/questions' id="questions-tab" className='Tab'>
-                           Questions
-                      </a>
-                    </span>
-                    <span>
-                      <div id='menu-logout-container' onClick={this.logout}>
-                        logout
-                      </div>
-                    </span>
-                </header>
-            </div>
+      const location = this.props.location.pathname;
+      return (
+        <div>
+          <header id="chupe-header" className="Header">
+            <span>
+              <a href='#/users'
+                 id="users-tab"
+                 className={location === '/users'?'Selected-Tab': 'Tab'}>
+                     Users
+              </a>
+              <a href='#/questions'
+                 id="questions-tab"
+                 className={location === '/questions'?'Selected-Tab': 'Tab'}>
+                   Questions
+              </a>
+            </span>
+            <span>
+              <div id='menu-logout-container' onClick={this.logout}>
+                logout
+              </div>
+            </span>
+          </header>
+        </div>
         );
     }
 }

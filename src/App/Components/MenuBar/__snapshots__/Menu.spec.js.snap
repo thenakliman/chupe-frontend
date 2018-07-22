@@ -8,9 +8,10 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
   >
     <span>
       <a
-        className="Tab"
+        className="Selected-Tab"
         href="#/users"
         id="users-tab"
+        onClick={[Function]}
       >
         Users
       </a>
@@ -18,6 +19,7 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
         className="Tab"
         href="#/questions"
         id="questions-tab"
+        onClick={[Function]}
       >
         Questions
       </a>

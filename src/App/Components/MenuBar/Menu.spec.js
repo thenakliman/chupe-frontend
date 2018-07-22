@@ -7,39 +7,35 @@ import * as History from '../../utils/history';
 
 describe('Menu Bar Snapshot', () => {
   it('should match snapshot', () => {
+    const location = {pathname: '/users'};
     const wrapper = shallow(
         <MenuBar
             showQuestionTab={()=>{}}
             showUserTab={()=>{}}
+            location={location}
         />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
 
 describe('Menu Bar Component', () => {
-  it('Should display div with class', () => {
+  const location = {pathname: '/users'};
+
+  it('Should display div with header class', () => {
     const wrapper = shallow(
         <MenuBar
             showUserTab={()=>{}}
+            location={location}
             showQuestionTab={()=>{}}
         />);
     expect(wrapper.find('.Header').get(0).props.id).toEqual('chupe-header');
-  });
-
-  it('Should display div with Tab class and id user-tab', () => {
-    const wrapper = shallow(
-        <MenuBar
-            showUserTab={()=>{}}
-            showQuestionTab={()=>{}}
-        />);
-
-    expect(wrapper.find('.Tab').get(0).props.id).toEqual('users-tab');
   });
 
   it('Should display div logout', () => {
     const wrapper = shallow(
         <MenuBar
             showUserTab={()=>{}}
+            location={location}
             showQuestionTab={()=>{}}
         />);
     expect(wrapper.find('#menu-logout-container').length).toEqual(1);
@@ -52,6 +48,7 @@ describe('Menu Bar Component', () => {
     const wrapper = shallow(
         <MenuBar
             showUserTab={()=>{}}
+            location={location}
             showQuestionTab={()=>{}}
         />);
 
@@ -59,5 +56,17 @@ describe('Menu Bar Component', () => {
 
     expect(cookies.removeCookies).toHaveBeenCalledWith();
     expect(pushMock).toHaveBeenCalledWith('/');
+  });
+
+  it('Should have user class by default', () => {
+    const location = {pathname: '/users'};
+    const wrapper = shallow(
+        <MenuBar
+            showUserTab={()=>{}}
+            showQuestionTab={()=>{}}
+            location={location}
+        />);
+    expect(wrapper.find('#users-tab').props().className
+      ).toEqual('Selected-Tab');
   });
 });
