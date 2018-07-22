@@ -1,29 +1,13 @@
-const axios = require('axios');
+import {get, post} from './client';
 
 const CHUPE_ANSWER_URL='/api/v1/answers';
 
 export const AnswerService = {
-  getAnswers(questionId) {
-      return axios({
-        method: 'get',
-        url: `${CHUPE_ANSWER_URL}?questionId=${questionId}`,
-        headers: {'Content-Type': 'application/json'},
-      })
-      .then((response)=>response.data)
-      .catch((error) => {
-          console.log(error.message);
-      });
+  async getAnswers(questionId) {
+      return await get(`${CHUPE_ANSWER_URL}?questionId=${questionId}`);
   },
-  addAnswer(answer) {
-      return axios({
-        method: 'post',
-        url: `${CHUPE_ANSWER_URL}`,
-        data: answer,
-        headers: {'Content-Type': 'application/json'},
-      })
-      .then((response)=>response.data)
-      .catch((error) => {
-          console.log(error.message);
-      });
+
+  async addAnswer(answer) {
+      return await post(`${CHUPE_ANSWER_URL}`, answer);
   },
 };
