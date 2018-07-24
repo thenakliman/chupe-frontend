@@ -9,17 +9,20 @@ import {AskQuestion} from './AskQuestion';
 import configureStore from 'redux-mock-store';
 import * as QuestionActions from '../../../Actions/questionActions';
 import * as UserActions from '../../../Actions/userActions';
+import * as Config from '../../../utils/cookies';
 
 
 describe('Question Result container', () => {
   let store;
   let initialState;
+  const username = 'testUsername';
 
   beforeEach(() => {
     initialState = {
         'users': [{'userName': 'user1'}, {'userName': 'user2'}],
     };
 
+    spyOn(Config, 'getUsername').and.returnValue(username);
     store = configureStore()(initialState);
     spyOn(store, 'dispatch');
   });
@@ -73,5 +76,15 @@ describe('Question Result container', () => {
     container.find(AskQuestion).props().getAllUsers();
 
     expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
+
+  it('should provide logged in user as props', () => {
+    const container = mount(
+      <Provider store={store}>
+        <AskQuestionContainer/>
+      </Provider>);
+
+    expect(container.find('AskQuestion').props().loggedInUser)
+        .toEqual(username);
   });
 });

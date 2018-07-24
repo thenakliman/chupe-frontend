@@ -3,9 +3,11 @@ import {connect} from 'react-redux';
 import {AskQuestion} from './AskQuestion';
 import {askQuestion} from '../../../Actions/questionActions';
 import {getAllUsers} from '../../../Actions/userActions';
+import {getUsername} from '../../../utils/cookies';
 
 const mapStateToProps = (state) => ({
     users: state.users,
+    loggedInUser: getUsername(),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

@@ -19,7 +19,7 @@ export class AskQuestion extends React.Component {
         this.handleQuestionDescription = this
             .handleQuestionDescription.bind(this);
 
-        this.handleOwnerChange = this.handleOwnerChange.bind(this);
+        this.handlePriorityChange = this.handlePriorityChange.bind(this);
         this.handleAssignedToChange = this.handleAssignedToChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getInitialState = this.getInitialState.bind(this);
@@ -40,7 +40,7 @@ export class AskQuestion extends React.Component {
         return {
             question: '',
             description: '',
-            owner: '',
+            priority: '',
             assignedTo: '',
         };
     }
@@ -59,11 +59,11 @@ export class AskQuestion extends React.Component {
         this.setState({description: event.target.value});
     }
 
-    /** Handle changes on the question owner fields
+    /** Handle changes on the question priority fields
     * @param {object} event containing new modified value
     */
-    handleOwnerChange(event) {
-        this.setState({owner: event.target.value});
+    handlePriorityChange(event) {
+        this.setState({priority: event.target.value});
     }
 
     /** Handle changes on the question assigned to fields
@@ -79,7 +79,7 @@ export class AskQuestion extends React.Component {
         return (
             this.state.question =='' ||
             this.state.description == '' ||
-            this.state.owner == '' ||
+            this.state.priority == '' ||
             this.state.assignedTo == '');
     }
 
@@ -92,7 +92,8 @@ export class AskQuestion extends React.Component {
         if (hasError) {
             return;
         }
-        this.props.askQuestion(this.state);
+
+        this.props.askQuestion({...this.state, owner: this.props.loggedInUser});
         this.setState(this.getInitialState());
     }
     /** Returns input field in form with a button.
@@ -124,16 +125,16 @@ export class AskQuestion extends React.Component {
                   </p>
                   <p>
                     <label>
-                        Owner:
+                        Priority:
                     </label>
-                    <select id='question-owner'
+                    <select id='question-priority'
                       value={this.state.value}
-                      onChange={this.handleOwnerChange}>
-                        <option value="">select owner</option>
+                      onChange={this.handlePriorityChange}>
+                        <option value="">select priority</option>
                         {
-                           this.props.users.map((user) =>(
-                              <option key={`${user.userName}`}>
-                                 {user.userName}
+                           ['LOW', 'MEDIUM', 'HIGH'].map((priority) =>(
+                              <option key={priority}>
+                                 {priority}
                               </option>))
                         }
                      </select>
@@ -172,4 +173,5 @@ AskQuestion.propTypes = {
     askQuestion: propTypes.func.isRequired,
     users: propTypes.arrayOf(propTypes.object).isRequired,
     getAllUsers: propTypes.func.isRequired,
+    loggedInUser: propTypes.string.isRequired,
 };

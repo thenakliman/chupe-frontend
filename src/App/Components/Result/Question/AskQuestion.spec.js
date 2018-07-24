@@ -11,6 +11,7 @@ describe('Question Result component snapshot', () => {
                 getAllUsers={()=>{}}
                 askQuestion={()=>{}}
                 users={users}
+                loggedInUser={'user'}
             />);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -18,13 +19,15 @@ describe('Question Result component snapshot', () => {
 
 describe('Question result', () => {
   let initialState;
+  const user = 'user';
 
     beforeEach(() => {
         initialState = {
           question: 'q1',
           description: 'd1',
-          owner: 'o1',
+          priority: 'MEDIUM',
           assignedTo: 'a1',
+          owner: user,
         };
     });
 
@@ -34,6 +37,7 @@ describe('Question result', () => {
             <AskQuestion
                 getAllUsers={()=>{}}
                 askQuestion={()=>{}}
+                loggedInUser={user}
                 users={users} />);
         expect(
             wrapper.find('#ask-question-input-field')
@@ -50,6 +54,7 @@ describe('Question result', () => {
             <AskQuestion
                 askQuestion={askQuestion}
                 getAllUsers={()=>{}}
+                loggedInUser={user}
                 users={users}
             />);
         const props = container.find(AskQuestion).props();
@@ -62,12 +67,13 @@ describe('Question result', () => {
         const wrapper = shallow(<AskQuestion
              askQuestion={()=>{}}
              getAllUsers={()=>{}}
+             loggedInUser={user}
              users={users} />);
 
         expect(wrapper.state()).toEqual({
             question: '',
             description: '',
-            owner: '',
+            priority: '',
             assignedTo: '',
         });
     });
@@ -77,6 +83,7 @@ describe('Question result', () => {
         const container = mount(<AskQuestion
             askQuestion={askQuestion}
             getAllUsers={()=>{}}
+            loggedInUser={user}
             users={users}
         />);
         const state = Object.assign({}, initialState, {question: ''});
@@ -93,6 +100,7 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             getAllUsers={()=>{}}
             users={users}
+            loggedInUser={user}
         />);
         const state = Object.assign({}, initialState, {question: ''});
         container.setState(state);
@@ -112,6 +120,7 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             getAllUsers={()=>{}}
             users={users}
+            loggedInUser={user}
         />);
         const state = Object.assign({}, initialState, {description: ''});
         container.setState(state);
@@ -126,7 +135,7 @@ describe('Question result', () => {
                 {'description': event.target.value}));
     });
 
-    it('should select owner field', () => {
+    it('should select priority field', () => {
         const askQuestion = jest.fn();
         const event = {target: {value: 'user1'}};
         const users = [{'userName': 'user1'}, {'userName': 'user2'}];
@@ -134,13 +143,14 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             getAllUsers={()=>{}}
             users={users}
+            loggedInUser={user}
         />);
-        const state = Object.assign({}, initialState, {owner: ''});
+        const state = Object.assign({}, initialState, {priority: ''});
         container.setState(state);
-        container.find('#question-owner').simulate('change', event);
+        container.find('#question-priority').simulate('change', event);
         container.find('#ask-question-submit-button').simulate('submit');
         expect(askQuestion).toHaveBeenCalledWith(
-            Object.assign({}, initialState, {'owner': event.target.value}));
+            Object.assign({}, initialState, {'priority': event.target.value}));
     });
 
     it('should select assigned to field', () => {
@@ -151,6 +161,7 @@ describe('Question result', () => {
             askQuestion={askQuestion}
             getAllUsers={()=>{}}
             users={users}
+            loggedInUser={user}
         />);
         const state = Object.assign({}, initialState, {assignedTo: ''});
         container.setState(state);
@@ -168,6 +179,7 @@ describe('Question result', () => {
         const getAllUsers = jest.fn();
         mount(<AskQuestion askQuestion={jest.fn()}
                            getAllUsers={getAllUsers}
+                           loggedInUser={user}
                            users={users}/>);
 
         expect(getAllUsers).not.toHaveBeenCalled();
@@ -177,6 +189,7 @@ describe('Question result', () => {
         const getAllUsers = jest.fn();
         mount(<AskQuestion askQuestion={jest.fn()}
                            getAllUsers={getAllUsers}
+                           loggedInUser={user}
                            users={[]}/>);
 
         expect(getAllUsers).toHaveBeenCalledWith();
