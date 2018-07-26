@@ -177,4 +177,33 @@ describe('List Questions', () => {
         />);
     expect(getQuestions).toHaveBeenCalledWith();
   });
+
+  it('should have a six columns', () => {
+    const getQuestions = jest.fn();
+    const questions = [
+      {
+        id: 1,
+        question: 'when?',
+        owner: 'user1',
+        assignedTo: 'assignedUser1',
+        priority: 'HIGH',
+      },
+      {
+        id: 2,
+        question: 'how?',
+        owner: 'user2',
+        assignedTo: 'assignedUser2',
+        priority: 'LOW',
+      },
+    ];
+
+    const wrapper = shallow(
+        <Question
+            questions={questions}
+            getQuestions={getQuestions}
+            loggedInUser=''
+        />);
+
+    expect(wrapper.find('th').length).toBe(5);
+  });
 });

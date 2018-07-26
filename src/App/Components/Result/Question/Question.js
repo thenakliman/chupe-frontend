@@ -123,6 +123,7 @@ export class Question extends React.Component {
                       <th> Question </th>
                       <th> Owner </th>
                       <th> Assigned To </th>
+                      <th> Priority </th>
                         </tr>
                   </thead>
                   <tbody id='all-questions-table-id'>
@@ -133,6 +134,7 @@ export class Question extends React.Component {
                         <td> {question.question} </td>
                         <td> {question.owner}</td>
                         <td> {question.assignedTo} </td>
+                        <td> {question.priority}</td>
                         <td>
                           <button id={`view-question-button-` + question.id}
                                   className='view-question-button'
