@@ -106,8 +106,7 @@ describe('should have a box', () => {
     const wrapper = shallow(<QuestionAnswerWrapper headerText={headerText}/>);
     expect(
       wrapper.find('#question-answer-wrapper-table-header-text-id')
-        .get(0).props.children
-    ).toEqual(headerText);
+        .props().children.props.children).toEqual(headerText);
   });
 
   it('should show text in body of table from props', () => {

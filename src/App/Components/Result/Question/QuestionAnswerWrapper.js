@@ -59,8 +59,11 @@ export class QuestionAnswerWrapper extends React.Component {
             <tr className='table-border'>
               <th className='table-border'
                   id='question-answer-wrapper-table-header-id'>
-                <span id='question-answer-wrapper-table-header-text-id'>
+                <span id='question-answer-wrapper-table-header-text-id'
+                      className='header-text'>
+                  <i>
                     {this.props.headerText}
+                  </i>
                 </span>
                 <span id='edit-question-answer-wrapper-id'
                       className='edit-button'
