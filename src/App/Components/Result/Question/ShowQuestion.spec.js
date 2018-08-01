@@ -67,6 +67,33 @@ describe('Show question component', () => {
     expect(summaryWrapper.get(0).props.bodyText).toEqual('question2');
   });
 
+  it('should have QuestionDescription for question summary', () => {
+    const wrapper = shallow(
+        <ShowQuestion
+          users= {users}
+          questions={questions}
+          updateQuestion={()=>{}}
+          match={{params: {id: 2}}}
+          getAnswers={()=>{}}
+          answers={[]}
+          addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
+        />
+    );
+
+    const summaryWrapper = wrapper.find('QuestionDescription');
+    console.log(summaryWrapper.props());
+    expect(summaryWrapper.length).toEqual(1);
+    expect(summaryWrapper.props()).toEqual({
+        summary: 'question2',
+        owner: 'owner-2',
+        priority: 'LOW',
+        status: 'OPEN',
+        assignedTo: 'assigned-2',
+      });
+  });
+
   it('should have QuestionAnswerWrapper for question description', () => {
     const wrapper = shallow(
         <ShowQuestion

@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 /* eslint-disable */
 import {QuestionAnswerWrapper} from './QuestionAnswerWrapper';
+import {QuestionDescription} from './QuestionDescription';
 /* eslint-enable */
 require('./ShowQuestion.css');
 
@@ -144,6 +145,13 @@ export class ShowQuestion extends React.Component {
 
     return (
       <div className='show-question'>
+        <div className='question-description'>
+          <QuestionDescription summary={this.state.question}
+                               owner={this.state.owner}
+                               priority={'LOW'}
+                               status={'OPEN'}
+                               assignedTo={this.state.assignedTo} />
+        </div>
         <div>
           <QuestionAnswerWrapper
             headerText={headerText}

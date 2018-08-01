@@ -1,0 +1,15 @@
+.question-summary-item {
+  padding: 1rem 9rem 1rem 2rem;
+  width: 18rem;
+}
+
+.question-description {
+  display: flex;
+}
+
+.question-description-container {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 58rem;
+  display: flex;
+}

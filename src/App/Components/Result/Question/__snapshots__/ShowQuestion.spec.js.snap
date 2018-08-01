@@ -4,6 +4,17 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
 <div
   className="show-question"
 >
+  <div
+    className="question-description"
+  >
+    <QuestionDescription
+      assignedTo="assigned-2"
+      owner="owner-2"
+      priority="LOW"
+      status="OPEN"
+      summary="question2"
+    />
+  </div>
   <div>
     <QuestionAnswerWrapper
       bodyText="question2"

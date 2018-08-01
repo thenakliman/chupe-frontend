@@ -13,3 +13,8 @@
   color: white;
   background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
 }
+
+.question-description {
+  display: flex;
+  justify-content: center;
+}
