@@ -37,7 +37,7 @@ export class ShowQuestion extends React.Component {
   addAnswer(answer) {
     const completeAnswer = {
       answer: answer,
-      answeredBy: this.state.owner,
+      answeredBy: this.props.loggedInUser,
       questionId: this.props.match.params.id,
     };
 
@@ -171,7 +171,7 @@ export class ShowQuestion extends React.Component {
         {this.props.answers.map((answer) => (
           <div key={answer.id}>
             <QuestionAnswerWrapper
-              headerText={'Answer Added by ' + this.state.owner}
+              headerText={'Answer Added by ' + answer.answeredBy}
               bodyText={answer.answer}
               saveHandler={this.handleQuestionDescription}
               id={`show-question--answer-${answer.id}-id`}
@@ -180,7 +180,7 @@ export class ShowQuestion extends React.Component {
         ))}
         <div>
           <QuestionAnswerWrapper
-            headerText={'Description Added by ' + this.state.owner}
+            headerText={'Description Added by ' + this.props.loggedInUser}
             bodyText=''
             isEditing={true}
             id='show-question-answer--temporary-id'
@@ -196,6 +196,7 @@ ShowQuestion.propTypes = {
   users: propTypes.arrayOf(propTypes.object).isRequired,
   questions: propTypes.arrayOf(propTypes.object).isRequired,
   answers: propTypes.arrayOf(propTypes.object).isRequired,
+  loggedInUser: propTypes.string.isRequired,
   updateQuestion: propTypes.func.isRequired,
   getAnswers: propTypes.func.isRequired,
   addAnswer: propTypes.func.isRequired,

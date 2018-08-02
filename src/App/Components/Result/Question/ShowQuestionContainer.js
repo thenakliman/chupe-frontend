@@ -4,6 +4,7 @@ import {updateQuestion,
         getAllQuestions} from '../../../Actions/questionActions';
 import {getAllUsers} from '../../../Actions/userActions';
 import {getAnswers, addAnswer} from '../../../Actions/answerActions';
+import {getUsername} from '../../../utils/cookies';
 
 /** Maps state of the ShowQuestion component from store
  *
@@ -15,6 +16,7 @@ export function mapStateToProps(state) {
       users: state.users,
       questions: state.questions,
       answers: state.answers,
+      loggedInUser: getUsername(),
     };
 };
 

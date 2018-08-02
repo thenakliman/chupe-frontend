@@ -22,6 +22,7 @@ const questions = [{
   }];
 
 const users = [{'userName': 'user1'}, {'userName': 'user2'}];
+const username='logged-in-user';
 
 describe('Show Question component snapshot', () => {
     it('should match the snapshot', () => {
@@ -31,6 +32,7 @@ describe('Show Question component snapshot', () => {
               questions={questions}
               updateQuestion={()=>{}}
               match={{params: {id: 2}}}
+              loggedInUser={username}
               getAnswers={()=>{}}
               answers={[]}
               addAnswer={()=>{}}
@@ -51,6 +53,7 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={()=>{}}
           match={{params: {id: 2}}}
+          loggedInUser={username}
           getAnswers={()=>{}}
           answers={[]}
           addAnswer={()=>{}}
@@ -72,18 +75,18 @@ describe('Show question component', () => {
         <ShowQuestion
           users= {users}
           questions={questions}
-          updateQuestion={()=>{}}
           match={{params: {id: 2}}}
-          getAnswers={()=>{}}
           answers={[]}
+          loggedInUser={username}
+          getAnswers={()=>{}}
           addAnswer={()=>{}}
+          updateQuestion={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
         />
     );
 
     const summaryWrapper = wrapper.find('QuestionDescription');
-    console.log(summaryWrapper.props());
     expect(summaryWrapper.length).toEqual(1);
     expect(summaryWrapper.props()).toEqual({
         summary: 'question2',
@@ -102,6 +105,7 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={()=>{}}
           match={{params: {id: 2}}}
+          loggedInUser={username}
           getAnswers={()=>{}}getAllUsers
           answers={[]}
           addAnswer={()=>{}}
@@ -127,6 +131,7 @@ describe('Show question component', () => {
           updateQuestion={()=>{}}
           users={users}
           match={{params: {id: 2}}}
+          loggedInUser={username}
           getAnswers={()=>{}}
           answers={[]}
           addAnswer={()=>{}}getAllUsers
@@ -151,6 +156,7 @@ describe('Show question component', () => {
           updateQuestion={mockedUpdateQuestion}
           users={users}
           match={{params: {id: 2}}}getAllUsers
+          loggedInUser={username}
           getAnswers={()=>{}}
           answers={[]}
           addAnswer={()=>{}}
@@ -179,9 +185,10 @@ describe('Show question component', () => {
           questions={questions}
           updateQuestion={mockedUpdateQuestion}
           users={users}
-          getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: 2}}}
+          loggedInUser={username}
+          getAnswers={()=>{}}
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
@@ -210,6 +217,7 @@ describe('Show question component', () => {
           users={users}
           match={{params: {id: 2}}}
           getAnswers={()=>{}}
+          loggedInUser={username}
           answers={[]}
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
@@ -241,6 +249,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: 2}}}
+          loggedInUser={username}
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
@@ -270,6 +279,7 @@ describe('Show question component', () => {
           getAnswers={mockedGetAnswers}
           answers={answers}
           match={{params: {id: questionId}}}
+          loggedInUser={username}
           updateQuestion={()=>{}}
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
@@ -289,6 +299,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: questionId}}}
+          loggedInUser={username}
           addAnswer={()=>{}}
           updateQuestion={()=>{}}
           getAllUsers={()=>{}}
@@ -309,6 +320,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: questionId}}}
+          loggedInUser={username}
           updateQuestion={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
@@ -332,6 +344,7 @@ describe('Show question component', () => {
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: questionId}}}
+          loggedInUser={username}
           updateQuestion={()=>{}}
           addAnswer={mockAddAnswer}
           getAllUsers={()=>{}}
@@ -342,7 +355,7 @@ describe('Show question component', () => {
       '#show-question-answer--temporary-id').get(0).props.saveHandler(answer);
     expect(mockAddAnswer).toHaveBeenCalledWith({
       answer: 'answer 1',
-      answeredBy: 'owner-2',
+      answeredBy: username,
       questionId: 2});
   });
 
@@ -357,6 +370,7 @@ describe('Show question component', () => {
             getAnswers={mockedGetAnswers}
             answers={[]}
             match={{params: {id: questionId}}}
+            loggedInUser={username}
             updateQuestion={()=>{}}
             addAnswer={()=>{}}
             getAllUsers={()=>{}}
@@ -374,6 +388,7 @@ describe('Show question component', () => {
                             getAnswers={()=>{}}
                             answers={[]}
                             match={{params: {id: 10}}}
+                            loggedInUser={username}
                             updateQuestion={()=>{}}
                             addAnswer={()=>{}}
                             getAllUsers={()=>{}}
@@ -389,6 +404,7 @@ describe('Show question component', () => {
                             getAnswers={()=>{}}
                             answers={[]}
                             match={{params: {id: 10}}}
+                            loggedInUser={username}
                             updateQuestion={()=>{}}
                             addAnswer={()=>{}}
                             getAllUsers={()=>{}}
@@ -407,6 +423,7 @@ describe('Show question component', () => {
                             updateQuestion={()=>{}}
                             addAnswer={()=>{}}
                             getAllQuestions={()=>{}}
+                            loggedInUser={username}
                             getAllUsers={mockGetAllUsers}/>);
 
       expect(mockGetAllUsers).toHaveBeenCalled();
@@ -422,6 +439,7 @@ describe('Show question component', () => {
                             updateQuestion={()=>{}}
                             addAnswer={()=>{}}
                             getAllQuestions={()=>{}}
+                            loggedInUser={username}
                             getAllUsers={mockGetAllUsers} />);
 
       expect(mockGetAllUsers).not.toHaveBeenCalled();
@@ -434,6 +452,7 @@ describe('Show question component', () => {
                                                     users={[]}
                                                     getAnswers={()=>{}}
                                                     answers={[]}
+                                                    loggedInUser={username}
                                                     match={{params: {id: 1}}}
                                                     updateQuestion={()=>{}}
                                                     addAnswer={()=>{}}
@@ -446,6 +465,7 @@ describe('Show question component', () => {
                                   getAnswers={()=>{}}
                                   answers={[]}
                                   match={{params: {id: 1}}}
+                                  loggedInUser={username}
                                   updateQuestion={()=>{}}
                                   addAnswer={()=>{}}
                                   getAllQuestions={()=>{}}

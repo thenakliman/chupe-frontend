@@ -8,11 +8,12 @@ import configureStore from 'redux-mock-store';
 import * as questionActions from '../../../Actions/questionActions';
 import * as answerActions from '../../../Actions/answerActions';
 import * as UserActions from '../../../Actions/userActions';
-
+import * as Cookies from '../../../utils/cookies';
 
 describe('Question Result container', () => {
   let initialState;
   let store;
+  const username = 'fakeloggedinuser';
 
   beforeEach(() => {
     initialState = {
@@ -33,6 +34,7 @@ describe('Question Result container', () => {
 
     store = configureStore()(initialState);
     spyOn(store, 'dispatch');
+    spyOn(Cookies, 'getUsername').and.returnValue(username);
   });
 
   it('Should have users property', () => {
@@ -48,6 +50,11 @@ describe('Question Result container', () => {
   it('Should have answers property', () => {
       const props = mapStateToProps(initialState);
       expect(props.answers).toEqual(null);
+  });
+
+  it('Should have loggedInUser property', () => {
+      const props = mapStateToProps(initialState);
+      expect(props.loggedInUser).toEqual(username);
   });
 
   it('should dispatch set updateQuestion on click of edit button', () => {
