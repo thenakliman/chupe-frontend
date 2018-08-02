@@ -1,6 +1,14 @@
 .question-summary-item {
   padding: 1rem 9rem 1rem 2rem;
   width: 18rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-summary {
+  margin: 3rem 0 1rem 0;
+  font-size: 2rem;
+  width: 58rem;
 }
 
 .question-description {
@@ -8,6 +16,7 @@
 }
 
 .question-description-container {
+  border: 1px solid #bbb;
   flex-wrap: wrap;
   justify-content: space-between;
   width: 58rem;

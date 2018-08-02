@@ -11,21 +11,27 @@ export class QuestionDescription extends React.Component {
   render() {
     return (
       <div id='question-description'>
-        <div id='question-summary'>
-          {this.props.summary}
+        <div id='question-summary' className='question-summary'>
+          #{this.props.id} {this.props.summary}
         </div>
         <div className='question-description-container'>
           <div id='question-owner' className='question-summary-item'>
-            Asked By: {this.props.owner}
+            <span>Asked By:</span>
+            <span id='question-summary-asked-by'>{this.props.owner}</span>
           </div>
           <div id='question-assigned-to' className='question-summary-item'>
-            Assigned To: {this.props.assignedTo}
+            <span>Assigned To: </span>
+            <span id='question-summary-assigned-to'>
+              {this.props.assignedTo}
+            </span>
           </div>
           <div id='question-status' className='question-summary-item'>
-            Status: {this.props.status}
+            <span>Status: </span>
+            <span id='question-summary-status'>{this.props.status}</span>
           </div>
           <div id='question-priority'className='question-summary-item'>
-            Priority: {this.props.priority}
+            <span>Priority: </span>
+            <span id='question-summary-priority'>{this.props.priority}</span>
           </div>
         </div>
       </div>

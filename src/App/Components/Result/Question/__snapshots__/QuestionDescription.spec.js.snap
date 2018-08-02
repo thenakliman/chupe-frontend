@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Question description should match the snapshot 1`] = `
+<div
+  id="question-description"
+>
+  <div
+    className="question-summary"
+    id="question-summary"
+  >
+    #
+    2
+     
+    some summary
+  </div>
+  <div
+    className="question-description-container"
+  >
+    <div
+      className="question-summary-item"
+      id="question-owner"
+    >
+      <span>
+        Asked By:
+      </span>
+      <span
+        id="question-summary-asked-by"
+      >
+        owner-2
+      </span>
+    </div>
+    <div
+      className="question-summary-item"
+      id="question-assigned-to"
+    >
+      <span>
+        Assigned To: 
+      </span>
+      <span
+        id="question-summary-assigned-to"
+      >
+        assigned-to
+      </span>
+    </div>
+    <div
+      className="question-summary-item"
+      id="question-status"
+    >
+      <span>
+        Status: 
+      </span>
+      <span
+        id="question-summary-status"
+      >
+        my-status
+      </span>
+    </div>
+    <div
+      className="question-summary-item"
+      id="question-priority"
+    >
+      <span>
+        Priority: 
+      </span>
+      <span
+        id="question-summary-priority"
+      >
+        some priority
+      </span>
+    </div>
+  </div>
+</div>
+`;

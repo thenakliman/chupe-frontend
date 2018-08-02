@@ -150,6 +150,7 @@ export class ShowQuestion extends React.Component {
                                owner={this.state.owner}
                                priority={'LOW'}
                                status={'OPEN'}
+                               id={this.state.id}
                                assignedTo={this.state.assignedTo} />
         </div>
         <div>

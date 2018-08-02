@@ -91,6 +91,7 @@ describe('Show question component', () => {
         priority: 'LOW',
         status: 'OPEN',
         assignedTo: 'assigned-2',
+        id: 2,
       });
   });
 
