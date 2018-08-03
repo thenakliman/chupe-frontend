@@ -18,6 +18,8 @@ export class ShowQuestion extends React.Component {
         description: '',
         owner: '',
         assignedTo: '',
+        status: '',
+        priority: '',
       };
 
       this.handleQuestionSummary = this.handleQuestionSummary.bind(this);
@@ -56,6 +58,8 @@ export class ShowQuestion extends React.Component {
         owner: question.owner,
         assignedTo: question.assignedTo,
         id: question.id,
+        status: question.status,
+        priority: question.priority,
     };
   }
 
@@ -94,6 +98,8 @@ export class ShowQuestion extends React.Component {
         description: this.state.description,
         assignedTo: this.state.assignedTo,
         owner: this.state.owner,
+        status: this.state.status,
+        priority: this.state.priority,
       };
 
     this.handleSubmit(completeQuestion);
@@ -109,6 +115,8 @@ export class ShowQuestion extends React.Component {
         description: description,
         assignedTo: this.state.assignedTo,
         owner: this.state.owner,
+        status: this.state.status,
+        priority: this.state.priority,
       };
 
     this.handleSubmit(completeQuestion);
@@ -140,25 +148,15 @@ export class ShowQuestion extends React.Component {
       @return {object} returns ShowQuestion component
   */
   render() {
-    const headerText = ('Asked By ' + this.state.owner +
-                        ' to ' + this.state.assignedTo);
-
     return (
       <div className='show-question'>
         <div className='question-description'>
           <QuestionDescription summary={this.state.question}
                                owner={this.state.owner}
-                               priority={'LOW'}
-                               status={'OPEN'}
+                               priority={this.state.priority}
+                               status={this.state.status}
                                id={this.state.id}
                                assignedTo={this.state.assignedTo} />
-        </div>
-        <div>
-          <QuestionAnswerWrapper
-            headerText={headerText}
-            bodyText={this.state.question}
-            saveHandler={this.handleQuestionSummary}
-            id='question-answer-summary-wrapper-id'/>
         </div>
         <div>
           <QuestionAnswerWrapper

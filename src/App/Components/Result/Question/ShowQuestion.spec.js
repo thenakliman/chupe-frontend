@@ -5,6 +5,7 @@ import {ShowQuestion} from './ShowQuestion';
 import ReactDOM from 'react-dom';
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
+import {STATUS, PRIORITY} from './constants';
 
 const questions = [{
     question: 'question1',
@@ -12,6 +13,8 @@ const questions = [{
     description: 'test-description1',
     owner: 'owner-1',
     assignedTo: 'assigned-1',
+    status: STATUS.OPEN,
+    priority: PRIORITY.HIGH,
   },
   {
     question: 'question2',
@@ -19,6 +22,8 @@ const questions = [{
     description: 'test-description2',
     owner: 'owner-2',
     assignedTo: 'assigned-2',
+    status: STATUS.CLOSE,
+    priority: PRIORITY.MEDIUM,
   }];
 
 const users = [{'userName': 'user1'}, {'userName': 'user2'}];
@@ -46,30 +51,6 @@ describe('Show Question component snapshot', () => {
 
 
 describe('Show question component', () => {
-  it('should have QuestionAnswerWrapper for question summary', () => {
-    const wrapper = shallow(
-        <ShowQuestion
-          users= {users}
-          questions={questions}
-          updateQuestion={()=>{}}
-          match={{params: {id: 2}}}
-          loggedInUser={username}
-          getAnswers={()=>{}}
-          answers={[]}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-        />
-    );
-
-    const summaryWrapper = wrapper.find('#question-answer-summary-wrapper-id');
-    expect(summaryWrapper.length).toEqual(1);
-    expect(summaryWrapper.get(0).props.headerText
-        ).toEqual('Asked By owner-2 to assigned-2');
-
-    expect(summaryWrapper.get(0).props.bodyText).toEqual('question2');
-  });
-
   it('should have QuestionDescription for question summary', () => {
     const wrapper = shallow(
         <ShowQuestion
@@ -91,8 +72,8 @@ describe('Show question component', () => {
     expect(summaryWrapper.props()).toEqual({
         summary: 'question2',
         owner: 'owner-2',
-        priority: 'LOW',
-        status: 'OPEN',
+        priority: 'MEDIUM',
+        status: 'CLOSE',
         assignedTo: 'assigned-2',
         id: 2,
       });
@@ -145,67 +126,9 @@ describe('Show question component', () => {
       description: 'test-description2',
       owner: 'owner-2',
       assignedTo: 'assigned-2',
+      status: 'CLOSE',
+      priority: 'MEDIUM',
     });
-  });
-
-  it('Component should call update question on summary change', () => {
-    const mockedUpdateQuestion = jest.fn();
-    const wrapper = shallow(
-        <ShowQuestion
-          questions={questions}
-          updateQuestion={mockedUpdateQuestion}
-          users={users}
-          match={{params: {id: 2}}}getAllUsers
-          loggedInUser={username}
-          getAnswers={()=>{}}
-          answers={[]}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-        />
-    );
-
-    wrapper.find('#question-answer-summary-wrapper-id')
-          .get(0).props.saveHandler('test question');
-
-    expect(mockedUpdateQuestion).toHaveBeenCalledWith(
-        questions, {
-          id: 2,
-          question: 'test question',
-          description: 'test-description2',
-          owner: 'owner-2',
-          assignedTo: 'assigned-2',
-       });
-  });
-
-  it('Component should not call update question on summary change', () => {
-    const mockedUpdateQuestion = jest.fn();
-    const wrapper = shallow(
-        <ShowQuestion
-          questions={questions}
-          updateQuestion={mockedUpdateQuestion}
-          users={users}
-          answers={[]}
-          match={{params: {id: 2}}}
-          loggedInUser={username}
-          getAnswers={()=>{}}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-        />
-    );
-
-    wrapper.find('#question-answer-summary-wrapper-id')
-        .get(0).props.saveHandler('');
-
-    expect(mockedUpdateQuestion).not.toHaveBeenCalledWith(
-        questions, {
-          id: 2,
-          question: '',
-          description: 'test-description2',
-          owner: 'owner-2',
-          assignedTo: 'assigned-2',
-       });
   });
 
   it('Component should call update question on description change', () => {
@@ -236,6 +159,8 @@ describe('Show question component', () => {
           description: description,
           owner: 'owner-2',
           assignedTo: 'assigned-2',
+          status: STATUS.CLOSE,
+          priority: PRIORITY.MEDIUM,
        });
   });
 
@@ -265,6 +190,8 @@ describe('Show question component', () => {
           description: '',
           owner: 'owner-2',
           assignedTo: 'assigned-2',
+          status: STATUS.OPEN,
+          priority: PRIORITY.LOW,
        });
   });
 

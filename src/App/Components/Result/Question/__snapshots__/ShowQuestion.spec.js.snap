@@ -11,17 +11,9 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
       assignedTo="assigned-2"
       id={2}
       owner="owner-2"
-      priority="LOW"
-      status="OPEN"
+      priority="MEDIUM"
+      status="CLOSE"
       summary="question2"
-    />
-  </div>
-  <div>
-    <QuestionAnswerWrapper
-      bodyText="question2"
-      headerText="Asked By owner-2 to assigned-2"
-      id="question-answer-summary-wrapper-id"
-      saveHandler={[Function]}
     />
   </div>
   <div>
