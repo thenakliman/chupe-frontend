@@ -10,7 +10,7 @@ export class QuestionDescription extends React.Component {
    */
   render() {
     return (
-      <div id='question-description'>
+      <div id='question-description' className='question-description-with-summary'>
         <div id='question-summary' className='question-summary'>
           #{this.props.id} {this.props.summary}
         </div>
