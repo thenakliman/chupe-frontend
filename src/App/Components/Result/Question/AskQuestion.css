@@ -1,4 +1,6 @@
 .input-field-for-question {
+  display: flex;
+  justify-content: center;
 }
 
 form {
