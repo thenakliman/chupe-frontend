@@ -132,8 +132,9 @@ export class AskQuestion extends React.Component {
                       onChange={this.handlePriorityChange}>
                         <option value="">select priority</option>
                         {
-                           ['LOW', 'MEDIUM', 'HIGH'].map((priority) =>(
-                              <option key={priority}>
+                           ['Low', 'Medium', 'High'].map((priority) =>(
+                              <option key={priority}
+                                      value={priority.toUpperCase()}>
                                  {priority}
                               </option>))
                         }

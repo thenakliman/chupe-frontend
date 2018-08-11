@@ -22,7 +22,6 @@ export class ShowQuestion extends React.Component {
         priority: '',
       };
 
-      this.handleQuestionSummary = this.handleQuestionSummary.bind(this);
       this.handleQuestionDescription = this
           .handleQuestionDescription.bind(this);
 
@@ -90,22 +89,6 @@ export class ShowQuestion extends React.Component {
     if (this.props.questions !== prevProps.questions) {
       this.setState(this.getInitialState());
     }
-  }
-  /** Handle changes on the question fields
-  * @param {question} question with new modified value
-  */
-  handleQuestionSummary(question) {
-    const completeQuestion = {
-        id: this.state.id,
-        question: question,
-        description: this.state.description,
-        assignedTo: this.state.assignedTo,
-        owner: this.state.owner,
-        status: this.state.status,
-        priority: this.state.priority,
-      };
-
-    this.handleSubmit(completeQuestion);
   }
 
   /** Handle changes on the question description fields

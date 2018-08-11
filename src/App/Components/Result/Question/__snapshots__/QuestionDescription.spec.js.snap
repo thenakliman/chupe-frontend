@@ -74,29 +74,27 @@ exports[`Question description should match the snapshot 1`] = `
       <span>
         Priority: 
       </span>
-      <span>
-        <select
-          id="question-summary-priority"
-          onChange={[Function]}
-          value="some priority"
+      <select
+        id="question-summary-priority"
+        onChange={[Function]}
+        value="some priority"
+      >
+        <option
+          value="LOW"
         >
-          <option
-            value="LOW"
-          >
-            Low
-          </option>
-          <option
-            value="MEDIUM"
-          >
-            Medium
-          </option>
-          <option
-            value="HIGH"
-          >
-            High
-          </option>
-        </select>
-      </span>
+          Low
+        </option>
+        <option
+          value="MEDIUM"
+        >
+          Medium
+        </option>
+        <option
+          value="HIGH"
+        >
+          High
+        </option>
+      </select>
     </div>
   </div>
 </div>

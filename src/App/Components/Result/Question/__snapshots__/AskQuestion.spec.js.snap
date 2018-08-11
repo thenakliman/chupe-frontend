@@ -42,19 +42,22 @@ exports[`Question Result component snapshot should match the snapshot 1`] = `
           select priority
         </option>
         <option
-          key="LOW"
+          key="Low"
+          value="LOW"
         >
-          LOW
+          Low
         </option>
         <option
-          key="MEDIUM"
+          key="Medium"
+          value="MEDIUM"
         >
-          MEDIUM
+          Medium
         </option>
         <option
-          key="HIGH"
+          key="High"
+          value="HIGH"
         >
-          HIGH
+          High
         </option>
       </select>
     </p>
