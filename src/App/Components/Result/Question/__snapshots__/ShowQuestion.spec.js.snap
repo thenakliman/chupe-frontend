@@ -9,6 +9,8 @@ exports[`Show Question component snapshot should match the snapshot 1`] = `
   >
     <QuestionDescription
       assignedTo="assigned-2"
+      changePriority={[Function]}
+      changeStatus={[Function]}
       id={2}
       owner="owner-2"
       priority="MEDIUM"

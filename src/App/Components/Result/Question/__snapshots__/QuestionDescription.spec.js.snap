@@ -2,6 +2,7 @@
 
 exports[`Question description should match the snapshot 1`] = `
 <div
+  className="question-description-with-summary"
   id="question-description"
 >
   <div
@@ -49,11 +50,22 @@ exports[`Question description should match the snapshot 1`] = `
       <span>
         Status: 
       </span>
-      <span
+      <select
         id="question-summary-status"
+        onChange={[Function]}
+        value="my-status"
       >
-        my-status
-      </span>
+        <option
+          value="OPEN"
+        >
+          Open
+        </option>
+        <option
+          value="CLOSED"
+        >
+          Closed
+        </option>
+      </select>
     </div>
     <div
       className="question-summary-item"
@@ -62,10 +74,28 @@ exports[`Question description should match the snapshot 1`] = `
       <span>
         Priority: 
       </span>
-      <span
-        id="question-summary-priority"
-      >
-        some priority
+      <span>
+        <select
+          id="question-summary-priority"
+          onChange={[Function]}
+          value="some priority"
+        >
+          <option
+            value="LOW"
+          >
+            Low
+          </option>
+          <option
+            value="MEDIUM"
+          >
+            Medium
+          </option>
+          <option
+            value="HIGH"
+          >
+            High
+          </option>
+        </select>
       </span>
     </div>
   </div>

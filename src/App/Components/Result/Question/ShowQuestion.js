@@ -27,6 +27,9 @@ export class ShowQuestion extends React.Component {
           .handleQuestionDescription.bind(this);
 
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.changeStatus = this.changeStatus.bind(this);
+      this.changePriority = this.changePriority.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
       this.getInitialState = this.getInitialState.bind(this);
       this.validateForm = this.validateForm.bind(this);
       this.addAnswer = this.addAnswer.bind(this);
@@ -144,6 +147,20 @@ export class ShowQuestion extends React.Component {
       }
       this.props.updateQuestion(this.props.questions, question);
   }
+
+  /** Change status of the question
+   * @param {string} status of the question
+   */
+  changeStatus(status) {
+    this.handleSubmit(Object.assign({}, this.state, {status: status}));
+  }
+
+  /** Change priority of the question
+   * @param {string} priority of the question
+   */
+  changePriority(priority) {
+    this.handleSubmit(Object.assign({}, this.state, {priority: priority}));
+  }
   /** Renders show question component
       @return {object} returns ShowQuestion component
   */
@@ -156,6 +173,8 @@ export class ShowQuestion extends React.Component {
                                priority={this.state.priority}
                                status={this.state.status}
                                id={this.state.id}
+                               changeStatus={this.changeStatus}
+                               changePriority={this.changePriority}
                                assignedTo={this.state.assignedTo} />
         </div>
         <div>

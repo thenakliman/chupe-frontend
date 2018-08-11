@@ -3,7 +3,7 @@ import React from 'react';
 import {ShowQuestion} from './ShowQuestion';
 /* eslint-enable */
 import ReactDOM from 'react-dom';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import {STATUS, PRIORITY} from './constants';
 
@@ -69,14 +69,12 @@ describe('Show question component', () => {
 
     const summaryWrapper = wrapper.find('QuestionDescription');
     expect(summaryWrapper.length).toEqual(1);
-    expect(summaryWrapper.props()).toEqual({
-        summary: 'question2',
-        owner: 'owner-2',
-        priority: 'MEDIUM',
-        status: 'CLOSE',
-        assignedTo: 'assigned-2',
-        id: 2,
-      });
+    expect(summaryWrapper.props().summary).toEqual('question2');
+    expect(summaryWrapper.props().owner).toEqual('owner-2');
+    expect(summaryWrapper.props().priority).toEqual('MEDIUM');
+    expect(summaryWrapper.props().status).toEqual('CLOSE');
+    expect(summaryWrapper.props().assignedTo).toEqual('assigned-2');
+    expect(summaryWrapper.props().id).toEqual(2);
   });
 
   it('should have QuestionAnswerWrapper for question description', () => {
@@ -267,7 +265,7 @@ describe('Show question component', () => {
     const wrapper = shallow(
         <ShowQuestion
           questions={questions}
-          users={users}
+          users={users}assignedTo
           getAnswers={()=>{}}
           answers={[]}
           match={{params: {id: questionId}}}
@@ -400,5 +398,49 @@ describe('Show question component', () => {
                      node);
 
     expect(component.state).toEqual(questions[0]);
+  });
+
+  it('should call method to update question with given priority', () => {
+      const updateQuestion = jest.fn();
+      const wrapper = mount(<ShowQuestion questions={questions}
+                            users={[]}
+                            getAnswers={()=>{}}
+                            answers={[]}
+                            match={{params: {id: 1}}}
+                            updateQuestion={updateQuestion}
+                            addAnswer={()=>{}}
+                            getAllQuestions={()=>{}}
+                            loggedInUser={username}
+                            getAllUsers={()=>{}}/>);
+
+      const priority = 'LOW';
+      wrapper.find('#question-summary-priority')
+        .simulate('change', {target: {value: priority}});
+
+      expect(updateQuestion).toHaveBeenCalledWith(
+        questions,
+        Object.assign({}, questions[0], {priority: priority}));
+  });
+
+  it('should call method to update question with given status', () => {
+      const updateQuestion = jest.fn();
+      const wrapper = mount(<ShowQuestion questions={questions}
+                            users={[]}
+                            getAnswers={()=>{}}
+                            answers={[]}
+                            match={{params: {id: 1}}}
+                            updateQuestion={updateQuestion}
+                            addAnswer={()=>{}}
+                            getAllQuestions={()=>{}}
+                            loggedInUser={username}
+                            getAllUsers={()=>{}}/>);
+
+      const status = 'OPEN';
+      wrapper.find('#question-summary-status')
+        .simulate('change', {target: {value: status}});
+
+      expect(updateQuestion).toHaveBeenCalledWith(
+        questions,
+        Object.assign({}, questions[0], {status: status}));
   });
 });

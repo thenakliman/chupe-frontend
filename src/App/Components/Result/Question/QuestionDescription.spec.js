@@ -57,14 +57,57 @@ describe('Question description', () => {
   it('should show question status', () => {
       const status = 'OPEN';
       const wrapper = shallow(<QuestionDescription status = {status}/>);
-      expect(wrapper.find('#question-summary-status').props().children
-          ).toEqual(status);
+      expect(wrapper.find('#question-summary-status').props().value
+        ).toEqual(status);
   });
 
-  it('should show question priority', () => {
+  it('should show set question priority', () => {
       const priority = 'LOW';
       const wrapper = shallow(<QuestionDescription priority = {priority}/>);
-      expect(wrapper.find('#question-summary-priority').props().children
-          ).toEqual(priority);
+      expect(wrapper.find('#question-summary-priority').props().value
+        ).toEqual(priority);
+  });
+
+  it('should show three options for select', () => {
+      const priority = 'LOW';
+      const wrapper = shallow(<QuestionDescription priority = {priority}/>);
+      expect(wrapper.find('#question-summary-priority')
+        .children().map((children) => children.text())).toEqual(
+          ['Low', 'Medium', 'High']);
+  });
+
+  it('should show two options for select', () => {
+      const status = 'OPEN';
+      const wrapper = shallow(<QuestionDescription status = {status}/>);
+      expect(wrapper.find('#question-summary-status')
+        .children().map((children) => children.text())).toEqual(
+          ['Open', 'Closed']);
+  });
+
+  it('should call change status method', () => {
+      const status = 'OPEN';
+      const targetStatus = 'CLOSE';
+      const changeStatus = jest.fn();
+      const wrapper = shallow(<QuestionDescription
+                                status = {status}
+                                changeStatus={changeStatus}/>);
+
+      wrapper.find('#question-summary-status')
+        .simulate('change', {target: {value: targetStatus}});
+
+      expect(changeStatus).toHaveBeenCalledWith(targetStatus);
+  });
+
+  it('should call change priority method', () => {
+      const priority = 'LOW';
+      const targetPriority = 'HIGH';
+      const changePriority = jest.fn();
+      const wrapper = shallow(
+          <QuestionDescription priority = {priority}
+                               changePriority={changePriority}/>);
+
+      wrapper.find('#question-summary-priority')
+        .simulate('change', {target: {value: targetPriority}});
+      expect(changePriority).toHaveBeenCalledWith(targetPriority);
   });
 });
