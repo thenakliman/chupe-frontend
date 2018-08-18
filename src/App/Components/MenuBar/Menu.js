@@ -37,6 +37,11 @@ export class MenuBar extends React.Component {
                  className={location === '/questions'?'Selected-Tab': 'Tab'}>
                    Questions
               </a>
+              <a href='#/team-funds'
+                 id="team-funds-tab"
+                 className={location === '/team-funds'?'Selected-Tab': 'Tab'}>
+                   Team Funds
+              </a>
             </span>
             <span>
               <div id='menu-logout-container' onClick={this.logout}>

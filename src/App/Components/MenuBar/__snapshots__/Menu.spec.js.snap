@@ -21,6 +21,13 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
       >
         Questions
       </a>
+      <a
+        className="Tab"
+        href="#/team-funds"
+        id="team-funds-tab"
+      >
+        Team Funds
+      </a>
     </span>
     <span>
       <div

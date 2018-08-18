@@ -69,4 +69,15 @@ describe('Menu Bar Component', () => {
     expect(wrapper.find('#users-tab').props().className
       ).toEqual('Selected-Tab');
   });
+
+  it('Should have Team Fund tab', () => {
+    const location = {pathname: '/team-funds'};
+    const wrapper = shallow(
+        <MenuBar
+            showUserTab={()=>{}}
+            showQuestionTab={()=>{}}
+            location={location}
+        />);
+    expect(wrapper.find('#team-funds-tab').length).toEqual(1);
+  });
 });
