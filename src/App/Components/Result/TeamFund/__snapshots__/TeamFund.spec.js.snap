@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Team fund component snapshot should match the snapshot 1`] = `
+<div
+  id="team-fund-container-id"
+>
+  <table
+    id="team-fund-table-id"
+  >
+    <thead>
+      <tr>
+        <th>
+          S.No
+        </th>
+        <th>
+          Username
+        </th>
+        <th>
+          Amount
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
+`;

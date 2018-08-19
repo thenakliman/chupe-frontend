@@ -4,6 +4,7 @@ import {combineReducers} from 'redux';
 import {currentView} from './currentViewReducers';
 import {loggedInUserDetails} from './loginReducers';
 import {answers} from './answerReducers';
+import {teamFund} from './teamFundReducers';
 
 
 export const rootReducers = combineReducers({
@@ -11,5 +12,6 @@ export const rootReducers = combineReducers({
   users,
   questions,
   currentView,
+  teamFund,
   loggedInUserDetails,
 });

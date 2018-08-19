@@ -23,6 +23,8 @@ import AskQuestionContainer from
 import ShowQuestionContainer from
     './App/Components/Result/Question/ShowQuestionContainer';
 
+import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContainer';
+
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
 
@@ -39,6 +41,7 @@ render(
          <Route component={MenuBar}/>
          <Route path="/users" component={UserResultContainer}/>
          <Route path="/questions" component={QuestionContainer}/>
+         <Route path="/team-funds" component={TeamFundContainer}/>
          <Route path="/question/:id/view" component={ShowQuestionContainer}/>
          <Route exact path="/question/ask" component={AskQuestionContainer}/>
        </div>

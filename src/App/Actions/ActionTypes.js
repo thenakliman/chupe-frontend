@@ -7,4 +7,5 @@ export const ActionTypes = {
   SET_USERNAME: 'SET_USERNAME',
   ADD_ANSWERS: 'ADD_ANSWERS',
   ADD_ANSWER: 'ADD_ANSWER',
+  ADD_TEAM_FUND: 'ADD_TEAM_FUND',
 };
