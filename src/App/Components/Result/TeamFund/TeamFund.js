@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
 import React from 'react';
 
+require('./TeamFund.css');
 /**
 * Team Fund component of the application.
 *
@@ -18,7 +19,7 @@ export class TeamFund extends React.Component {
 */
   render() {
     return (
-        <div id='team-fund-container-id'>
+        <div id='team-fund-container-id' class='team-fund-container'>
           <table id='team-fund-table-id'>
             <thead>
               <tr>

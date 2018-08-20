@@ -5,7 +5,8 @@ import toJson from 'enzyme-to-json';
 
 describe('Team fund component snapshot', () => {
     it('should match the snapshot', () => {
-        shallow(<TeamFund teamFund={[]} fetchTeamFund={jest.fn()}/>);
+        const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fetchTeamFund={jest.fn()}/>);
 
         expect(toJson(wrapper)).toMatchSnapshot();
     });

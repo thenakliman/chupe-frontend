@@ -2,6 +2,7 @@
 
 exports[`Team fund component snapshot should match the snapshot 1`] = `
 <div
+  class="team-fund-container"
   id="team-fund-container-id"
 >
   <table
