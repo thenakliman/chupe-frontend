@@ -26,6 +26,7 @@ export class TeamFund extends React.Component {
                 <th>S.No</th>
                 <th>Username</th>
                 <th>Amount</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@ export class TeamFund extends React.Component {
                   <td>{index+1}</td>
                   <td>{teamMember.owner}</td>
                   <td>{teamMember.totalAmount}</td>
+                  <td>Add/Redeem Fund</td>
                 </tr>
               ))
             }

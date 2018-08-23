@@ -54,6 +54,15 @@ describe('Team Fund component', () => {
         expect(hasUsername).toBe(true);
     });
 
+    it('Should have table header for Amount', () => {
+        const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fetchTeamFund={jest.fn()}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'Action');
+        expect(hasUsername).toBe(true);
+    });
+
     it('Should fetch team fund on component mount', () => {
         const fetchTeamFund = jest.fn();
         shallow(<TeamFund teamFund={[]} fetchTeamFund={fetchTeamFund} />);
