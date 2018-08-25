@@ -1,4 +1,4 @@
-import {fetchTeamFund} from './teamFundActions';
+import {fetchTeamFund, addTeamFundTypes} from './teamFundActions';
 import {ActionTypes} from './ActionTypes';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
@@ -23,6 +23,17 @@ describe('team fund action', () => {
       expect(store.getActions()).toEqual([{
         type: ActionTypes.ADD_TEAM_FUND,
         payload: teamFund.teamMemberFunds,
+      }]);
+    });
+
+    it('should add team fund types', async () => {
+      const teamFundTypes = [{id: 10}];
+
+      await store.dispatch(addTeamFundTypes(teamFundTypes));
+
+      expect(store.getActions()).toEqual([{
+        type: ActionTypes.ADD_TEAM_FUND_TYPES,
+        payload: teamFundTypes,
       }]);
     });
 

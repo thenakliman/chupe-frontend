@@ -6,4 +6,12 @@ export const TeamFundService = {
     async fetchTeamFund() {
         return await Client.get(CHUPE_TEAM_FUND_URL);
     },
+
+    async fetchTeamFundsTypes() {
+        return await Client.get(`${CHUPE_TEAM_FUND_URL}-types`);
+    },
+
+    async addTeamFund() {
+        return await Client.post(`${CHUPE_TEAM_FUND_URL}`);
+    },
 };

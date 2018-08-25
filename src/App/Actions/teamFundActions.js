@@ -12,6 +12,17 @@ function addTeamFund(teamFund) {
   };
 };
 
+/** Action creator for adding team fund types.
+ * @param {object} teamFund types list
+ * @return {object} action
+ */
+export function addTeamFundTypes(teamFund) {
+ return {
+    type: ActionTypes.ADD_TEAM_FUND_TYPES,
+    payload: teamFund,
+  };
+};
+
 /** Fetch team fund and add to store.
  * @return {func} return thunk
  */

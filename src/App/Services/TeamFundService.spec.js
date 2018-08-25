@@ -10,4 +10,22 @@ describe('fetch team fund', () => {
     expect(teamFund).toEqual(receivedTeamFund);
     expect(Client.get).toHaveBeenCalledWith('/api/v1/team-funds');
   });
+
+  it('should get team fund types', async () => {
+    const teamFund = [{id: 10}];
+    spyOn(Client, 'get').and.returnValue(teamFund);
+
+    const receivedTeamFund = await TeamFundService.fetchTeamFundsTypes();
+    expect(teamFund).toEqual(receivedTeamFund);
+    expect(Client.get).toHaveBeenCalledWith('/api/v1/team-funds-types');
+  });
+
+  it('should add team fund', async () => {
+    const teamFund = {id: 10};
+    spyOn(Client, 'post').and.returnValue(teamFund);
+
+    const receivedTeamFund = await TeamFundService.addTeamFund(teamFund);
+    expect(teamFund).toEqual(receivedTeamFund);
+    expect(Client.post).toHaveBeenCalledWith('/api/v1/team-funds');
+  });
 });
