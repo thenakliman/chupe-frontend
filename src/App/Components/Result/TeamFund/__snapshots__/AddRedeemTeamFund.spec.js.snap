@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Team fund component snapshot should match the snapshot 1`] = `
+<div
+  id="team-fund-add-redeem-container-id"
+>
+  <select
+    id="team-fund-action-select-id"
+  >
+    <option
+      value="CREDIT"
+    >
+      Add
+    </option>
+    <option
+      value="DEBIT"
+    >
+      Redeem
+    </option>
+  </select>
+  <select
+    id="team-fund-select-type-id"
+  />
+  <input
+    id="team-fund-amount-id"
+  />
+  <button
+    id="team-fund-submit-button-id"
+  >
+    Submit
+  </button>
+</div>
+`;
