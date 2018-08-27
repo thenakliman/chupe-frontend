@@ -6,6 +6,8 @@ import toJson from 'enzyme-to-json';
 describe('Team fund component snapshot', () => {
     it('should match the snapshot', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -15,6 +17,8 @@ describe('Team fund component snapshot', () => {
 describe('Team Fund component', () => {
     it('Should have container div for Team fund', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         expect(wrapper.find('#team-fund-container-id').length).toEqual(1);
@@ -22,6 +26,8 @@ describe('Team Fund component', () => {
 
     it('Should have team fund table', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         expect(wrapper.find('#team-fund-table-id').length).toEqual(1);
@@ -29,6 +35,8 @@ describe('Team Fund component', () => {
 
     it('Should have table header for username', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         const hasUsername = wrapper.find('th').someWhere(
@@ -38,6 +46,8 @@ describe('Team Fund component', () => {
 
     it('Should have table header for S.No', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         const hasUsername = wrapper.find('th').someWhere(
@@ -47,6 +57,8 @@ describe('Team Fund component', () => {
 
     it('Should have table header for Amount', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         const hasUsername = wrapper.find('th').someWhere(
@@ -56,6 +68,8 @@ describe('Team Fund component', () => {
 
     it('Should have table header for Amount', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()}/>);
 
         const hasUsername = wrapper.find('th').someWhere(
@@ -65,7 +79,10 @@ describe('Team Fund component', () => {
 
     it('Should fetch team fund on component mount', () => {
         const fetchTeamFund = jest.fn();
-        shallow(<TeamFund teamFund={[]} fetchTeamFund={fetchTeamFund} />);
+        shallow(<TeamFund teamFund={[]}
+                          fundTypes={[]}
+                          fetchFundTypes={jest.fn()}
+                          fetchTeamFund={fetchTeamFund} />);
 
         expect(fetchTeamFund).toHaveBeenCalledWith();
     });
@@ -80,6 +97,8 @@ describe('Team Fund component', () => {
         }];
 
         const wrapper = shallow(<TeamFund teamFund={teamFund}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
                                           fetchTeamFund={jest.fn()} />);
 
         expect(wrapper.find('tr').length ).toBe(3);

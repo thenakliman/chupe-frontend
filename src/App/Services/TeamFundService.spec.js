@@ -15,9 +15,9 @@ describe('fetch team fund', () => {
     const teamFund = [{id: 10}];
     spyOn(Client, 'get').and.returnValue(teamFund);
 
-    const receivedTeamFund = await TeamFundService.fetchTeamFundsTypes();
+    const receivedTeamFund = await TeamFundService.fetchFundTypes();
     expect(teamFund).toEqual(receivedTeamFund);
-    expect(Client.get).toHaveBeenCalledWith('/api/v1/team-funds-types');
+    expect(Client.get).toHaveBeenCalledWith('/api/v1/team-funds/type');
   });
 
   it('should add team fund', async () => {

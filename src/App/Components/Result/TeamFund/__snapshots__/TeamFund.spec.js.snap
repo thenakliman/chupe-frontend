@@ -2,9 +2,13 @@
 
 exports[`Team fund component snapshot should match the snapshot 1`] = `
 <div
-  class="team-fund-container"
+  className="team-fund-container"
   id="team-fund-container-id"
 >
+  <AddRedeemTeamFund
+    fetchFundTypes={[MockFunction]}
+    fundTypes={Array []}
+  />
   <table
     id="team-fund-table-id"
   >

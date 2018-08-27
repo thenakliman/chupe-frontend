@@ -1,5 +1,8 @@
 import propTypes from 'prop-types';
 import React from 'react';
+/* eslint-disable */
+import {AddRedeemTeamFund} from './AddRedeemTeamFund';
+/* eslint-enable */
 
 require('./TeamFund.css');
 /**
@@ -19,7 +22,9 @@ export class TeamFund extends React.Component {
 */
   render() {
     return (
-        <div id='team-fund-container-id' class='team-fund-container'>
+        <div id='team-fund-container-id' className='team-fund-container'>
+          <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
+                             fundTypes={this.props.fundTypes}/>
           <table id='team-fund-table-id'>
             <thead>
               <tr>
@@ -48,5 +53,7 @@ export class TeamFund extends React.Component {
 
 TeamFund.propTypes = {
   teamFund: propTypes.arrayOf(propTypes.object).isRequired,
+  fundTypes: propTypes.arrayOf(propTypes.object).isRequired,
   fetchTeamFund: propTypes.func.isRequired,
+  fetchFundTypes: propTypes.func.isRequired,
 };

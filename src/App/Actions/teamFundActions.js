@@ -16,11 +16,23 @@ function addTeamFund(teamFund) {
  * @param {object} teamFund types list
  * @return {object} action
  */
-export function addTeamFundTypes(teamFund) {
+function addFundTypes(teamFund) {
  return {
     type: ActionTypes.ADD_TEAM_FUND_TYPES,
     payload: teamFund,
   };
+};
+
+/** Fetch team fund and add to store.
+ * @return {func} return thunk
+ */
+export const fetchFundTypes = () => async (dispatch) => {
+  try {
+    const teamFundTypes = await TeamFundService.fetchFundTypes();
+    dispatch(addFundTypes(teamFundTypes));
+  } catch (error) {
+    console.log('Error in fetching team fund types');
+  }
 };
 
 /** Fetch team fund and add to store.
