@@ -103,4 +103,41 @@ describe('Team Fund component', () => {
 
         expect(wrapper.find('tr').length ).toBe(3);
     });
+
+    it('should toggle hasPopUp to true from false', () => {
+        const teamFund = [{
+          owner: 'username1',
+          amount: 100,
+        }, {
+          owner: 'username2',
+          amount: -100,
+        }];
+
+        const wrapper = shallow(<TeamFund teamFund={teamFund}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
+                                          fetchTeamFund={jest.fn()} />);
+
+        wrapper.find('#add-redeem-team-fund-username2').simulate('click');
+        expect(wrapper.state().hasPopup).toBe(true);
+    });
+
+    it('should toggle hasPopUp to false from true', () => {
+        const teamFund = [{
+          owner: 'username1',
+          amount: 100,
+        }, {
+          owner: 'username2',
+          amount: -100,
+        }];
+
+        const wrapper = shallow(<TeamFund teamFund={teamFund}
+                                          fundTypes={[]}
+                                          fetchFundTypes={jest.fn()}
+                                          fetchTeamFund={jest.fn()} />);
+
+        wrapper.find('#add-redeem-team-fund-username2').simulate('click');
+        wrapper.find('#add-redeem-team-fund-username2').simulate('click');
+        expect(wrapper.state().hasPopup).toBe(false);
+    });
 });

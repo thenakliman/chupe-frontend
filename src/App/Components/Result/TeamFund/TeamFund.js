@@ -11,20 +11,35 @@ require('./TeamFund.css');
 * @author: thenakliman
 */
 export class TeamFund extends React.Component {
+  /** Constructor, sets initial state and bind methods
+   * @param {object} props initial state
+   */
+  constructor(props) {
+    super(props);
+    this.state = {hasPopup: false};
+    this.onClickAddRedeem = this.onClickAddRedeem.bind(this);
+  }
   /** Fetch team fund while mounting this component */
   componentWillMount() {
     this.props.fetchTeamFund();
   }
-/**
-* Team Fund result component of the application.
-*
-* @return {Object} UserResult component.
-*/
+
+  /** toggle state of pop. */
+  onClickAddRedeem() {
+    this.setState({hasPopup: !this.state.hasPopup});
+  }
+  /**
+  * Team Fund result component of the application.
+  *
+  * @return {Object} UserResult component.
+  */
   render() {
     return (
         <div id='team-fund-container-id' className='team-fund-container'>
-          <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
-                             fundTypes={this.props.fundTypes}/>
+          { this.state.hasPopup &&
+            <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
+                               fundTypes={this.props.fundTypes}/>
+          }
           <table id='team-fund-table-id'>
             <thead>
               <tr>
@@ -36,11 +51,17 @@ export class TeamFund extends React.Component {
             </thead>
             <tbody>
             { this.props.teamFund.map((teamMember, index) => (
-                <tr key={`${teamMember.username}`}>
+                <tr key={`${teamMember.owner}`}>
                   <td>{index+1}</td>
                   <td>{teamMember.owner}</td>
                   <td>{teamMember.totalAmount}</td>
-                  <td>Add/Redeem Fund</td>
+                  <td>
+                    <span id={`add-redeem-team-fund-${teamMember.owner}`}
+                          className='add-redeem-button'
+                          onClick={this.onClickAddRedeem}>
+                      Add/Redeem Fund
+                    </span>
+                  </td>
                 </tr>
               ))
             }
