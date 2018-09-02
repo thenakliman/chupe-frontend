@@ -9,6 +9,7 @@ describe('Team fund component snapshot', () => {
     it('should match the snapshot', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    addFund={jest.fn()}
+                                                   closePopup={()=>{}}
                                                    fundTypes={[]}/>);
         expect(toJson(wrapper)).toMatchSnapshot();
     });
@@ -19,6 +20,7 @@ describe('Add Redeem Team Fund component', () => {
     it('Should have container div', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    addFund={jest.fn()}
+                                                   closePopup={()=>{}}
                                                    fundTypes={fundTypes}/>);
 
         expect(wrapper.find('#team-fund-add-redeem-container-id').length
@@ -29,6 +31,7 @@ describe('Add Redeem Team Fund component', () => {
         const fetchFundTypes = jest.fn();
 
         shallow(<AddRedeemTeamFund fetchFundTypes={fetchFundTypes}
+                                   closePopup={()=>{}}
                                    addFund={jest.fn()}
                                    fundTypes={fundTypes}/>);
 
@@ -37,6 +40,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('Should have select field for add or redeem', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -45,6 +49,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('Should have two options for select field', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -54,6 +59,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('Should have select field type of fund', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -62,6 +68,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('Should have select field options', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -71,6 +78,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('Should have input field for amount', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -79,14 +87,25 @@ describe('Add Redeem Team Fund component', () => {
 
     it('Should have Submit button', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
         expect(wrapper.find('#team-fund-submit-button-id').length).toEqual(1);
     });
 
+    it('Should have cancel button', () => {
+        const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
+                                                   addFund={jest.fn()}
+                                                   fundTypes={fundTypes}/>);
+
+        expect(wrapper.find('#team-fund-cancel-button-id').length).toEqual(1);
+    });
+
     it('should have transaction type set to empty', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -95,6 +114,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('should have fund type set to empty', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -103,6 +123,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('should set amount to default value of transaction type', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -111,6 +132,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('should update amount in state on change of input', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
         const amount = 1000;
@@ -122,6 +144,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('should update transaction type on select', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -133,6 +156,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('should update fund type on select', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={jest.fn()}
                                                    fundTypes={fundTypes}/>);
 
@@ -145,6 +169,7 @@ describe('Add Redeem Team Fund component', () => {
     it('should not submit on button click when amount is zero', () => {
         const addFund = jest.fn();
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   closePopup={()=>{}}
                                                    addFund={addFund}
                                                    fundTypes={fundTypes}/>);
 
@@ -166,6 +191,7 @@ describe('Add Redeem Team Fund component', () => {
         const amount = 107;
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    addFund={addFund}
+                                                   closePopup={()=>{}}
                                                    fundTypes={fundTypes}/>);
 
         wrapper.setState(
@@ -177,5 +203,16 @@ describe('Add Redeem Team Fund component', () => {
 
         wrapper.find('#team-fund-submit-button-id').simulate('click');
         expect(addFund).toHaveBeenCalledWith(transactionType, fundType, amount);
+    });
+
+    it('should close pop up on click of cancel button', () => {
+        const closePopup = jest.fn();
+        const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
+                                                   addFund={()=>{}}
+                                                   closePopup={closePopup}
+                                                   fundTypes={fundTypes}/>);
+
+        wrapper.find('#team-fund-cancel-button-id').simulate('click');
+        expect(closePopup).toHaveBeenCalledWith();
     });
 });

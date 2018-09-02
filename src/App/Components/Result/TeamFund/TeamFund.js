@@ -68,6 +68,7 @@ export class TeamFund extends React.Component {
           { this.state.hasPopup &&
             <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
                                addFund={this.addFund}
+                               closePopup={() => this.onClickAddRedeem(null)}
                                fundTypes={this.props.fundTypes}/>
           }
           <table id='team-fund-table-id'>

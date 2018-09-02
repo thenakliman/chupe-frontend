@@ -95,9 +95,18 @@ export class AddRedeemTeamFund extends React.Component {
                   (event) => this.handleAmountUpdate(event.target.value)}
                  className='add-redeem-input-amount'/>
         </div>
-        <button id='team-fund-submit-button-id'
-                onClick={() => this.handleClick()}
-                className='team-fund-submit-button'>Submit</button>
+        <span>
+          <button id='team-fund-cancel-button-id'
+                  onClick={(event) => this.props.closePopup()}
+                  className='team-fund-submit-button'>
+                Cancel
+          </button>
+          <button id='team-fund-submit-button-id'
+                  onClick={() => this.handleClick()}
+                  className='team-fund-submit-button'>
+                Submit
+          </button>
+        </span>
       </div>
     );
   }
@@ -107,4 +116,5 @@ AddRedeemTeamFund.propTypes = {
   fetchFundTypes: propTypes.func.isRequired,
   fundTypes: propTypes.arrayOf(propTypes.object).isRequired,
   addFund: propTypes.func.isRequired,
+  closePopup: propTypes.func.isRequired,
 };
