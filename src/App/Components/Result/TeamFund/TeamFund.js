@@ -16,18 +16,45 @@ export class TeamFund extends React.Component {
    */
   constructor(props) {
     super(props);
-    this.state = {hasPopup: false};
+    this.state = {hasPopup: false, owner: null};
     this.onClickAddRedeem = this.onClickAddRedeem.bind(this);
+    this.addFund = this.addFund.bind(this);
   }
   /** Fetch team fund while mounting this component */
   componentWillMount() {
     this.props.fetchTeamFund();
   }
 
-  /** toggle state of pop. */
-  onClickAddRedeem() {
-    this.setState({hasPopup: !this.state.hasPopup});
+  /** toggle state of pop.
+   * @param {string} owner
+   */
+  onClickAddRedeem(owner) {
+    let currentOwner;
+    if (this.state.hasPopup) {
+      currentOwner = null;
+    } else {
+      currentOwner = owner;
+    }
+
+    this.setState({hasPopup: !this.state.hasPopup, owner: currentOwner});
   }
+
+  /** Add fund.
+   * @param {string} transactionType
+   * @param {string} fundType
+   * @param {number} amount
+   */
+  addFund(transactionType, fundType, amount) {
+    this.props.addFund({
+      transactionType: transactionType,
+      fundType: fundType,
+      amount: amount,
+      owner: this.state.owner,
+      addedBy: this.props.loggedInUser,
+      isApproved: false,
+    });
+  }
+
   /**
   * Team Fund result component of the application.
   *
@@ -38,6 +65,7 @@ export class TeamFund extends React.Component {
         <div id='team-fund-container-id' className='team-fund-container'>
           { this.state.hasPopup &&
             <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
+                               addFund={this.addFund}
                                fundTypes={this.props.fundTypes}/>
           }
           <table id='team-fund-table-id'>
@@ -58,7 +86,8 @@ export class TeamFund extends React.Component {
                   <td>
                     <span id={`add-redeem-team-fund-${teamMember.owner}`}
                           className='add-redeem-button'
-                          onClick={this.onClickAddRedeem}>
+                          onClick={
+                            () => this.onClickAddRedeem(teamMember.owner)}>
                       Add/Redeem Fund
                     </span>
                   </td>
@@ -75,6 +104,8 @@ export class TeamFund extends React.Component {
 TeamFund.propTypes = {
   teamFund: propTypes.arrayOf(propTypes.object).isRequired,
   fundTypes: propTypes.arrayOf(propTypes.object).isRequired,
+  loggedInUser: propTypes.string.isRequired,
   fetchTeamFund: propTypes.func.isRequired,
   fetchFundTypes: propTypes.func.isRequired,
+  addFund: propTypes.func.isRequired,
 };

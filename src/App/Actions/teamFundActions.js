@@ -46,3 +46,18 @@ export const fetchTeamFund = () => async (dispatch) => {
     console.log('Error in fetching team fund');
   }
 };
+
+/** Fetch add team fund and add new fund to store.
+ * @param {object} fund to be added
+ * @return {func} return thunk
+ */
+export const addFund = (fund) => async (dispatch) => {
+  try {
+    await TeamFundService.addFund(fund);
+    // todo(thenakliman): It can be optimize to perform transaction
+    // on frontend only
+    dispatch(fetchTeamFund());
+  } catch (error) {
+    console.log('Error in adding fund');
+  }
+};

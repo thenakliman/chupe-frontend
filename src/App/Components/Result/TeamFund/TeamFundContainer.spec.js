@@ -12,9 +12,14 @@ describe('TeamFundContainer', () => {
   let store;
   const teamFund = [{username: 'username'}];
   const fundTypes = [{id: 100}, {id: 110}];
+  const loggedInUser = 'logged-in-user';
 
   beforeEach(() => {
-    initialState = {teamFund: teamFund, fundTypes: fundTypes};
+    initialState = {
+        teamFund: teamFund,
+        fundTypes: fundTypes,
+        loggedInUserDetails: {userName: loggedInUser},
+    };
 
     store = configureStore()(initialState);
     spyOn(store, 'dispatch');
@@ -36,6 +41,15 @@ describe('TeamFundContainer', () => {
       </Provider>);
 
     expect(wrapper.find('TeamFund').props().fundTypes).toEqual(fundTypes);
+  });
+
+  it('Should have loggedInUser props for a component', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <TeamFund />
+      </Provider>);
+
+    expect(wrapper.find('TeamFund').props().loggedInUser).toEqual(loggedInUser);
   });
 
   it('Should have method for fetch team fund', () => {
@@ -65,6 +79,22 @@ describe('TeamFundContainer', () => {
     wrapper.find('TeamFund').props().fetchFundTypes();
 
     expect(TeamFundAction.fetchFundTypes).toHaveBeenCalledWith();
+    expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('Should have method for add fund', () => {
+    const fakeAction = {type: 'fakeAction', payload: 'testPayload'};
+    spyOn(TeamFundAction, 'addFund').and.returnValue(fakeAction);
+
+    const wrapper = mount(
+      <Provider store={store}>
+        <TeamFund />
+      </Provider>);
+
+    const fakeFund = {amount: 100};
+    wrapper.find('TeamFund').props().addFund(fakeFund);
+
+    expect(TeamFundAction.addFund).toHaveBeenCalledWith(fakeFund);
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
 });

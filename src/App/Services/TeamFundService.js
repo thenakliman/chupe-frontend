@@ -11,7 +11,8 @@ export const TeamFundService = {
         return await Client.get(`${CHUPE_TEAM_FUND_URL}/type`);
     },
 
-    async addTeamFund() {
-        return await Client.post(`${CHUPE_TEAM_FUND_URL}`);
+    async addFund(fund) {
+        console.log(fund, 'funds -----------');
+        return await Client.post(`${CHUPE_TEAM_FUND_URL}`, fund);
     },
 };

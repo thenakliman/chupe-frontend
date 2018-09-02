@@ -24,8 +24,8 @@ describe('fetch team fund', () => {
     const teamFund = {id: 10};
     spyOn(Client, 'post').and.returnValue(teamFund);
 
-    const receivedTeamFund = await TeamFundService.addTeamFund(teamFund);
+    const receivedTeamFund = await TeamFundService.addFund(teamFund);
     expect(teamFund).toEqual(receivedTeamFund);
-    expect(Client.post).toHaveBeenCalledWith('/api/v1/team-funds');
+    expect(Client.post).toHaveBeenCalledWith('/api/v1/team-funds', teamFund);
   });
 });
