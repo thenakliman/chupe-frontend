@@ -53,6 +53,8 @@ export class TeamFund extends React.Component {
       addedBy: this.props.loggedInUser,
       isApproved: false,
     });
+
+    this.onClickAddRedeem(null);
   }
 
   /**

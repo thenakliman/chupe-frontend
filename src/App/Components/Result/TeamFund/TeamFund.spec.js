@@ -253,6 +253,8 @@ describe('Team Fund component', () => {
 
         wrapper.find('#team-fund-submit-button-id').simulate('click');
 
+        expect(wrapper.state()).toEqual({hasPopup: false, owner: null});
+
         expect(addFund).toHaveBeenCalledWith(
           {
             addedBy: 'username2',
