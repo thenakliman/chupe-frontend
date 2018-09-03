@@ -47,7 +47,7 @@ export class TeamFund extends React.Component {
   addFund(transactionType, fundType, amount) {
     this.props.addFund({
       transactionType: transactionType,
-      fundType: fundType,
+      type: fundType,
       amount: amount,
       owner: this.state.owner,
       addedBy: this.props.loggedInUser,

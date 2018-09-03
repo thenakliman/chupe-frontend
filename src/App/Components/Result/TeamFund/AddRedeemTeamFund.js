@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {transactionMapping} from './constants';
 
 require('./AddRedeemTeamFund.css');
 
@@ -22,6 +21,7 @@ export class AddRedeemTeamFund extends React.Component {
     this.handleFundType = this.handleFundType.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+
   /** Fetch team fund type on mount. */
   componentWillMount() {
     this.props.fetchFundTypes();
@@ -37,18 +37,15 @@ export class AddRedeemTeamFund extends React.Component {
   /** Handle fund type update.
    * @param {string} fundType
    */
-  handleFundType(fundType) {
-    const typeId = this.props.fundTypes.find(
-      (fund) => fund.type == fundType).id;
-
+  handleFundType(typeId) {
     this.setState({fundType: typeId});
   }
 
   /** Handle transaction type.
-   * @param {string} value of transaction type
+   * @param {string} transactionType of transaction type
    */
-  handleTransactionType(value) {
-    this.setState({transactionType: transactionMapping[value]});
+  handleTransactionType(transactionType) {
+    this.setState({transactionType: transactionType});
   }
 
   /** Handle submit event of button. */
@@ -67,47 +64,52 @@ export class AddRedeemTeamFund extends React.Component {
    */
   render() {
     return (
-      <div id='team-fund-add-redeem-container-id'
+      <span id='team-fund-add-redeem-container-id'
            className='team-fund-add-redeem-container'>
-        <select id='team-fund-action-select-id'
-                value={this.state.value}
-                onChange={
-                  (event) => this.handleTransactionType(event.target.value)}
-                className='add-redeem-ream-fund-select'>
-          <option>Add</option>
-          <option>Redeem</option>
-        </select>
-
-        <select id='team-fund-select-type-id'
-                onChange={(event) => this.handleFundType(event.target.value)}
-                value={this.state.value}
-                className='add-redeem-ream-fund-select'>
-        {
-          this.props.fundTypes.map((fund) => (
-            <option value={fund.id} key={fund.id}>{fund.type}</option>))
-        }
-        </select>
-
-        <div className='team-fund-amount-container'>
+        <span className='add-redeem-ream-fund-select'>
+          <select id='team-fund-action-select-id'
+                  value={this.state.value}
+                  onChange={
+                    (event) => this.handleTransactionType(event.target.value)}
+                  >
+            <option value=''>Select Operation</option>
+            <option value='CREDIT'>Add</option>
+            <option value='DEBIT'>Redeem</option>
+          </select>
+        </span>
+        <span className='add-redeem-ream-fund-select'>
+          <select id='team-fund-select-type-id'
+                  onChange={(event) => this.handleFundType(event.target.value)}
+                  value={this.state.value}
+                  >
+            <option value=''>Select Fund Type</option>
+            {
+              this.props.fundTypes.map((fund) => (
+                <option value={fund.id} key={fund.id}>{fund.type}</option>))
+            }
+          </select>
+        </span>
+        <span className='team-fund-amount-container'>
           Amount:
           <input id='team-fund-amount-id'
+                 className='team-fund-amount'
                  onChange={
                   (event) => this.handleAmountUpdate(event.target.value)}
-                 className='add-redeem-input-amount'/>
-        </div>
-        <span>
+                 />
+        </span>
+        <span className='team-fund-submit-button'>
           <button id='team-fund-cancel-button-id'
-                  onClick={(event) => this.props.closePopup()}
-                  className='team-fund-submit-button'>
+                  className='team-fund-button'
+                  onClick={(event) => this.props.closePopup()}>
                 Cancel
           </button>
           <button id='team-fund-submit-button-id'
-                  onClick={() => this.handleClick()}
-                  className='team-fund-submit-button'>
+                  className='team-fund-button'
+                  onClick={() => this.handleClick()}>
                 Submit
           </button>
         </span>
-      </div>
+      </span>
     );
   }
 }

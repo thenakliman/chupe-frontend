@@ -1,22 +1,42 @@
 .team-fund-add-redeem-container {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   margin: 3% 20%;
   border: 1px solid #000;
+  width: 30%;
+  height: 64%;
 }
 
 .add-redeem-ream-fund-select {
-  margin: 10% 10%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.5rem 5rem;
 }
 
 .add-redeem-input-amount {
-  width: 14rem;
-  margin: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.5rem 5rem;
 }
 
 .team-fund-amount-container {
-  margin: 0% 16%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.5rem 5rem;
+
 }
 
 .team-fund-submit-button {
-  margin: 5% 15%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1.5rem 5rem;
+}
+
+.team-fund-amount {
+  width: 10rem;
+}
+
+.team-fund-button {
+  width: 6rem;
 }

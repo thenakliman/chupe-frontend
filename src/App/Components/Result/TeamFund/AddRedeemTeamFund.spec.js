@@ -16,7 +16,7 @@ describe('Team fund component snapshot', () => {
 });
 
 describe('Add Redeem Team Fund component', () => {
-    const fundTypes = [{type: 'BIRTHDAY', id: 1}, {type: 't2', id: 2}];
+    const fundTypes = [{type: 1, id: 1}, {type: 't2', id: 2}];
     it('Should have container div', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    addFund={jest.fn()}
@@ -54,7 +54,7 @@ describe('Add Redeem Team Fund component', () => {
                                                    fundTypes={fundTypes}/>);
 
         expect(wrapper.find('#team-fund-action-select-id').children().length
-            ).toEqual(2);
+            ).toEqual(3);
     });
 
     it('Should have select field type of fund', () => {
@@ -73,7 +73,7 @@ describe('Add Redeem Team Fund component', () => {
                                                    fundTypes={fundTypes}/>);
 
         expect(wrapper.find('#team-fund-select-type-id').children().length
-            ).toEqual(2);
+            ).toEqual(3);
     });
 
     it('Should have input field for amount', () => {
@@ -149,7 +149,7 @@ describe('Add Redeem Team Fund component', () => {
                                                    fundTypes={fundTypes}/>);
 
         wrapper.find('#team-fund-action-select-id').simulate(
-          'change', {target: {value: 'Add'}});
+          'change', {target: {value: 'CREDIT'}});
 
         expect(wrapper.state().transactionType).toEqual('CREDIT');
     });
@@ -161,7 +161,7 @@ describe('Add Redeem Team Fund component', () => {
                                                    fundTypes={fundTypes}/>);
 
         wrapper.find('#team-fund-select-type-id').simulate(
-            'change', {target: {value: 'BIRTHDAY'}});
+            'change', {target: {value: 1}});
 
         expect(wrapper.state().fundType).toEqual(1);
     });
@@ -176,7 +176,7 @@ describe('Add Redeem Team Fund component', () => {
         wrapper.setState(
           {
             transactionType: 'CREDIT',
-            fundType: 'BIRTHDAY',
+            fundType: 1,
             amount: 0,
           });
 
@@ -186,7 +186,7 @@ describe('Add Redeem Team Fund component', () => {
 
     it('should submit on button click when amount is not zero', () => {
         const addFund = jest.fn();
-        const fundType = 'BIRTHDAY';
+        const fundType = 1;
         const transactionType = 'CREDIT';
         const amount = 107;
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
