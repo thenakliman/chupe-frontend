@@ -21,14 +21,13 @@ export class UserResult extends React.Component {
   render() {
     return (
         <div className='UserResult'>
-          <ul id='all-users-list'>
           {
             this.props.users.map((user) =>(
-                <li key={`${user.userName}`}>
-                    {user.firstName} {user.secondName} {user.email}
-                </li>))
+                <div key={`${user.userName}`} className={'user-tile'}>
+                    <img src='fake' className='user-image'/>
+                    <div>{user.firstName} {user.lastName}</div>
+                </div>))
           }
-          </ul>
         </div>
     );
   }

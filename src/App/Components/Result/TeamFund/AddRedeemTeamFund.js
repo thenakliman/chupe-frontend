@@ -35,7 +35,7 @@ export class AddRedeemTeamFund extends React.Component {
   }
 
   /** Handle fund type update.
-   * @param {string} fundType
+   * @param {string} typeId
    */
   handleFundType(typeId) {
     this.setState({fundType: typeId});

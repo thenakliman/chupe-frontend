@@ -21,8 +21,7 @@ describe('User result component', () => {
         const wrapper = shallow(
             <UserResult users = {users} getUsers={()=>{}}/>);
 
-        expect(wrapper.find('#all-users-list').get(0).props.children.length)
-            .toEqual(3);
+        expect(wrapper.find('.UserResult').children().length).toEqual(3);
     });
 
     it('Component did mount', () => {
