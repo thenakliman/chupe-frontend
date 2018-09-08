@@ -242,8 +242,51 @@ describe('Team Fund component', () => {
 
         wrapper.setState({hasPopup: true, owner: 'username1'});
         const amount = 1000;
+
+        wrapper.find('#team-fund-select-type-id').simulate(
+            'change', {target: {value: 1}});
+
+        wrapper.find('#team-fund-action-select-id').simulate(
+            'change', {target: {value: 'CREDIT'}});
+
         wrapper.find('#team-fund-amount-id').simulate(
             'change', {target: {value: amount}});
+        wrapper.find('#team-fund-submit-button-id').simulate('click');
+
+        expect(wrapper.state()).toEqual({hasPopup: false, owner: null});
+
+        expect(addFund).toHaveBeenCalledWith(
+          {
+            addedBy: 'username2',
+            amount: 1000,
+            type: 1,
+            isApproved: false,
+            owner: 'username1',
+            transactionType: 'CREDIT',
+          }
+        );
+    });
+
+    it('should call addFund method with default value of fundType', () => {
+        const teamFund = [{
+          owner: 'username1',
+          amount: 100,
+        }, {
+          owner: 'username2',
+          amount: -100,
+        }];
+
+        const fundTypes = [{type: 'BIRTHDAY', id: 1, defaultAmount: 101}];
+        const addFund = jest.fn();
+        const wrapper = mount(
+            <TeamFund teamFund={teamFund}
+                      addFund={addFund}
+                      loggedInUser={'username2'}
+                      fundTypes={fundTypes}
+                      fetchFundTypes={jest.fn()}
+                      fetchTeamFund={jest.fn()} />);
+
+        wrapper.setState({hasPopup: true, owner: 'username1'});
 
         wrapper.find('#team-fund-select-type-id').simulate(
             'change', {target: {value: 1}});
@@ -258,7 +301,7 @@ describe('Team Fund component', () => {
         expect(addFund).toHaveBeenCalledWith(
           {
             addedBy: 'username2',
-            amount: 1000,
+            amount: 101,
             type: 1,
             isApproved: false,
             owner: 'username1',

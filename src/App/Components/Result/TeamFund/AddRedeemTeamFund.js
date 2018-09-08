@@ -38,7 +38,9 @@ export class AddRedeemTeamFund extends React.Component {
    * @param {string} typeId
    */
   handleFundType(typeId) {
-    this.setState({fundType: typeId});
+    const fund = this.props.fundTypes.find((fund) => fund.id == typeId);
+    const defaultAmount = fund && fund.defaultAmount || 0;
+    this.setState({fundType: typeId, amount: defaultAmount});
   }
 
   /** Handle transaction type.
@@ -93,6 +95,7 @@ export class AddRedeemTeamFund extends React.Component {
           Amount:
           <input id='team-fund-amount-id'
                  className='team-fund-amount'
+                 value={this.state.amount}
                  onChange={
                   (event) => this.handleAmountUpdate(event.target.value)}
                  />
