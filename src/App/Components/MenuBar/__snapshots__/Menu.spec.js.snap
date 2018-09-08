@@ -6,7 +6,9 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
     className="Header"
     id="chupe-header"
   >
-    <span>
+    <span
+      className="manu-bar-tabs"
+    >
       <a
         className="Selected-Tab"
         href="#/users"
@@ -29,8 +31,11 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
         Team Funds
       </a>
     </span>
-    <span>
+    <span
+      className="manu-bar-tabs"
+    >
       <div
+        className="menu-logout-container"
         id="menu-logout-container"
         onClick={[Function]}
       >
