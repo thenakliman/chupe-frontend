@@ -26,7 +26,7 @@ export class MenuBar extends React.Component {
       return (
         <div>
           <header id="chupe-header" className="Header">
-            <span>
+            <span className='manu-bar-tabs'>
               <a href='#/users'
                  id="users-tab"
                  className={location === '/users'?'Selected-Tab': 'Tab'}>
@@ -43,8 +43,10 @@ export class MenuBar extends React.Component {
                    Team Funds
               </a>
             </span>
-            <span>
-              <div id='menu-logout-container' onClick={this.logout}>
+            <span className='manu-bar-tabs'>
+              <div id='menu-logout-container'
+                   className='menu-logout-container'
+                   onClick={this.logout}>
                 logout
               </div>
             </span>
