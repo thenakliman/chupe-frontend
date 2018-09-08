@@ -33,17 +33,52 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk))
 );
 
+
+const ListQuestionComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <QuestionContainer {...props}/>
+  </div>
+)
+
+const ShowQuestionComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <ShowQuestionContainer {...props}/>
+  </div>
+)
+
+const AskQuestionComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <AskQuestionContainer {...props}/>
+  </div>
+)
+
+const UserComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <UserResultContainer {...props}/>
+  </div>
+)
+
+const TeamFundComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <TeamFundContainer {...props}/>
+  </div>
+)
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
        <div>
          <Route exact path="/" component={LoginContainer} />
-         <Route component={MenuBar}/>
-         <Route path="/users" component={UserResultContainer}/>
-         <Route path="/questions" component={QuestionContainer}/>
-         <Route path="/team-funds" component={TeamFundContainer}/>
-         <Route path="/question/:id/view" component={ShowQuestionContainer}/>
-         <Route exact path="/question/ask" component={AskQuestionContainer}/>
+         <Route path="/users" component={UserComponent}/>
+         <Route path="/questions" component={ListQuestionComponent}/>
+         <Route path="/team-funds" component={TeamFundComponent}/>
+         <Route path="/question/:id/view" component={ShowQuestionComponent}/>
+         <Route exact path="/question/ask" component={AskQuestionComponent}/>
        </div>
     </ConnectedRouter>
   </Provider>,
