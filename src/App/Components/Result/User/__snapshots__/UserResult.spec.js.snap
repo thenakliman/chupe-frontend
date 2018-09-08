@@ -4,21 +4,29 @@ exports[`User result component snapshot should match the snapshot 1`] = `
 <div
   className="UserResult"
 >
-  <ul
-    id="all-users-list"
+  <div
+    className="user-tile"
+    key="undefined"
   >
-    <li
-      key="undefined"
-    >
+    <img
+      className="user-image"
+      src="fake"
+    />
+    <div>
        
+    </div>
+  </div>
+  <div
+    className="user-tile"
+    key="undefined"
+  >
+    <img
+      className="user-image"
+      src="fake"
+    />
+    <div>
        
-    </li>
-    <li
-      key="undefined"
-    >
-       
-       
-    </li>
-  </ul>
+    </div>
+  </div>
 </div>
 `;

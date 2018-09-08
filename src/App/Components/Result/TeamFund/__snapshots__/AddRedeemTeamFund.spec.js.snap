@@ -1,43 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Team fund component snapshot should match the snapshot 1`] = `
-<div
+<span
   className="team-fund-add-redeem-container"
   id="team-fund-add-redeem-container-id"
 >
-  <select
+  <span
     className="add-redeem-ream-fund-select"
-    id="team-fund-action-select-id"
-    onChange={[Function]}
   >
-    <option>
-      Add
-    </option>
-    <option>
-      Redeem
-    </option>
-  </select>
-  <select
+    <select
+      id="team-fund-action-select-id"
+      onChange={[Function]}
+    >
+      <option
+        value=""
+      >
+        Select Operation
+      </option>
+      <option
+        value="CREDIT"
+      >
+        Add
+      </option>
+      <option
+        value="DEBIT"
+      >
+        Redeem
+      </option>
+    </select>
+  </span>
+  <span
     className="add-redeem-ream-fund-select"
-    id="team-fund-select-type-id"
-    onChange={[Function]}
-  />
-  <div
+  >
+    <select
+      id="team-fund-select-type-id"
+      onChange={[Function]}
+    >
+      <option
+        value=""
+      >
+        Select Fund Type
+      </option>
+    </select>
+  </span>
+  <span
     className="team-fund-amount-container"
   >
-    Amount: 
+    Amount:
     <input
-      className="add-redeem-input-amount"
+      className="team-fund-amount"
       id="team-fund-amount-id"
       onChange={[Function]}
     />
-  </div>
-  <button
+  </span>
+  <span
     className="team-fund-submit-button"
-    id="team-fund-submit-button-id"
-    onClick={[Function]}
   >
-    Submit
-  </button>
-</div>
+    <button
+      className="team-fund-button"
+      id="team-fund-cancel-button-id"
+      onClick={[Function]}
+    >
+      Cancel
+    </button>
+    <button
+      className="team-fund-button"
+      id="team-fund-submit-button-id"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </span>
+</span>
 `;
