@@ -91,7 +91,7 @@ export class TeamFund extends React.Component {
                           className='add-redeem-button'
                           onClick={
                             () => this.onClickAddRedeem(teamMember.owner)}>
-                      Add/Redeem Fund
+                      Add/Redeem
                     </span>
                   </td>
                 </tr>
