@@ -1,5 +1,6 @@
 import propTypes from 'prop-types';
 import React from 'react';
+import {history} from '../../../utils/history';
 /* eslint-disable */
 import {AddRedeemTeamFund} from './AddRedeemTeamFund';
 /* eslint-enable */
@@ -37,6 +38,13 @@ export class TeamFund extends React.Component {
     }
 
     this.setState({hasPopup: !this.state.hasPopup, owner: currentOwner});
+  }
+
+  /** toggle state of pop.
+   * @param {string} owner
+   */
+  onClickDetail(owner) {
+    history.push('/funds/'+owner);
   }
 
   /** Add fund.
@@ -77,6 +85,7 @@ export class TeamFund extends React.Component {
                 <th>S.No</th>
                 <th>Username</th>
                 <th>Amount</th>
+                <th>Details</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -86,6 +95,13 @@ export class TeamFund extends React.Component {
                   <td>{index+1}</td>
                   <td>{teamMember.owner}</td>
                   <td>{teamMember.totalAmount}</td>
+                  <td>
+                    <span id={`view-details-button-${teamMember.owner}`}
+                          className='view-details-button'
+                          onClick={() => this.onClickDetail(teamMember.owner)}>
+                      View Details
+                    </span>
+                  </td>
                   <td>
                     <span id={`add-redeem-team-fund-${teamMember.owner}`}
                           className='add-redeem-button'

@@ -2,6 +2,7 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import {TeamFund} from './TeamFund'; // eslint-disable-line no-unused-vars
 import {shallow, mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
+import * as history from '../../../utils/history';
 
 describe('Team fund component snapshot', () => {
     it('should match the snapshot', () => {
@@ -78,7 +79,7 @@ describe('Team Fund component', () => {
         expect(hasUsername).toBe(true);
     });
 
-    it('Should have table header for Amount', () => {
+    it('Should have table header for Action', () => {
         const wrapper = shallow(<TeamFund teamFund={[]}
                                           addFund={()=>{}}
                                           fundTypes={[]}
@@ -88,6 +89,19 @@ describe('Team Fund component', () => {
 
         const hasUsername = wrapper.find('th').someWhere(
             (header) => header.props().children === 'Action');
+        expect(hasUsername).toBe(true);
+    });
+
+    it('Should have table header for details', () => {
+        const wrapper = shallow(<TeamFund teamFund={[]}
+                                          addFund={()=>{}}
+                                          fundTypes={[]}
+                                          loggedInUser={'username2'}
+                                          fetchFundTypes={jest.fn()}
+                                          fetchTeamFund={jest.fn()}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'Details');
         expect(hasUsername).toBe(true);
     });
 
@@ -332,5 +346,29 @@ describe('Team Fund component', () => {
         wrapper.find('#team-fund-cancel-button-id').simulate('click');
 
         expect(wrapper.state()).toEqual({hasPopup: false, owner: null});
+    });
+
+    it('should change change history on click of details text', () => {
+        const teamFund = [{
+          owner: 'username1',
+          amount: 100,
+        }, {
+          owner: 'username2',
+          amount: -100,
+        }];
+
+        const pushMethod = jest.fn();
+        history.history = {push: pushMethod};
+        const addFund = jest.fn();
+        const wrapper = mount(
+            <TeamFund teamFund={teamFund}
+                      addFund={addFund}
+                      loggedInUser={'username2'}
+                      fundTypes={[{type: 'BIRTHDAY', id: 1}]}
+                      fetchFundTypes={jest.fn()}
+                      fetchTeamFund={jest.fn()} />);
+
+        wrapper.find('#view-details-button-username1').simulate('click');
+        expect(pushMethod).toHaveBeenCalledWith('/funds/username1');
     });
 });

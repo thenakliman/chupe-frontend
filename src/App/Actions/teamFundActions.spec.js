@@ -1,4 +1,10 @@
-import {fetchTeamFund, fetchFundTypes, addFund} from './teamFundActions';
+import {
+  fetchTeamFund,
+  fetchFundTypes,
+  addFund,
+  fetchFundsForAUser,
+  } from './teamFundActions';
+
 import {ActionTypes} from './ActionTypes';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
@@ -51,6 +57,19 @@ describe('team fund action', () => {
       }]);
     });
 
+    it('should add fund for a member', async () => {
+      const memberFunds = [{id: 10}, {id: 11}];
+      spyOn(TeamFundService, 'getFundsForAUser').and.returnValue(memberFunds);
+      const owner = 'test-owner';
+      await store.dispatch(fetchFundsForAUser(owner));
+
+      expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
+      expect(store.getActions()).toEqual([{
+        type: ActionTypes.ADD_FUNDS_FOR_USER,
+        payload: memberFunds,
+      }]);
+    });
+
     it('should add team fund fail', async () => {
       spyOn(TeamFundService, 'fetchTeamFund').and.throwError('fake error');
       spyOn(console, 'log');
@@ -97,6 +116,19 @@ describe('team fund action', () => {
       expect(TeamFundService.addFund).toHaveBeenCalledWith(fund);
       expect(console.log).
           toHaveBeenCalledWith('Error in fetching team fund');
+      expect(store.getActions()).toEqual([]);
+  });
+
+  it('should fetch a member fund fail when adding fund', async () => {
+      spyOn(TeamFundService, 'getFundsForAUser').and.throwError('fake error');
+      spyOn(console, 'log');
+
+      const owner = 'test-owner';
+      await store.dispatch(fetchFundsForAUser(owner));
+
+      expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
+      expect(console.log).
+          toHaveBeenCalledWith('Error in fetching fund for a member');
       expect(store.getActions()).toEqual([]);
   });
 });

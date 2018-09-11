@@ -28,4 +28,14 @@ describe('fetch team fund', () => {
     expect(teamFund).toEqual(receivedTeamFund);
     expect(Client.post).toHaveBeenCalledWith('/api/v1/team-funds', teamFund);
   });
+
+  it('should get funds for a user', async () => {
+    const username = 'username';
+    const teamFund = [{id: 10}];
+    spyOn(Client, 'get').and.returnValue(teamFund);
+
+    const receivedTeamFund = await TeamFundService.getFundsForAUser(username);
+    expect(teamFund).toEqual(receivedTeamFund);
+    expect(Client.get).toHaveBeenCalledWith('/api/v1/funds?owner=username');
+  });
 });

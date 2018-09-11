@@ -6,6 +6,7 @@ import {loggedInUserDetails} from './loginReducers';
 import {answers} from './answerReducers';
 import {teamFund} from './teamFundReducers';
 import {fundTypes} from './fundTypesReducers';
+import {funds} from './fundReducers';
 
 
 export const rootReducers = combineReducers({
@@ -15,5 +16,6 @@ export const rootReducers = combineReducers({
   currentView,
   teamFund,
   fundTypes,
+  funds,
   loggedInUserDetails,
 });

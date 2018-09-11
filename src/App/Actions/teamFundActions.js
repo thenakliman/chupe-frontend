@@ -23,6 +23,17 @@ function addFundTypes(teamFund) {
   };
 };
 
+/** Action creator for adding funds for a member.
+ * @param {object} memberFunds for a user
+ * @return {object} action
+ */
+function addFundForAUser(memberFunds) {
+ return {
+    type: ActionTypes.ADD_FUNDS_FOR_USER,
+    payload: memberFunds,
+  };
+};
+
 /** Fetch team fund and add to store.
  * @return {func} return thunk
  */
@@ -44,6 +55,19 @@ export const fetchTeamFund = () => async (dispatch) => {
     dispatch(addTeamFund(teamFund.teamMemberFunds));
   } catch (error) {
     console.log('Error in fetching team fund');
+  }
+};
+
+/** Fetch fund for user.
+ * @param {string} owner for which funds has to be fetched
+ * @return {func} thunk
+ */
+export const fetchFundsForAUser = (owner) => async (dispatch) => {
+  try {
+    const funds = await TeamFundService.getFundsForAUser(owner);
+    dispatch(addFundForAUser(funds));
+  } catch (error) {
+    console.log('Error in fetching fund for a member');
   }
 };
 

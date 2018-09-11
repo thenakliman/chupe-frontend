@@ -1,6 +1,7 @@
 import * as Client from './client';
 
 const CHUPE_TEAM_FUND_URL = '/api/v1/team-funds';
+const CHUPE_FUND_URL = '/api/v1/funds';
 
 export const TeamFundService = {
     async fetchTeamFund() {
@@ -12,7 +13,10 @@ export const TeamFundService = {
     },
 
     async addFund(fund) {
-        console.log(fund, 'funds -----------');
         return await Client.post(`${CHUPE_TEAM_FUND_URL}`, fund);
+    },
+
+    async getFundsForAUser(owner) {
+        return await Client.get(`${CHUPE_FUND_URL}?owner=${owner}`);
     },
 };

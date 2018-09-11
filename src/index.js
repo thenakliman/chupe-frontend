@@ -24,6 +24,7 @@ import ShowQuestionContainer from
     './App/Components/Result/Question/ShowQuestionContainer';
 
 import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContainer';
+import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContainer';
 
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
@@ -69,6 +70,13 @@ const TeamFundComponent = (props) => (
   </div>
 )
 
+const ShowFundComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <ShowFundContainer {...props}/>
+  </div>
+)
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -78,6 +86,7 @@ render(
          <Route path="/questions" component={ListQuestionComponent}/>
          <Route path="/team-funds" component={TeamFundComponent}/>
          <Route path="/question/:id/view" component={ShowQuestionComponent}/>
+         <Route path="/funds/:id" component={ShowFundComponent}/>
          <Route exact path="/question/ask" component={AskQuestionComponent}/>
        </div>
     </ConnectedRouter>
