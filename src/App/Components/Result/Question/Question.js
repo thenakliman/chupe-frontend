@@ -78,82 +78,84 @@ export class Question extends React.Component {
         questions = this.filterByOwner(questions);
         questions = this.filterByAssignedTo(questions);
         return (
-          <div className='question-result-container'>
-            <div>
-              <button id='ask-question-button'
-                className='question-button'
-                type="button"
-                onClick={()=> history.push('/question/ask')}
-              >
-                Ask Question
-              </button>
-            </div>
-            <div>
-              <button id='asked-to-me-question-button'
-                className='question-button'
-                type="button"
-                onClick={this.setAssignedToFilter}
-              >
-                Asked to Me
-              </button>
-            </div>
+        <div className='question-result-container'>
+          <div>
               <div>
-                <button id='asked-by-me-question-button'
+                <button id='ask-question-button'
                   className='question-button'
                   type="button"
-                  onClick={this.setOwnerFilter}
+                  onClick={()=> history.push('/question/ask')}
                 >
-                  Ask By Me
+                  Ask Question
+                </button>
+              </div>
+              <div>
+                <button id='asked-to-me-question-button'
+                  className='question-button'
+                  type="button"
+                  onClick={this.setAssignedToFilter}
+                >
+                  Asked to Me
+                </button>
+              </div>
+                <div>
+                  <button id='asked-by-me-question-button'
+                    className='question-button'
+                    type="button"
+                    onClick={this.setOwnerFilter}
+                  >
+                    Ask By Me
+                  </button>
+              </div>
+              <div>
+                <button id='show-all-question-button'
+                  className='question-button'
+                  type="button"
+                  onClick={this.resetFilter}
+                >
+                  Show All
                 </button>
             </div>
-            <div>
-              <button id='show-all-question-button'
-                className='question-button'
-                type="button"
-                onClick={this.resetFilter}
-              >
-                Show All
-              </button>
-            </div>
-              <div>
-                <table id='all-question-ordered-list'>
-                  <thead>
-                    <tr>
-                      <th> Id </th>
-                      <th> Question </th>
-                      <th> Owner </th>
-                      <th> Assigned To </th>
-                      <th> Priority </th>
-                        </tr>
-                  </thead>
-                  <tbody id='all-questions-table-id'>
-                  {
-                    questions.map((question) =>(
-                      <tr key={`${question.id}`}>
-                        <td> {question.id} </td>
-                        <td> {question.question} </td>
-                        <td> {question.owner}</td>
-                        <td> {question.assignedTo} </td>
-                        <td> {question.priority}</td>
-                        <td>
-                          <button id={`view-question-button-` + question.id}
-                                  className='view-question-button'
-                                  type='button'
-                                  onClick={
-                                    ()=> history.push(
-                                      '/question/' + question.id + '/view')}
-                          >
-                              View
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  }
-                  </tbody>
-                </table>
-              </div>
-            </div>
-        );
+          </div>
+          <div>
+            <table id='all-question-ordered-list'>
+              <thead>
+                <tr>
+                  <th> Id </th>
+                  <th> Question </th>
+                  <th> Owner </th>
+                  <th> Assigned To </th>
+                  <th> Priority </th>
+                    </tr>
+              </thead>
+              <tbody id='all-questions-table-id'>
+              {
+                questions.map((question) =>(
+                  <tr key={`${question.id}`}>
+                    <td> {question.id} </td>
+                    <td> {question.question} </td>
+                    <td> {question.owner}</td>
+                    <td> {question.assignedTo} </td>
+                    <td> {question.priority}</td>
+                    <td>
+                      <button id={`view-question-button-` + question.id}
+                              className='view-question-button'
+                              type='button'
+                              onClick={
+                                ()=> history.push(
+                                  '/question/' + question.id + '/view')}
+                      >
+                          View
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      );
     }
 }
 
