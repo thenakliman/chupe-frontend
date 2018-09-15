@@ -14,10 +14,10 @@ describe('team fund action', () => {
   const teamFund = {teamMemberFunds: [{owner: 'james'}]};
   const fundTypes=[{
         id: 10,
-        description: 'Birthday'
-      },{
+        description: 'Birthday',
+      }, {
         id: 11,
-        description: 'OnSite'
+        description: 'OnSite',
       }];
 
     let store;

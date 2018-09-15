@@ -87,7 +87,10 @@ export class AddRedeemTeamFund extends React.Component {
             <option value=''>Select Fund Type</option>
             {
               this.props.fundTypes.map((fund) => (
-                <option value={fund.id} key={fund.id}>{fund.type}</option>))
+                <option value={fund.id}
+                        key={fund.id}>
+                            {fund.description}
+                </option>))
             }
           </select>
         </span>

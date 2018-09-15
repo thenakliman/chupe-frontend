@@ -63,7 +63,7 @@ export const fetchTeamFund = () => async (dispatch) => {
 /** Add fundTypes description to funds
  * @param {array} funds to which fund type description to be added
  * @param {array} fundTypes to which fund type description to be added
- * @returns {array} funds with updated description
+ * @return {array} funds with updated description
  */
 function addDescriptionToFundType(funds, fundTypes) {
   const fundTypeIdToDescription = {};
@@ -76,7 +76,7 @@ function addDescriptionToFundType(funds, fundTypes) {
         fund,
         {type: fundTypeIdToDescription[fund.type]?
                fundTypeIdToDescription[fund.type]:
-               DEFAULT_FUND_TYPE
+               DEFAULT_FUND_TYPE,
         }
       )
     )
