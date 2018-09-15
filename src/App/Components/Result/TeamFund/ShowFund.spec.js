@@ -42,7 +42,62 @@ describe('Show Fund component', () => {
                                           funds={funds}
                                           match={match}/>);
 
-        expect(wrapper.find('#user-fund-container-id').children().length
+        expect(wrapper.find('tbody').children().length
             ).toEqual(2);
+    });
+
+    it('Should have table header for S.No', () => {
+        const match = {params: {id: 'test-owner'}};
+        const wrapper = shallow(<ShowFund fetchFunds={() => {}}
+                                          funds={[]}
+                                          match={match}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'S.No');
+        expect(hasUsername).toBe(true);
+    });
+
+    it('Should have table header for Owner', () => {
+        const match = {params: {id: 'test-owner'}};
+        const wrapper = shallow(<ShowFund fetchFunds={() => {}}
+                                          funds={[]}
+                                          match={match}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'Owner');
+        expect(hasUsername).toBe(true);
+    });
+
+    it('Should have table header for type ', () => {
+        const match = {params: {id: 'test-owner'}};
+        const wrapper = shallow(<ShowFund fetchFunds={() => {}}
+                                          funds={[]}
+                                          match={match}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'type');
+        expect(hasUsername).toBe(true);
+    });
+
+    it('Should have table header for Amount', () => {
+        const match = {params: {id: 'test-owner'}};
+        const wrapper = shallow(<ShowFund fetchFunds={() => {}}
+                                          funds={[]}
+                                          match={match}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'Amount');
+        expect(hasUsername).toBe(true);
+    });
+
+    it('Should have table header for Added On', () => {
+        const match = {params: {id: 'test-owner'}};
+        const wrapper = shallow(<ShowFund fetchFunds={() => {}}
+                                          funds={[]}
+                                          match={match}/>);
+
+        const hasUsername = wrapper.find('th').someWhere(
+            (header) => header.props().children === 'Added On');
+        expect(hasUsername).toBe(true);
     });
 });

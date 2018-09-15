@@ -2,6 +2,32 @@
 
 exports[`Show fund component snapshot should match the snapshot 1`] = `
 <div
+  className="team-fund-container"
   id="user-fund-container-id"
-/>
+>
+  <table
+    id="fund-table-id"
+  >
+    <thead>
+      <tr>
+        <th>
+          S.No
+        </th>
+        <th>
+          Owner
+        </th>
+        <th>
+          type
+        </th>
+        <th>
+          Amount
+        </th>
+        <th>
+          Added On
+        </th>
+      </tr>
+    </thead>
+    <tbody />
+  </table>
+</div>
 `;

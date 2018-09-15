@@ -12,7 +12,14 @@ import {TeamFundService} from '../Services/TeamFundService';
 
 describe('team fund action', () => {
   const teamFund = {teamMemberFunds: [{owner: 'james'}]};
-  const fundTypes=[{id: 10}, {id: 11}];
+  const fundTypes=[{
+        id: 10,
+        description: 'Birthday'
+      },{
+        id: 11,
+        description: 'OnSite'
+      }];
+
     let store;
     beforeEach(() => {
       const middleware = [thunk];
@@ -58,15 +65,32 @@ describe('team fund action', () => {
     });
 
     it('should add fund for a member', async () => {
-      const memberFunds = [{id: 10}, {id: 11}];
+      const memberFunds = [{id: 10, type: 10}, {id: 11, type: 11}];
       spyOn(TeamFundService, 'getFundsForAUser').and.returnValue(memberFunds);
+      spyOn(TeamFundService, 'fetchFundTypes').and.returnValue(fundTypes);
       const owner = 'test-owner';
       await store.dispatch(fetchFundsForAUser(owner));
 
       expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
+      expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([{
         type: ActionTypes.ADD_FUNDS_FOR_USER,
-        payload: memberFunds,
+        payload: [{id: 10, type: 'Birthday'}, {id: 11, type: 'OnSite'}],
+      }]);
+    });
+
+    it('should add fund unkown for a member', async () => {
+      const memberFunds = [{id: 10, type: 12}, {id: 11, type: 11}];
+      spyOn(TeamFundService, 'getFundsForAUser').and.returnValue(memberFunds);
+      spyOn(TeamFundService, 'fetchFundTypes').and.returnValue(fundTypes);
+      const owner = 'test-owner';
+      await store.dispatch(fetchFundsForAUser(owner));
+
+      expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
+      expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
+      expect(store.getActions()).toEqual([{
+        type: ActionTypes.ADD_FUNDS_FOR_USER,
+        payload: [{id: 10, type: 'Unknown'}, {id: 11, type: 'OnSite'}],
       }]);
     });
 

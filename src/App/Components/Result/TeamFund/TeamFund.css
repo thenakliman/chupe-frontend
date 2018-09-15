@@ -5,3 +5,7 @@
 .add-redeem-button:hover {
   cursor: pointer;
 }
+
+.view-details-button:hover {
+  cursor: pointer;
+}

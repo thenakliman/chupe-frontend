@@ -1,6 +1,8 @@
 import {ActionTypes} from './ActionTypes';
 import {TeamFundService} from '../Services/TeamFundService';
 
+const DEFAULT_FUND_TYPE = 'Unknown';
+
 /** Action creator for adding team fund.
  * @param {object} teamFund list of team member funds
  * @return {object} action
@@ -58,14 +60,42 @@ export const fetchTeamFund = () => async (dispatch) => {
   }
 };
 
+/** Add fundTypes description to funds
+ * @param {array} funds to which fund type description to be added
+ * @param {array} fundTypes to which fund type description to be added
+ * @returns {array} funds with updated description
+ */
+function addDescriptionToFundType(funds, fundTypes) {
+  const fundTypeIdToDescription = {};
+  fundTypes.map((fund) => fundTypeIdToDescription[fund.id] = fund.description);
+  const updatedFund = [];
+  funds.map((fund) =>
+    updatedFund.push(
+      Object.assign(
+        {},
+        fund,
+        {type: fundTypeIdToDescription[fund.type]?
+               fundTypeIdToDescription[fund.type]:
+               DEFAULT_FUND_TYPE
+        }
+      )
+    )
+  );
+
+  return updatedFund;
+}
 /** Fetch fund for user.
  * @param {string} owner for which funds has to be fetched
  * @return {func} thunk
  */
 export const fetchFundsForAUser = (owner) => async (dispatch) => {
   try {
-    const funds = await TeamFundService.getFundsForAUser(owner);
-    dispatch(addFundForAUser(funds));
+    const [funds, fundTypes] = (await Promise.all([
+        TeamFundService.getFundsForAUser(owner),
+        TeamFundService.fetchFundTypes(),
+      ]));
+
+    dispatch(addFundForAUser(addDescriptionToFundType(funds, fundTypes)));
   } catch (error) {
     console.log('Error in fetching fund for a member');
   }

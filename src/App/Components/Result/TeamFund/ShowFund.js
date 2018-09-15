@@ -17,8 +17,30 @@ export class ShowFund extends React.Component {
    */
   render() {
     return (
-      <div id='user-fund-container-id'>
-        {this.props.funds.map((fund) => (<div key={fund.id}> {fund.id}</div>))}
+      <div id='user-fund-container-id' className='team-fund-container'>
+        <table id='fund-table-id'>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Owner</th>
+              <th>type</th>
+              <th>Amount</th>
+              <th>Added On</th>
+            </tr>
+          </thead>
+          <tbody>
+          { this.props.funds.map((fund, index) => (
+              <tr key={`${fund.id}`}>
+                <td>{index+1}</td>
+                <td>{fund.owner}</td>
+                <td>{fund.type}</td>
+                <td>{fund.amount}</td>
+                <td>{fund.createdAt}</td>
+              </tr>
+            ))
+          }
+          </tbody>
+        </table>
       </div>
     );
   }
