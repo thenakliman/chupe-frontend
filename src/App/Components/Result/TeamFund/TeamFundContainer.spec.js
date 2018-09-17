@@ -16,8 +16,10 @@ describe('TeamFundContainer', () => {
 
   beforeEach(() => {
     initialState = {
-        teamFund: teamFund,
+      fund: {
+        teamFunds: teamFund,
         fundTypes: fundTypes,
+        },
         loggedInUserDetails: {userName: loggedInUser},
     };
 

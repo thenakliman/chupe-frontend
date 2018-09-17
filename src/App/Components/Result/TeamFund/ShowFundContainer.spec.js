@@ -8,7 +8,9 @@ import * as TeamFundAction from '../../../Actions/teamFundActions';
 describe('TeamFundContainer', () => {
   const funds = [{owner: 'username'}];
   const initialState = {
-        funds: funds,
+        fund: {
+          teamMemberFunds: funds,
+        },
     };
 
   beforeEach(() => {
@@ -16,7 +18,7 @@ describe('TeamFundContainer', () => {
 
   it('Should have funds props for a component', () => {
     const props = mapStateToProps(initialState);
-    expect(props.funds).toEqual(initialState.funds);
+    expect(props.funds).toEqual(initialState.fund.teamMemberFunds);
   });
 
   it('Should have method for fetch fund', () => {

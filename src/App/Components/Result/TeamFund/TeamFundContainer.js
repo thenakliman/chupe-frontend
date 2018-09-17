@@ -8,8 +8,8 @@ import {
 
 
 const mapStateToProps = (state) => ({
-  teamFund: state.teamFund,
-  fundTypes: state.fundTypes,
+  teamFund: state.fund.teamFunds,
+  fundTypes: state.fund.fundTypes,
   loggedInUser: state.loggedInUserDetails.userName,
 });
 

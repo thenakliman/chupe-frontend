@@ -3,7 +3,7 @@ import * as fundAction from '../../../Actions/teamFundActions';
 import {connect} from 'react-redux';
 
 export const mapStateToProps = (state) => ({
-  funds: state.funds,
+  funds: state.fund.teamMemberFunds,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
