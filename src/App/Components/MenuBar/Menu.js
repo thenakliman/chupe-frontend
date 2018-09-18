@@ -1,6 +1,7 @@
 import React from 'react';
 import {removeCookies} from '../../utils/cookies';
 import {history} from '../../utils/history';
+import PropTypes from 'prop-types';
 
 require('./Menu.css');
 
@@ -42,6 +43,11 @@ export class MenuBar extends React.Component {
                  className={location === '/team-funds'?'Selected-Tab': 'Tab'}>
                    Team Funds
               </a>
+              <a href='#/tasks'
+                 id="tasks-tab"
+                 className={location === '/tasks'?'Selected-Tab': 'Tab'}>
+                   Tasks
+              </a>
             </span>
             <span className='manu-bar-tabs'>
               <div id='menu-logout-container'
@@ -54,4 +60,9 @@ export class MenuBar extends React.Component {
         </div>
         );
     }
+}
+
+
+MenuBar.propTypes = {
+  location: PropTypes.object.isRequired
 }

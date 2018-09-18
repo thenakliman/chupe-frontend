@@ -14,6 +14,9 @@ import LoginContainer from './App/Components/Login/LoginContainer';
 import UserResultContainer from
     './App/Components/Result/User/UserResultContainer';
 
+import TaskContainer from
+    './App/Components/Result/Task/TaskContainer';
+
 import QuestionContainer from
     './App/Components/Result/Question/QuestionContainer';
 
@@ -77,6 +80,13 @@ const ShowFundComponent = (props) => (
   </div>
 )
 
+const TaskComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <TaskContainer {...props}/>
+  </div>
+)
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -85,6 +95,7 @@ render(
          <Route path="/users" component={UserComponent}/>
          <Route path="/questions" component={ListQuestionComponent}/>
          <Route path="/team-funds" component={TeamFundComponent}/>
+         <Route path="/tasks" component={TaskComponent}/>
          <Route path="/question/:id/view" component={ShowQuestionComponent}/>
          <Route path="/funds/:id" component={ShowFundComponent}/>
          <Route exact path="/question/ask" component={AskQuestionComponent}/>

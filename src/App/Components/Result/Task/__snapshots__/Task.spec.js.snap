@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Task result component snapshot should match the snapshot 1`] = `
+<div
+  className="TaskResult"
+>
+  <div
+    key="undefined"
+  >
+    <div>
+      task1
+    </div>
+  </div>
+  <div
+    key="undefined"
+  >
+    <div>
+      task2
+    </div>
+  </div>
+</div>
+`;
