@@ -64,5 +64,5 @@ export class MenuBar extends React.Component {
 
 
 MenuBar.propTypes = {
-  location: PropTypes.object.isRequired
-}
+  location: PropTypes.object.isRequired,
+};

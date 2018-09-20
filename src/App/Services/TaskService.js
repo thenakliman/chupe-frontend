@@ -6,4 +6,4 @@ export const TaskService = {
   getTasks() {
       return get(CHUPE_TASK_URL);
   },
-}
+};

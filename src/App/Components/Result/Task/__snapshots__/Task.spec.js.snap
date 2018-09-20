@@ -2,21 +2,57 @@
 
 exports[`Task result component snapshot should match the snapshot 1`] = `
 <div
-  className="TaskResult"
+  className="task-result-container"
 >
-  <div
-    key="undefined"
+  <table
+    id="team-fund-table-id"
   >
-    <div>
-      task1
-    </div>
-  </div>
-  <div
-    key="undefined"
-  >
-    <div>
-      task2
-    </div>
-  </div>
+    <thead>
+      <tr>
+        <th>
+          S.No
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          State
+        </th>
+        <th>
+          Progress
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        key="0"
+      >
+        <td>
+          0
+        </td>
+        <td>
+          task1
+        </td>
+        <td>
+          Fake
+        </td>
+        <td />
+      </tr>
+      <tr
+        key="1"
+      >
+        <td>
+          1
+        </td>
+        <td>
+          task2
+        </td>
+        <td>
+          Fake
+        </td>
+        <td />
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;

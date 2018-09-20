@@ -24,7 +24,7 @@ describe('Task result container', () => {
 
   beforeEach(() => {
     const initialState = {
-      tasks: [{'task1': 'task1Data', state: 'fakeState'}],
+      tasks: [{'task1': 'task1Data', 'state': 'fakeState'}],
     };
 
     store = configureStore()(initialState);
