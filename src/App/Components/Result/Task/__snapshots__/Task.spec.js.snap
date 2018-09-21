@@ -4,7 +4,25 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
 <div
   className="task-result-container"
 >
+  <span
+    className="task-create-container"
+    id="task-create-container"
+  >
+    <input
+      className="task-input-description"
+      id="task-input-description"
+      onChange={[Function]}
+    />
+    <button
+      className="task-create-button"
+      id="task-create-button"
+      onClick={[Function]}
+    >
+      Create
+    </button>
+  </span>
   <table
+    className="team-fund-table-id"
     id="team-fund-table-id"
   >
     <thead>

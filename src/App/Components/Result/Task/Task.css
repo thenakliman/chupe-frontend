@@ -2,3 +2,21 @@
 .task-result-container {
   margin: 2% 20%;
 }
+
+.task-create-container {
+  display: flex;
+  justify-content: space-between
+}
+
+.task-create-button {
+  padding: 0.75%;
+}
+
+.task-input-description {
+  width: 90%;
+  padding: 0.5rem;
+}
+
+.team-fund-table-id {
+  margin: 4% 0%;
+}

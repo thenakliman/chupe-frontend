@@ -15,3 +15,12 @@ export const getAllTasks = () => async (dispatch) => {
     console.log('Error on fetching tasks');
   }
 };
+
+export const createTask = (task) => async (dispatch) => {
+  try {
+    await TaskService.createTask(task);
+    dispatch(getAllTasks(task));
+  } catch (error) {
+    console.log('Error on creating tasks');
+  }
+};

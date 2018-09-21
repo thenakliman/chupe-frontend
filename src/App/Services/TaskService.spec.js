@@ -3,7 +3,7 @@ import * as Client from './client';
 
 
 describe('Task Service', () => {
-    it('Returns data when get tasks is called', async () => {
+    it('Should returns data when get tasks is called', async () => {
         const tasks = [{description: 'code'}, {description: 'review'}];
         spyOn(Client, 'get').and.returnValue(tasks);
 
@@ -11,5 +11,15 @@ describe('Task Service', () => {
 
         expect(Client.get).toHaveBeenCalledWith('/api/v1/tasks');
         expect(receivedTasks).toEqual(tasks);
+    });
+
+    it('Should returns data when create tasks is called', async () => {
+        const task = {name: 'famousName'};
+        spyOn(Client, 'post').and.returnValue(task);
+
+        const receivedTasks = await TaskService.createTask(task);
+
+        expect(Client.post).toHaveBeenCalledWith('/api/v1/tasks', task);
+        expect(receivedTasks).toEqual(task);
     });
 });

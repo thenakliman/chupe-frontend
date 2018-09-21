@@ -1,4 +1,4 @@
-import {addTasks} from './taskActions';
+import {addTasks, createTask} from './taskActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
 import {getAllTasks} from './taskActions';
@@ -22,7 +22,6 @@ describe('Get_TASK action', () => {
     store.clearActions();
   });
 
-
   it('Should dispatch action for fetching tasks', async () => {
     const testTask = [{'taskName': 'fakeTask'}];
     spyOn(TaskService, 'getTasks').and.returnValues(testTask);
@@ -34,6 +33,32 @@ describe('Get_TASK action', () => {
       },
     ]);
     expect(TaskService.getTasks).toHaveBeenCalledWith();
+  });
+
+  it('Should dispatch action for fetching tasks and create task', async () => {
+    const testTasks = [{'taskName': 'fakeTask'}];
+    spyOn(TaskService, 'getTasks').and.returnValues(testTasks);
+    const testTask = {'taskName': 'fakeTask'};
+    spyOn(TaskService, 'createTask').and.returnValues(testTask);
+    await store.dispatch(createTask(testTask));
+    expect(store.getActions()).toEqual([
+      {
+        type: ActionTypes.ADD_TASKS,
+        payload: testTasks,
+      },
+    ]);
+    expect(TaskService.getTasks).toHaveBeenCalledWith();
+    expect(TaskService.createTask).toHaveBeenCalledWith(testTask);
+  });
+
+
+  it('Should dispatch action for fetching tasks and create task', async () => {
+    const testTask = {'taskName': 'fakeTask'};
+    spyOn(TaskService, 'createTask').and.throwError('Error');
+    spyOn(console, 'log');
+    await store.dispatch(createTask(testTask));
+    expect(TaskService.createTask).toHaveBeenCalledWith(testTask);
+    expect(console.log).toHaveBeenCalledWith('Error on creating tasks');
   });
 
   it('Should show error message if failed to get task', async () => {
