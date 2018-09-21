@@ -17,8 +17,10 @@ export class Task extends React.Component {
   constructor(props) {
     super(props);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.getInitialState = this.getInitialState.bind(this);
     this.createTask = this.createTask.bind(this);
-    this.state = {description: ''};
+
+    this.state = this.getInitialState();
   }
 
   /** Update state for the change in description of the task.
@@ -33,15 +35,28 @@ export class Task extends React.Component {
     this.props.getTasks();
   }
 
+  /** Get initial state.
+   * @return {object} description of the question
+   */
+  getInitialState() {
+    return {description: ''};
+  }
+
   /** Create task on click of create button. */
   createTask() {
+    if (this.state.description === '') {
+      return;
+    }
+
     const task = {
       description: this.state.description,
       progress: 0,
       state: constants.CREATED,
-      createdBy: 'lal_singh',
+      createdBy: this.props.currentUser,
     };
+
     this.props.createTask(task);
+    this.setState(this.getInitialState());
   }
 /**
 * Task result component of the application.
