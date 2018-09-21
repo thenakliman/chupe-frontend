@@ -121,6 +121,7 @@ describe('Task result component', () => {
             progress: 0,
             state: 'CREATED',
         });
+        expect(wrapper.state()).toEqual({description: ''});
     });
 
     it('should call create task on click of create button', () => {

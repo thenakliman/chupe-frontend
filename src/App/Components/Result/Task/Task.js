@@ -44,7 +44,7 @@ export class Task extends React.Component {
 
   /** Create task on click of create button. */
   createTask() {
-    if (this.state.description === '') {
+    if (this.state.description === '' || this.state.description === undefined) {
       return;
     }
 
@@ -56,7 +56,7 @@ export class Task extends React.Component {
     };
 
     this.props.createTask(task);
-    this.setState(this.getInitialState());
+    this.setState({description: ''});
   }
 /**
 * Task result component of the application.
@@ -69,6 +69,7 @@ export class Task extends React.Component {
           <span id='task-create-container' className={'task-create-container'}>
             <input id='task-input-description'
                    className='task-input-description'
+                   value={this.state.description}
                    onChange={
                       (e) => this.handleDescriptionChange(e.target.value)}/>
 
