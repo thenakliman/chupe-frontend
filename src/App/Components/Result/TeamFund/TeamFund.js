@@ -85,7 +85,6 @@ export class TeamFund extends React.Component {
                 <th>S.No</th>
                 <th>Username</th>
                 <th>Amount</th>
-                <th>Details</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -94,13 +93,14 @@ export class TeamFund extends React.Component {
                 <tr key={`${teamMember.owner}`}>
                   <td>{index+1}</td>
                   <td>{teamMember.owner}</td>
-                  <td>{teamMember.totalAmount}</td>
                   <td>
-                    <span id={`view-details-button-${teamMember.owner}`}
-                          className='view-details-button'
-                          onClick={() => this.onClickDetail(teamMember.owner)}>
-                      View Details
-                    </span>
+                    <u className={'user-fund'}
+                       id={`user-amount-${teamMember.owner}`}
+                       onClick={() => this.onClickDetail(teamMember.owner)}>
+                      <i>
+                        {teamMember.totalAmount}
+                      </i>
+                    </u>
                   </td>
                   <td>
                     <span id={`add-redeem-team-fund-${teamMember.owner}`}

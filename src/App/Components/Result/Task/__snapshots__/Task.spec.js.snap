@@ -12,6 +12,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
       className="task-input-description"
       id="task-input-description"
       onChange={[Function]}
+      value=""
     />
     <button
       className="task-create-button"
