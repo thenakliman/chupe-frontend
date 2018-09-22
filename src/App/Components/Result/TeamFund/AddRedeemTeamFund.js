@@ -11,13 +11,11 @@ export class AddRedeemTeamFund extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      transactionType: '',
       fundType: '',
       amount: 0,
     };
 
     this.handleAmountUpdate = this.handleAmountUpdate.bind(this);
-    this.handleTransactionType = this.handleTransactionType.bind(this);
     this.handleFundType = this.handleFundType.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -42,23 +40,13 @@ export class AddRedeemTeamFund extends React.Component {
     const defaultAmount = fund && fund.defaultAmount || 0;
     this.setState({fundType: typeId, amount: defaultAmount});
   }
-
-  /** Handle transaction type.
-   * @param {string} transactionType of transaction type
-   */
-  handleTransactionType(transactionType) {
-    this.setState({transactionType: transactionType});
-  }
-
   /** Handle submit event of button. */
   handleClick() {
     if (this.state.amount === 0) {
       return;
     }
 
-    this.props.addFund(this.state.transactionType,
-                       this.state.fundType,
-                       this.state.amount);
+    this.props.addFund(this.state.fundType, this.state.amount);
   }
 
   /** Return Add/Redeem team fund type component.
@@ -68,18 +56,7 @@ export class AddRedeemTeamFund extends React.Component {
     return (
       <span id='team-fund-add-redeem-container-id'
            className='team-fund-add-redeem-container'>
-        <span className='add-redeem-ream-fund-select'>
-          <select id='team-fund-action-select-id'
-                  value={this.state.value}
-                  onChange={
-                    (event) => this.handleTransactionType(event.target.value)}
-                  >
-            <option value=''>Select Operation</option>
-            <option value='CREDIT'>Add</option>
-            <option value='DEBIT'>Redeem</option>
-          </select>
-        </span>
-        <span className='add-redeem-ream-fund-select'>
+        <span className='add-redeem-team-fund-select'>
           <select id='team-fund-select-type-id'
                   onChange={(event) => this.handleFundType(event.target.value)}
                   value={this.state.value}

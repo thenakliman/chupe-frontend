@@ -6,31 +6,7 @@ exports[`Team fund component snapshot should match the snapshot 1`] = `
   id="team-fund-add-redeem-container-id"
 >
   <span
-    className="add-redeem-ream-fund-select"
-  >
-    <select
-      id="team-fund-action-select-id"
-      onChange={[Function]}
-    >
-      <option
-        value=""
-      >
-        Select Operation
-      </option>
-      <option
-        value="CREDIT"
-      >
-        Add
-      </option>
-      <option
-        value="DEBIT"
-      >
-        Redeem
-      </option>
-    </select>
-  </span>
-  <span
-    className="add-redeem-ream-fund-select"
+    className="add-redeem-team-fund-select"
   >
     <select
       id="team-fund-select-type-id"

@@ -17,8 +17,10 @@ export class TeamFund extends React.Component {
    */
   constructor(props) {
     super(props);
-    this.state = {hasPopup: false, owner: null};
-    this.onClickAddRedeem = this.onClickAddRedeem.bind(this);
+    this.state = {hasPopup: false, owner: null, transactionType: ''};
+    this.addRedeemFund = this.addRedeemFund.bind(this);
+    this.onClickAdd = this.onClickAdd.bind(this);
+    this.onClickRedeem = this.onClickRedeem.bind(this);
     this.addFund = this.addFund.bind(this);
   }
   /** Fetch team fund while mounting this component */
@@ -28,16 +30,36 @@ export class TeamFund extends React.Component {
 
   /** toggle state of pop.
    * @param {string} owner
+   * @param {string} transactionType
    */
-  onClickAddRedeem(owner) {
+  addRedeemFund(owner, transactionType) {
     let currentOwner;
     if (this.state.hasPopup) {
       currentOwner = null;
+      transactionType = '';
     } else {
       currentOwner = owner;
     }
 
-    this.setState({hasPopup: !this.state.hasPopup, owner: currentOwner});
+    this.setState({
+        hasPopup: !this.state.hasPopup,
+        owner: currentOwner,
+        transactionType: transactionType,
+    });
+  }
+
+  /** toggle state of pop.
+   * @param {string} owner
+   */
+  onClickAdd(owner) {
+    this.addRedeemFund(owner, 'CREDIT');
+  }
+
+  /** toggle state of pop.
+   * @param {string} owner
+   */
+  onClickRedeem(owner) {
+    this.addRedeemFund(owner, 'DEBIT');
   }
 
   /** toggle state of pop.
@@ -48,13 +70,12 @@ export class TeamFund extends React.Component {
   }
 
   /** Add fund.
-   * @param {string} transactionType
    * @param {string} fundType
    * @param {number} amount
    */
-  addFund(transactionType, fundType, amount) {
+  addFund(fundType, amount) {
     this.props.addFund({
-      transactionType: transactionType,
+      transactionType: this.state.transactionType,
       type: fundType,
       amount: amount,
       owner: this.state.owner,
@@ -62,7 +83,7 @@ export class TeamFund extends React.Component {
       isApproved: false,
     });
 
-    this.onClickAddRedeem(null);
+    this.addRedeemFund(null);
   }
 
   /**
@@ -76,7 +97,7 @@ export class TeamFund extends React.Component {
           { this.state.hasPopup &&
             <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
                                addFund={this.addFund}
-                               closePopup={() => this.onClickAddRedeem(null)}
+                               closePopup={() => this.addRedeemFund(null)}
                                fundTypes={this.props.fundTypes}/>
           }
           <table id='team-fund-table-id'>
@@ -85,7 +106,6 @@ export class TeamFund extends React.Component {
                 <th>S.No</th>
                 <th>Username</th>
                 <th>Amount</th>
-                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -94,20 +114,27 @@ export class TeamFund extends React.Component {
                   <td>{index+1}</td>
                   <td>{teamMember.owner}</td>
                   <td>
-                    <u className={'user-fund'}
-                       id={`user-amount-${teamMember.owner}`}
-                       onClick={() => this.onClickDetail(teamMember.owner)}>
-                      <i>
-                        {teamMember.totalAmount}
-                      </i>
-                    </u>
-                  </td>
-                  <td>
-                    <span id={`add-redeem-team-fund-${teamMember.owner}`}
-                          className='add-redeem-button'
-                          onClick={
-                            () => this.onClickAddRedeem(teamMember.owner)}>
-                      Add/Redeem
+                    <span className='user-amount-container'>
+                      <span
+                        className='fund-operation-negative-sign'
+                        id={`fund-operation-negative-sign-${teamMember.owner}`}
+                        onClick={() => this.onClickRedeem(teamMember.owner)}>
+                        -
+                      </span>
+                      <span className={'user-fund'}>
+                      <u id={`user-amount-${teamMember.owner}`}
+                         onClick={() => this.onClickDetail(teamMember.owner)}>
+                        <i className={'user-fund-amount'}>
+                          {teamMember.totalAmount}
+                        </i>
+                      </u>
+                      </span>
+                      <span
+                        className='fund-operation-positive-sign'
+                        id={`fund-operation-positive-sign-${teamMember.owner}`}
+                        onClick={() => this.onClickAdd(teamMember.owner)}>
+                        +
+                      </span>
                     </span>
                   </td>
                 </tr>

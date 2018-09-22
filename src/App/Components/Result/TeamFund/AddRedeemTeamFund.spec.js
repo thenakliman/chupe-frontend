@@ -38,25 +38,6 @@ describe('Add Redeem Team Fund component', () => {
         expect(fetchFundTypes).toHaveBeenCalledWith();
     });
 
-    it('Should have select field for add or redeem', () => {
-        const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
-                                                   closePopup={()=>{}}
-                                                   addFund={jest.fn()}
-                                                   fundTypes={fundTypes}/>);
-
-        expect(wrapper.find('#team-fund-action-select-id').length).toEqual(1);
-    });
-
-    it('Should have two options for select field', () => {
-        const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
-                                                   closePopup={()=>{}}
-                                                   addFund={jest.fn()}
-                                                   fundTypes={fundTypes}/>);
-
-        expect(wrapper.find('#team-fund-action-select-id').children().length
-            ).toEqual(3);
-    });
-
     it('Should have select field type of fund', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    closePopup={()=>{}}
@@ -103,15 +84,6 @@ describe('Add Redeem Team Fund component', () => {
         expect(wrapper.find('#team-fund-cancel-button-id').length).toEqual(1);
     });
 
-    it('should have transaction type set to empty', () => {
-        const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
-                                                   closePopup={()=>{}}
-                                                   addFund={jest.fn()}
-                                                   fundTypes={fundTypes}/>);
-
-        expect(wrapper.state().transactionType).toEqual('');
-    });
-
     it('should have fund type set to empty', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    closePopup={()=>{}}
@@ -142,18 +114,6 @@ describe('Add Redeem Team Fund component', () => {
         expect(wrapper.state().amount).toEqual(amount);
     });
 
-    it('should update transaction type on select', () => {
-        const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
-                                                   closePopup={()=>{}}
-                                                   addFund={jest.fn()}
-                                                   fundTypes={fundTypes}/>);
-
-        wrapper.find('#team-fund-action-select-id').simulate(
-          'change', {target: {value: 'CREDIT'}});
-
-        expect(wrapper.state().transactionType).toEqual('CREDIT');
-    });
-
     it('should update fund type on select', () => {
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    closePopup={()=>{}}
@@ -175,7 +135,6 @@ describe('Add Redeem Team Fund component', () => {
 
         wrapper.setState(
           {
-            transactionType: 'CREDIT',
             fundType: 1,
             amount: 0,
           });
@@ -187,7 +146,6 @@ describe('Add Redeem Team Fund component', () => {
     it('should submit on button click when amount is not zero', () => {
         const addFund = jest.fn();
         const fundType = 1;
-        const transactionType = 'CREDIT';
         const amount = 107;
         const wrapper = shallow(<AddRedeemTeamFund fetchFundTypes={()=>{}}
                                                    addFund={addFund}
@@ -196,13 +154,12 @@ describe('Add Redeem Team Fund component', () => {
 
         wrapper.setState(
           {
-              transactionType: transactionType,
               fundType: fundType,
               amount: amount,
           });
 
         wrapper.find('#team-fund-submit-button-id').simulate('click');
-        expect(addFund).toHaveBeenCalledWith(transactionType, fundType, amount);
+        expect(addFund).toHaveBeenCalledWith(fundType, amount);
     });
 
     it('should close pop up on click of cancel button', () => {

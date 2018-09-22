@@ -6,6 +6,36 @@
   cursor: pointer;
 }
 
-.user-fund:hover {
+.fund-operation-negative-sign {
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.2rem 0.45rem;
+}
+
+.fund-operation-negative-sign:hover {
+   cursor: pointer;
+}
+
+.fund-operation-positive-sign {
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  padding: 0.2rem;
+}
+
+.fund-operation-positive-sign:hover {
   cursor: pointer;
+}
+
+.user-fund {
+  font-size: 1.5rem;
+  width: 10rem;
+}
+
+.user-fund-amount:hover {
+  cursor: pointer;
+}
+
+.user-amount-container {
+  display: flex;
+  justify-content: center;
 }
