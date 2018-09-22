@@ -56,7 +56,7 @@ describe('Menu Bar Component', () => {
     expect(wrapper.find('#team-funds-tab').length).toEqual(1);
   });
 
-  it('Should have Team Fund tab', () => {
+  it('Should have tasks tab', () => {
     const location = {pathname: '/tasks'};
     const wrapper = shallow(
         <MenuBar location={location}/>);

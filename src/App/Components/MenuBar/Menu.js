@@ -2,6 +2,7 @@ import React from 'react';
 import {removeCookies} from '../../utils/cookies';
 import {history} from '../../utils/history';
 import PropTypes from 'prop-types';
+import {LOCATION_TO_TAB_MAPPING} from './constants';
 
 require('./Menu.css');
 
@@ -17,6 +18,18 @@ export class MenuBar extends React.Component {
       removeCookies();
       history.push('/');
     }
+
+    /**
+     * Checks tab for a given location.
+     * @param {string} location to check for
+     * @param {string} tabName to check if tab belongs to location
+     * @return {bool} returns whether a tab belong to given location or not
+     */
+    doesLocationMatchTab(location, tabName) {
+      const locationPrefix = location.split('/')[1];
+      return LOCATION_TO_TAB_MAPPING[tabName].some(
+          (tab) => tab.startsWith(locationPrefix));
+    }
     /**
     * User result component of the application.
     *
@@ -30,22 +43,30 @@ export class MenuBar extends React.Component {
             <span className='manu-bar-tabs'>
               <a href='#/users'
                  id="users-tab"
-                 className={location === '/users'?'Selected-Tab': 'Tab'}>
+                 className={this.doesLocationMatchTab(location, 'users')?
+                            'Selected-Tab':
+                            'Tab'}>
                      Users
               </a>
               <a href='#/questions'
                  id="questions-tab"
-                 className={location === '/questions'?'Selected-Tab': 'Tab'}>
+                 className={this.doesLocationMatchTab(location, 'questions')?
+                            'Selected-Tab':
+                            'Tab'}>
                    Questions
               </a>
               <a href='#/team-funds'
                  id="team-funds-tab"
-                 className={location === '/team-funds'?'Selected-Tab': 'Tab'}>
+                 className={this.doesLocationMatchTab(location, 'team-funds')?
+                            'Selected-Tab':
+                            'Tab'}>
                    Team Funds
               </a>
               <a href='#/tasks'
                  id="tasks-tab"
-                 className={location === '/tasks'?'Selected-Tab': 'Tab'}>
+                 className={this.doesLocationMatchTab(location, 'tasks')?
+                            'Selected-Tab':
+                            'Tab'}>
                    Tasks
               </a>
             </span>
