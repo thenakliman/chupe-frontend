@@ -64,4 +64,15 @@ describe('Task result container', () => {
 
     expect(store.dispatch).toHaveBeenCalledWith(action);
   });
+
+  it('should dispatch update task', () => {
+    const action = {type: 'ACTION', payload: 'FAKE_PAYLOAD'};
+    spyOn(TaskActions, 'updateTask').and.returnValue(action);
+
+    const task = {description: 'task'};
+
+    mapDispatchToProps(store.dispatch).updateTask(task);
+
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+  });
 });

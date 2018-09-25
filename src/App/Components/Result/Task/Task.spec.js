@@ -14,6 +14,7 @@ describe('Task result component snapshot', () => {
           }];
         const wrapper = shallow(<Task tasks={tasks}
                                       currentUser={'lal_singh'}
+                                      updateTask={jest.fn()}
                                       createTask={() => {}}
                                       getTasks={()=>{}}/>);
 
@@ -30,6 +31,7 @@ describe('Task result component', () => {
         ];
         const wrapper = shallow(
             <Task tasks={tasks}
+                  updateTask={jest.fn()}
                   getTasks={()=>{}}
                   currentUser={'lal_singh'}
                   createTask={() => {}}/>);
@@ -42,6 +44,7 @@ describe('Task result component', () => {
         const getTasks = jest.fn();
         shallow(<Task tasks={tasks}
                       getTasks={getTasks}
+                      updateTask={jest.fn()}
                       currentUser={'lal_singh'}
                       createTask={() => {}}/>);
 
@@ -53,6 +56,7 @@ describe('Task result component', () => {
         const getTasks = jest.fn();
         const wrapper = shallow(<Task tasks={tasks}
                                       getTasks={getTasks}
+                                      updateTask={jest.fn()}
                                       currentUser={'lal_singh'}
                                       createTask={() => {}}/>);
 
@@ -63,6 +67,7 @@ describe('Task result component', () => {
         const tasks = [{'taskname': 'task1', 'state': 'fakeState'}];
         const getTasks = jest.fn();
         const wrapper = shallow(<Task tasks={tasks}
+                                      updateTask={jest.fn()}
                                       getTasks={getTasks}
                                       currentUser={'lal_singh'}
                                       createTask={() => {}}/>);
@@ -74,6 +79,7 @@ describe('Task result component', () => {
         const getTasks = jest.fn();
         const wrapper = shallow(<Task tasks={tasks}
                                       getTasks={getTasks}
+                                      updateTask={jest.fn()}
                                       currentUser={'lal_singh'}
                                       createTask={() => {}}/>);
         const taskDescription = 'task description';
@@ -88,6 +94,7 @@ describe('Task result component', () => {
         const getTasks = jest.fn();
         const wrapper = shallow(
             <Task tasks={tasks}
+                  updateTask={jest.fn()}
                   getTasks={getTasks}
                   currentUser={'lal_singh'}
                   createTask={() => {}}/>);
@@ -100,13 +107,14 @@ describe('Task result component', () => {
     });
 
     it('should call create task on click of create button', () => {
-        const tasks = [{'taskname': 'task1', 'state': 'fakeState'}];
+        const tasks = [{'taskname': 'task1'}];
         const getTasks = jest.fn();
         const createTask = jest.fn();
         const username = 'nakli';
         const wrapper = shallow(
             <Task tasks={tasks}
                   getTasks={getTasks}
+                  updateTask={jest.fn()}
                   createTask={createTask}
                   currentUser={username}/>);
 
@@ -125,15 +133,38 @@ describe('Task result component', () => {
     });
 
     it('should call create task on click of create button', () => {
-        const tasks = [{'taskname': 'task1', 'state': 'fakeState'}];
+        const tasks = [{'taskname': 'task1'}];
         const createTask = jest.fn();
         const wrapper = shallow(<Task tasks={tasks}
                                       getTasks={jest.fn()}
+                                      updateTask={jest.fn()}
                                       createTask={createTask}
                                       currentUser={'fake'}
                                 />);
 
         wrapper.find('#task-create-button').simulate('click');
         expect(createTask).not.toHaveBeenCalled();
+    });
+
+    it('should call update task on click of CREATE button', () => {
+        const tasks = [
+            {description: 'task1', id: 2, state: 'IN_PROGRESS'},
+            {description: 'task1', id: 1, state: 'IN_PROGRESS'},
+            {description: 'task1', id: 3, state: 'IN_PROGRESS'},
+        ];
+
+        const updateTask = jest.fn();
+        const wrapper = shallow(<Task tasks={tasks}
+                                      getTasks={jest.fn()}
+                                      updateTask={updateTask}
+                                      createTask={jest.fn()}
+                                      currentUser={'fake'}
+                                />);
+
+        wrapper.find('#task-state-radio-button-CREATED-1').simulate('change');
+        expect(updateTask).toHaveBeenCalledWith({
+            description: 'task1',
+            id: 1,
+            state: 'CREATED'});
     });
 });

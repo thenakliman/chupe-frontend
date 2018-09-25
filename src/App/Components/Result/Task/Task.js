@@ -1,8 +1,6 @@
 import propTypes from 'prop-types';
 import React from 'react';
-import {capitalizeFirstLetter} from '../../../utils/stringUtils';
 import * as constants from '../constants';
-
 require('./Task.css');
 
 /**
@@ -17,6 +15,7 @@ export class Task extends React.Component {
   constructor(props) {
     super(props);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleChangeInState = this.handleChangeInState.bind(this);
     this.getInitialState = this.getInitialState.bind(this);
     this.createTask = this.createTask.bind(this);
 
@@ -42,6 +41,15 @@ export class Task extends React.Component {
     return {description: ''};
   }
 
+  /** Handle change in state.
+   * @param {string} id of the question
+   * @param {String} newState to be updated
+   */
+  handleChangeInState(id, newState) {
+    const task = this.props.tasks.find((task) => task.id === id);
+    this.props.updateTask({...task, state: newState});
+  }
+
   /** Create task on click of create button. */
   createTask() {
     if (this.state.description === '' || this.state.description === undefined) {
@@ -64,6 +72,16 @@ export class Task extends React.Component {
 * @return {Object} TaskResult component.
 */
   render() {
+    const states = [
+        constants.CREATED,
+        constants.IN_PROGRESS,
+        constants.ON_HOLD,
+        constants.DONE,
+    ];
+
+    const sortedTasks = [...this.props.tasks];
+    sortedTasks.sort((task1, task2) => task1.id<task2.id?-1:1);
+
     return (
         <div className='task-result-container'>
           <span id='task-create-container' className={'task-create-container'}>
@@ -85,18 +103,32 @@ export class Task extends React.Component {
               <tr>
                 <th>S.No</th>
                 <th>Description</th>
-                <th>State</th>
-                <th>Progress</th>
+                <th>Created</th>
+                <th>In Progress</th>
+                <th>On Hold</th>
+                <th>Done</th>
               </tr>
             </thead>
             <tbody>
               {
-                this.props.tasks.map((task, index) => (
+                sortedTasks.map((task, index) => (
                   <tr key={index}>
                     <td>{index}</td>
                     <td>{task.description}</td>
-                    <td>{capitalizeFirstLetter(task.state)}</td>
-                    <td>{task.progress}</td>
+                    {
+                      states.map((state) => (
+                        <td key={state}>
+                          <input
+                            className={'task-state-radio-button'}
+                            id={`task-state-radio-button-${state}-${task.id}`}
+                            type="radio"
+                            name={`state-${index}`}
+                            onChange={
+                              () => this.handleChangeInState(task.id, state)}
+                            checked={state === task.state} />
+                        </td>
+                      ))
+                  }
                   </tr>
                 ))
               }
@@ -112,4 +144,5 @@ Task.propTypes = {
   currentUser: propTypes.string.isRequired,
   getTasks: propTypes.func.isRequired,
   createTask: propTypes.func.isRequired,
+  updateTask: propTypes.func.isRequired,
 };

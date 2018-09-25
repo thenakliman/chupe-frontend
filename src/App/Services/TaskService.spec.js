@@ -22,4 +22,14 @@ describe('Task Service', () => {
         expect(Client.post).toHaveBeenCalledWith('/api/v1/tasks', task);
         expect(receivedTasks).toEqual(task);
     });
+
+    it('Should returns data when create tasks is called', async () => {
+        const task = {name: 'famousName', id: 10};
+        spyOn(Client, 'put').and.returnValue(task);
+
+        const receivedTasks = await TaskService.updateTask(task);
+
+        expect(Client.put).toHaveBeenCalledWith('/api/v1/tasks/10', task);
+        expect(receivedTasks).toEqual(task);
+    });
 });

@@ -1,4 +1,4 @@
-import {addTasks, createTask} from './taskActions';
+import {addTasks, createTask, updateTask} from './taskActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
 import {getAllTasks} from './taskActions';
@@ -67,5 +67,33 @@ describe('Get_TASK action', () => {
     await store.dispatch(getAllTasks());
     expect(TaskService.getTasks).toHaveBeenCalledWith();
     expect(console.log).toHaveBeenCalledWith('Error on fetching tasks');
+  });
+
+  it('Should dispatch action for fetch and update task', async () => {
+    const testTask = {'taskName': 'fakeTask'};
+    spyOn(TaskService, 'updateTask').and.returnValues(testTask);
+    spyOn(TaskService, 'getTasks').and.returnValues([testTask]);
+
+    await store.dispatch(updateTask(testTask));
+
+    expect(store.getActions()).toEqual([
+      {
+        type: ActionTypes.ADD_TASKS,
+        payload: [testTask],
+      },
+    ]);
+    expect(TaskService.getTasks).toHaveBeenCalledWith();
+    expect(TaskService.updateTask).toHaveBeenCalledWith(testTask);
+  });
+
+  it('Should show error message if failed to update task', async () => {
+    spyOn(console, 'log');
+    spyOn(TaskService, 'updateTask').and.throwError('failed');
+    const testTask = {'taskName': 'fakeTask'};
+
+    await store.dispatch(updateTask(testTask));
+
+    expect(TaskService.updateTask).toHaveBeenCalledWith(testTask);
+    expect(console.log).toHaveBeenCalledWith('Error on update tasks');
   });
 });

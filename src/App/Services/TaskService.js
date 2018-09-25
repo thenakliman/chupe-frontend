@@ -1,4 +1,4 @@
-import {get, post} from './client';
+import {get, post, put} from './client';
 
 const CHUPE_TASK_URL='/api/v1/tasks';
 
@@ -9,5 +9,9 @@ export const TaskService = {
 
   createTask(task) {
       return post(CHUPE_TASK_URL, task);
+  },
+
+  updateTask(task) {
+      return put(`${CHUPE_TASK_URL}/${task.id}`, task);
   },
 };

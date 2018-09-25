@@ -35,10 +35,16 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
           Description
         </th>
         <th>
-          State
+          Created
         </th>
         <th>
-          Progress
+          In Progress
+        </th>
+        <th>
+          On Hold
+        </th>
+        <th>
+          Done
         </th>
       </tr>
     </thead>
@@ -50,12 +56,56 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
           0
         </td>
         <td>
-          task1
+          task2
         </td>
-        <td>
-          Fake
+        <td
+          key="CREATED"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-CREATED-undefined"
+            name="state-0"
+            onChange={[Function]}
+            type="radio"
+          />
         </td>
-        <td />
+        <td
+          key="IN_PROGRESS"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-IN_PROGRESS-undefined"
+            name="state-0"
+            onChange={[Function]}
+            type="radio"
+          />
+        </td>
+        <td
+          key="ON_HOLD"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-ON_HOLD-undefined"
+            name="state-0"
+            onChange={[Function]}
+            type="radio"
+          />
+        </td>
+        <td
+          key="DONE"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-DONE-undefined"
+            name="state-0"
+            onChange={[Function]}
+            type="radio"
+          />
+        </td>
       </tr>
       <tr
         key="1"
@@ -64,12 +114,56 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
           1
         </td>
         <td>
-          task2
+          task1
         </td>
-        <td>
-          Fake
+        <td
+          key="CREATED"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-CREATED-undefined"
+            name="state-1"
+            onChange={[Function]}
+            type="radio"
+          />
         </td>
-        <td />
+        <td
+          key="IN_PROGRESS"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-IN_PROGRESS-undefined"
+            name="state-1"
+            onChange={[Function]}
+            type="radio"
+          />
+        </td>
+        <td
+          key="ON_HOLD"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-ON_HOLD-undefined"
+            name="state-1"
+            onChange={[Function]}
+            type="radio"
+          />
+        </td>
+        <td
+          key="DONE"
+        >
+          <input
+            checked={false}
+            className="task-state-radio-button"
+            id="task-state-radio-button-DONE-undefined"
+            name="state-1"
+            onChange={[Function]}
+            type="radio"
+          />
+        </td>
       </tr>
     </tbody>
   </table>

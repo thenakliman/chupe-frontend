@@ -19,8 +19,17 @@ export const getAllTasks = () => async (dispatch) => {
 export const createTask = (task) => async (dispatch) => {
   try {
     await TaskService.createTask(task);
-    dispatch(getAllTasks(task));
+    dispatch(getAllTasks());
   } catch (error) {
     console.log('Error on creating tasks');
+  }
+};
+
+export const updateTask = (task) => async (dispatch) => {
+  try {
+    await TaskService.updateTask(task);
+    dispatch(getAllTasks());
+  } catch (error) {
+    console.log('Error on update tasks');
   }
 };
