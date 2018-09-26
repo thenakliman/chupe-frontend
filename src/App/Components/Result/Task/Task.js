@@ -18,6 +18,7 @@ export class Task extends React.Component {
     this.handleChangeInState = this.handleChangeInState.bind(this);
     this.getInitialState = this.getInitialState.bind(this);
     this.createTask = this.createTask.bind(this);
+    this.displayAllTask = this.displayAllTask.bind(this);
 
     this.state = this.getInitialState();
   }
@@ -38,7 +39,7 @@ export class Task extends React.Component {
    * @return {object} description of the question
    */
   getInitialState() {
-    return {description: ''};
+    return {description: '', displayAllTask: false};
   }
 
   /** Handle change in state.
@@ -48,6 +49,11 @@ export class Task extends React.Component {
   handleChangeInState(id, newState) {
     const task = this.props.tasks.find((task) => task.id === id);
     this.props.updateTask({...task, state: newState});
+  }
+
+  /** toggle flag to display tasks. */
+  displayAllTask() {
+    this.setState({displayAllTask: !this.state.displayAllTask});
   }
 
   /** Create task on click of create button. */
@@ -79,8 +85,11 @@ export class Task extends React.Component {
         constants.DONE,
     ];
 
-    const sortedTasks = [...this.props.tasks];
-    sortedTasks.sort((task1, task2) => task1.id<task2.id?-1:1);
+    const toCompleteTasks = [...this.props.tasks].filter((task) =>
+        [constants.CREATED, constants.IN_PROGRESS].includes(task.state) ||
+        (this.state.displayAllTask));
+
+    toCompleteTasks.sort((task1, task2) => task1.id < task2.id? -1 : 1);
 
     return (
         <div className='task-result-container'>
@@ -92,48 +101,57 @@ export class Task extends React.Component {
                       (e) => this.handleDescriptionChange(e.target.value)}/>
 
             <button id='task-create-button'
-                    className='task-create-button'
+                    className='task-button'
                     onClick={this.createTask}>
               Create
             </button>
           </span>
-          <table id='team-fund-table-id'
-                 className='team-fund-table-id'>
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Description</th>
-                <th>Created</th>
-                <th>In Progress</th>
-                <th>On Hold</th>
-                <th>Done</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                sortedTasks.map((task, index) => (
-                  <tr key={index}>
-                    <td>{index}</td>
-                    <td>{task.description}</td>
-                    {
-                      states.map((state) => (
-                        <td key={state}>
-                          <input
-                            className={'task-state-radio-button'}
-                            id={`task-state-radio-button-${state}-${task.id}`}
-                            type="radio"
-                            name={`state-${index}`}
-                            onChange={
-                              () => this.handleChangeInState(task.id, state)}
-                            checked={state === task.state} />
-                        </td>
-                      ))
-                  }
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
+          <span>
+            <div className='all-task-button-container'>
+              <button id='tasks-button'
+                      className='task-button'
+                      onClick={this.displayAllTask}>
+                {this.state.displayAllTask?'Pending Tasks':'All Tasks'}
+              </button>
+            </div>
+            <table id='team-fund-table-id'
+                   className='team-fund-table-id'>
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Description</th>
+                  <th>Created</th>
+                  <th>In Progress</th>
+                  <th>On Hold</th>
+                  <th>Done</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  toCompleteTasks.map((task, index) => (
+                    <tr key={index}>
+                      <td>{index}</td>
+                      <td>{task.description}</td>
+                      {
+                        states.map((state) => (
+                          <td key={state}>
+                            <input
+                              className={'task-state-radio-button'}
+                              id={`task-state-radio-button-${state}-${task.id}`}
+                              type="radio"
+                              name={`state-${index}`}
+                              onChange={
+                                () => this.handleChangeInState(task.id, state)}
+                              checked={state === task.state} />
+                          </td>
+                        ))
+                    }
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </span>
         </div>
     );
   }
