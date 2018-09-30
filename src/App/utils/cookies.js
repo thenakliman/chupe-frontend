@@ -58,9 +58,10 @@ export const getUsername = () => {
 };
 
 export const getToken = () => {
+  /* Date has been divided by 1000 because accuracy of expiry date is less */
   if (!cookies.get(TOKEN_COOKIE_KEY) ||
       !cookies.get(TOKEN_EXPIRY_COOKIE_KEY) ||
-      cookies.get(TOKEN_EXPIRY_COOKIE_KEY) < Date.now()) {
+      parseInt(cookies.get(TOKEN_EXPIRY_COOKIE_KEY)) < (Date.now()/1000)) {
     return null;
   }
 

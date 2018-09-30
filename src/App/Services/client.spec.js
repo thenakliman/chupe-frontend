@@ -2,9 +2,14 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 import {get, post, put} from './client';
-
+import * as cookies from '../utils/cookies';
 
 describe('REST client', () => {
+  const fakeToken = 'fake-token';
+  beforeEach(() => spyOn(cookies, 'getToken').and.returnValue(fakeToken));
+
+  afterEach(() => () => expect(cookies.getToken).toHaveBeenCalledWith());
+
   describe('get', () => {
     it('should make a get call', (done) => {
       let mock = new MockAdapter(axios);
@@ -14,7 +19,7 @@ describe('REST client', () => {
 
       mock.onGet(url).reply(200, questionData);
 
-      get(url).then((response) => {
+      get(url, {key1: 'value'}).then((response) => {
           expect(response.data).toEqual(questionData.data);
           done();
       });

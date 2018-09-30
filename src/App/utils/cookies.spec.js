@@ -25,7 +25,7 @@ describe('getCookie', () => {
 
   it('should return null if expiry time is less than current time', () => {
     cookies.cookies.set('token', 'TestToken');
-    cookies.cookies.set('expiryTime', Date.now()-10);
+    cookies.cookies.set('expiryTime', `${Date.now()/1000 - 1}`);
     expect(cookies.getToken()).toEqual(null);
   });
 
