@@ -17,7 +17,7 @@ describe('fetch team fund', () => {
 
     const receivedTeamFund = await TeamFundService.fetchFundTypes();
     expect(teamFund).toEqual(receivedTeamFund);
-    expect(Client.get).toHaveBeenCalledWith('/api/v1/team-funds/type');
+    expect(Client.get).toHaveBeenCalledWith('/api/v1/team-funds/types');
   });
 
   it('should add team fund', async () => {
