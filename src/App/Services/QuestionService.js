@@ -1,6 +1,6 @@
 import {get, put, post} from './client';
 
-const CHUPE_QUESTION_URL='/api/v1/question';
+const CHUPE_QUESTION_URL='/api/v1/questions';
 
 export const QuestionService = {
   getQuestions() {

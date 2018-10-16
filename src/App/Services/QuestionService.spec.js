@@ -9,7 +9,7 @@ describe('Question Service', () => {
 
         const receivedQuestions = await QuestionService.getQuestions();
 
-        expect(Client.get).toHaveBeenCalledWith('/api/v1/question');
+        expect(Client.get).toHaveBeenCalledWith('/api/v1/questions');
         expect(receivedQuestions).toEqual(questions);
     });
 
@@ -20,7 +20,7 @@ describe('Question Service', () => {
         const receivedQuestions = await QuestionService.askQuestion(question);
 
         expect(Client.post).toHaveBeenCalledWith(
-            '/api/v1/question', question);
+            '/api/v1/questions', question);
 
         expect(receivedQuestions).toEqual(question);
     });
@@ -34,7 +34,7 @@ describe('Question Service', () => {
             question);
 
         expect(Client.put).toHaveBeenCalledWith(
-            '/api/v1/question/10', question);
+            '/api/v1/questions/10', question);
 
         expect(receivedQuestions).toEqual(updatedAnswer);
     });
