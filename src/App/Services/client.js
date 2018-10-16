@@ -15,7 +15,6 @@ const getHeaders = (headers) => {
  * @return {object} response of the call
  */
 export function get(url, headers) {
-    console.log(getHeaders(headers));
     return axios.get(url, getHeaders(headers))
     .then((response)=>response.data)
     .catch((error) => {
