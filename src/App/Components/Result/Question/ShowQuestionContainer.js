@@ -3,7 +3,10 @@ import {connect} from 'react-redux';
 import {updateQuestion,
         getAllQuestions} from '../../../Actions/questionActions';
 import {getAllUsers} from '../../../Actions/userActions';
-import {getAnswers, addAnswer} from '../../../Actions/answerActions';
+import {
+  getAnswers,
+  addAnswer,
+  updateAnswer} from '../../../Actions/answerActions';
 import {getUsername} from '../../../utils/cookies';
 
 /** Maps state of the ShowQuestion component from store
@@ -28,6 +31,7 @@ export const mapDispatchToProps = (dispatch) => ({
   addAnswer: (answer) => dispatch(addAnswer(answer)),
   getAllQuestions: () => dispatch(getAllQuestions()),
   getAllUsers: () => dispatch(getAllUsers()),
+  updateAnswer: (answerId, answer) => dispatch(updateAnswer(answerId, answer)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowQuestion);

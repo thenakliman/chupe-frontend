@@ -21,4 +21,12 @@ describe('AnswerReducers', () => {
     const receivedAnswer = answers(storeAnswer, action);
     expect(receivedAnswer).toEqual([...storeAnswer, testAnswers]);
   });
+
+  it('should update answer to answers on UPDATE_ANSWER action', () => {
+    const testAnswers = {id: 10, answer: 'fake-answer'};
+    const storeAnswer = [{id: 11}, {id: 10}];
+    const action = {type: 'UPDATE_ANSWER', payload: testAnswers};
+    const receivedAnswer = answers(storeAnswer, action);
+    expect(receivedAnswer).toEqual([{id: 11}, testAnswers]);
+  });
 });

@@ -25,6 +25,9 @@ export class ShowQuestion extends React.Component {
       this.handleQuestionDescription = this
           .handleQuestionDescription.bind(this);
 
+      this.handleAnswerDescription = this
+          .handleAnswerDescription.bind(this);
+
       this.handleSubmit = this.handleSubmit.bind(this);
       this.changeStatus = this.changeStatus.bind(this);
       this.changePriority = this.changePriority.bind(this);
@@ -32,7 +35,6 @@ export class ShowQuestion extends React.Component {
       this.getInitialState = this.getInitialState.bind(this);
       this.validateForm = this.validateForm.bind(this);
       this.addAnswer = this.addAnswer.bind(this);
-      this.currentQuestion = this.getInitialState();
   }
 
   /** Add answer
@@ -108,6 +110,22 @@ export class ShowQuestion extends React.Component {
     this.handleSubmit(completeQuestion);
   }
 
+  /** Handle changes on the question description fields
+  * @param {answerId} answerId to be modified
+  * @param {object} description new modified value
+  */
+  handleAnswerDescription(answerId, description) {
+    const completeAnswer = {
+        id: answerId,
+        answer: description,
+        questionId: this.state.id,
+        answeredBy: this.props.answers.find(
+            (answer) => answer.id === answerId).answeredBy,
+      };
+
+    this.props.updateAnswer(answerId, completeAnswer);
+  }
+
   /** Validates form data
   * @param {object} questionData has question data
   * @return {bool} return whether data is valid or not
@@ -173,7 +191,8 @@ export class ShowQuestion extends React.Component {
             <QuestionAnswerWrapper
               headerText={'Answer Added by ' + answer.answeredBy}
               bodyText={answer.answer}
-              saveHandler={this.handleQuestionDescription}
+              saveHandler={(description) =>
+                  this.handleAnswerDescription(answer.id, description)}
               id={`show-question--answer-${answer.id}-id`}
             />
           </div>
@@ -202,4 +221,5 @@ ShowQuestion.propTypes = {
   addAnswer: propTypes.func.isRequired,
   getAllQuestions: propTypes.func.isRequired,
   getAllUsers: propTypes.func.isRequired,
+  updateAnswer: propTypes.func.isRequired,
 };

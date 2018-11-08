@@ -24,4 +24,17 @@ describe('Question Service', () => {
         expect(Client.post).toHaveBeenCalledWith('/api/v1/answers', answer);
         expect(receivedAnswer).toEqual(answer);
     });
+
+    it('should update answer', async () => {
+        const answerId = 100;
+        const answer = {id: answerId};
+        spyOn(Client, 'put').and.returnValue({id: answerId});
+
+        const receivedAnswer = await AnswerService.updateAnswer(
+              answerId, answer);
+
+        expect(Client.put).toHaveBeenCalledWith(
+              '/api/v1/answers/' + answerId, answer);
+        expect(receivedAnswer).toEqual(answer);
+    });
 });

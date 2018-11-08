@@ -109,4 +109,16 @@ describe('Question Result container', () => {
 
       expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
+
+  it('should call updateAnswer', () => {
+      const fakeAction = 'fakeAction';
+      spyOn(answerActions, 'updateAnswer').and.returnValue(fakeAction);
+      const props = mapDispatchToProps(store.dispatch);
+      const id = 10;
+      const answer = {id: 10};
+      props.updateAnswer(id, answer);
+
+      expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+      expect(answerActions.updateAnswer).toHaveBeenCalledWith(id, answer);
+  });
 });

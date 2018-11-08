@@ -43,6 +43,7 @@ describe('Show Question component snapshot', () => {
               addAnswer={()=>{}}
               getAllUsers={()=>{}}
               getAllQuestions={()=>{}}
+              updateAnswer={()=>{}}
         />);
 
         expect(toJson(wrapper)).toMatchSnapshot();
@@ -64,6 +65,7 @@ describe('Show question component', () => {
           updateQuestion={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
 
@@ -90,6 +92,7 @@ describe('Show question component', () => {
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
 
@@ -116,6 +119,7 @@ describe('Show question component', () => {
           addAnswer={()=>{}}getAllUsers
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
     expect(wrapper.state()).toEqual({
@@ -143,6 +147,7 @@ describe('Show question component', () => {
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
     const description = 'test-10';
@@ -176,6 +181,7 @@ describe('Show question component', () => {
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
     wrapper.find('#question-answer-description-wrapper-id')
@@ -209,10 +215,50 @@ describe('Show question component', () => {
           addAnswer={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
     expect(wrapper.find('#show-question--answer-1-id').length).toEqual(1);
     expect(wrapper.find('#show-question--answer-20-id').length).toEqual(1);
+  });
+
+  it('should call updateAnswer on click of edit question', () => {
+    const mockedGetAnswers = jest.fn();
+    const updateAnswer = jest.fn();
+    const questionId = 2;
+    const answeredBy = 'lal_singh';
+    const id = 1;
+    const answers = [{
+      id: id,
+      answer: 'ans-1',
+      answeredBy: answeredBy,
+      questionId: questionId,
+    }];
+
+    const wrapper = mount(
+        <ShowQuestion
+          questions={questions}
+          users={users}
+          getAnswers={mockedGetAnswers}
+          answers={answers}
+          match={{params: {id: questionId}}}
+          loggedInUser={username}
+          updateQuestion={()=>{}}
+          addAnswer={()=>{}}
+          getAllUsers={()=>{}}
+          getAllQuestions={()=>{}}
+          updateAnswer={updateAnswer}
+        />
+    );
+
+    const newAnswer = 'new answer';
+    wrapper.instance().handleAnswerDescription(id, newAnswer);
+
+    expect(updateAnswer).toHaveBeenCalledWith(id, {
+      id: id,
+      answer: newAnswer,
+      questionId: questionId,
+      answeredBy: answeredBy});
   });
 
   it('should have a temporary question answer wrapper', () => {
@@ -229,6 +275,7 @@ describe('Show question component', () => {
           updateQuestion={()=>{}}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
 
@@ -250,6 +297,7 @@ describe('Show question component', () => {
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
           addAnswer={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
     expect(
@@ -274,6 +322,7 @@ describe('Show question component', () => {
           addAnswer={mockAddAnswer}
           getAllUsers={()=>{}}
           getAllQuestions={()=>{}}
+          updateAnswer={()=>{}}
         />
     );
     wrapper.find(
@@ -300,6 +349,7 @@ describe('Show question component', () => {
             addAnswer={()=>{}}
             getAllUsers={()=>{}}
             getAllQuestions={()=>{}}
+            updateAnswer={()=>{}}
           />
       );
 
@@ -317,6 +367,7 @@ describe('Show question component', () => {
                             updateQuestion={()=>{}}
                             addAnswer={()=>{}}
                             getAllUsers={()=>{}}
+                            updateAnswer={()=>{}}
                             getAllQuestions={mockGetAllQuestions}/>);
 
       expect(mockGetAllQuestions).not.toHaveBeenCalled();
@@ -333,6 +384,7 @@ describe('Show question component', () => {
                             updateQuestion={()=>{}}
                             addAnswer={()=>{}}
                             getAllUsers={()=>{}}
+                            updateAnswer={()=>{}}
                             getAllQuestions={mockGetAllQuestions}/>);
 
       expect(mockGetAllQuestions).toHaveBeenCalledWith();
@@ -349,6 +401,7 @@ describe('Show question component', () => {
                             addAnswer={()=>{}}
                             getAllQuestions={()=>{}}
                             loggedInUser={username}
+                            updateAnswer={()=>{}}
                             getAllUsers={mockGetAllUsers}/>);
 
       expect(mockGetAllUsers).toHaveBeenCalled();
@@ -365,6 +418,7 @@ describe('Show question component', () => {
                             addAnswer={()=>{}}
                             getAllQuestions={()=>{}}
                             loggedInUser={username}
+                            updateAnswer={()=>{}}
                             getAllUsers={mockGetAllUsers} />);
 
       expect(mockGetAllUsers).not.toHaveBeenCalled();
@@ -382,6 +436,7 @@ describe('Show question component', () => {
                                                     updateQuestion={()=>{}}
                                                     addAnswer={()=>{}}
                                                     getAllQuestions={()=>{}}
+                                                    updateAnswer={()=>{}}
                                                     getAllUsers={()=>{}} />,
                                        node);
 
@@ -394,6 +449,7 @@ describe('Show question component', () => {
                                   updateQuestion={()=>{}}
                                   addAnswer={()=>{}}
                                   getAllQuestions={()=>{}}
+                                  updateAnswer={()=>{}}
                                   getAllUsers={()=>{}} />,
                      node);
 
@@ -411,6 +467,7 @@ describe('Show question component', () => {
                             addAnswer={()=>{}}
                             getAllQuestions={()=>{}}
                             loggedInUser={username}
+                            updateAnswer={()=>{}}
                             getAllUsers={()=>{}}/>);
 
       const priority = 'LOW';
@@ -433,6 +490,7 @@ describe('Show question component', () => {
                             addAnswer={()=>{}}
                             getAllQuestions={()=>{}}
                             loggedInUser={username}
+                            updateAnswer={()=>{}}
                             getAllUsers={()=>{}}/>);
 
       const status = 'OPEN';
