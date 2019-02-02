@@ -62,4 +62,11 @@ describe('Menu Bar Component', () => {
         <MenuBar location={location}/>);
     expect(wrapper.find('#tasks-tab').length).toEqual(1);
   });
+
+  it('Should have retros tab', () => {
+    const location = {pathname: '/retros'};
+    const wrapper = shallow(
+        <MenuBar location={location}/>);
+    expect(wrapper.find('#retros-tab').length).toEqual(1);
+  });
 });

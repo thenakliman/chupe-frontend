@@ -3,4 +3,5 @@ export const LOCATION_TO_TAB_MAPPING = {
   'questions': ['questions', 'question'],
   'team-funds': ['team-funds', 'funds'],
   'tasks': ['tasks'],
+  'retros': ['retros'],
 };

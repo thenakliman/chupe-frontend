@@ -6,6 +6,7 @@ import {loggedInUserDetails} from './loginReducers';
 import {answers} from './answerReducers';
 import {fund} from './fundReducers';
 import {tasks} from './taskReducers';
+import {retro} from './retroReducers';
 
 
 export const rootReducers = combineReducers({
@@ -15,5 +16,6 @@ export const rootReducers = combineReducers({
   currentView,
   fund,
   tasks,
+  retro,
   loggedInUserDetails,
 });
