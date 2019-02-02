@@ -79,7 +79,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-CREATED-undefined"
               name="state-0"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
           <td
@@ -91,7 +91,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-IN_PROGRESS-undefined"
               name="state-0"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
           <td
@@ -103,7 +103,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-ON_HOLD-undefined"
               name="state-0"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
           <td
@@ -115,7 +115,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-DONE-undefined"
               name="state-0"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
         </tr>
@@ -137,7 +137,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-CREATED-undefined"
               name="state-1"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
           <td
@@ -149,7 +149,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-IN_PROGRESS-undefined"
               name="state-1"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
           <td
@@ -161,7 +161,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-ON_HOLD-undefined"
               name="state-1"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
           <td
@@ -173,7 +173,7 @@ exports[`Task result component snapshot should match the snapshot 1`] = `
               id="task-state-radio-button-DONE-undefined"
               name="state-1"
               onChange={[Function]}
-              type="radio"
+              type="checkbox"
             />
           </td>
         </tr>

@@ -138,7 +138,7 @@ export class Task extends React.Component {
                             <input
                               className={'task-state-radio-button'}
                               id={`task-state-radio-button-${state}-${task.id}`}
-                              type="radio"
+                              type="checkbox"
                               name={`state-${index}`}
                               onChange={
                                 () => this.handleChangeInState(task.id, state)}
