@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import {Retro} from './Retro';
+import {Retros} from './Retros';
 /* eslint-enable */
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
@@ -19,7 +19,7 @@ describe('Show retro component', () => {
   it('should call getAllRetros on component did mount ', () => {
     const getAllRetros = jest.fn();
     shallow(
-        <Retro
+        <Retros
           retros={retros}
           getAllRetros={getAllRetros}
         />
@@ -31,7 +31,7 @@ describe('Show retro component', () => {
   it('should show row for each retro', () => {
     const getAllRetros = jest.fn();
     const wrapper = shallow(
-        <Retro
+        <Retros
           retros={retros}
           getAllRetros={getAllRetros}
         />
@@ -41,7 +41,7 @@ describe('Show retro component', () => {
   });
 
   describe('should match snapshot', () => {
-    const wrapper = shallow(<Retro
+    const wrapper = shallow(<Retros
        retros={retros}
        getAllRetros={jest.fn()}
     />);

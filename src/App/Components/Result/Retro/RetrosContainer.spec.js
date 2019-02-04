@@ -3,9 +3,9 @@ import {mount} from 'enzyme';
 import {Provider} from 'react-redux';
 import React from 'react';
 import {shallow} from 'enzyme';
-import RetroContainer from './RetroContainer';
+import RetrosContainer from './RetrosContainer';
 /* eslint-enable */
-import {Retro} from './Retro';
+import {Retros} from './Retros';
 import configureStore from 'redux-mock-store';
 import * as RetroActions from '../../../Actions/retroActions';
 
@@ -28,10 +28,10 @@ describe('Question Result container', () => {
 
     const container = mount(
       <Provider store={store}>
-        <RetroContainer/>
+        <RetrosContainer/>
       </Provider>);
 
-    const props = container.find(Retro).props();
+    const props = container.find(Retros).props();
     expect(props.retros).toEqual(initialState.retro.retros);
   });
 
@@ -41,10 +41,10 @@ describe('Question Result container', () => {
 
     const container = mount(
       <Provider store={store}>
-        <RetroContainer/>
+        <RetrosContainer/>
       </Provider>);
 
-    container.find(Retro).props();
+    container.find(Retros).props();
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
 });

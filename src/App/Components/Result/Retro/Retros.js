@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 require('./Retro.css');
 
-export class Retro extends React.Component {
+export class Retros extends React.Component {
     constructor(props) {
       super(props);
     }
@@ -59,7 +59,7 @@ export class Retro extends React.Component {
     }
 }
 
-Retro.propTypes = {
+Retros.propTypes = {
   retros: propTypes.array,
   getAllRetros: propTypes.func.isRequired,
 };

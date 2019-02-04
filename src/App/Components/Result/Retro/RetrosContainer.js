@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {Retro} from './Retro';
+import {Retros} from './Retros';
 import {getAllRetros} from '../../../Actions/retroActions';
 
 const mapStateToProps = (state) => ({
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => ({
   getAllRetros: () => dispatch(getAllRetros()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Retro);
+export default connect(mapStateToProps, mapDispatchToProps)(Retros);
