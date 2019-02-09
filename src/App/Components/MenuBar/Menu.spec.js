@@ -49,6 +49,14 @@ describe('Menu Bar Component', () => {
       ).toEqual('Selected-Tab');
   });
 
+  it('Should have questions tab', () => {
+    const location = {pathname: '/questions'};
+    const wrapper = shallow(
+        <MenuBar location={location} />);
+    expect(wrapper.find('#questions-tab').length).toEqual(1);
+  });
+
+
   it('Should have Team Fund tab', () => {
     const location = {pathname: '/team-funds'};
     const wrapper = shallow(

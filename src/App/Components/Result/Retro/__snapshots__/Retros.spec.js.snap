@@ -51,6 +51,7 @@ exports[` 1`] = `
           </td>
           <td
             className="retro-row"
+            id="retro-row-id-10"
             onClick={[Function]}
           >
             retro - 1
@@ -73,6 +74,7 @@ exports[` 1`] = `
           </td>
           <td
             className="retro-row"
+            id="retro-row-id-11"
             onClick={[Function]}
           >
             retro - 2

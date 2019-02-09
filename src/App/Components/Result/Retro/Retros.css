@@ -1,0 +1,25 @@
+.retro-container {
+    margin: 1rem 18rem;
+}
+
+.retro-button-container {
+  float: right;
+  margin-bottom: 2rem;
+}
+
+.retro-row {
+  cursor: pointer;
+}
+
+.retro-button {
+    border-radius: 0.25rem;
+    border: 1px solid #28a745;
+    background-color: #28a745;
+    padding: 0.8rem 2rem;
+    float: right;
+    margin: 1rem;
+    color: white;
+    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+    font-size: 1.15rem;
+    cursor: pointer;
+}

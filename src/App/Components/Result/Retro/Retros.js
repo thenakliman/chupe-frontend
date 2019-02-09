@@ -1,7 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import {history} from '../../../utils/history';
 
-require('./Retro.css');
+require('./Retros.css');
 
 export class Retros extends React.Component {
     constructor(props) {
@@ -13,6 +14,7 @@ export class Retros extends React.Component {
     }
 
     viewRetro(id) {
+      history.push('/retro/' + id);
     }
 
     render() {
@@ -42,6 +44,7 @@ export class Retros extends React.Component {
                   <tr key={`${retro.id}`}>
                     <td> {retro.id} </td>
                     <td className='retro-row'
+                        id={`retro-row-id-${retro.id}`}
                         onClick={() => this.viewRetro(retro.id)}
                     >
                             {retro.name}

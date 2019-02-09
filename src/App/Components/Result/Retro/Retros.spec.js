@@ -4,6 +4,7 @@ import {Retros} from './Retros';
 /* eslint-enable */
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
+import * as history from '../../../utils/history';
 
 const retros = [{
   name: 'retro - 1',
@@ -38,6 +39,21 @@ describe('Show retro component', () => {
     );
 
     expect(wrapper.find('#all-retro-table-body-id').children().length).toBe(2);
+  });
+
+
+  it('should show retro on click of retro point', () => {
+    const getAllRetros = jest.fn();
+    history.history = {push: jest.fn()}
+    const wrapper = shallow(
+        <Retros
+          retros={retros}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    wrapper.find('#retro-row-id-11').simulate('click');
+    expect(history.history.push).toHaveBeenCalledWith('/retro/11')
   });
 
   describe('should match snapshot', () => {

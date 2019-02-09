@@ -1,92 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`Retro should match snapshot 1`] = `
 <div
-  className="retro-container"
-  id="retro-container-id"
+  className="retro-points-container"
+  id="retro-points-container-id"
 >
   <div
-    className="retro-button-container"
+    className="retro-point"
+    id="retro-point-2"
+    key="2"
   >
-    <button
-      className="retro-button"
-      id="retro-button-id"
-      type="button"
-    >
-      Create Retro
-    </button>
-  </div>
-  <div>
-    <table
-      id="all-retros-ordered-list"
-    >
-      <thead>
-        <tr
-          className="retro-table-header"
-        >
-          <th>
-             Id 
-          </th>
-          <th>
-             Name 
-          </th>
-          <th>
-             Created By 
-          </th>
-          <th>
-             Maximum Vote 
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        id="all-retro-table-body-id"
-      >
-        <tr
-          key="10"
-        >
-          <td>
-             
-            10
-             
-          </td>
-          <td
-            className="retro-row"
-            onClick={[Function]}
-          >
-            retro - 1
-          </td>
-          <td>
-             
-            fake user - 1
-          </td>
-          <td>
-             
-          </td>
-        </tr>
-        <tr
-          key="11"
-        >
-          <td>
-             
-            11
-             
-          </td>
-          <td
-            className="retro-row"
-            onClick={[Function]}
-          >
-            retro - 2
-          </td>
-          <td>
-             
-            fake user - 2
-          </td>
-          <td>
-             
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    description retro
   </div>
 </div>
 `;
