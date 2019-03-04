@@ -4,7 +4,7 @@ export const retro = (state, action) => {
   if (state === undefined) {
     state = {
       retros: [],
-      retroPoints: []
+      retroPoints: [],
     };
   }
 

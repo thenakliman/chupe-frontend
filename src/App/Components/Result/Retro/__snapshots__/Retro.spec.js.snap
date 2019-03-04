@@ -10,7 +10,25 @@ exports[`Retro should match snapshot 1`] = `
     id="retro-point-2"
     key="2"
   >
-    description retro
+    <div
+      className="retro-point-votes"
+      id="retro-point-votes-2"
+    >
+      2
+    </div>
+    <div
+      className="retro-point-vote-text"
+      id="retro-point-vote-text-2"
+      onClick={[Function]}
+    >
+      Vote
+    </div>
+    <div
+      className="retro-point-description"
+      id="retro-point-description-{retroPoint.id}"
+    >
+      description retro
+    </div>
   </div>
 </div>
 `;

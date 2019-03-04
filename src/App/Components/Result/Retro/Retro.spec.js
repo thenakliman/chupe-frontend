@@ -1,6 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 import {Retro} from './Retro';
-import {mapStateToProps, mapDispatchToProps} from './RetroContainer';
+/* eslint-disable */
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
 
@@ -13,24 +14,24 @@ describe('Retro', () => {
                 getRetroPoints={jest.fn()}
          />);
     expect(wrapper.find('#retro-points-container-id').length).toBe(1);
-  })
+  });
 
   it('should call fetch retro points on component mount', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const wrapper = shallow(
+    shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={[]}
                getRetroPoints={getRetroPoints}
         />);
 
     expect(getRetroPoints).toHaveBeenCalledWith(retroId);
-  })
+  });
 
   it('should show description of retro point', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2}];
+    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
@@ -38,12 +39,56 @@ describe('Retro', () => {
         />);
 
     expect(wrapper.find('#retro-point-2').length).toBe(1);
-  })
+  });
+
+  it('should have retro point vote id', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               castVote={jest.fn()}
+               getRetroPoints={getRetroPoints}
+        />);
+
+    expect(wrapper.find('#retro-point-votes-2').length).toBe(1);
+  });
+
+  it('should have retro point vote text', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               castVote={jest.fn()}
+               getRetroPoints={getRetroPoints}
+        />);
+
+    expect(wrapper.find('#retro-point-vote-text-2').length).toBe(1);
+  });
+
+  it('should call cast vote on click of vote text', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const castVote = jest.fn();
+    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               vote={castVote}
+               getRetroPoints={getRetroPoints}
+        />);
+
+    wrapper.find('#retro-point-vote-text-2').simulate('click');
+    expect(castVote).toHaveBeenCalledWith(retroId, 2);
+  });
 
   it('should match snapshot', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2}];
+    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
@@ -51,5 +96,5 @@ describe('Retro', () => {
         />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
-  })
-})
+  });
+});

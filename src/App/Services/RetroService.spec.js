@@ -19,7 +19,18 @@ describe('Retro Service', () => {
         const retroId = 1023;
         const receivedRetros = await RetroService.getRetroPoints(retroId);
 
-        expect(Client.get).toHaveBeenCalledWith('/api/v1/retro-points?retroId=' + retroId);
+        expect(Client.get)
+          .toHaveBeenCalledWith('/api/v1/retro-points?retroId=' + retroId);
+
         expect(receivedRetros).toEqual(retroPoints);
+    });
+
+    it('Should cast vote', async () => {
+        spyOn(Client, 'post').and.returnValue();
+        const retroPointId = 1923;
+        await RetroService.castVote(retroPointId);
+
+        expect(Client.post)
+          .toHaveBeenCalledWith('/api/v1/retro-point-votes/' + retroPointId);
     });
 });

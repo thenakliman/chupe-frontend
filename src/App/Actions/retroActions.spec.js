@@ -1,4 +1,4 @@
-import {getAllRetros, getRetroPoints} from './retroActions';
+import {getAllRetros, getRetroPoints, castVote} from './retroActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
 import {RetroService} from '../Services/RetroService';
@@ -60,5 +60,36 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
     expect(console.log).toHaveBeenCalledWith('Error on fetching retro points');
+  });
+
+  it('Should show error message when cast vote fails', async () => {
+    spyOn(console, 'log');
+    spyOn(RetroService, 'castVote').and.throwError('failed');
+    const retroId = 3849;
+    const retroPointId = 4387;
+
+    await store.dispatch(castVote(retroId, retroPointId));
+
+    expect(RetroService.castVote).toHaveBeenCalledWith(retroPointId);
+    expect(console.log).toHaveBeenCalledWith('Error on casting vote');
+  });
+
+  it('Should dispatch action for fetching retro-points', async () => {
+    const testRetroPoints = [{'name': 'fakeTask'}];
+    spyOn(RetroService, 'getRetroPoints').and.returnValues(testRetroPoints);
+    spyOn(RetroService, 'castVote');
+    const retroId = 3849;
+    const retroPointId = 2349;
+    await store.dispatch(castVote(retroId, retroPointId));
+
+    expect(store.getActions()).toEqual([
+      {
+        type: ActionTypes.ADD_RETRO_POINTS,
+        payload: testRetroPoints,
+      },
+    ]);
+
+    expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
+    expect(RetroService.castVote).toHaveBeenCalledWith(retroPointId);
   });
 });

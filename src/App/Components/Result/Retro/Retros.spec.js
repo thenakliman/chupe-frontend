@@ -44,7 +44,7 @@ describe('Show retro component', () => {
 
   it('should show retro on click of retro point', () => {
     const getAllRetros = jest.fn();
-    history.history = {push: jest.fn()}
+    history.history = {push: jest.fn()};
     const wrapper = shallow(
         <Retros
           retros={retros}
@@ -53,7 +53,7 @@ describe('Show retro component', () => {
     );
 
     wrapper.find('#retro-row-id-11').simulate('click');
-    expect(history.history.push).toHaveBeenCalledWith('/retro/11')
+    expect(history.history.push).toHaveBeenCalledWith('/retro/11');
   });
 
   describe('should match snapshot', () => {
