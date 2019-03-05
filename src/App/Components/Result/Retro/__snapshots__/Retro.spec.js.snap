@@ -6,29 +6,56 @@ exports[`Retro should match snapshot 1`] = `
   id="retro-points-container-id"
 >
   <div
-    className="retro-point"
-    id="retro-point-2"
-    key="2"
+    className="retro-point-section"
+  >
+    Went Well
+  </div>
+  <hr
+    className="horizontal-line"
+  />
+  <div
+    className="retro-point-category"
   >
     <div
-      className="retro-point-votes"
-      id="retro-point-votes-2"
+      className="retro-point"
+      id="retro-point-2"
+      key="2"
     >
-      2
-    </div>
-    <div
-      className="retro-point-vote-text"
-      id="retro-point-vote-text-2"
-      onClick={[Function]}
-    >
-      Vote
-    </div>
-    <div
-      className="retro-point-description"
-      id="retro-point-description-{retroPoint.id}"
-    >
-      description retro
+      <div
+        className="retro-point-header"
+      >
+        <div
+          className="retro-point-vote-text"
+          id="retro-point-vote-text-2"
+          onClick={[Function]}
+        >
+          Vote
+        </div>
+        <div
+          className="retro-point-votes"
+          id="retro-point-votes-2"
+        >
+          2
+        </div>
+      </div>
+      <div
+        className="retro-point-description"
+        id="retro-point-description-2"
+      >
+        description retro
+      </div>
     </div>
   </div>
+  <div
+    className="retro-point-section"
+  >
+    Need Improvement
+  </div>
+  <hr
+    className="horizontal-line"
+  />
+  <div
+    className="retro-point-category"
+  />
 </div>
 `;

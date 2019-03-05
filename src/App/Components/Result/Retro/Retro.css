@@ -1,28 +1,49 @@
 
 .retro-points-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .retro-point {
-  margin: 2rem;
-  width: 25rem;
-  border: 1px solid #999;
+    margin: 1rem;
+    width: 25rem;
+    border: 1px solid #999;
 }
 
 .retro-point-description {
-    padding: 2rem;
+    padding: 0.5rem;
 }
 
 .retro-point-votes {
-    float: right;
     padding: 0.5rem;
 }
 
 .retro-point-vote-text {
     padding: 0.5rem;
     color: blue;
-    float: right;
     cursor: pointer;
+}
+
+.retro-point-category {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.retro-point-header {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.8rem;
+}
+
+.horizontal-line {
+  width: 100%;
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+.retro-point-section {
+  font-size: 1.5rem;
+  margin: 2rem 0rem 0rem 1rem;
 }

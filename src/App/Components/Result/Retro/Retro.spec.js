@@ -31,20 +31,31 @@ describe('Retro', () => {
   it('should show description of retro point', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
+
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
                getRetroPoints={getRetroPoints}
         />);
 
-    expect(wrapper.find('#retro-point-2').length).toBe(1);
+    expect(wrapper.find('#retro-point-description-2').length).toBe(1);
   });
 
   it('should have retro point vote id', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
@@ -58,7 +69,12 @@ describe('Retro', () => {
   it('should have retro point vote text', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
@@ -73,7 +89,12 @@ describe('Retro', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
@@ -88,7 +109,12 @@ describe('Retro', () => {
   it('should match snapshot', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
-    const retroPoints = [{description: 'description retro', id: 2, votes: 2}];
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
                retroPoints={retroPoints}
