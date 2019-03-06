@@ -2,24 +2,59 @@
     margin: 1rem 18rem;
 }
 
+.create-retro-container {
+    position: fixed;
+    border: 1px solid #ccc;
+    margin: 3% 9%;
+}
+
 .retro-button-container {
-  float: right;
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 2rem;
 }
 
 .retro-row {
   cursor: pointer;
 }
 
+.retro-creation-input {
+  height: 2.8rem;
+  width: 100%;
+  font-size: 1.5rem;
+  margin: 3rem 0;
+}
+
 .retro-button {
-    border-radius: 0.25rem;
     border: 1px solid #28a745;
     background-color: #28a745;
-    padding: 0.8rem 2rem;
+    padding: 1rem 2rem;
+    margin: 2rem 0;
     float: right;
-    margin: 1rem;
     color: white;
     background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
-    font-size: 1.15rem;
     cursor: pointer;
+}
+
+.create-retro-button {
+    border: 1px solid #28a745;
+    background-color: #28a745;
+    float: right;
+    color: white;
+    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+    cursor: pointer;
+    padding: 0.8rem 0.8rem;
+    margin: 3rem 2rem;
+    width: 9rem;
+}
+
+.create-retro-buttons-container {
+    margin: 1rem 11rem;
+}
+
+.maximum-vote-count {
+  height: 2.8rem;
+  margin: 3rem 19rem;
+  width: 5rem;
 }

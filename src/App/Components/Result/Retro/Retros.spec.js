@@ -2,7 +2,7 @@
 import React from 'react';
 import {Retros} from './Retros';
 /* eslint-enable */
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import * as history from '../../../utils/history';
 
@@ -27,6 +27,107 @@ describe('Show retro component', () => {
     );
 
     expect(getAllRetros).toHaveBeenCalledWith();
+  });
+
+  it('should have initial state for creatingRetro to false', () => {
+    const getAllRetros = jest.fn();
+    const wrapper = shallow(
+        <Retros
+          retros={retros}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    expect(wrapper.state().creatingRetro).toBe(false);
+  });
+
+  it('should set creatingRetro to true on click of create retro button', () => {
+    const getAllRetros = jest.fn();
+    const wrapper = shallow(
+        <Retros
+          retros={retros}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    wrapper.find('#retro-button-id').simulate('click');
+    expect(wrapper.state().creatingRetro).toBe(true);
+  });
+
+  it('should call create retro', () => {
+    const getAllRetros = jest.fn();
+    const createRetro = jest.fn();
+    const wrapper = shallow(
+        <Retros
+          retros={retros}
+          createRetro={createRetro}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    const retro = {name: 'retro'};
+    wrapper.instance().createRetro(retro);
+    expect(createRetro).toHaveBeenCalledWith(retro);
+    expect(wrapper.state().creatingRetro).toBe(true);
+  });
+
+  it('should call create retro on click of button', () => {
+    const getAllRetros = jest.fn();
+    const createRetro = jest.fn();
+    const wrapper = mount(
+        <Retros
+          retros={retros}
+          createRetro={createRetro}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    wrapper.find('#retro-button-id').simulate('click');
+    expect(wrapper.find('CreateRetroPopUp').length).toBe(1);
+    const testName = 'testName';
+    wrapper.find('#create-retro-name').simulate(
+        'change', {target: {value: testName}});
+
+    const maximumVote = 29;
+    wrapper.find('#create-retro-maximum-vote-count').simulate(
+        'change', {target: {value: maximumVote}});
+
+    wrapper.find('#create-retro-button-id').simulate('click');
+    expect(createRetro).toHaveBeenCalledWith({
+        name: testName,
+        maximumVote: maximumVote,
+    });
+  });
+
+  it('should render CreateRetroPopUp when creatingRetro is true', () => {
+    const getAllRetros = jest.fn();
+    const createRetro = jest.fn();
+    const wrapper = mount(
+        <Retros
+          retros={retros}
+          createRetro={createRetro}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    wrapper.setState({creatingRetro: true});
+    expect(wrapper.find('CreateRetroPopUp').length).toBe(1);
+  });
+
+  it('should toggle state of creatingRetro on after creation of retro', () => {
+    const getAllRetros = jest.fn();
+    const createRetro = jest.fn();
+    const wrapper = shallow(
+        <Retros
+          retros={retros}
+          createRetro={createRetro}
+          getAllRetros={getAllRetros}
+        />
+    );
+
+    const retro = {name: 'retro'};
+    wrapper.instance().createRetro(retro);
+    expect(wrapper.state().creatingRetro).toBe(true);
   });
 
   it('should show row for each retro', () => {

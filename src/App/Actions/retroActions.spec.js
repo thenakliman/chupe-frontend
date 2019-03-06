@@ -1,4 +1,8 @@
-import {getAllRetros, getRetroPoints, castVote} from './retroActions';
+import {
+ getAllRetros,
+ getRetroPoints,
+ castVote,
+ createRetro} from './retroActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
 import {RetroService} from '../Services/RetroService';
@@ -74,7 +78,7 @@ describe('Get_RETROS action', () => {
     expect(console.log).toHaveBeenCalledWith('Error on casting vote');
   });
 
-  it('Should dispatch action for fetching retro-points', async () => {
+  it('Should dispatch action for casting vote', async () => {
     const testRetroPoints = [{'name': 'fakeTask'}];
     spyOn(RetroService, 'getRetroPoints').and.returnValues(testRetroPoints);
     spyOn(RetroService, 'castVote');
@@ -91,5 +95,32 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
     expect(RetroService.castVote).toHaveBeenCalledWith(retroPointId);
+  });
+
+  it('Should show error message when create retro', async () => {
+    spyOn(console, 'log');
+    spyOn(RetroService, 'createRetro').and.throwError('failed');
+    const retro = {name: 'retro-name'};
+
+    await store.dispatch(createRetro(retro));
+
+    expect(RetroService.createRetro).toHaveBeenCalledWith(retro);
+    expect(console.log).toHaveBeenCalledWith('Error on creating retro');
+  });
+
+  it('Should fetch all retros create retro', async () => {
+    spyOn(RetroService, 'createRetro');
+    const retros = [{id: 20}];
+    spyOn(RetroService, 'getRetros').and.returnValues(retros);
+    const retro = {name: 'retro-name'};
+
+    await store.dispatch(createRetro(retro));
+
+    expect(RetroService.createRetro).toHaveBeenCalledWith(retro);
+    expect(RetroService.getRetros).toHaveBeenCalledWith();
+    expect(store.getActions()).toEqual([{
+      'payload': [{'id': 20}],
+      'type': 'ADD_RETROS'}]
+    );
   });
 });

@@ -5,17 +5,14 @@ exports[` 1`] = `
   className="retro-container"
   id="retro-container-id"
 >
-  <div
-    className="retro-button-container"
+  <button
+    className="retro-button"
+    id="retro-button-id"
+    onClick={[Function]}
+    type="button"
   >
-    <button
-      className="retro-button"
-      id="retro-button-id"
-      type="button"
-    >
-      Create Retro
-    </button>
-  </div>
+    Create Retro
+  </button>
   <div>
     <table
       id="all-retros-ordered-list"

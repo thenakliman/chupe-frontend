@@ -1,13 +1,15 @@
 import {connect} from 'react-redux';
 import {Retros} from './Retros';
-import {getAllRetros} from '../../../Actions/retroActions';
+import {getAllRetros, createRetro} from '../../../Actions/retroActions';
+
 
 const mapStateToProps = (state) => ({
   retros: state.retro.retros,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   getAllRetros: () => dispatch(getAllRetros()),
+  createRetro: (retro) => dispatch(createRetro(retro)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Retros);

@@ -8,6 +8,8 @@ import RetrosContainer from './RetrosContainer';
 import {Retros} from './Retros';
 import configureStore from 'redux-mock-store';
 import * as RetroActions from '../../../Actions/retroActions';
+import {mapDispatchToProps} from './RetrosContainer';
+
 
 describe('Question Result container', () => {
   let store;
@@ -46,5 +48,17 @@ describe('Question Result container', () => {
 
     container.find(Retros).props();
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('should have createRetro in props', () => {
+    const fakeAction = 'fake - action';
+    spyOn(RetroActions, 'createRetro').and.returnValue(fakeAction);
+    const dispatch = jest.fn();
+
+    const props = mapDispatchToProps(dispatch);
+
+    const retro = {name: 'test-retro'};
+    props.createRetro(retro);
+    expect(dispatch).toHaveBeenCalledWith(fakeAction);
   });
 });

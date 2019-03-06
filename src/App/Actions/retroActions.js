@@ -41,3 +41,12 @@ export const castVote = (retroId, retroPointId) => async (dispatch) => {
     console.log('Error on casting vote');
   }
 };
+
+export const createRetro = (retro) => async (dispatch) => {
+  try {
+    await RetroService.createRetro(retro);
+    dispatch(getAllRetros());
+  } catch (error) {
+    console.log('Error on creating retro');
+  }
+};

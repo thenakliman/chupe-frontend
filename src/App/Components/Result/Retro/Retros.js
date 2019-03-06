@@ -1,5 +1,8 @@
 import React from 'react';
 import propTypes from 'prop-types';
+/* eslint-disable */
+import {CreateRetroPopUp} from './CreateRetroPopUp';
+/* eslint-enable */
 import {history} from '../../../utils/history';
 
 require('./Retros.css');
@@ -7,27 +10,44 @@ require('./Retros.css');
 export class Retros extends React.Component {
     constructor(props) {
       super(props);
+      this.state = {creatingRetro: false};
+      this.toggleCreatingRetro = this.toggleCreatingRetro.bind(this);
+      this.createRetro = this.createRetro.bind(this);
     }
 
     componentDidMount() {
       this.props.getAllRetros();
     }
 
+    toggleCreatingRetro() {
+      this.setState({creatingRetro: !this.state.creatingRetro});
+    }
+
     viewRetro(id) {
       history.push('/retro/' + id);
+    }
+
+    createRetro(retro) {
+      this.props.createRetro(retro);
+      this.toggleCreatingRetro();
     }
 
     render() {
       return (
       <div id='retro-container-id' className='retro-container'>
-          <div className='retro-button-container'>
-              <button id='retro-button-id'
-                className='retro-button'
-                type='button'
-              >
-                Create Retro
-              </button>
-          </div>
+          <button id='retro-button-id'
+            className='retro-button'
+            type='button'
+            onClick={this.toggleCreatingRetro}
+          >
+            Create Retro
+          </button>
+          {this.state.creatingRetro &&
+           <CreateRetroPopUp
+              createRetro={(retro) => this.createRetro(retro)}
+              closeCreatePopUp={this.toggleCreatingRetro}
+           />
+           }
           <div>
             <table id='all-retros-ordered-list'>
               <thead>
@@ -65,4 +85,5 @@ export class Retros extends React.Component {
 Retros.propTypes = {
   retros: propTypes.array,
   getAllRetros: propTypes.func.isRequired,
+  createRetro: propTypes.func.isRequired,
 };
