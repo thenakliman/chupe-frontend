@@ -106,6 +106,104 @@ describe('Retro', () => {
     expect(castVote).toHaveBeenCalledWith(retroId, 2);
   });
 
+  it('should have createRetroPoint and creatingRetroPointType set', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const castVote = jest.fn();
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               vote={castVote}
+               getRetroPoints={getRetroPoints}
+               createRetroPoint={jest.fn()}
+        />);
+
+    expect(wrapper.state().creatingRetroPoint).toBe(false);
+    expect(wrapper.state().creatingRetroPointType).toBe('');
+  });
+
+  it('should change state when adding a done well retro point', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const castVote = jest.fn();
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               vote={castVote}
+               getRetroPoints={getRetroPoints}
+               createRetroPoint={jest.fn()}
+        />);
+
+    wrapper.find('#retro-button-for-done-well-id').simulate('click');
+    expect(wrapper.state()).toEqual({
+        creatingRetroPoint: true,
+        creatingRetroPointType: 'DONE_WELL'
+    });
+  });
+
+  it('should change state when adding a need improvement retro point', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const castVote = jest.fn();
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               vote={castVote}
+               getRetroPoints={getRetroPoints}
+               createRetroPoint={jest.fn()}
+        />);
+
+    wrapper.find('#retro-button-for-need-improvement-id').simulate('click');
+    expect(wrapper.state()).toEqual({
+        creatingRetroPoint: true,
+        creatingRetroPointType: 'NEED_IMPROVEMENT'
+    });
+  });
+
+  it('should call createRetroPoint on creation of retro point', () => {
+    const retroId = 1029;
+    const getRetroPoints = jest.fn();
+    const castVote = jest.fn();
+    const retroPoints = [{
+        description: 'description retro',
+        id: 2,
+        votes: 2,
+        type: 'NEED_IMPROVEMENT'
+    }];
+    const createRetroPoint = jest.fn();
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={retroPoints}
+               vote={castVote}
+               getRetroPoints={getRetroPoints}
+               createRetroPoint={createRetroPoint}
+        />);
+    const description = 'description';
+    wrapper.instance().createRetroPoint(description);
+    expect(createRetroPoint).toHaveBeenCalledWith({
+        description: description,
+        retroId: retroId,
+        type: ''});
+  });
+
   it('should match snapshot', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();

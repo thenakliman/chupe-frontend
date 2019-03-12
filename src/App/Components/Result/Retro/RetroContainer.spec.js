@@ -35,4 +35,15 @@ describe('Retro', () => {
     expect(RetroActions.castVote).toHaveBeenCalledWith(retroId, retroPointId);
     expect(dispatch).toHaveBeenCalledWith(fakeAction);
   });
+
+  it('should create retro point', () => {
+    const fakeAction = 'fake-action';
+    spyOn(RetroActions, 'createRetroPoint').and.returnValue(fakeAction);
+    const dispatch = jest.fn();
+    const retroPoint = {name: 'fake actions'};
+    mapDispatchToProps(dispatch).createRetroPoint(retroPoint);
+
+    expect(RetroActions.createRetroPoint).toHaveBeenCalledWith(retroPoint);
+    expect(dispatch).toHaveBeenCalledWith(fakeAction);
+  });
 });

@@ -15,6 +15,10 @@ export const RetroService = {
       return await post(`${CHUPE_RETRO_URL}/retros`, retro);
   },
 
+  async createRetroPoint(retroPoint) {
+      return await post(`${CHUPE_RETRO_URL}/retro-points`, retroPoint);
+  },
+
   async castVote(retroPointId) {
       return await post(`${CHUPE_RETRO_URL}/retro-point-votes/${retroPointId}`);
   },

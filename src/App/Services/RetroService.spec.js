@@ -42,4 +42,13 @@ describe('Retro Service', () => {
 
         expect(Client.post).toHaveBeenCalledWith('/api/v1/retros', retro);
     });
+
+    it('Should create retro point', async () => {
+        spyOn(Client, 'post').and.returnValue();
+        const retro = {name: 'retro-name'};
+
+        await RetroService.createRetroPoint(retro);
+
+        expect(Client.post).toHaveBeenCalledWith('/api/v1/retro-points', retro);
+    });
 });

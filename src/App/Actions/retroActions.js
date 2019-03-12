@@ -50,3 +50,12 @@ export const createRetro = (retro) => async (dispatch) => {
     console.log('Error on creating retro');
   }
 };
+
+export const createRetroPoint = (retroPoint) => async (dispatch) => {
+  try {
+    await RetroService.createRetroPoint(retroPoint);
+    dispatch(getRetroPoints(retroPoint.retroId));
+  } catch (error) {
+    console.log('Error on creating retro point');
+  }
+};

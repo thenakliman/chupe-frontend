@@ -2,6 +2,7 @@ import {
  getAllRetros,
  getRetroPoints,
  castVote,
+ createRetroPoint,
  createRetro} from './retroActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
@@ -121,6 +122,34 @@ describe('Get_RETROS action', () => {
     expect(store.getActions()).toEqual([{
       'payload': [{'id': 20}],
       'type': 'ADD_RETROS'}]
+    );
+  });
+
+  it('Should show error message when create retro', async () => {
+    spyOn(console, 'log');
+    spyOn(RetroService, 'createRetroPoint').and.throwError('failed');
+    const retroPoint = {name: 'retro-name'};
+
+    await store.dispatch(createRetroPoint(retroPoint));
+
+    expect(RetroService.createRetroPoint).toHaveBeenCalledWith(retroPoint);
+    expect(console.log).toHaveBeenCalledWith('Error on creating retro point');
+  });
+
+  it('Should fetch all retros points on create retro', async () => {
+    spyOn(RetroService, 'createRetroPoint');
+    const retroPoints = [{id: 20}];
+    const retroId = 20;
+    spyOn(RetroService, 'getRetroPoints').and.returnValues(retroPoints);
+    const retroPoint = {name: 'retro-name', retroId: retroId};
+
+    await store.dispatch(createRetroPoint(retroPoint));
+
+    expect(RetroService.createRetroPoint).toHaveBeenCalledWith(retroPoint);
+    expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
+    expect(store.getActions()).toEqual([{
+      'payload': [{'id': 20}],
+      'type': 'ADD_RETRO_POINTS'}]
     );
   });
 });

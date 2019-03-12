@@ -1,0 +1,26 @@
+.add-retro-point-button {
+    border: 1px solid #28a745;
+    background-color: #28a745;
+    padding: 0.8rem 1rem;
+    color: white;
+    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+    cursor: pointer;
+    margin: 2rem;
+}
+
+.add-retro-point-container {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 4rem 3rem;
+    border: 1px solid #ccc;
+    margin: 7% 32%;
+    position: fixed;
+}
+
+.add-retro-point-creation-input {
+    padding: 0.8rem 0;
+    width: 100%;
+    font-size: 1.4rem;
+    margin: 2rem 0;
+}

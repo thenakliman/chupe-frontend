@@ -6,9 +6,21 @@ exports[`Retro should match snapshot 1`] = `
   id="retro-points-container-id"
 >
   <div
-    className="retro-point-section"
+    className="retro-point-header-cotainer"
   >
-    Went Well
+    <div
+      className="retro-point-section"
+    >
+      Need Improvement
+    </div>
+    <button
+      className="add-retro-point"
+      id="retro-button-for-need-improvement-id"
+      onClick={[Function]}
+      type="button"
+    >
+      Add Point
+    </button>
   </div>
   <hr
     className="horizontal-line"
@@ -47,9 +59,21 @@ exports[`Retro should match snapshot 1`] = `
     </div>
   </div>
   <div
-    className="retro-point-section"
+    className="retro-point-header-cotainer"
   >
-    Need Improvement
+    <div
+      className="retro-point-section"
+    >
+      Done Well
+    </div>
+    <button
+      className="add-retro-point"
+      id="retro-button-for-done-well-id"
+      onClick={[Function]}
+      type="button"
+    >
+      Add Point
+    </button>
   </div>
   <hr
     className="horizontal-line"
