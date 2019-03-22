@@ -19,6 +19,11 @@
   cursor: pointer;
 }
 
+.retro-table-body tr:hover {
+  background-color: #eff5ff;
+  transition: background-color 0.5s ease;
+}
+
 .retro-creation-input {
   height: 2.8rem;
   width: 100%;
