@@ -36,6 +36,7 @@ exports[` 1`] = `
         </tr>
       </thead>
       <tbody
+        className="retro-table-body"
         id="all-retro-table-body-id"
       >
         <tr
