@@ -4,8 +4,23 @@ import propTypes from 'prop-types';
 require('./FeedbackSessions.css');
 
 export class FeedbackSessions extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {description: ''};
+      this.createFeedbackSession = this.createFeedbackSession.bind(this);
+    }
+
     componentDidMount() {
       this.props.getAllFeedbackSessions();
+    }
+
+    onDescriptionChange(newDescription) {
+      this.setState({description: newDescription});
+    }
+
+    createFeedbackSession() {
+      this.props.createFeedbackSession({description: this.state.description});
+      this.setState({description: ''});
     }
 
     render() {
@@ -15,10 +30,14 @@ export class FeedbackSessions extends React.Component {
           <div className='feedback-sessions-create-container'>
               <input id='feedbackSession-input-id'
                 className='feedbackSession-input'
+                value={this.state.description}
+                onChange={(event) =>
+                            this.onDescriptionChange(event.target.value)}
               />
               <button id='feedbackSession-button-id'
                 className='feedbackSession-button'
                 type='button'
+                onClick={this.createFeedbackSession}
               >
                 Create Feedback Session
               </button>
@@ -56,4 +75,5 @@ export class FeedbackSessions extends React.Component {
 FeedbackSessions.propTypes = {
   feedbackSessions: propTypes.array,
   getAllFeedbackSessions: propTypes.func.isRequired,
+  createFeedbackSession: propTypes.func.isRequired,
 };

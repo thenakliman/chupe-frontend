@@ -11,10 +11,13 @@ exports[` 1`] = `
     <input
       className="feedbackSession-input"
       id="feedbackSession-input-id"
+      onChange={[Function]}
+      value=""
     />
     <button
       className="feedbackSession-button"
       id="feedbackSession-button-id"
+      onClick={[Function]}
       type="button"
     >
       Create Feedback Session

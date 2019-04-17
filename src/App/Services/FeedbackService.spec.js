@@ -13,4 +13,14 @@ describe('Feedback Service', () => {
         expect(Client.get).toHaveBeenCalledWith('/api/v1/feedback-sessions');
         expect(receivedFeedbacks).toEqual(feedbackSessions);
     });
+
+    it('should create feedback session', async () => {
+        const feedbackSession = {id: 10};
+        spyOn(Client, 'post');
+
+        await FeedbackService.saveFeedbackSession(feedbackSession);
+
+        expect(Client.post).toHaveBeenCalledWith('/api/v1/feedback-sessions',
+                                                 feedbackSession);
+    });
 });

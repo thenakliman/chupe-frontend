@@ -51,4 +51,19 @@ describe('Feedback Result container', () => {
     container.find(FeedbackSessions).props();
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
   });
+
+  it('should call createFeedbackSession', () => {
+    const fakeAction = 'fake - action';
+    spyOn(FeedbackSessionActions, 'createFeedbackSession')
+          .and.returnValue(fakeAction);
+
+    const container = mount(
+      <Provider store={store}>
+        <FeedbackSessionsContainer/>
+      </Provider>);
+
+    container.find('#feedbackSession-button-id').simulate('click');
+    expect(FeedbackSessionActions.createFeedbackSession)
+            .toHaveBeenCalledWith({description: ''});
+  });
 });

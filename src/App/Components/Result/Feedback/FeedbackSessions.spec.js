@@ -68,4 +68,61 @@ describe('Show feedback sessions component', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  describe('should have initial state with empty string', () => {
+    const wrapper = shallow(<FeedbackSessions
+       feedbackSessions={feedbackSessions}
+       getAllFeedbackSessions={jest.fn()}
+    />);
+
+    expect(wrapper.state().description).toEqual('');
+  });
+
+  describe('should change internal state of the component', () => {
+    const wrapper = shallow(<FeedbackSessions
+       feedbackSessions={feedbackSessions}
+       getAllFeedbackSessions={jest.fn()}
+    />);
+
+    const description = 'some description';
+    wrapper.find('#feedbackSession-input-id')
+        .simulate('change', {target: {value: description}});
+
+    expect(wrapper.state().description).toEqual(description);
+  });
+
+  describe('should change internal state of the component', () => {
+    const createFeedbackSession = jest.fn();
+    const wrapper = shallow(<FeedbackSessions
+       feedbackSessions={feedbackSessions}
+       getAllFeedbackSessions={jest.fn()}
+       createFeedbackSession={createFeedbackSession}
+    />);
+
+    const description = 'some description';
+    wrapper.find('#feedbackSession-input-id')
+        .simulate('change', {target: {value: description}});
+
+    wrapper.find('#feedbackSession-button-id').simulate('click');
+
+    expect(createFeedbackSession)
+            .toHaveBeenCalledWith({description: description});
+  });
+
+  describe('should change state to empty string on create of session', () => {
+    const createFeedbackSession = jest.fn();
+    const wrapper = shallow(<FeedbackSessions
+       feedbackSessions={feedbackSessions}
+       getAllFeedbackSessions={jest.fn()}
+       createFeedbackSession={createFeedbackSession}
+    />);
+
+    const description = 'some description';
+    wrapper.find('#feedbackSession-input-id')
+        .simulate('change', {target: {value: description}});
+
+    wrapper.find('#feedbackSession-button-id').simulate('click');
+
+    expect(wrapper.state().description).toBe('');
+  });
 });

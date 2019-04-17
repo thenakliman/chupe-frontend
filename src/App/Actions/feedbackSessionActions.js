@@ -16,3 +16,13 @@ export const getAllFeedbackSessions = () => async (dispatch) => {
     console.log('Error on fetching feedback sessions');
   }
 };
+
+export const createFeedbackSession = (feedbackSession) => async (dispatch) => {
+  try {
+    await FeedbackService.saveFeedbackSession(feedbackSession);
+
+    dispatch(getAllFeedbackSessions());
+  } catch (error) {
+    console.log('Error on creating feedback sessions');
+  }
+};

@@ -1,4 +1,7 @@
-import {getAllFeedbackSessions} from './feedbackSessionActions';
+import {
+  getAllFeedbackSessions,
+  createFeedbackSession} from './feedbackSessionActions';
+
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
 import {FeedbackService} from '../Services/FeedbackService';
@@ -36,5 +39,37 @@ describe('Get_RETROS action', () => {
     expect(FeedbackService.getAllFeedbackSessions).toHaveBeenCalledWith();
     expect(console.log)
         .toHaveBeenCalledWith('Error on fetching feedback sessions');
+  });
+
+  it('Should dispatch action for create feedback sessions', async () => {
+    const testFeedbackSession = {'name': 'fakeTask'};
+    spyOn(FeedbackService, 'saveFeedbackSession');
+    spyOn(FeedbackService, 'getAllFeedbackSessions')
+        .and.returnValues(testFeedbackSession);
+
+    await store.dispatch(createFeedbackSession(testFeedbackSession));
+    expect(store.getActions()).toEqual([
+      {
+        type: ActionTypes.ADD_FEEDBACK_SESSIONS,
+        payload: testFeedbackSession,
+      },
+    ]);
+
+    expect(FeedbackService.saveFeedbackSession)
+        .toHaveBeenCalledWith(testFeedbackSession);
+  });
+
+  it('Should show error message if failed to add feedback', async () => {
+    spyOn(console, 'log');
+    spyOn(FeedbackService, 'saveFeedbackSession').and.throwError('failed ');
+    const testFeedbackSession = {'name': 'fakeTask'};
+
+    await store.dispatch(createFeedbackSession(testFeedbackSession));
+
+    expect(FeedbackService.saveFeedbackSession)
+            .toHaveBeenCalledWith(testFeedbackSession);
+
+    expect(console.log)
+        .toHaveBeenCalledWith('Error on creating feedback sessions');
   });
 });
