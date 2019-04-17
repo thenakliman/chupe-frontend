@@ -34,6 +34,7 @@ import RetroContainer from
 
 import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContainer';
 import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContainer';
+import FeedbackSessionsContainer from './App/Components/Result/Feedback/FeedbackSessionsContainer';
 
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
@@ -107,6 +108,13 @@ const RetroComponent = (props) => (
   </div>
 )
 
+const FeedbackComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <FeedbackSessionsContainer {...props}/>
+  </div>
+)
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -120,6 +128,7 @@ render(
          <Route path="/funds/:id" component={ShowFundComponent}/>
          <Route path="/retro/:id" component={RetroComponent}/>
          <Route path="/retros" component={RetrosComponent}/>
+         <Route path="/feedback-sessions" component={FeedbackComponent}/>
          <Route exact path="/question/ask" component={AskQuestionComponent}/>
        </div>
     </ConnectedRouter>

@@ -77,4 +77,11 @@ describe('Menu Bar Component', () => {
         <MenuBar location={location}/>);
     expect(wrapper.find('#retros-tab').length).toEqual(1);
   });
+
+  it('Should have feedback tabs', () => {
+    const location = {pathname: '/feedback-sessions'};
+    const wrapper = shallow(
+        <MenuBar location={location}/>);
+    expect(wrapper.find('#feedback-session-tab').length).toEqual(1);
+  });
 });

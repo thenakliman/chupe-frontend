@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div
+  className="feedbackSession-container"
+  id="feedbackSession-container-id"
+>
+  <div
+    className="feedback-sessions-create-container"
+  >
+    <input
+      className="feedbackSession-input"
+      id="feedbackSession-input-id"
+    />
+    <button
+      className="feedbackSession-button"
+      id="feedbackSession-button-id"
+      type="button"
+    >
+      Create Feedback Session
+    </button>
+  </div>
+  <div>
+    <table
+      id="all-feedbackSessions-ordered-list"
+    >
+      <thead>
+        <tr
+          className="feedbackSession-table-header"
+        >
+          <th>
+             Id 
+          </th>
+          <th>
+             description 
+          </th>
+          <th>
+             Created By 
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className="feedbackSession-table-body"
+        id="all-feedbackSession-table-body-id"
+      >
+        <tr
+          key="undefined"
+        >
+          <td>
+             
+             
+          </td>
+          <td
+            className="feedbackSession-row"
+          >
+            retro - 1
+          </td>
+          <td>
+             
+          </td>
+        </tr>
+        <tr
+          key="undefined"
+        >
+          <td>
+             
+             
+          </td>
+          <td
+            className="feedbackSession-row"
+          >
+            retro - 2
+          </td>
+          <td>
+             
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

@@ -1,0 +1,18 @@
+.feedbackSession-container {
+  margin: 2rem 20rem;
+}
+
+.feedback-sessions-create-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+}
+
+.feedbackSession-input {
+  height: 2.5rem;
+  width: 53rem;
+  font-size: 1.5rem;
+}
+
+#all-feedbackSessions-ordered-list {
+}
