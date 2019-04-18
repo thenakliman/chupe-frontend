@@ -14,5 +14,8 @@
   font-size: 1.5rem;
 }
 
-#all-feedbackSessions-ordered-list {
+.feedbackSession-table-body tr:hover {
+  background-color: #eff5ff;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
 }
