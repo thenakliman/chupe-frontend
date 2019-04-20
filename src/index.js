@@ -35,7 +35,7 @@ import RetroContainer from
 import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContainer';
 import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContainer';
 import FeedbackSessionsContainer from './App/Components/Result/Feedback/FeedbackSessionsContainer';
-import FeedbackContainer from './App/Components/Result/Feedback/FeedbackContainer';
+import FeedbacksContainer from './App/Components/Result/Feedback/FeedbacksContainer';
 
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
@@ -119,7 +119,7 @@ const FeedbackSessionComponent = (props) => (
 const FeedbacksComponent = (props) => (
   <div>
     <MenuBar {...props}/>
-    <FeedbackContainer {...props}/>
+    <FeedbacksContainer {...props}/>
   </div>
 )
 
