@@ -1,5 +1,6 @@
 import {
   getAllFeedbackSessions,
+  getAllFeedbacks,
   createFeedbackSession} from './feedbackSessionActions';
 
 import configureStore from 'redux-mock-store';
@@ -71,5 +72,31 @@ describe('Get_RETROS action', () => {
 
     expect(console.log)
         .toHaveBeenCalledWith('Error on creating feedback sessions');
+  });
+  it('Should dispatch action for fetching feedbacks', async () => {
+    const feedbacks = [{id: 10}];
+    const sessionId = 101;
+    spyOn(FeedbackService, 'getAllFeedbacks').and.returnValues(feedbacks);
+
+    await store.dispatch(getAllFeedbacks(sessionId));
+    expect(store.getActions()).toEqual([
+      {
+        type: ActionTypes.ADD_FEEDBACKS,
+        payload: feedbacks,
+      },
+    ]);
+    expect(FeedbackService.getAllFeedbacks).toHaveBeenCalledWith(sessionId);
+  });
+
+  it('Should show error message if failed to add feedback', async () => {
+    spyOn(console, 'log');
+    spyOn(FeedbackService, 'getAllFeedbacks').and.throwError('failed ');
+    const sessionId = 101;
+
+    await store.dispatch(getAllFeedbacks(sessionId));
+
+    expect(FeedbackService.getAllFeedbacks).toHaveBeenCalledWith(sessionId);
+    expect(console.log)
+        .toHaveBeenCalledWith('Error on fetching feedbacks');
   });
 });

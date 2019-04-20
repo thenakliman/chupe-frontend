@@ -4,10 +4,14 @@ import {FeedbackSessions} from './FeedbackSessions';
 /* eslint-enable */
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
+import * as History from '../../../utils/history';
+
 
 const feedbackSessions = [{
+  id: 10101,
   description: 'retro - 1',
 }, {
+  id: 10102,
   description: 'retro - 2',
 }];
 
@@ -107,6 +111,19 @@ describe('Show feedback sessions component', () => {
 
     expect(createFeedbackSession)
             .toHaveBeenCalledWith({description: description});
+  });
+
+  describe('should push new route to history', () => {
+    const createFeedbackSession = jest.fn();
+    const wrapper = shallow(<FeedbackSessions
+       feedbackSessions={feedbackSessions}
+       getAllFeedbackSessions={jest.fn()}
+       createFeedbackSession={createFeedbackSession}
+    />);
+    History.history.push = jest.fn();
+
+    wrapper.find('#feedback-sessions-10101').simulate('click');
+    expect(History.history.push).toHaveBeenCalledWith('/feedbacks/10101');
   });
 
   describe('should change state to empty string on create of session', () => {

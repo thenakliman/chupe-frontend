@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import {history} from '../../../utils/history';
 
 require('./FeedbackSessions.css');
 
@@ -8,6 +9,7 @@ export class FeedbackSessions extends React.Component {
       super(props);
       this.state = {description: ''};
       this.createFeedbackSession = this.createFeedbackSession.bind(this);
+      this.viewFeedbacks = this.viewFeedbacks.bind(this);
     }
 
     componentDidMount() {
@@ -21,6 +23,10 @@ export class FeedbackSessions extends React.Component {
     createFeedbackSession() {
       this.props.createFeedbackSession({description: this.state.description});
       this.setState({description: ''});
+    }
+
+    viewFeedbacks(id) {
+      history.push('/feedbacks/' + id);
     }
 
     render() {
@@ -55,7 +61,9 @@ export class FeedbackSessions extends React.Component {
                      className={'feedbackSession-table-body'}>
               {
                 this.props.feedbackSessions.map((feedbackSession) => (
-                  <tr key={`${feedbackSession.id}`}>
+                  <tr key={`${feedbackSession.id}`}
+                      id={`feedback-sessions-${feedbackSession.id}`}
+                      onClick={() => this.viewFeedbacks(feedbackSession.id)}>
                     <td> {feedbackSession.id} </td>
                     <td className='feedbackSession-row'>
                             {feedbackSession.description}

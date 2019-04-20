@@ -7,6 +7,11 @@ const addFeedbackSessions = (feedbackSessions) => ({
   payload: feedbackSessions,
 });
 
+const addFeedbacks = (feedbacks) => ({
+  type: ActionTypes.ADD_FEEDBACKS,
+  payload: feedbacks,
+});
+
 
 export const getAllFeedbackSessions = () => async (dispatch) => {
   try {
@@ -14,6 +19,16 @@ export const getAllFeedbackSessions = () => async (dispatch) => {
     dispatch(addFeedbackSessions(feedbackSessions));
   } catch (error) {
     console.log('Error on fetching feedback sessions');
+  }
+};
+
+export const getAllFeedbacks = (feedbackSessionId) => async (dispatch) => {
+  try {
+    const feedbacks = await FeedbackService.getAllFeedbacks(feedbackSessionId);
+    console.log(feedbacks, addFeedbacks(feedbacks));
+    dispatch(addFeedbacks(feedbacks));
+  } catch (error) {
+    console.log('Error on fetching feedbacks');
   }
 };
 

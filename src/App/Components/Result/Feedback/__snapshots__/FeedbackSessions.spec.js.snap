@@ -47,10 +47,13 @@ exports[` 1`] = `
         id="all-feedbackSession-table-body-id"
       >
         <tr
-          key="undefined"
+          id="feedback-sessions-10101"
+          key="10101"
+          onClick={[Function]}
         >
           <td>
              
+            10101
              
           </td>
           <td
@@ -63,10 +66,13 @@ exports[` 1`] = `
           </td>
         </tr>
         <tr
-          key="undefined"
+          id="feedback-sessions-10102"
+          key="10102"
+          onClick={[Function]}
         >
           <td>
              
+            10102
              
           </td>
           <td

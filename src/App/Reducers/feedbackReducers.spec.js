@@ -5,15 +5,34 @@ import {ActionTypes} from '../Actions/ActionTypes';
 describe('Feedback Reducer', () => {
   const initialState = {
       feedbackSessions: [],
+      feedbacks: []
   };
 
   it('should add feedbacks to redux', () => {
+    const feedbacks = [{id: 'feedbacks'}];
+    const newState = feedback(initialState, {
+      type: ActionTypes.ADD_FEEDBACKS,
+      payload: feedbacks});
+
+    expect(newState.feedbacks).toEqual(feedbacks);
+  });
+
+  it('should add feedback Sessions to redux', () => {
     const feedbackSessions = [{id: 'feedback-sessions'}];
     const newState = feedback(initialState, {
       type: ActionTypes.ADD_FEEDBACK_SESSIONS,
       payload: feedbackSessions});
 
-    expect(newState).toEqual({feedbackSessions: feedbackSessions});
+    expect(newState.feedbackSessions).toEqual(feedbackSessions);
+  });
+
+  it('should not add feedback sessions if action is not add feedback sessions', () => {
+    const feedbackSessions = [{id: 'feedback-sessions'}];
+    const newState = feedback(initialState, {
+      type: 'INVALID_ACTION',
+      payload: feedbackSessions});
+
+    expect(newState.feedbackSessions).toEqual([]);
   });
 
   it('should not add feedbacks if action is not add feedback sessions', () => {
@@ -22,7 +41,7 @@ describe('Feedback Reducer', () => {
       type: 'INVALID_ACTION',
       payload: feedbackSessions});
 
-    expect(newState).toEqual({feedbackSessions: []});
+    expect(newState.feedbacks).toEqual([]);
   });
 
   it('should provide default fields when undefined is passed', () => {
@@ -31,6 +50,9 @@ describe('Feedback Reducer', () => {
       payload: [{id: 'payload'}],
     });
 
-    expect(newState).toEqual({feedbackSessions: []});
+    expect(newState).toEqual({
+        feedbackSessions: [],
+        feedbacks: []
+      });
   });
 });

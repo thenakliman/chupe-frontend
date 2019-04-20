@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div
+  className="feedback-container"
+>
+  <table
+    id="all-feedbacks-ordered-list"
+  >
+    <thead>
+      <tr
+        className="feedbacks-table-header"
+      >
+        <th>
+           Id 
+        </th>
+        <th>
+           description 
+        </th>
+        <th>
+           Given By 
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className="feedbacks-table-body"
+      id="all-feedbacks-table-body-id"
+    >
+      <tr
+        key="10101"
+      >
+        <td>
+           
+          10101
+           
+        </td>
+        <td
+          className="feedbacks-row"
+        >
+          retro - 1
+        </td>
+        <td>
+           
+        </td>
+      </tr>
+      <tr
+        key="10102"
+      >
+        <td>
+           
+          10102
+           
+        </td>
+        <td
+          className="feedbacks-row"
+        >
+          retro - 2
+        </td>
+        <td>
+           
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
