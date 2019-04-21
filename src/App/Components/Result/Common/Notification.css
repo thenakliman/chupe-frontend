@@ -1,0 +1,24 @@
+.notification-message-container {
+  height: 3.5rem;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 3.5rem;
+}
+
+.error {
+  background: #ed0404;
+  color: #ffffff;
+}
+
+.success {
+  background: #60c655;
+  color: #ffffff;
+}
+
+.warning {
+  background: #f4b729;
+  color: #000000;
+}

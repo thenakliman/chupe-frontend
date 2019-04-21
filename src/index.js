@@ -37,6 +37,7 @@ import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContaine
 import FeedbackSessionsContainer from './App/Components/Result/Feedback/FeedbackSessionsContainer';
 import FeedbacksContainer from './App/Components/Result/Feedback/FeedbacksContainer';
 import Loader from './App/Components/Result/Common/Loader';
+import Notification from './App/Components/Result/Common/NotificationContainer';
 
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
@@ -51,6 +52,7 @@ const ListQuestionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <QuestionContainer {...props}/>
   </div>
 )
@@ -59,6 +61,7 @@ const ShowQuestionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <ShowQuestionContainer {...props}/>
   </div>
 )
@@ -67,6 +70,7 @@ const AskQuestionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <AskQuestionContainer {...props}/>
   </div>
 )
@@ -75,6 +79,7 @@ const UserComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <UserResultContainer {...props}/>
   </div>
 )
@@ -83,6 +88,7 @@ const TeamFundComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <TeamFundContainer {...props}/>
   </div>
 )
@@ -91,6 +97,7 @@ const ShowFundComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <ShowFundContainer {...props}/>
   </div>
 )
@@ -99,6 +106,7 @@ const TaskComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <TaskContainer {...props}/>
   </div>
 )
@@ -107,6 +115,7 @@ const RetrosComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <RetrosContainer {...props}/>
   </div>
 )
@@ -115,6 +124,7 @@ const RetroComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <RetroContainer {...props}/>
   </div>
 )
@@ -123,6 +133,7 @@ const FeedbackSessionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
     <Loader/>
+    <Notification />
     <FeedbackSessionsContainer {...props}/>
   </div>
 )
@@ -130,6 +141,7 @@ const FeedbackSessionComponent = (props) => (
 const FeedbacksComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Notification />
     <Loader/>
     <FeedbacksContainer {...props}/>
   </div>

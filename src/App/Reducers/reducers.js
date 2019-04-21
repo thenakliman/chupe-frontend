@@ -9,6 +9,7 @@ import {tasks} from './taskReducers';
 import {retro} from './retroReducers';
 import {feedback} from './feedbackReducers';
 import {loaders} from './loaderReducers';
+import {notifications} from './notificationReducers';
 
 
 export const rootReducers = combineReducers({
@@ -21,5 +22,6 @@ export const rootReducers = combineReducers({
   retro,
   feedback,
   loaders,
+  notifications,
   loggedInUserDetails,
 });
