@@ -29,9 +29,11 @@ describe('Feedback Service', () => {
         spyOn(Client, 'get').and.returnValue(feedbacks);
 
         const feedbackSessionId = 102;
-        const receivedFeedbacks = await FeedbackService.getAllFeedbacks(feedbackSessionId);
+        const receivedFeedbacks = await FeedbackService
+            .getAllFeedbacks(feedbackSessionId);
 
-        expect(Client.get).toHaveBeenCalledWith('/api/v1/feedback-points?feedbackSessionId=' + feedbackSessionId);
+        expect(Client.get).toHaveBeenCalledWith(
+            '/api/v1/feedback-points?feedbackSessionId=' + feedbackSessionId);
         expect(receivedFeedbacks).toEqual(feedbacks);
     });
 });

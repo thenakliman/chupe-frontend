@@ -24,7 +24,6 @@ describe('Feedback Result container', () => {
   });
 
   it('should have feedbacks in props', () => {
-    const fakeAction = 'fake - action';
     const container = mount(
       <Provider store={store}>
         <FeedbacksContainer match={{params: {id: 101}}}/>
@@ -48,4 +47,4 @@ describe('Feedback Result container', () => {
     container.find(Feedbacks).props().getAllFeedbacks(feedbackSessionId);
     expect(FeedbackSessionActions.getAllFeedbacks).toHaveBeenCalledWith(101);
   });
-})
+});

@@ -58,7 +58,8 @@ export class Retros extends React.Component {
                   <th> Maximum Vote </th>
                 </tr>
               </thead>
-              <tbody id='all-retro-table-body-id' className={'retro-table-body'}>
+              <tbody id='all-retro-table-body-id'
+                     className={'retro-table-body'}>
               {
                 this.props.retros.map((retro) =>(
                   <tr key={`${retro.id}`}>

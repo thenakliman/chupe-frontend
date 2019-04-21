@@ -5,7 +5,7 @@ import {ActionTypes} from '../Actions/ActionTypes';
 describe('Feedback Reducer', () => {
   const initialState = {
       feedbackSessions: [],
-      feedbacks: []
+      feedbacks: [],
   };
 
   it('should add feedbacks to redux', () => {
@@ -26,7 +26,7 @@ describe('Feedback Reducer', () => {
     expect(newState.feedbackSessions).toEqual(feedbackSessions);
   });
 
-  it('should not add feedback sessions if action is not add feedback sessions', () => {
+  it('should not add session if action is not for feedback sessions', () => {
     const feedbackSessions = [{id: 'feedback-sessions'}];
     const newState = feedback(initialState, {
       type: 'INVALID_ACTION',
@@ -52,7 +52,7 @@ describe('Feedback Reducer', () => {
 
     expect(newState).toEqual({
         feedbackSessions: [],
-        feedbacks: []
+        feedbacks: [],
       });
   });
 });

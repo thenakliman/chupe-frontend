@@ -13,6 +13,7 @@ export const FeedbackService = {
   },
 
   getAllFeedbacks(feedbackSessionId) {
-      return get(`${FEEDBACK_POINTS_URL}?feedbackSessionId=${feedbackSessionId}`);
+      return get(
+        `${FEEDBACK_POINTS_URL}?feedbackSessionId=${feedbackSessionId}`);
   },
 };

@@ -9,7 +9,7 @@ export const loaders = (state, action) => {
       case ActionTypes.SHOW_LOADER:
         return [...state, action.payload];
       case ActionTypes.HIDE_LOADER:
-        return state.filter(loader => loader !== action.payload);
+        return state.filter((loader) => loader !== action.payload);
       default:
         return [...state];
   }

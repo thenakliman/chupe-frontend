@@ -6,20 +6,20 @@ require('./Notification.css');
 
 export class Notification extends React.Component {
   static getClassName(notificationType) {
-    let className = 'notification-message-container '
-    if(notificationType === NotificationType.ERROR) {
+    let className = 'notification-message-container ';
+    if (notificationType === NotificationType.ERROR) {
       className += 'error';
-    } else if(notificationType === NotificationType.SUCCESS) {
+    } else if (notificationType === NotificationType.SUCCESS) {
       className += 'success';
-    } else if(notificationType === NotificationType.WARNING) {
+    } else if (notificationType === NotificationType.WARNING) {
       className += 'warning';
     }
 
-    return className
+    return className;
   }
 
   render() {
-    if(this.props.notifications.length === 0) {
+    if (this.props.notifications.length === 0) {
       return null;
     }
 
@@ -32,10 +32,10 @@ export class Notification extends React.Component {
         </div>
         )
       }
-    </div>)
+    </div>);
   }
 }
 
 Notification.propTypes = {
-  notifications: propTypes.array.isRequired
-}
+  notifications: propTypes.array.isRequired,
+};

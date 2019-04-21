@@ -39,11 +39,11 @@ export class Feedbacks extends React.Component {
              </tbody>
            </table>
          </div>
-      )
+      );
     }
 }
 
 Feedbacks.propTypes = {
   getAllFeedbacks: propTypes.func.isRequired,
-  feedbacks: propTypes.array
-}
+  feedbacks: propTypes.array,
+};

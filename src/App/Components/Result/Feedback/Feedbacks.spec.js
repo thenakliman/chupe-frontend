@@ -4,7 +4,6 @@ import {Feedbacks} from './Feedbacks';
 /* eslint-enable */
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
-import * as History from '../../../utils/history';
 
 
 const feedbacks = [{
@@ -53,4 +52,4 @@ describe('Show feedback component', () => {
 
     expect(wrapper.find('tr').length).toBe(3);
   });
-})
+});

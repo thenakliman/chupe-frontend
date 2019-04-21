@@ -9,7 +9,7 @@ export const notifications = (state, action) => {
       case ActionTypes.SHOW_NOTIFICATION:
         return [...state, action.payload];
       case ActionTypes.HIDE_NOTIFICATION:
-        return state.filter(notification =>
+        return state.filter((notification) =>
                   notification.id !== action.payload);
       default:
         return [...state];
