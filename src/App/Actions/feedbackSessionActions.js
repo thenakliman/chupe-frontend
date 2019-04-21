@@ -25,7 +25,6 @@ export const getAllFeedbackSessions = () => async (dispatch) => {
 export const getAllFeedbacks = (feedbackSessionId) => async (dispatch) => {
   try {
     const feedbacks = await FeedbackService.getAllFeedbacks(feedbackSessionId);
-    console.log(feedbacks, addFeedbacks(feedbacks));
     dispatch(addFeedbacks(feedbacks));
   } catch (error) {
     console.log('Error on fetching feedbacks');

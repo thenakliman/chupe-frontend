@@ -8,6 +8,7 @@ import {fund} from './fundReducers';
 import {tasks} from './taskReducers';
 import {retro} from './retroReducers';
 import {feedback} from './feedbackReducers';
+import {loaders} from './loaderReducers';
 
 
 export const rootReducers = combineReducers({
@@ -19,5 +20,6 @@ export const rootReducers = combineReducers({
   tasks,
   retro,
   feedback,
+  loaders,
   loggedInUserDetails,
 });

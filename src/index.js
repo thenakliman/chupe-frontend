@@ -36,6 +36,7 @@ import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContaine
 import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContainer';
 import FeedbackSessionsContainer from './App/Components/Result/Feedback/FeedbackSessionsContainer';
 import FeedbacksContainer from './App/Components/Result/Feedback/FeedbacksContainer';
+import Loader from './App/Components/Result/Loader';
 
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
@@ -49,6 +50,7 @@ const store = createStore(
 const ListQuestionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <QuestionContainer {...props}/>
   </div>
 )
@@ -56,6 +58,7 @@ const ListQuestionComponent = (props) => (
 const ShowQuestionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <ShowQuestionContainer {...props}/>
   </div>
 )
@@ -63,6 +66,7 @@ const ShowQuestionComponent = (props) => (
 const AskQuestionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <AskQuestionContainer {...props}/>
   </div>
 )
@@ -70,6 +74,7 @@ const AskQuestionComponent = (props) => (
 const UserComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <UserResultContainer {...props}/>
   </div>
 )
@@ -77,6 +82,7 @@ const UserComponent = (props) => (
 const TeamFundComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <TeamFundContainer {...props}/>
   </div>
 )
@@ -84,6 +90,7 @@ const TeamFundComponent = (props) => (
 const ShowFundComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <ShowFundContainer {...props}/>
   </div>
 )
@@ -91,6 +98,7 @@ const ShowFundComponent = (props) => (
 const TaskComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <TaskContainer {...props}/>
   </div>
 )
@@ -98,6 +106,7 @@ const TaskComponent = (props) => (
 const RetrosComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <RetrosContainer {...props}/>
   </div>
 )
@@ -105,6 +114,7 @@ const RetrosComponent = (props) => (
 const RetroComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <RetroContainer {...props}/>
   </div>
 )
@@ -112,6 +122,7 @@ const RetroComponent = (props) => (
 const FeedbackSessionComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <FeedbackSessionsContainer {...props}/>
   </div>
 )
@@ -119,6 +130,7 @@ const FeedbackSessionComponent = (props) => (
 const FeedbacksComponent = (props) => (
   <div>
     <MenuBar {...props}/>
+    <Loader/>
     <FeedbacksContainer {...props}/>
   </div>
 )

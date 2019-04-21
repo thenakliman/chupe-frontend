@@ -46,7 +46,6 @@ describe('Feedback Result container', () => {
       </Provider>);
 
     container.find(Feedbacks).props().getAllFeedbacks(feedbackSessionId);
-    console.log(FeedbackSessionActions.getAllFeedbacks);
     expect(FeedbackSessionActions.getAllFeedbacks).toHaveBeenCalledWith(101);
   });
 })
