@@ -36,7 +36,7 @@ import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContaine
 import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContainer';
 import FeedbackSessionsContainer from './App/Components/Result/Feedback/FeedbackSessionsContainer';
 import FeedbacksContainer from './App/Components/Result/Feedback/FeedbacksContainer';
-import Loader from './App/Components/Result/Loader';
+import Loader from './App/Components/Result/Common/Loader';
 
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
