@@ -7,8 +7,7 @@ import FeedbackSessionsContainer from './FeedbackSessionsContainer';
 /* eslint-enable */
 import {FeedbackSessions} from './FeedbackSessions';
 import configureStore from 'redux-mock-store';
-import * as FeedbackSessionActions
-    from '../../../Actions/feedbackSessionActions';
+import * as FeedbackActions from '../../../Actions/feedbackActions';
 
 describe('Feedback Result container', () => {
   let store;
@@ -25,7 +24,7 @@ describe('Feedback Result container', () => {
 
   it('should have feedback sessions in props', () => {
     const fakeAction = 'fake - action';
-    spyOn(FeedbackSessionActions, 'getAllFeedbackSessions')
+    spyOn(FeedbackActions, 'getAllFeedbackSessions')
         .and.returnValue(fakeAction);
 
     const container = mount(
@@ -40,7 +39,7 @@ describe('Feedback Result container', () => {
 
   it('should have getAllFeedbackSessions in props', () => {
     const fakeAction = 'fake - action';
-    spyOn(FeedbackSessionActions, 'getAllFeedbackSessions')
+    spyOn(FeedbackActions, 'getAllFeedbackSessions')
           .and.returnValue(fakeAction);
 
     const container = mount(
@@ -54,7 +53,7 @@ describe('Feedback Result container', () => {
 
   it('should call createFeedbackSession', () => {
     const fakeAction = 'fake - action';
-    spyOn(FeedbackSessionActions, 'createFeedbackSession')
+    spyOn(FeedbackActions, 'createFeedbackSession')
           .and.returnValue(fakeAction);
 
     const container = mount(
@@ -63,7 +62,7 @@ describe('Feedback Result container', () => {
       </Provider>);
 
     container.find('#feedbackSession-button-id').simulate('click');
-    expect(FeedbackSessionActions.createFeedbackSession)
+    expect(FeedbackActions.createFeedbackSession)
             .toHaveBeenCalledWith({description: ''});
   });
 });

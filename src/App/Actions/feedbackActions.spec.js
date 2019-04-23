@@ -1,7 +1,7 @@
 import {
   getAllFeedbackSessions,
   getAllFeedbacks,
-  createFeedbackSession} from './feedbackSessionActions';
+  createFeedbackSession} from './feedbackActions';
 
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';

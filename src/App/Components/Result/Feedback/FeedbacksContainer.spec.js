@@ -7,8 +7,7 @@ import FeedbacksContainer from './FeedbacksContainer';
 /* eslint-enable */
 import {Feedbacks} from './Feedbacks';
 import configureStore from 'redux-mock-store';
-import * as FeedbackSessionActions
-    from '../../../Actions/feedbackSessionActions';
+import * as FeedbackActions from '../../../Actions/feedbackActions';
 
 describe('Feedback Result container', () => {
   let store;
@@ -35,7 +34,7 @@ describe('Feedback Result container', () => {
 
   it('should call getAllFeedbacks', () => {
     const fakeAction = 'fake - action';
-    spyOn(FeedbackSessionActions, 'getAllFeedbacks')
+    spyOn(FeedbackActions, 'getAllFeedbacks')
         .and.returnValue(fakeAction);
 
     const feedbackSessionId = 101;
@@ -45,6 +44,6 @@ describe('Feedback Result container', () => {
       </Provider>);
 
     container.find(Feedbacks).props().getAllFeedbacks(feedbackSessionId);
-    expect(FeedbackSessionActions.getAllFeedbacks).toHaveBeenCalledWith(101);
+    expect(FeedbackActions.getAllFeedbacks).toHaveBeenCalledWith(101);
   });
 });

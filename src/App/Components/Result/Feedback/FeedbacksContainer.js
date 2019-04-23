@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {Feedbacks} from './Feedbacks';
-import {getAllFeedbacks} from '../../../Actions/feedbackSessionActions';
+import {getAllFeedbacks} from '../../../Actions/feedbackActions';
 
 
 const mapStateToProps = (state) => ({
