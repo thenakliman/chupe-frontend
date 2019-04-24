@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show feedback pop up component should match snapshot 1`] = `
+<div
+  className="feedback-pop-up-container"
+>
+  <div
+    className="feedback-pop-up-inner"
+  >
+    <div>
+      Feedback:
+    </div>
+    <textarea
+      className="feedback-description"
+      onChange={[Function]}
+      resize="none"
+    />
+    Feedback To:
+    <select
+      className="select-user-feedback"
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value=""
+      >
+         Select user 
+      </option>
+      <option
+        key="user - 1"
+        value="user - 1"
+      >
+        user - 1
+      </option>
+      <option
+        key="user - 2"
+        value="user - 2"
+      >
+        user - 2
+      </option>
+    </select>
+    <div
+      className="button-container"
+    >
+      <button
+        className="feedback-buttons"
+        id="feedback-submit-button"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+      <button
+        className="feedback-buttons"
+        id="feedback-cancel-button"
+        onClick={[MockFunction]}
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+`;

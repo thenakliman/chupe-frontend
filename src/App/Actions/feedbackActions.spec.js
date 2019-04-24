@@ -1,6 +1,7 @@
 import {
   getAllFeedbackSessions,
   getAllFeedbacks,
+  createFeedback,
   createFeedbackSession} from './feedbackActions';
 
 import configureStore from 'redux-mock-store';
@@ -8,7 +9,7 @@ import {ActionTypes} from './ActionTypes';
 import {FeedbackService} from '../Services/FeedbackService';
 import thunk from 'redux-thunk';
 
-describe('Get_RETROS action', () => {
+describe('Feedback action', () => {
   let store;
   beforeEach(() => {
     const middleware = [thunk];
@@ -73,6 +74,7 @@ describe('Get_RETROS action', () => {
     expect(console.log)
         .toHaveBeenCalledWith('Error on creating feedback sessions');
   });
+
   it('Should dispatch action for fetching feedbacks', async () => {
     const feedbacks = [{id: 10}];
     const sessionId = 101;
@@ -99,4 +101,41 @@ describe('Get_RETROS action', () => {
     expect(console.log)
         .toHaveBeenCalledWith('Error on fetching feedbacks');
   });
+
+  it('Should dispatch action for create feedbacks', async () => {
+    const feedback = {id: 10};
+    spyOn(FeedbackService, 'saveFeedback').and.returnValues(feedback);
+
+    await store.dispatch(createFeedback(feedback));
+    expect(store.getActions()).toEqual([{
+        payload: "CREATE_FEEDBACK_LOADER_ID",
+        type: "SHOW_LOADER"
+      }, {
+        payload: "CREATE_FEEDBACK_LOADER_ID",
+        type: "HIDE_LOADER"
+      }]);
+
+    expect(FeedbackService.saveFeedback).toHaveBeenCalledWith(feedback);
+  });
+
+  it('Should dispatch action for notification when create feedback fails', async () => {
+    spyOn(FeedbackService, 'saveFeedback').and.throwError('failed ');
+    const feedback = {id: 10};
+    await store.dispatch(createFeedback(feedback));
+
+    expect(FeedbackService.saveFeedback).toHaveBeenCalledWith(feedback);
+    expect(store.getActions()).toEqual([{
+        payload: "CREATE_FEEDBACK_LOADER_ID",
+        type: "SHOW_LOADER"
+      }, {
+        payload: {
+          id: "CREATE_FEEDBACK_NOTIFICATION_ID",
+          message: "Unable to give feedback. Please try after sometime.",
+          type: "ERROR"},
+        type: "SHOW_NOTIFICATION"
+      }, {
+        payload: "CREATE_FEEDBACK_LOADER_ID",
+        type: "HIDE_LOADER"
+      }]);
+    });
 });

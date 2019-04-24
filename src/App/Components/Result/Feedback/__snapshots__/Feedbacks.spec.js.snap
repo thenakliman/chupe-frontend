@@ -4,6 +4,17 @@ exports[` 1`] = `
 <div
   className="feedback-container"
 >
+  <div
+    className="give-feedback-button-container"
+  >
+    <button
+      className="give-feedback-button"
+      id="give-feedback-button"
+      onClick={[Function]}
+    >
+      Give Feedback
+    </button>
+  </div>
   <table
     id="all-feedbacks-ordered-list"
   >

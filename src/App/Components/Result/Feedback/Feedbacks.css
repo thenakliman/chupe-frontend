@@ -1,3 +1,14 @@
 .feedback-container {
   margin: 1rem 18rem;
 }
+
+.give-feedback-button-container {
+  display: flex;
+  justify-content: end;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.give-feedback-button {
+  cursor: pointer;
+}

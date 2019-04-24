@@ -24,6 +24,17 @@ describe('Feedback Service', () => {
                                                  feedbackSession);
     });
 
+    it('should create feedback', async () => {
+        const feedback = {id: 10};
+        spyOn(Client, 'post');
+
+        await FeedbackService.saveFeedback(feedback);
+
+        expect(Client.post).toHaveBeenCalledWith(
+            '/api/v1/feedback-points',
+            feedback);
+    });
+
     it('Returns data when get feedback is called', async () => {
         const feedbacks = [{id: 201}];
         spyOn(Client, 'get').and.returnValue(feedbacks);

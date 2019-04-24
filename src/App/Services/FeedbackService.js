@@ -16,4 +16,8 @@ export const FeedbackService = {
       return get(
         `${FEEDBACK_POINTS_URL}?feedbackSessionId=${feedbackSessionId}`);
   },
+
+  saveFeedback(feedback) {
+      return post(FEEDBACK_POINTS_URL, feedback);
+  },
 };
