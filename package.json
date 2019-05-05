@@ -19,7 +19,7 @@
     "build": "webpack --config config/webpack.config.js",
     "test": "jest --config config/jest.config.js",
     "eject": "react-scripts eject",
-    "lint": "eslint src",
+    "lint": "eslint src/**/*[^spec].js",
     "lintFix": "eslint src --fix"
   },
   "devDependencies": {
