@@ -1,0 +1,21 @@
+.meeting-container {
+  margin: 2rem 20rem;
+}
+
+.meeting-create-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem auto;
+}
+
+.meeting-input {
+  height: 2.5rem;
+  width: 53rem;
+  font-size: 1.5rem;
+}
+
+.meeting-table-body tr:hover {
+  background-color: #eff5ff;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+}

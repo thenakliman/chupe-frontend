@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div
+  className="meeting-container"
+  id="meeting-container-id"
+>
+  <div
+    className="meeting-create-container"
+  >
+    <input
+      className="meeting-input"
+      id="meeting-input-id"
+      onChange={[Function]}
+      value=""
+    />
+    <button
+      className="meeting-button"
+      id="meeting-button-id"
+      onClick={[Function]}
+      type="button"
+    >
+      Create Meeting
+    </button>
+  </div>
+  <div>
+    <table
+      id="all-meetings-ordered-list"
+    >
+      <thead>
+        <tr
+          className="meeting-table-header"
+        >
+          <th>
+             Id 
+          </th>
+          <th>
+             subject 
+          </th>
+          <th>
+             Created By 
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className="meeting-table-body"
+        id="all-meeting-table-body-id"
+      >
+        <tr
+          id="meeting-10101"
+          key="10101"
+          onClick={[Function]}
+        >
+          <td>
+             
+            10101
+             
+          </td>
+          <td
+            className="meeting-row"
+          >
+            retro - 1
+          </td>
+          <td>
+             
+          </td>
+        </tr>
+        <tr
+          id="meeting-10102"
+          key="10102"
+          onClick={[Function]}
+        >
+          <td>
+             
+            10102
+             
+          </td>
+          <td
+            className="meeting-row"
+          >
+            retro - 2
+          </td>
+          <td>
+             
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

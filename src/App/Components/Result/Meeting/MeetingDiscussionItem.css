@@ -1,0 +1,14 @@
+.meeting-discussion-item-container {
+  margin: 1rem 18rem;
+}
+
+.meeting-discussion-item-button-container {
+  display: flex;
+  justify-content: end;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.meeting-discussion-item-button {
+  cursor: pointer;
+}

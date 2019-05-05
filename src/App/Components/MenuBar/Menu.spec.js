@@ -84,4 +84,11 @@ describe('Menu Bar Component', () => {
         <MenuBar location={location}/>);
     expect(wrapper.find('#feedback-session-tab').length).toEqual(1);
   });
+
+  it('Should have meetings tabs', () => {
+    const location = {pathname: '/meetings'};
+    const wrapper = shallow(
+        <MenuBar location={location}/>);
+    expect(wrapper.find('#meetings-tab').length).toEqual(1);
+  });
 });

@@ -108,11 +108,11 @@ describe('Feedback action', () => {
 
     await store.dispatch(createFeedback(feedback));
     expect(store.getActions()).toEqual([{
-        payload: "CREATE_FEEDBACK_LOADER_ID",
-        type: "SHOW_LOADER"
+        payload: 'CREATE_FEEDBACK_LOADER_ID',
+        type: 'SHOW_LOADER',
       }, {
-        payload: "CREATE_FEEDBACK_LOADER_ID",
-        type: "HIDE_LOADER"
+        payload: 'CREATE_FEEDBACK_LOADER_ID',
+        type: 'HIDE_LOADER',
       }]);
 
     expect(FeedbackService.saveFeedback).toHaveBeenCalledWith(feedback);
@@ -125,17 +125,17 @@ describe('Feedback action', () => {
 
     expect(FeedbackService.saveFeedback).toHaveBeenCalledWith(feedback);
     expect(store.getActions()).toEqual([{
-        payload: "CREATE_FEEDBACK_LOADER_ID",
-        type: "SHOW_LOADER"
+        payload: 'CREATE_FEEDBACK_LOADER_ID',
+        type: 'SHOW_LOADER',
       }, {
         payload: {
-          id: "CREATE_FEEDBACK_NOTIFICATION_ID",
-          message: "Unable to give feedback. Please try after sometime.",
-          type: "ERROR"},
-        type: "SHOW_NOTIFICATION"
+          id: 'CREATE_FEEDBACK_NOTIFICATION_ID',
+          message: 'Unable to create feedback. Please try after sometime.',
+          type: 'ERROR'},
+        type: 'SHOW_NOTIFICATION',
       }, {
-        payload: "CREATE_FEEDBACK_LOADER_ID",
-        type: "HIDE_LOADER"
+        payload: 'CREATE_FEEDBACK_LOADER_ID',
+        type: 'HIDE_LOADER',
       }]);
     });
 });

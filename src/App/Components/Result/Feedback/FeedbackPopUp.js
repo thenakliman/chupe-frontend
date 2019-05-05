@@ -23,7 +23,7 @@ export class FeedbackPopUp extends React.Component {
   onSubmit() {
     this.props.onSubmit({
         description: this.state.description,
-        givenTo: this.state.feedbackGivenToUser
+        givenTo: this.state.feedbackGivenToUser,
     });
   }
 
@@ -36,7 +36,7 @@ export class FeedbackPopUp extends React.Component {
         </div>
         <textarea className={'feedback-description'}
                   value={this.state.feedback}
-                  onChange={event => this.handleDescriptionChange(event.target.value)}
+                  onChange={(event) => this.handleDescriptionChange(event.target.value)}
                   resize={'none'}/>
 
         Feedback To:
@@ -44,9 +44,9 @@ export class FeedbackPopUp extends React.Component {
                 className={'select-user-feedback'}
                 onChange={(event) => this.handleFeedbackTargetChange(event.target.value)}
         >
-        <option key={""} value={""}> Select user </option>
+        <option key={''} value={''}> Select user </option>
         {
-          this.props.users.map(user =>
+          this.props.users.map((user) =>
             <option key={user.userName} value={user.userName}>
               {user.userName}
             </option>)
@@ -65,12 +65,12 @@ export class FeedbackPopUp extends React.Component {
         </div>
       </div>
       </div>
-    )
+    );
   }
 }
 
 FeedbackPopUp.propTypes = {
   users: propTypes.array.isRequired,
   onSubmit: propTypes.func.isRequired,
-  onCancel: propTypes.func.isRequired
-}
+  onCancel: propTypes.func.isRequired,
+};

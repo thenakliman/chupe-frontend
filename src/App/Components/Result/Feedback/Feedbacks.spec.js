@@ -188,7 +188,7 @@ describe('Show feedback component', () => {
     wrapper.setState({isGivingFeedback: true});
     const feedback = {
         description: 'description data',
-        giveTo: 'user'
+        giveTo: 'user',
     };
 
     wrapper.find(FeedbackPopUp).props().onSubmit(feedback);

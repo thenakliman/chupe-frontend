@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show meeting discussion item pop up component should match snapshot 1`] = `
+<div
+  className="meeting-discussion-item-pop-up-container"
+>
+  <div
+    className="meeting-discussion-item-pop-up-inner"
+  >
+    <div>
+      Meeting Discussion Item:
+    </div>
+    <textarea
+      className="meeting-discussion-item"
+      onChange={[Function]}
+      resize="none"
+      value=""
+    />
+    Assigned To
+    <select
+      className="select-meeting-discussion-item-pop-up"
+      id="select-assigned-to"
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value=""
+      >
+         Select user 
+      </option>
+      <option
+        key="user - 1"
+        value="user - 1"
+      >
+        user - 1
+      </option>
+      <option
+        key="user - 2"
+        value="user - 2"
+      >
+        user - 2
+      </option>
+    </select>
+    Meeting Discussion Item Type:
+    <select
+      className="select-meeting-discussion-item-pop-up"
+      id="select-discussion-item-type"
+      onChange={[Function]}
+      value=""
+    >
+      <option
+        value=""
+      >
+         Select Discussion Item type 
+      </option>
+      <option
+        key="INFORMATION"
+        value="INFORMATION"
+      >
+         Information 
+      </option>
+      <option
+        key="ACTION_ITEM"
+        value="ACTION_ITEM"
+      >
+         Action Item 
+      </option>
+    </select>
+    <div
+      className="button-container-meeting-discussion-item"
+    >
+      <button
+        className="meeting-discussion-item-buttons"
+        id="meeting-discussion-item-submit-button"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+      <button
+        className="meeting-discussion-item-buttons"
+        id="meeting-discussion-item-cancel-button"
+        onClick={[MockFunction]}
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+`;

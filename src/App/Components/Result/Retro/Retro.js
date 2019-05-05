@@ -1,8 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import {DONE_WELL, NEED_IMPROVEMENT} from './constants';
+/* eslint-disable */
 import {AddRetroPoint} from './AddRetroPoint';
-
+/* eslint-enable */
 require('./Retro.css');
 
 export class Retro extends React.Component {

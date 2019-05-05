@@ -17,7 +17,7 @@ describe('Feedback Result container', () => {
   beforeEach(() => {
     initialState = {
         feedback: {feedbacks: [{id: 'feedbacks'}]},
-        users: [{userName: 'user-name'}]
+        users: [{userName: 'user-name'}],
     };
 
     store = configureStore()(initialState);

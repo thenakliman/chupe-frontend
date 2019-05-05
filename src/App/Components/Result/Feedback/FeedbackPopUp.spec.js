@@ -85,7 +85,7 @@ describe('Show feedback pop up component', () => {
   });
 
   it('should call on submit button', () => {
-    const onSubmit = jest.fn()
+    const onSubmit = jest.fn();
     const wrapper = shallow(
       <FeedbackPopUp
         users={users}
@@ -101,7 +101,7 @@ describe('Show feedback pop up component', () => {
   });
 
   it('should call on cancel button', () => {
-    const onCancel = jest.fn()
+    const onCancel = jest.fn();
     const wrapper = shallow(
       <FeedbackPopUp
         users={users}
@@ -111,7 +111,7 @@ describe('Show feedback pop up component', () => {
 
     const feedback = {
       description: 'fake',
-      feedbackGivenToUser: 'user-1'
+      feedbackGivenToUser: 'user-1',
     };
 
     wrapper.setState(feedback);

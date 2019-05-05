@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div
+  className="meeting-discussion-item-container"
+>
+  <div
+    className="meeting-discussion-item-button-container"
+  >
+    <button
+      className="meeting-discussion-item-button"
+      id="meeting-discussion-item-button"
+      onClick={[Function]}
+    >
+      Create Meeting Discussion Item
+    </button>
+  </div>
+  <table
+    id="all-meeting-discussion-items-ordered-list"
+  >
+    <thead>
+      <tr
+        className="meeting-discussion-item-table-header"
+      >
+        <th>
+           Id 
+        </th>
+        <th>
+           Subject 
+        </th>
+        <th>
+           Assigned To 
+        </th>
+        <th>
+           Created By 
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className="meeting-discussion-item-table-body"
+      id="all-meeting-discussion-item-table-body-id"
+    >
+      <tr
+        key="10101"
+      >
+        <td>
+          10101
+        </td>
+        <td />
+        <td />
+        <td />
+      </tr>
+      <tr
+        key="10102"
+      >
+        <td>
+          10102
+        </td>
+        <td />
+        <td />
+        <td />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

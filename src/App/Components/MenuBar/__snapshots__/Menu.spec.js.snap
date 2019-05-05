@@ -51,6 +51,13 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
       >
         Feedbacks
       </a>
+      <a
+        className="Tab"
+        href="#/meetings"
+        id="meetings-tab"
+      >
+        Meetings
+      </a>
     </span>
     <span
       className="manu-bar-tabs"

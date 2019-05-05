@@ -8,6 +8,7 @@ import {fund} from './fundReducers';
 import {tasks} from './taskReducers';
 import {retro} from './retroReducers';
 import {feedback} from './feedbackReducers';
+import {meeting} from './meetingReducers';
 import {loaders} from './loaderReducers';
 import {notifications} from './notificationReducers';
 
@@ -21,6 +22,7 @@ export const rootReducers = combineReducers({
   tasks,
   retro,
   feedback,
+  meeting,
   loaders,
   notifications,
   loggedInUserDetails,

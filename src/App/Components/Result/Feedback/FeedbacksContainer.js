@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {Feedbacks} from './Feedbacks';
 import {
   getAllFeedbacks,
-  createFeedback
+  createFeedback,
   } from '../../../Actions/feedbackActions';
 import {getAllUsers} from '../../../Actions/userActions';
 

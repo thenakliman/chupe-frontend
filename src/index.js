@@ -36,6 +36,8 @@ import TeamFundContainer from './App/Components/Result/TeamFund/TeamFundContaine
 import ShowFundContainer from './App/Components/Result/TeamFund/ShowFundContainer';
 import FeedbackSessionsContainer from './App/Components/Result/Feedback/FeedbackSessionsContainer';
 import FeedbacksContainer from './App/Components/Result/Feedback/FeedbacksContainer';
+import MeetingsContainer from './App/Components/Result/Meeting/MeetingsContainer';
+import MeetingDiscussionItemsContainer from './App/Components/Result/Meeting/MeetingDiscussionItemsContainer';
 import Loader from './App/Components/Result/Common/Loader';
 import Notification from './App/Components/Result/Common/NotificationContainer';
 
@@ -147,6 +149,24 @@ const FeedbacksComponent = (props) => (
   </div>
 )
 
+const MeetingsComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <Notification />
+    <Loader/>
+    <MeetingsContainer {...props}/>
+  </div>
+)
+
+const MeetingDiscussionItemsComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <Notification />
+    <Loader/>
+    <MeetingDiscussionItemsContainer {...props}/>
+  </div>
+)
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -162,6 +182,8 @@ render(
          <Route path="/retros" component={RetrosComponent}/>
          <Route path="/feedback-sessions" component={FeedbackSessionComponent}/>
          <Route path="/feedbacks/:id" component={FeedbacksComponent}/>
+         <Route path="/meetings" component={MeetingsComponent}/>
+         <Route path="/meeting/:id" component={MeetingDiscussionItemsComponent}/>
          <Route exact path="/question/ask" component={AskQuestionComponent}/>
        </div>
     </ConnectedRouter>

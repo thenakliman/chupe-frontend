@@ -4,5 +4,6 @@ export const LOCATION_TO_TAB_MAPPING = {
   'team-funds': ['team-funds', 'funds'],
   'tasks': ['tasks'],
   'retros': ['retros'],
-  'feedbackSessions': ['feedback-sessions'],
+  'feedbackSessions': ['feedback-sessions', 'feedbacks'],
+  'meetings': ['meetings', 'meeting-discussion-items'],
 };

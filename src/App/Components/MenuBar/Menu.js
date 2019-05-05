@@ -84,6 +84,14 @@ export class MenuBar extends React.Component {
                             'Tab'}>
                    Feedbacks
               </a>
+              <a href='#/meetings'
+                 id="meetings-tab"
+                 className={this.doesLocationMatchTab(
+                    location, 'meetings')?
+                            'Selected-Tab':
+                            'Tab'}>
+                   Meetings
+              </a>
             </span>
             <span className='manu-bar-tabs'>
               <div id='menu-logout-container'
