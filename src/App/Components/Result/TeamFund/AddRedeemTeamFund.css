@@ -10,26 +10,26 @@
 
 .add-redeem-team-fund-select {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1.5rem 5rem;
 }
 
 .add-redeem-input-amount {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1.5rem 5rem;
 }
 
 .team-fund-amount-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1.5rem 5rem;
 
 }
 
 .team-fund-submit-button {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 1.5rem 5rem;
 }
 
