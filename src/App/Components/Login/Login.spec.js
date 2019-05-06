@@ -15,10 +15,10 @@ describe('Login page', () => {
     expect(wrapper.find('#login-page-get-started-button-id').length).toEqual(1);
   });
 
-  it('should send to users list on click of get started button', () => {
+  it('should send to users list on click of get started button', async () => {
     History.history = {push: jest.fn()};
     const wrapper = shallow(<Login authenticate={()=>{}} username='lucky'/>);
-    wrapper.find('#login-page-get-started-button-id').simulate('click');
+    await wrapper.find('#login-page-get-started-button-id').simulate('click');
     expect(History.history.push).toHaveBeenCalledWith('/users');
   });
 

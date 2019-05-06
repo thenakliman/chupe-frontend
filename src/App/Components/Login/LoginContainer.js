@@ -7,8 +7,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  authenticate: (username, password) => {
-    dispatch(authenticate(username, password));
+  authenticate: async (username, password) => {
+    await dispatch(authenticate(username, password));
   },
 });
 

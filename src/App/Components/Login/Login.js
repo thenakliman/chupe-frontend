@@ -33,8 +33,8 @@ export class Login extends React.Component {
   }
 
   /** handle starting of the app */
-  handleSubmit() {
-      this.props.authenticate(this.state.username, this.state.password);
+  async handleSubmit() {
+      await this.props.authenticate(this.state.username, this.state.password);
 
       if (this.props.username) {
         history.push('/users');
@@ -90,13 +90,3 @@ export class Login extends React.Component {
 Login.propTypes = {
   authenticate: propTypes.func.isRequired,
 };
-/*
-        <div>
-          <img id='login-page-icon-id'
-            src='http://allyoucanlove.com/wp-content/uploads/2012/11/Steve-McCurry-India-Railway16-540x360.jpg'
-            height="360" width="540"
-            alt='login page image'
-            className='login-page-icon'
-          />
-        </div>
-*/
