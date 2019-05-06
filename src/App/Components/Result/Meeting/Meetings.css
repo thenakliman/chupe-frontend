@@ -9,7 +9,7 @@
 }
 
 .meeting-input {
-  height: 2.5rem;
+  height: 3rem;
   width: 53rem;
   font-size: 1.5rem;
 }
@@ -18,4 +18,8 @@
   background-color: #eff5ff;
   transition: background-color 0.5s ease;
   cursor: pointer;
+}
+
+.meeting-button {
+  padding: 0 1rem;
 }

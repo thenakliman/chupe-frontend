@@ -10,16 +10,13 @@
 
 .task-button {
   padding: 0.75rem;
-  color: #fff;
-  border: 1px solid #28a745;
-  background-color: #28a745;
-  background-image: linear-gradient(-180deg, #34d058 0%, #28a745);
-  cursor:pointer;
 }
 
 .task-input-description {
   width: 90%;
   padding: 0.5rem;
+  height: 2rem;
+  margin-right: 2rem;
 }
 
 .team-fund-table-id {

@@ -5,10 +5,11 @@
 .give-feedback-button-container {
   display: flex;
   justify-content: end;
-  height: 2.5rem;
+  height: 3rem;
   margin-bottom: 1rem;
 }
 
 .give-feedback-button {
   cursor: pointer;
+  padding: 0 1rem;
 }

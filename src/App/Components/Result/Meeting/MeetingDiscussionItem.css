@@ -5,10 +5,11 @@
 .meeting-discussion-item-button-container {
   display: flex;
   justify-content: end;
-  height: 2.5rem;
+  height: 3rem;
   margin-bottom: 1rem;
 }
 
 .meeting-discussion-item-button {
   cursor: pointer;
+  padding: 0 2rem;
 }

@@ -4,14 +4,11 @@
 }
 
 .submit-button {
-  border-radius: 0.25rem;
-  border: 1px solid #28a745;
-  background-color: #28a745;
   padding: 0.8rem 2rem;
   margin: 3rem auto;
   display: table;
   color: white;
-  background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+
 }
 
 .question-description {

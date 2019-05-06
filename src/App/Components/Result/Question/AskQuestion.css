@@ -35,11 +35,8 @@ select {
 }
 
 .ask-question-submit-button {
-      border-radius: 0.25rem;
-      border: 1px solid #28a745;
-      background-color: #28a745;
       padding: 0.8rem;
       margin: 5rem;
       color: white;
-      background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+
 }

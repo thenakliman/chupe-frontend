@@ -44,6 +44,8 @@ import Notification from './App/Components/Result/Common/NotificationContainer';
 import {MenuBar} from './App/Components/MenuBar/Menu';
 import {history} from './App/utils/history';
 
+require('./global.css')
+
 const store = createStore(
     connectRouter(history)(rootReducers),
     composeWithDevTools(applyMiddleware(thunk))

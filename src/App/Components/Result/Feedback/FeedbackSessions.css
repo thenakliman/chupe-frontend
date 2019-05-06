@@ -9,9 +9,13 @@
 }
 
 .feedbackSession-input {
-  height: 2.5rem;
-  width: 53rem;
+  height: 3rem;
+  width: 48rem;
   font-size: 1.5rem;
+}
+
+.feedbackSession-button {
+  padding: 0 1rem;
 }
 
 .feedbackSession-table-body tr:hover {
