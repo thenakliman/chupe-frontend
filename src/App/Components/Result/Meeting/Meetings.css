@@ -15,7 +15,7 @@
 }
 
 .meeting-table-body tr:hover {
-  background-color: #eff5ff;
+  background-color: #f2f2f2;
   transition: background-color 0.5s ease;
   cursor: pointer;
 }

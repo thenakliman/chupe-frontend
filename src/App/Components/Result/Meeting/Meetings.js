@@ -53,7 +53,7 @@ export class Meetings extends React.Component {
               <thead>
                 <tr className='meeting-table-header'>
                   <th> Id </th>
-                  <th> subject </th>
+                  <th> Subject </th>
                   <th> Created By </th>
                 </tr>
               </thead>
