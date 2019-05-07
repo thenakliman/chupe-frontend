@@ -57,12 +57,12 @@ export class Meetings extends React.Component {
                   <th> Created By </th>
                 </tr>
               </thead>
-              <tbody id='all-meeting-table-body-id'
-                     className={'meeting-table-body'}>
+              <tbody id='all-meeting-table-body-id'>
               {
                 this.props.meetings.map((meeting) => (
                   <tr key={`${meeting.id}`}
                       id={`meeting-${meeting.id}`}
+                      className={'selectable-row'}
                       onClick={() => this.viewMeeting(meeting.id)}>
                     <td> {meeting.id} </td>
                     <td className='meeting-row'>

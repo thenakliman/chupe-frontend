@@ -17,9 +17,3 @@
 .feedbackSession-button {
   padding: 0 1rem;
 }
-
-.feedbackSession-table-body tr:hover {
-  background-color: #eff5ff;
-  transition: background-color 0.5s ease;
-  cursor: pointer;
-}

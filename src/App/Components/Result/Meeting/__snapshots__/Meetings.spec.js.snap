@@ -43,10 +43,10 @@ exports[` 1`] = `
         </tr>
       </thead>
       <tbody
-        className="meeting-table-body"
         id="all-meeting-table-body-id"
       >
         <tr
+          className="selectable-row"
           id="meeting-10101"
           key="10101"
           onClick={[Function]}
@@ -66,6 +66,7 @@ exports[` 1`] = `
           </td>
         </tr>
         <tr
+          className="selectable-row"
           id="meeting-10102"
           key="10102"
           onClick={[Function]}

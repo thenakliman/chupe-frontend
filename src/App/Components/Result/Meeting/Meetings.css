@@ -14,12 +14,6 @@
   font-size: 1.5rem;
 }
 
-.meeting-table-body tr:hover {
-  background-color: #f2f2f2;
-  transition: background-color 0.5s ease;
-  cursor: pointer;
-}
-
 .meeting-button {
   padding: 0 1rem;
 }

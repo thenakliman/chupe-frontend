@@ -131,7 +131,7 @@ export class Question extends React.Component {
               <tbody id='all-questions-table-id'>
               {
                 questions.map((question) =>(
-                  <tr key={`${question.id}`}>
+                  <tr key={`${question.id}`} className={'selectable-row'}>
                     <td> {question.id} </td>
                     <td> {question.question} </td>
                     <td> {question.owner}</td>

@@ -47,6 +47,7 @@ exports[` 1`] = `
         id="all-feedbackSession-table-body-id"
       >
         <tr
+          className="selectable-row"
           id="feedback-sessions-10101"
           key="10101"
           onClick={[Function]}
@@ -66,6 +67,7 @@ exports[` 1`] = `
           </td>
         </tr>
         <tr
+          className="selectable-row"
           id="feedback-sessions-10102"
           key="10102"
           onClick={[Function]}

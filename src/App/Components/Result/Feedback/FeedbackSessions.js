@@ -63,6 +63,7 @@ export class FeedbackSessions extends React.Component {
                 this.props.feedbackSessions.map((feedbackSession) => (
                   <tr key={`${feedbackSession.id}`}
                       id={`feedback-sessions-${feedbackSession.id}`}
+                      className={'selectable-row'}
                       onClick={() => this.viewFeedbacks(feedbackSession.id)}>
                     <td> {feedbackSession.id} </td>
                     <td className='feedbackSession-row'>

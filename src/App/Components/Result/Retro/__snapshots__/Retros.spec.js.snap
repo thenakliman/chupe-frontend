@@ -40,6 +40,7 @@ exports[` 1`] = `
         id="all-retro-table-body-id"
       >
         <tr
+          className="selectable-row"
           key="10"
         >
           <td>
@@ -63,6 +64,7 @@ exports[` 1`] = `
           </td>
         </tr>
         <tr
+          className="selectable-row"
           key="11"
         >
           <td>

@@ -19,11 +19,6 @@
   cursor: pointer;
 }
 
-.retro-table-body tr:hover {
-  background-color: #eff5ff;
-  transition: background-color 0.5s ease;
-}
-
 .retro-creation-input {
   height: 2.8rem;
   width: 100%;
@@ -36,14 +31,12 @@
     margin: 2rem 0;
     float: right;
     color: white;
-
     cursor: pointer;
 }
 
 .create-retro-button {
     float: right;
     color: white;
-
     cursor: pointer;
     padding: 0.8rem 0.8rem;
     margin: 3rem 2rem;

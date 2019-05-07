@@ -62,7 +62,7 @@ export class Retros extends React.Component {
                      className={'retro-table-body'}>
               {
                 this.props.retros.map((retro) =>(
-                  <tr key={`${retro.id}`}>
+                  <tr key={`${retro.id}`} className={'selectable-row'}>
                     <td> {retro.id} </td>
                     <td className='retro-row'
                         id={`retro-row-id-${retro.id}`}
