@@ -1,17 +1,21 @@
 * {
-  font-family: Times, Arial, serif;
+  font-family: Times New Roman, Times, Arial, serif;
+}
+
+body {
+  background-color: #f4f4f4
 }
 
 button {
-  background-color: #000000;
-  border: 1px solid #000000;
+  background-color: #373737;
+  border: 1px solid #373737;
   font-size: 1.2rem;
   cursor: pointer;
   color: #ffffff
 }
 
 thead tr {
-  background-color: #999999;
+  background-color: #dcd0c0;
   font-size: 1.3rem;
 }
 
