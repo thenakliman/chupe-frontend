@@ -130,24 +130,17 @@ export class Question extends React.Component {
               </thead>
               <tbody id='all-questions-table-id'>
               {
-                questions.map((question) =>(
-                  <tr key={`${question.id}`} className={'selectable-row'}>
+                questions.map((question) => (
+                  <tr key={`${question.id}`}
+                      id={`question-${question.id}`}
+                      onClick={
+                        () => history.push('/question/' + question.id + '/view')}
+                      className={'selectable-row'}>
                     <td> {question.id} </td>
                     <td> {question.question} </td>
                     <td> {question.owner}</td>
                     <td> {question.assignedTo} </td>
                     <td> {question.priority}</td>
-                    <td>
-                      <button id={`view-question-button-` + question.id}
-                              className='view-question-button'
-                              type='button'
-                              onClick={
-                                ()=> history.push(
-                                  '/question/' + question.id + '/view')}
-                      >
-                          View
-                      </button>
-                    </td>
                   </tr>
                 ))
               }

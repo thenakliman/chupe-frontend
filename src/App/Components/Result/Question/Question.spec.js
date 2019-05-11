@@ -144,7 +144,7 @@ describe('List Questions', () => {
             loggedInUser=''
         />);
 
-    expect(wrapper.find('#view-question-button-2').simulate('click'));
+    expect(wrapper.find('#question-2').simulate('click'));
     expect(History.history.push).toHaveBeenCalledWith('/question/2/view');
   });
 
