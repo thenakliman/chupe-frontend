@@ -41,7 +41,9 @@ exports[` 1`] = `
       >
         <tr
           className="selectable-row"
+          id="retro-row-id-10"
           key="10"
+          onClick={[Function]}
         >
           <td>
              
@@ -50,8 +52,6 @@ exports[` 1`] = `
           </td>
           <td
             className="retro-row"
-            id="retro-row-id-10"
-            onClick={[Function]}
           >
             retro - 1
           </td>
@@ -65,7 +65,9 @@ exports[` 1`] = `
         </tr>
         <tr
           className="selectable-row"
+          id="retro-row-id-11"
           key="11"
+          onClick={[Function]}
         >
           <td>
              
@@ -74,8 +76,6 @@ exports[` 1`] = `
           </td>
           <td
             className="retro-row"
-            id="retro-row-id-11"
-            onClick={[Function]}
           >
             retro - 2
           </td>

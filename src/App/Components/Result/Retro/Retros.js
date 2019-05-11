@@ -61,13 +61,13 @@ export class Retros extends React.Component {
               <tbody id='all-retro-table-body-id'
                      className={'retro-table-body'}>
               {
-                this.props.retros.map((retro) =>(
-                  <tr key={`${retro.id}`} className={'selectable-row'}>
+                this.props.retros.map((retro) => (
+                  <tr key={`${retro.id}`}
+                      id={`retro-row-id-${retro.id}`}
+                      onClick={() => this.viewRetro(retro.id)}
+                      className={'selectable-row'}>
                     <td> {retro.id} </td>
-                    <td className='retro-row'
-                        id={`retro-row-id-${retro.id}`}
-                        onClick={() => this.viewRetro(retro.id)}
-                    >
+                    <td className='retro-row'>
                             {retro.name}
                     </td>
                     <td> {retro.createdBy}</td>
