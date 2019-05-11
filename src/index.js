@@ -172,7 +172,7 @@ const MeetingDiscussionItemsComponent = (props) => (
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-       <div>
+       <div className={'root-div'}>
          <Route exact path="/" component={LoginContainer} />
          <Route path="/users" component={UserComponent}/>
          <Route path="/questions" component={ListQuestionComponent}/>

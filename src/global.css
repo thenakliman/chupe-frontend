@@ -24,3 +24,7 @@ thead tr {
   transition: background-color 0.5s ease;
   cursor: pointer;
 }
+
+.root-div {
+  margin-top: 5rem;
+}
