@@ -1,5 +1,6 @@
 .retro-container {
-    margin: 1rem 18rem;
+  width: 65rem;
+  margin: 0 auto;
 }
 
 .create-retro-container {
@@ -28,7 +29,7 @@
 
 .retro-button {
     padding: 1rem 2rem;
-    margin: 2rem 0;
+    margin-bottom: 2rem;
     float: right;
     color: white;
     cursor: pointer;

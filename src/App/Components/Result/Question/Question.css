@@ -1,14 +1,14 @@
 .question-result-container {
-    position: relative;
-    margin: 1% 5%;
+  width: 65rem;
+  margin: 0 auto;
 }
 
 .question-button {
     padding: 0.8rem;
     float: right;
-    margin: 1rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
     color: white;
-
 }
 
 .view-question-button {

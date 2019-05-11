@@ -1,11 +1,12 @@
 .feedbackSession-container {
-  margin: 2rem 20rem;
+  width: 65rem;
+  margin: 0 auto;
 }
 
 .feedback-sessions-create-container {
   display: flex;
   justify-content: space-between;
-  margin: 2rem auto;
+  margin-bottom: 2rem;
 }
 
 .feedbackSession-input {
