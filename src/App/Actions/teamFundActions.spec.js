@@ -33,10 +33,24 @@ describe('team fund action', () => {
       await store.dispatch(fetchTeamFund());
 
       expect(TeamFundService.fetchTeamFund).toHaveBeenCalledWith();
-      expect(store.getActions()).toEqual([{
-        type: ActionTypes.ADD_TEAM_FUND,
-        payload: teamFund.teamMemberFunds,
-      }]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: [
+             {
+               owner: "james"
+             }
+           ],
+           type: "ADD_TEAM_FUND"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
     });
 
     it('should add team fund types', async () => {
@@ -45,10 +59,29 @@ describe('team fund action', () => {
       await store.dispatch(fetchFundTypes());
 
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
-      expect(store.getActions()).toEqual([{
-        type: ActionTypes.ADD_TEAM_FUND_TYPES,
-        payload: fundTypes,
-      }]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "GET_FUND_TYPES_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: [
+             {
+               description: "Birthday",
+               id: 10
+             },
+             {
+               description: "OnSite",
+               id: 11
+             }
+           ],
+           type: "ADD_TEAM_FUND_TYPES"
+         },
+         {
+           payload: "GET_FUND_TYPES_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
     });
 
     it('should add team fund types', async () => {
@@ -58,10 +91,32 @@ describe('team fund action', () => {
       await store.dispatch(addFund(tFund));
 
       expect(TeamFundService.addFund).toHaveBeenCalledWith(tFund);
-      expect(store.getActions()).toEqual([{
-        type: ActionTypes.ADD_TEAM_FUND,
-        payload: teamFund.teamMemberFunds,
-      }]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "ADD_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: "ADD_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         },
+         {
+           payload: [
+             {
+               owner: "james"
+             }
+           ],
+           type: "ADD_TEAM_FUND"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
     });
 
     it('should add fund for a member', async () => {
@@ -73,10 +128,29 @@ describe('team fund action', () => {
 
       expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
-      expect(store.getActions()).toEqual([{
-        type: ActionTypes.ADD_FUNDS_FOR_USER,
-        payload: [{id: 10, type: 'Birthday'}, {id: 11, type: 'OnSite'}],
-      }]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: [
+             {
+               id: 10,
+               type: "Birthday"
+             },
+             {
+               id: 11,
+               type: "OnSite"
+             }
+           ],
+           type: "ADD_FUNDS_FOR_USER"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
     });
 
     it('should add fund unkown for a member', async () => {
@@ -88,71 +162,168 @@ describe('team fund action', () => {
 
       expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
-      expect(store.getActions()).toEqual([{
-        type: ActionTypes.ADD_FUNDS_FOR_USER,
-        payload: [{id: 10, type: 'Unknown'}, {id: 11, type: 'OnSite'}],
-      }]);
+      expect(store.getActions()).toEqual([
+           {
+             payload: "GET_FUND_LOADER_ID",
+             type: "SHOW_LOADER"
+           },
+           {
+             payload: [
+               {
+                 id: 10,
+                 type: "Unknown"
+               },
+               {
+                 id: 11,
+                 type: "OnSite"
+               }
+             ],
+             type: "ADD_FUNDS_FOR_USER"
+           },
+           {
+             payload: "GET_FUND_LOADER_ID",
+             type: "HIDE_LOADER"
+           }
+         ]);
     });
 
     it('should add team fund fail', async () => {
       spyOn(TeamFundService, 'fetchTeamFund').and.throwError('fake error');
-      spyOn(console, 'log');
 
       await store.dispatch(fetchTeamFund());
 
       expect(TeamFundService.fetchTeamFund).toHaveBeenCalledWith();
-      expect(console.log).toHaveBeenCalledWith('Error in fetching team fund');
-      expect(store.getActions()).toEqual([]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: {
+             id: "GET_FUND_NOTIFICATION_ID",
+             message: "Unable to fetch fund. Please try after sometime.",
+             type: "ERROR"
+           },
+           type: "SHOW_NOTIFICATION"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
     });
 
-    it('should add team fund fail', async () => {
+    it('should add team fund types fail', async () => {
       spyOn(TeamFundService, 'fetchFundTypes').and.throwError('fake error');
-      spyOn(console, 'log');
 
       await store.dispatch(fetchFundTypes());
 
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
-      expect(console.log).
-          toHaveBeenCalledWith('Error in fetching team fund types');
-      expect(store.getActions()).toEqual([]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "GET_FUND_TYPES_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: {
+             id: "GET_FUND_TYPES_NOTIFICATION_ID",
+             message: "Unable to fetch team fund types. Please try after sometime.",
+             type: "ERROR"
+           },
+           type: "SHOW_NOTIFICATION"
+         },
+         {
+           payload: "GET_FUND_TYPES_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
     });
 
     it('should add team fund fail', async () => {
       spyOn(TeamFundService, 'addFund').and.throwError('fake error');
-      spyOn(console, 'log');
       const fund = {amount: 2000};
       await store.dispatch(addFund(fund));
 
       expect(TeamFundService.addFund).toHaveBeenCalledWith(fund);
-      expect(console.log).
-          toHaveBeenCalledWith('Error in adding fund');
-      expect(store.getActions()).toEqual([]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "ADD_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: {
+             id: "ADD_FUND_NOTIFICATION_ID",
+             message: "Unable to fetch team fund. Please try after sometime.",
+             type: "ERROR"
+           },
+           type: "SHOW_NOTIFICATION"
+         },
+         {
+           payload: "ADD_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
   });
 
   it('should fetch team fund fail when adding fund', async () => {
       spyOn(TeamFundService, 'addFund').and.returnValue([]);
       spyOn(TeamFundService, 'fetchTeamFund').and.throwError('fake error');
 
-      spyOn(console, 'log');
       const fund = {amount: 2000};
       await store.dispatch(addFund(fund));
 
       expect(TeamFundService.addFund).toHaveBeenCalledWith(fund);
-      expect(console.log).
-          toHaveBeenCalledWith('Error in fetching team fund');
-      expect(store.getActions()).toEqual([]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "ADD_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: {
+             id: "GET_FUND_NOTIFICATION_ID",
+             message: "Unable to fetch fund. Please try after sometime.",
+             type: "ERROR"
+           },
+           type: "SHOW_NOTIFICATION"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         },
+         {
+           payload: "ADD_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
   });
 
   it('should fetch a member fund fail when adding fund', async () => {
       spyOn(TeamFundService, 'getFundsForAUser').and.throwError('fake error');
-      spyOn(console, 'log');
-
       const owner = 'test-owner';
       await store.dispatch(fetchFundsForAUser(owner));
 
       expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
-      expect(console.log).
-          toHaveBeenCalledWith('Error in fetching fund for a member');
-      expect(store.getActions()).toEqual([]);
+      expect(store.getActions()).toEqual([
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "SHOW_LOADER"
+         },
+         {
+           payload: {
+             id: "GET_FUND_NOTIFICATION_ID",
+             message: "Unable to fetch fund. Please try after sometime.",
+             type: "ERROR"
+           },
+           type: "SHOW_NOTIFICATION"
+         },
+         {
+           payload: "GET_FUND_LOADER_ID",
+           type: "HIDE_LOADER"
+         }
+       ]);
   });
 });

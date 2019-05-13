@@ -86,7 +86,6 @@ export const ANSWER_NOTIFICATION = {
   message: 'Unable to answer. Please try after sometime.',
 };
 
-
 export const GET_TASKS_LOADER_ID = 'GET_TASKS_LOADER_ID';
 export const GET_TASKS_NOTIFICATION = {
   id: 'GET_TASKS_NOTIFICATION_ID',
@@ -106,4 +105,25 @@ export const CREATE_TASK_NOTIFICATION = {
   id: 'CREATE_TASK_NOTIFICATION_ID',
   type: NotificationType.ERROR,
   message: 'Unable to create task. Please try after sometime.',
+};
+
+export const ADD_FUND_LOADER_ID = 'ADD_FUND_LOADER_ID';
+export const ADD_FUND_NOTIFICATION = {
+  id: 'ADD_FUND_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch team fund. Please try after sometime.',
+};
+
+export const GET_FUND_TYPES_LOADER_ID = 'GET_FUND_TYPES_LOADER_ID';
+export const GET_FUND_TYPES_NOTIFICATION = {
+  id: 'GET_FUND_TYPES_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch team fund types. Please try after sometime.',
+};
+
+export const GET_FUND_LOADER_ID = 'GET_FUND_LOADER_ID';
+export const GET_FUND_NOTIFICATION = {
+  id: 'GET_FUND_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch fund. Please try after sometime.',
 };
