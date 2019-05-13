@@ -24,18 +24,6 @@ describe('REST client', () => {
           done();
       });
     });
-
-    it('Response of get call fails', async () => {
-        let mock = new MockAdapter(axios);
-        const url = '/api/v1/question';
-        mock.onGet().reply(404);
-        spyOn(console, 'log');
-
-        await get(url);
-
-        expect(console.log)
-            .toHaveBeenCalledWith('Request failed with status code 404');
-    });
   });
 
   describe('post', () => {
@@ -54,18 +42,6 @@ describe('REST client', () => {
       });
     });
 
-    it('Response of post call fails', async () => {
-        let mock = new MockAdapter(axios);
-        const url = '/api/v1/question';
-        mock.onPost().reply(404);
-        spyOn(console, 'log');
-        const body = {question: 100};
-
-        await post(url, body);
-
-        expect(console.log)
-            .toHaveBeenCalledWith('Request failed with status code 404');
-    });
   });
 
   describe('put', () => {
@@ -83,19 +59,6 @@ describe('REST client', () => {
           expect(response.data).toEqual(questionData.data);
           done();
       });
-    });
-
-    it('Response of put call fails', async () => {
-        let mock = new MockAdapter(axios);
-        const url = '/api/v1/question';
-        mock.onPut().reply(404);
-        spyOn(console, 'log');
-        const body = {question: 100};
-
-        await put(url, body);
-
-        expect(console.log)
-            .toHaveBeenCalledWith('Request failed with status code 404');
     });
   });
 });
