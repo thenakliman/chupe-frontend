@@ -65,3 +65,24 @@ export const ASK_QUESTION_NOTIFICATION = {
   message: 'Unable to ask question. Please try after sometime.',
 };
 
+export const GET_ANSWERS_LOADER_ID = 'GET_ANSWERS_LOADER_ID';
+export const GET_ANSWERS_NOTIFICATION = {
+  id: 'GET_ANSWERS_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch answers. Please try after sometime.',
+};
+
+export const UPDATE_ANSWER_LOADER_ID = 'UPDATE_ANSWER_LOADER_ID';
+export const UPDATE_ANSWER_NOTIFICATION = {
+  id: 'UPDATE_ANSWER_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to update answer. Please try after sometime.',
+};
+
+export const ANSWER_LOADER_ID = 'ANSWER_LOADER_ID';
+export const ANSWER_NOTIFICATION = {
+  id: 'ANSWER_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to answer. Please try after sometime.',
+};
+
