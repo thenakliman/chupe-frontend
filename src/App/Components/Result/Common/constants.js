@@ -127,3 +127,38 @@ export const GET_FUND_NOTIFICATION = {
   type: NotificationType.ERROR,
   message: 'Unable to fetch fund. Please try after sometime.',
 };
+
+export const CREATE_RETRO_LOADER_ID = 'CREATE_RETRO_LOADER_ID';
+export const CREATE_RETRO_NOTIFICATION = {
+  id: 'CREATE_RETRO_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to create retro. Please try after sometime.',
+};
+
+export const CREATE_RETRO_POINT_LOADER_ID = 'CREATE_RETRO_POINT_LOADER_ID';
+export const CREATE_RETRO_POINT_NOTIFICATION = {
+  id: 'CREATE_RETRO_POINT_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to create retro point. Please try after sometime.',
+};
+
+export const CAST_VOTE_LOADER_ID = 'CAST_VOTE_LOADER_ID';
+export const CAST_VOTE_NOTIFICATION = {
+  id: 'CAST_VOTE_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to cast vote. Please try after sometime.',
+};
+
+export const GET_RETROS_LOADER_ID = 'GET_RETROS_LOADER_ID';
+export const GET_RETROS_NOTIFICATION = {
+  id: 'GET_RETROS_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch retros. Please try after sometime.',
+};
+
+export const GET_RETRO_POINT_LOADER_ID = 'GET_RETRO_POINT_LOADER_ID';
+export const GET_RETRO_POINT_NOTIFICATION = {
+  id: 'GET_RETRO_POINT_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch retro points. Please try after sometime.',
+};

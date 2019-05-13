@@ -13,8 +13,6 @@ import {
   UPDATE_QUESTION_NOTIFICATION,
   } from '../Components/Result/Common/constants';
 
-
-
 export const addQuestions = (questions) => ({
   type: ActionTypes.ADD_QUESTIONS,
   payload: questions,
