@@ -86,3 +86,24 @@ export const ANSWER_NOTIFICATION = {
   message: 'Unable to answer. Please try after sometime.',
 };
 
+
+export const GET_TASKS_LOADER_ID = 'GET_TASKS_LOADER_ID';
+export const GET_TASKS_NOTIFICATION = {
+  id: 'GET_TASKS_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch tasks. Please try after sometime.',
+};
+
+export const UPDATE_TASK_LOADER_ID = 'UPDATE_TASK_LOADER_ID';
+export const UPDATE_TASK_NOTIFICATION = {
+  id: 'UPDATE_TASK_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to update task. Please try after sometime.',
+};
+
+export const CREATE_TASK_LOADER_ID = 'CREATE_TASK_LOADER_ID';
+export const CREATE_TASK_NOTIFICATION = {
+  id: 'CREATE_TASK_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to create task. Please try after sometime.',
+};
