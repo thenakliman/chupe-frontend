@@ -2,42 +2,46 @@
 
 exports[`Show create retro pop up component should match snapshot 1`] = `
 <div
-  className="create-retro-container"
-  id="create-retro-container-id"
+  className="retro-pop-up-container"
 >
   <div
-    className="retro-button-container"
+    className="create-retro-container"
+    id="create-retro-container-id"
   >
-    <input
-      className="retro-creation-input"
-      id="create-retro-name"
-      onChange={[Function]}
-      value=""
-    />
-    <input
-      className="maximum-vote-count"
-      id="create-retro-maximum-vote-count"
-      onChange={[Function]}
-      value={1}
-    />
     <div
-      className="create-retro-buttons-container"
+      className="retro-button-container"
     >
-      <button
-        className="create-retro-button"
-        id="create-retro-button-id"
-        onClick={[Function]}
-        type="button"
+      <input
+        className="retro-creation-input"
+        id="create-retro-name"
+        onChange={[Function]}
+        value=""
+      />
+      <input
+        className="maximum-vote-count"
+        id="create-retro-maximum-vote-count"
+        onChange={[Function]}
+        value={1}
+      />
+      <div
+        className="create-retro-buttons-container"
       >
-        Create Retro
-      </button>
-      <button
-        className="create-retro-button"
-        id="cancel-create-retro-button-id"
-        type="button"
-      >
-        Cancel
-      </button>
+        <button
+          className="create-retro-button"
+          id="create-retro-button-id"
+          onClick={[Function]}
+          type="button"
+        >
+          Create Retro
+        </button>
+        <button
+          className="create-retro-button"
+          id="cancel-create-retro-button-id"
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
   </div>
 </div>
