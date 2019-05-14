@@ -24,23 +24,50 @@ describe('Feedback action', () => {
 
     await store.dispatch(getAllFeedbackSessions());
     expect(store.getActions()).toEqual([
-      {
-        type: ActionTypes.ADD_FEEDBACK_SESSIONS,
-        payload: testFeedbackSessions,
-      },
-    ]);
+       {
+         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: [
+           {
+             name: "fakeTask"
+           }
+         ],
+         type: "ADD_FEEDBACK_SESSIONS"
+       },
+       {
+         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
     expect(FeedbackService.getAllFeedbackSessions).toHaveBeenCalledWith();
   });
 
-  it('Should show error message if failed to add feedback', async () => {
-    spyOn(console, 'log');
+  it('Should show error message if failed to add feedback sessions', async () => {
     spyOn(FeedbackService, 'getAllFeedbackSessions').and.throwError('failed ');
 
     await store.dispatch(getAllFeedbackSessions());
 
     expect(FeedbackService.getAllFeedbackSessions).toHaveBeenCalledWith();
-    expect(console.log)
-        .toHaveBeenCalledWith('Error on fetching feedback sessions');
+    expect(store.getActions()).toEqual([
+       {
+         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: {
+           id: "GET_FEEDBACK_SESSION_NOTIFICATION_ID",
+           message: "Unable to fetch feedback sessions. Please try after sometime.",
+           type: "ERROR"
+         },
+         type: "SHOW_NOTIFICATION"
+       },
+       {
+         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
   });
 
   it('Should dispatch action for create feedback sessions', async () => {
@@ -51,17 +78,35 @@ describe('Feedback action', () => {
 
     await store.dispatch(createFeedbackSession(testFeedbackSession));
     expect(store.getActions()).toEqual([
-      {
-        type: ActionTypes.ADD_FEEDBACK_SESSIONS,
-        payload: testFeedbackSession,
-      },
-    ]);
+       {
+         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
+         type: "HIDE_LOADER"
+       },
+       {
+         payload: {
+           name: "fakeTask"
+         },
+         type: "ADD_FEEDBACK_SESSIONS"
+       },
+       {
+         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
 
     expect(FeedbackService.saveFeedbackSession)
         .toHaveBeenCalledWith(testFeedbackSession);
   });
 
-  it('Should show error message if failed to add feedback', async () => {
+  it('Should show error message if failed to create feedback', async () => {
     spyOn(console, 'log');
     spyOn(FeedbackService, 'saveFeedbackSession').and.throwError('failed ');
     const testFeedbackSession = {'name': 'fakeTask'};
@@ -70,9 +115,24 @@ describe('Feedback action', () => {
 
     expect(FeedbackService.saveFeedbackSession)
             .toHaveBeenCalledWith(testFeedbackSession);
-
-    expect(console.log)
-        .toHaveBeenCalledWith('Error on creating feedback sessions');
+    expect(store.getActions()).toEqual([
+       {
+         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: {
+           id: "CREATE_FEEDBACK_SESSION_NOTIFICATION_ID",
+           message: "Unable to create feedback sessions. Please try after sometime.",
+           type: "ERROR"
+         },
+         type: "SHOW_NOTIFICATION"
+       },
+       {
+         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
   });
 
   it('Should dispatch action for fetching feedbacks', async () => {
@@ -82,24 +142,52 @@ describe('Feedback action', () => {
 
     await store.dispatch(getAllFeedbacks(sessionId));
     expect(store.getActions()).toEqual([
-      {
-        type: ActionTypes.ADD_FEEDBACKS,
-        payload: feedbacks,
-      },
-    ]);
+       {
+         payload: "GET_FEEDBACK_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: [
+           {
+             id: 10
+           }
+         ],
+         type: "ADD_FEEDBACKS"
+       },
+       {
+         payload: "GET_FEEDBACK_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
+
     expect(FeedbackService.getAllFeedbacks).toHaveBeenCalledWith(sessionId);
   });
 
-  it('Should show error message if failed to add feedback', async () => {
-    spyOn(console, 'log');
+  it('Should show error message if failed to fetch feedback', async () => {
     spyOn(FeedbackService, 'getAllFeedbacks').and.throwError('failed ');
     const sessionId = 101;
 
     await store.dispatch(getAllFeedbacks(sessionId));
 
     expect(FeedbackService.getAllFeedbacks).toHaveBeenCalledWith(sessionId);
-    expect(console.log)
-        .toHaveBeenCalledWith('Error on fetching feedbacks');
+    expect(store.getActions()).toEqual([
+       {
+         payload: "GET_FEEDBACK_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: {
+           id: "GET_FEEDBACK_NOTIFICATION_ID",
+           message: "Unable to fetch feedback. Please try after sometime.",
+           type: "ERROR"
+         },
+         type: "SHOW_NOTIFICATION"
+       },
+       {
+         payload: "GET_FEEDBACK_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
   });
 
   it('Should dispatch action for create feedbacks', async () => {
@@ -107,13 +195,16 @@ describe('Feedback action', () => {
     spyOn(FeedbackService, 'saveFeedback').and.returnValues(feedback);
 
     await store.dispatch(createFeedback(feedback));
-    expect(store.getActions()).toEqual([{
-        payload: 'CREATE_FEEDBACK_LOADER_ID',
-        type: 'SHOW_LOADER',
-      }, {
-        payload: 'CREATE_FEEDBACK_LOADER_ID',
-        type: 'HIDE_LOADER',
-      }]);
+    expect(store.getActions()).toEqual([
+       {
+         payload: "CREATE_FEEDBACK_LOADER_ID",
+         type: "SHOW_LOADER"
+       },
+       {
+         payload: "CREATE_FEEDBACK_LOADER_ID",
+         type: "HIDE_LOADER"
+       }
+     ]);
 
     expect(FeedbackService.saveFeedback).toHaveBeenCalledWith(feedback);
   });

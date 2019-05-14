@@ -4,6 +4,12 @@ import {showLoader, hideLoader} from './loaderActions';
 import {showNotification} from './notificationActions';
 import {
   CREATE_FEEDBACK_LOADER_ID,
+  GET_FEEDBACK_SESSION_LOADER_ID,
+  GET_FEEDBACK_SESSION_NOTIFICATION,
+  GET_FEEDBACK_LOADER_ID,
+  GET_FEEDBACK_NOTIFICATION,
+  CREATE_FEEDBACK_SESSION_LOADER_ID,
+  CREATE_FEEDBACK_SESSION_NOTIFICATION,
   CREATE_FEEDBACK_NOTIFICATION} from '../Components/Result/Common/constants';
 
 const addFeedbackSessions = (feedbackSessions) => ({
@@ -18,31 +24,48 @@ const addFeedbacks = (feedbacks) => ({
 
 
 export const getAllFeedbackSessions = () => async (dispatch) => {
+  dispatch(showLoader(GET_FEEDBACK_SESSION_LOADER_ID));
   try {
     const feedbackSessions = await FeedbackService.getAllFeedbackSessions();
     dispatch(addFeedbackSessions(feedbackSessions));
   } catch (error) {
-    console.log('Error on fetching feedback sessions');
+      dispatch(showNotification(
+          GET_FEEDBACK_SESSION_NOTIFICATION.id,
+          GET_FEEDBACK_SESSION_NOTIFICATION.type,
+          GET_FEEDBACK_SESSION_NOTIFICATION.message
+      ));
   }
+  dispatch(hideLoader(GET_FEEDBACK_SESSION_LOADER_ID));
 };
 
 export const getAllFeedbacks = (feedbackSessionId) => async (dispatch) => {
+  dispatch(showLoader(GET_FEEDBACK_LOADER_ID));
   try {
     const feedbacks = await FeedbackService.getAllFeedbacks(feedbackSessionId);
     dispatch(addFeedbacks(feedbacks));
   } catch (error) {
-    console.log('Error on fetching feedbacks');
+      dispatch(showNotification(
+          GET_FEEDBACK_NOTIFICATION.id,
+          GET_FEEDBACK_NOTIFICATION.type,
+          GET_FEEDBACK_NOTIFICATION.message
+      ));
   }
+  dispatch(hideLoader(GET_FEEDBACK_LOADER_ID));
 };
 
 export const createFeedbackSession = (feedbackSession) => async (dispatch) => {
+  dispatch(showLoader(CREATE_FEEDBACK_SESSION_LOADER_ID));
   try {
     await FeedbackService.saveFeedbackSession(feedbackSession);
-
     dispatch(getAllFeedbackSessions());
   } catch (error) {
-    console.log('Error on creating feedback sessions');
+      dispatch(showNotification(
+          CREATE_FEEDBACK_SESSION_NOTIFICATION.id,
+          CREATE_FEEDBACK_SESSION_NOTIFICATION.type,
+          CREATE_FEEDBACK_SESSION_NOTIFICATION.message
+      ));
   }
+  dispatch(hideLoader(CREATE_FEEDBACK_SESSION_LOADER_ID));
 };
 
 export const createFeedback = (feedback) => async (dispatch) => {

@@ -5,15 +5,34 @@ export const NotificationType = {
 };
 
 export const CREATE_FEEDBACK_LOADER_ID = 'CREATE_FEEDBACK_LOADER_ID';
-
 export const CREATE_FEEDBACK_NOTIFICATION = {
   id: 'CREATE_FEEDBACK_NOTIFICATION_ID',
   type: NotificationType.ERROR,
   message: 'Unable to create feedback. Please try after sometime.',
 };
 
-export const CREATE_MEETING_LOADER_ID = 'CREATE_MEETING_LOADER_ID';
+export const GET_FEEDBACK_LOADER_ID = 'GET_FEEDBACK_LOADER_ID';
+export const GET_FEEDBACK_NOTIFICATION = {
+  id: 'GET_FEEDBACK_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch feedback. Please try after sometime.',
+};
 
+export const GET_FEEDBACK_SESSION_LOADER_ID = 'GET_FEEDBACK_SESSION_LOADER_ID';
+export const GET_FEEDBACK_SESSION_NOTIFICATION = {
+  id: 'GET_FEEDBACK_SESSION_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch feedback sessions. Please try after sometime.',
+};
+
+export const CREATE_FEEDBACK_SESSION_LOADER_ID = 'CREATE_FEEDBACK_SESSION_LOADER_ID';
+export const CREATE_FEEDBACK_SESSION_NOTIFICATION = {
+  id: 'CREATE_FEEDBACK_SESSION_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to create feedback sessions. Please try after sometime.',
+};
+
+export const CREATE_MEETING_LOADER_ID = 'CREATE_MEETING_LOADER_ID';
 export const CREATE_MEETING_NOTIFICATION = {
   id: 'CREATE_MEETING_NOTIFICATION_ID',
   type: NotificationType.ERROR,
