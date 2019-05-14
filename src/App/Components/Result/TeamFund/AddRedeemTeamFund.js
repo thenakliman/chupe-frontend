@@ -54,9 +54,10 @@ export class AddRedeemTeamFund extends React.Component {
    */
   render() {
     return (
-      <span id='team-fund-add-redeem-container-id'
+      <div className={'team-fund-popup-container'}>
+      <div id='team-fund-add-redeem-container-id'
            className='team-fund-add-redeem-container'>
-        <span className='add-redeem-team-fund-select'>
+        <div className='add-redeem-team-fund-select'>
           <select id='team-fund-select-type-id'
                   onChange={(event) => this.handleFundType(event.target.value)}
                   value={this.state.value}
@@ -70,8 +71,8 @@ export class AddRedeemTeamFund extends React.Component {
                 </option>))
             }
           </select>
-        </span>
-        <span className='team-fund-amount-container'>
+        </div>
+        <div className='team-fund-amount-container'>
           Amount:
           <input id='team-fund-amount-id'
                  className='team-fund-amount'
@@ -79,8 +80,8 @@ export class AddRedeemTeamFund extends React.Component {
                  onChange={
                   (event) => this.handleAmountUpdate(event.target.value)}
                  />
-        </span>
-        <span className='team-fund-submit-button'>
+        </div>
+        <div className='team-fund-submit-button'>
           <button id='team-fund-cancel-button-id'
                   className='team-fund-button'
                   onClick={(event) => this.props.closePopup()}>
@@ -91,8 +92,9 @@ export class AddRedeemTeamFund extends React.Component {
                   onClick={() => this.handleClick()}>
                 Submit
           </button>
-        </span>
-      </span>
+        </div>
+      </div>
+    </div>
     );
   }
 }

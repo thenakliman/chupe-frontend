@@ -1,52 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Team fund component snapshot should match the snapshot 1`] = `
-<span
-  className="team-fund-add-redeem-container"
-  id="team-fund-add-redeem-container-id"
+<div
+  className="team-fund-popup-container"
 >
-  <span
-    className="add-redeem-team-fund-select"
+  <div
+    className="team-fund-add-redeem-container"
+    id="team-fund-add-redeem-container-id"
   >
-    <select
-      id="team-fund-select-type-id"
-      onChange={[Function]}
+    <div
+      className="add-redeem-team-fund-select"
     >
-      <option
-        value=""
+      <select
+        id="team-fund-select-type-id"
+        onChange={[Function]}
       >
-        Select Fund Type
-      </option>
-    </select>
-  </span>
-  <span
-    className="team-fund-amount-container"
-  >
-    Amount:
-    <input
-      className="team-fund-amount"
-      id="team-fund-amount-id"
-      onChange={[Function]}
-      value={0}
-    />
-  </span>
-  <span
-    className="team-fund-submit-button"
-  >
-    <button
-      className="team-fund-button"
-      id="team-fund-cancel-button-id"
-      onClick={[Function]}
+        <option
+          value=""
+        >
+          Select Fund Type
+        </option>
+      </select>
+    </div>
+    <div
+      className="team-fund-amount-container"
     >
-      Cancel
-    </button>
-    <button
-      className="team-fund-button"
-      id="team-fund-submit-button-id"
-      onClick={[Function]}
+      Amount:
+      <input
+        className="team-fund-amount"
+        id="team-fund-amount-id"
+        onChange={[Function]}
+        value={0}
+      />
+    </div>
+    <div
+      className="team-fund-submit-button"
     >
-      Submit
-    </button>
-  </span>
-</span>
+      <button
+        className="team-fund-button"
+        id="team-fund-cancel-button-id"
+        onClick={[Function]}
+      >
+        Cancel
+      </button>
+      <button
+        className="team-fund-button"
+        id="team-fund-submit-button-id"
+        onClick={[Function]}
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
 `;
