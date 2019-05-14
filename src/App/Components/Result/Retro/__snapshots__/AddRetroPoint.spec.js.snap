@@ -2,34 +2,38 @@
 
 exports[`Show create retro pop up component should match snapshot 1`] = `
 <div
-  className="add-retro-point-container"
-  id="add-retro-point-container-id"
+  className="retro-pop-up-container"
 >
-  <input
-    className="add-retro-point-creation-input"
-    id="add-retro-point-description"
-    onChange={[Function]}
-    value=""
-  />
   <div
-    className="add-retro-point-buttons-container"
+    className="add-retro-point-container"
+    id="add-retro-point-container-id"
   >
-    <button
-      className="add-retro-point-button"
-      id="add-retro-point-button-id"
-      onClick={[Function]}
-      type="button"
+    <input
+      className="add-retro-point-creation-input"
+      id="add-retro-point-description"
+      onChange={[Function]}
+      value=""
+    />
+    <div
+      className="add-retro-point-buttons-container"
     >
-      Add Retro Point
-    </button>
-    <button
-      className="add-retro-point-button"
-      id="cancel-add-retro-point-button-id"
-      onClick={[MockFunction]}
-      type="button"
-    >
-      Cancel
-    </button>
+      <button
+        className="add-retro-point-button"
+        id="add-retro-point-button-id"
+        onClick={[Function]}
+        type="button"
+      >
+        Add Retro Point
+      </button>
+      <button
+        className="add-retro-point-button"
+        id="cancel-add-retro-point-button-id"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
   </div>
 </div>
 `;

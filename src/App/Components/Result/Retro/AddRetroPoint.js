@@ -22,30 +22,32 @@ export class AddRetroPoint extends React.Component {
 
     render() {
       return (
-      <div id='add-retro-point-container-id'
-           className='add-retro-point-container'>
-              <input className={'add-retro-point-creation-input'}
-                     id={'add-retro-point-description'}
-                     onChange={(event) =>
-                        this.handleRetroDescription(event.target.value)}
-                     value={this.state.description}
-              />
-              <div className='add-retro-point-buttons-container'>
-                  <button id='add-retro-point-button-id'
-                    className='add-retro-point-button'
-                    type='button'
-                    onClick={this.createRetroPoint}
-                  >
-                    Add Retro Point
-                  </button>
-                  <button id='cancel-add-retro-point-button-id'
-                    className='add-retro-point-button'
-                    onClick={this.props.closeAddRetroPointPopUp}
-                    type='button'
-                  >
-                    Cancel
-                  </button>
-              </div>
+      <div className='retro-pop-up-container'>
+        <div id='add-retro-point-container-id'
+             className='add-retro-point-container'>
+                <input className={'add-retro-point-creation-input'}
+                       id={'add-retro-point-description'}
+                       onChange={(event) =>
+                          this.handleRetroDescription(event.target.value)}
+                       value={this.state.description}
+                />
+                <div className='add-retro-point-buttons-container'>
+                    <button id='add-retro-point-button-id'
+                      className='add-retro-point-button'
+                      type='button'
+                      onClick={this.createRetroPoint}
+                    >
+                      Add Retro Point
+                    </button>
+                    <button id='cancel-add-retro-point-button-id'
+                      className='add-retro-point-button'
+                      onClick={this.props.closeAddRetroPointPopUp}
+                      type='button'
+                    >
+                      Cancel
+                    </button>
+                </div>
+        </div>
       </div>);
     }
 }
