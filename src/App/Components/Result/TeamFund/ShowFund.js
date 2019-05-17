@@ -34,7 +34,7 @@ export class ShowFund extends React.Component {
                 <td>{index+1}</td>
                 <td>{fund.owner}</td>
                 <td>{fund.type}</td>
-                <td>{fund.amount}</td>
+                <td>{'CREDIT' === fund.transactionType? fund.amount: -fund.amount}</td>
                 <td>{fund.createdAt}</td>
               </tr>
             ))

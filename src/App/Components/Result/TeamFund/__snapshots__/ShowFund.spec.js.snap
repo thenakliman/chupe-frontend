@@ -27,7 +27,34 @@ exports[`Show fund component snapshot should match the snapshot 1`] = `
         </th>
       </tr>
     </thead>
-    <tbody />
+    <tbody>
+      <tr
+        key="10"
+      >
+        <td>
+          1
+        </td>
+        <td />
+        <td />
+        <td>
+          10
+        </td>
+        <td />
+      </tr>
+      <tr
+        key="11"
+      >
+        <td>
+          2
+        </td>
+        <td />
+        <td />
+        <td>
+          -10
+        </td>
+        <td />
+      </tr>
+    </tbody>
   </table>
 </div>
 `;
