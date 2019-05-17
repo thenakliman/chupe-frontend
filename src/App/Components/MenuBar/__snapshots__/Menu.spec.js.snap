@@ -28,7 +28,7 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
         href="#/team-funds"
         id="team-funds-tab"
       >
-        Team Funds
+        Funds
       </a>
       <a
         className="Tab"

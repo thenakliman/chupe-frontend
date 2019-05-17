@@ -60,7 +60,7 @@ export class MenuBar extends React.Component {
                  className={this.doesLocationMatchTab(location, 'team-funds')?
                             'Selected-Tab':
                             'Tab'}>
-                   Team Funds
+                   Funds
               </a>
               <a href='#/tasks'
                  id="tasks-tab"
