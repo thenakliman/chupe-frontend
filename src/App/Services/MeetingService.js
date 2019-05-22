@@ -9,7 +9,7 @@ export const MeetingService = {
   },
 
   saveMeeting(meeting) {
-      return post(MEETINGS_URL, meeting);
+      return post(MEETINGS_URL, meeting, {'Content-Type': 'text/plain'});
   },
 
   getMeetingDiscussionItems(meetingId) {

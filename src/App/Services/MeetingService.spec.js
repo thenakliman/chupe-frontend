@@ -19,7 +19,10 @@ describe('Meeting Service', () => {
 
         await MeetingService.saveMeeting(meeting);
 
-        expect(Client.post).toHaveBeenCalledWith('/api/v1/meetings', meeting);
+        expect(Client.post).toHaveBeenCalledWith(
+        '/api/v1/meetings',
+         meeting,
+         {'Content-Type' : 'text/plain'});
     });
 
     it('should create meeting discussion item', async () => {
