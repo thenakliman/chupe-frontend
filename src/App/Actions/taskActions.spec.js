@@ -28,21 +28,21 @@ describe('Get_TASK action', () => {
     await store.dispatch(getAllTasks(testTask));
     expect(store.getActions()).toEqual([
        {
-         payload: "GET_TASKS_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_TASKS_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: [
            {
-             taskName: "fakeTask"
-           }
+             taskName: 'fakeTask',
+           },
          ],
-         type: "ADD_TASK"
+         type: 'ADD_TASK',
        },
        {
-         payload: "GET_TASKS_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_TASKS_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
     expect(TaskService.getTasks).toHaveBeenCalledWith();
   });
@@ -55,29 +55,29 @@ describe('Get_TASK action', () => {
     await store.dispatch(createTask(testTask));
     expect(store.getActions()).toEqual([
          {
-           payload: "CREATE_TASK_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'CREATE_TASK_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
-           payload: "GET_TASKS_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_TASKS_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
-           payload: "CREATE_TASK_LOADER_ID",
-           type: "HIDE_LOADER"
+           payload: 'CREATE_TASK_LOADER_ID',
+           type: 'HIDE_LOADER',
          },
          {
            payload: [
              {
-               taskName: "fakeTask"
-             }
+               taskName: 'fakeTask',
+             },
            ],
-           type: "ADD_TASK"
+           type: 'ADD_TASK',
          },
          {
-           payload: "GET_TASKS_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_TASKS_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     expect(TaskService.getTasks).toHaveBeenCalledWith();
     expect(TaskService.createTask).toHaveBeenCalledWith(testTask);
@@ -91,21 +91,21 @@ describe('Get_TASK action', () => {
     expect(TaskService.createTask).toHaveBeenCalledWith(testTask);
     expect(store.getActions()).toEqual([
        {
-         payload: "CREATE_TASK_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'CREATE_TASK_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: {
-           id: "CREATE_TASK_NOTIFICATION_ID",
-           message: "Unable to create task. Please try after sometime.",
-           type: "ERROR"
+           id: 'CREATE_TASK_NOTIFICATION_ID',
+           message: 'Unable to create task. Please try after sometime.',
+           type: 'ERROR',
          },
-         type: "SHOW_NOTIFICATION"
+         type: 'SHOW_NOTIFICATION',
        },
        {
-         payload: "CREATE_TASK_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'CREATE_TASK_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
   });
 
@@ -115,21 +115,21 @@ describe('Get_TASK action', () => {
     expect(TaskService.getTasks).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
        {
-         payload: "GET_TASKS_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_TASKS_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: {
-           id: "GET_TASKS_NOTIFICATION_ID",
-           message: "Unable to fetch tasks. Please try after sometime.",
-           type: "ERROR"
+           id: 'GET_TASKS_NOTIFICATION_ID',
+           message: 'Unable to fetch tasks. Please try after sometime.',
+           type: 'ERROR',
          },
-         type: "SHOW_NOTIFICATION"
+         type: 'SHOW_NOTIFICATION',
        },
        {
-         payload: "GET_TASKS_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_TASKS_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
   });
 
@@ -142,29 +142,29 @@ describe('Get_TASK action', () => {
 
     expect(store.getActions()).toEqual([
        {
-         payload: "UPDATE_TASK_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'UPDATE_TASK_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
-         payload: "GET_TASKS_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_TASKS_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
-         payload: "UPDATE_TASK_LOADER_ID",
-         type: "HIDE_LOADER"
+         payload: 'UPDATE_TASK_LOADER_ID',
+         type: 'HIDE_LOADER',
        },
        {
          payload: [
            {
-             taskName: "fakeTask"
-           }
+             taskName: 'fakeTask',
+           },
          ],
-         type: "ADD_TASK"
+         type: 'ADD_TASK',
        },
        {
-         payload: "GET_TASKS_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_TASKS_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
     expect(TaskService.getTasks).toHaveBeenCalledWith();
     expect(TaskService.updateTask).toHaveBeenCalledWith(testTask);
@@ -180,21 +180,21 @@ describe('Get_TASK action', () => {
     expect(TaskService.updateTask).toHaveBeenCalledWith(testTask);
     expect(store.getActions()).toEqual([
        {
-         payload: "UPDATE_TASK_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'UPDATE_TASK_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: {
-           id: "UPDATE_TASK_NOTIFICATION_ID",
-           message: "Unable to update task. Please try after sometime.",
-           type: "ERROR"
+           id: 'UPDATE_TASK_NOTIFICATION_ID',
+           message: 'Unable to update task. Please try after sometime.',
+           type: 'ERROR',
          },
-         type: "SHOW_NOTIFICATION"
+         type: 'SHOW_NOTIFICATION',
        },
        {
-         payload: "UPDATE_TASK_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'UPDATE_TASK_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
   });
 });

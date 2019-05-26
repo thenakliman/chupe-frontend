@@ -1,8 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {DONE_WELL, NEED_IMPROVEMENT} from './constants';
+import {
+  DONE_WELL,
+  ACTION_ITEM,
+  NEED_IMPROVEMENT} from './constants';
 /* eslint-disable */
 import {AddRetroPoint} from './AddRetroPoint';
+import {AddActionItem} from './AddActionItem';
 /* eslint-enable */
 require('./Retro.css');
 
@@ -11,6 +15,7 @@ export class Retro extends React.Component {
       super(props);
       this.state = {creatingRetroPoint: false, creatingRetroPointType: ''};
       this.createRetroPoint = this.createRetroPoint.bind(this);
+      this.createActionItem = this.createActionItem.bind(this);
       this.toggleCreatingRetroPoint = this.toggleCreatingRetroPoint.bind(this);
     }
 
@@ -23,6 +28,8 @@ export class Retro extends React.Component {
 
     componentWillMount() {
       this.props.getRetroPoints(this.props.match.params.id);
+      this.props.getActionItems(this.props.match.params.id);
+      this.props.getUsers();
     }
 
     createRetroPoint(description) {
@@ -33,6 +40,37 @@ export class Retro extends React.Component {
       });
       this.toggleCreatingRetroPoint();
       this.setState({creatingRetroPointType: ''});
+    }
+
+    createActionItem(actionItem) {
+      actionItem['retroId'] = this.props.match.params.id;
+      this.props.createActionItem(actionItem);
+      this.toggleCreatingRetroPoint();
+      this.setState({creatingRetroPointType: ''});
+    }
+
+    renderActionItem() {
+        return this.props.actionItems.map(
+          (actionItem) =>
+              <div key={actionItem.id} id={`action-item-${actionItem.id}`}
+                   className={'action-item'}
+              >
+                  <div className={'action-item-header'}>
+                      <div className={'action-item-text'}
+                               id={`action-item-text-${actionItem.id}`}>
+                               Assigned To:
+                      </div>
+                      <div className={'action-item-assigned'}
+                           id={`action-item-${actionItem.id}`}>
+                        {actionItem.assignedTo}
+                      </div>
+                      </div>
+                  <div className={'retro-point-description'}
+                       id={`action-item-description-${actionItem.id}`}>
+                    {actionItem.description}
+                  </div>
+              </div>
+          );
     }
 
     renderBasedOnFilter(filterFunction) {
@@ -64,12 +102,21 @@ export class Retro extends React.Component {
     render() {
       return (<div id='retro-points-container-id'
                   className='retro-points-container'>
-        {this.state.creatingRetroPoint && <AddRetroPoint
+        {this.state.creatingRetroPoint &&
+         [DONE_WELL, NEED_IMPROVEMENT].includes(this.state.creatingRetroPointType) &&
+          <AddRetroPoint
             createRetroPoint={(description) =>
                 this.createRetroPoint(description)}
             closeAddRetroPointPopUp={this.toggleCreatingRetroPoint} />
         }
-        <div className='retro-point-header-cotainer'>
+        {this.state.creatingRetroPoint &&
+         [ACTION_ITEM].includes(this.state.creatingRetroPointType) &&
+          <AddActionItem
+            users={this.props.users}
+            createActionItem={this.createActionItem}
+            closeAddActionItemPopUp={this.toggleCreatingRetroPoint} />
+        }
+        <div className='retro-point-header-container'>
           <div className='retro-point-section'>Need Improvement</div>
           <button id='retro-button-for-need-improvement-id'
             className='add-retro-point'
@@ -84,7 +131,7 @@ export class Retro extends React.Component {
             {this.renderBasedOnFilter(
                 (retroPoint) => NEED_IMPROVEMENT === retroPoint.type)}
         </div>
-        <div className='retro-point-header-cotainer'>
+        <div className='retro-point-header-container'>
           <div className='retro-point-section'>Done Well</div>
           <button id='retro-button-for-done-well-id'
             className='add-retro-point'
@@ -99,13 +146,31 @@ export class Retro extends React.Component {
             {this.renderBasedOnFilter(
                 (retroPoint) => DONE_WELL === retroPoint.type)}
         </div>
+        <div className='retro-point-header-container'>
+          <div className='retro-point-section'>Action Items</div>
+          <button id='retro-button-for-action-item-id'
+            className='add-retro-point'
+            type='button'
+            onClick={() => this.toggleCreatingRetroPoint(ACTION_ITEM)}
+          >
+              Add Action Item
+          </button>
+        </div>
+        <hr className='horizontal-line'/>
+        <div className='retro-point-category'>
+            {this.renderActionItem()}
+        </div>
       </div>);
     }
 }
 
 Retro.propTypes = {
+  actionItems: propTypes.array.isRequired,
+  users: propTypes.array.isRequired,
+  createActionItem: propTypes.func.isRequired,
   retroPoints: propTypes.array.isRequired,
   vote: propTypes.func.isRequired,
   getRetroPoints: propTypes.func.isRequired,
   createRetroPoint: propTypes.func.isRequired,
+  getUsers: propTypes.func.isRequired,
 };

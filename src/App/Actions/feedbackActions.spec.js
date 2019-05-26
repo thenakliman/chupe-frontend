@@ -25,21 +25,21 @@ describe('Feedback action', () => {
     await store.dispatch(getAllFeedbackSessions());
     expect(store.getActions()).toEqual([
        {
-         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_FEEDBACK_SESSION_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: [
            {
-             name: "fakeTask"
-           }
+             name: 'fakeTask',
+           },
          ],
-         type: "ADD_FEEDBACK_SESSIONS"
+         type: 'ADD_FEEDBACK_SESSIONS',
        },
        {
-         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_FEEDBACK_SESSION_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
     expect(FeedbackService.getAllFeedbackSessions).toHaveBeenCalledWith();
   });
@@ -52,21 +52,21 @@ describe('Feedback action', () => {
     expect(FeedbackService.getAllFeedbackSessions).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
        {
-         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_FEEDBACK_SESSION_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: {
-           id: "GET_FEEDBACK_SESSION_NOTIFICATION_ID",
-           message: "Unable to fetch feedback sessions. Please try after sometime.",
-           type: "ERROR"
+           id: 'GET_FEEDBACK_SESSION_NOTIFICATION_ID',
+           message: 'Unable to fetch feedback sessions. Please try after sometime.',
+           type: 'ERROR',
          },
-         type: "SHOW_NOTIFICATION"
+         type: 'SHOW_NOTIFICATION',
        },
        {
-         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_FEEDBACK_SESSION_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
   });
 
@@ -79,27 +79,27 @@ describe('Feedback action', () => {
     await store.dispatch(createFeedbackSession(testFeedbackSession));
     expect(store.getActions()).toEqual([
        {
-         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'CREATE_FEEDBACK_SESSION_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
-         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_FEEDBACK_SESSION_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
-         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
-         type: "HIDE_LOADER"
+         payload: 'CREATE_FEEDBACK_SESSION_LOADER_ID',
+         type: 'HIDE_LOADER',
        },
        {
          payload: {
-           name: "fakeTask"
+           name: 'fakeTask',
          },
-         type: "ADD_FEEDBACK_SESSIONS"
+         type: 'ADD_FEEDBACK_SESSIONS',
        },
        {
-         payload: "GET_FEEDBACK_SESSION_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_FEEDBACK_SESSION_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
 
     expect(FeedbackService.saveFeedbackSession)
@@ -117,21 +117,21 @@ describe('Feedback action', () => {
             .toHaveBeenCalledWith(testFeedbackSession);
     expect(store.getActions()).toEqual([
        {
-         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'CREATE_FEEDBACK_SESSION_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: {
-           id: "CREATE_FEEDBACK_SESSION_NOTIFICATION_ID",
-           message: "Unable to create feedback sessions. Please try after sometime.",
-           type: "ERROR"
+           id: 'CREATE_FEEDBACK_SESSION_NOTIFICATION_ID',
+           message: 'Unable to create feedback sessions. Please try after sometime.',
+           type: 'ERROR',
          },
-         type: "SHOW_NOTIFICATION"
+         type: 'SHOW_NOTIFICATION',
        },
        {
-         payload: "CREATE_FEEDBACK_SESSION_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'CREATE_FEEDBACK_SESSION_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
   });
 
@@ -143,21 +143,21 @@ describe('Feedback action', () => {
     await store.dispatch(getAllFeedbacks(sessionId));
     expect(store.getActions()).toEqual([
        {
-         payload: "GET_FEEDBACK_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_FEEDBACK_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: [
            {
-             id: 10
-           }
+             id: 10,
+           },
          ],
-         type: "ADD_FEEDBACKS"
+         type: 'ADD_FEEDBACKS',
        },
        {
-         payload: "GET_FEEDBACK_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_FEEDBACK_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
 
     expect(FeedbackService.getAllFeedbacks).toHaveBeenCalledWith(sessionId);
@@ -172,21 +172,21 @@ describe('Feedback action', () => {
     expect(FeedbackService.getAllFeedbacks).toHaveBeenCalledWith(sessionId);
     expect(store.getActions()).toEqual([
        {
-         payload: "GET_FEEDBACK_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'GET_FEEDBACK_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
          payload: {
-           id: "GET_FEEDBACK_NOTIFICATION_ID",
-           message: "Unable to fetch feedback. Please try after sometime.",
-           type: "ERROR"
+           id: 'GET_FEEDBACK_NOTIFICATION_ID',
+           message: 'Unable to fetch feedback. Please try after sometime.',
+           type: 'ERROR',
          },
-         type: "SHOW_NOTIFICATION"
+         type: 'SHOW_NOTIFICATION',
        },
        {
-         payload: "GET_FEEDBACK_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'GET_FEEDBACK_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
   });
 
@@ -197,13 +197,13 @@ describe('Feedback action', () => {
     await store.dispatch(createFeedback(feedback));
     expect(store.getActions()).toEqual([
        {
-         payload: "CREATE_FEEDBACK_LOADER_ID",
-         type: "SHOW_LOADER"
+         payload: 'CREATE_FEEDBACK_LOADER_ID',
+         type: 'SHOW_LOADER',
        },
        {
-         payload: "CREATE_FEEDBACK_LOADER_ID",
-         type: "HIDE_LOADER"
-       }
+         payload: 'CREATE_FEEDBACK_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
      ]);
 
     expect(FeedbackService.saveFeedback).toHaveBeenCalledWith(feedback);

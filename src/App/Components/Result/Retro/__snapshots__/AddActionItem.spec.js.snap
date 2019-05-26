@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show create action item pop up component should match snapshot 1`] = `
+<div
+  className="retro-pop-up-container"
+>
+  <div
+    className="add-action-item-container"
+    id="add-action-item-container-id"
+  >
+    Description
+    <textarea
+      className="add-action-item-creation-input"
+      id="add-action-item-description"
+      maxLength={2000}
+      onChange={[Function]}
+      value=""
+    />
+    Due Date
+    <input
+      className="action-item-due-date"
+      id="action-item-due-date"
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+    Assigned To
+    <select
+      className="action-item-assigned-to"
+      onChange={[Function]}
+      value=""
+    >
+      <option>
+        Select user
+      </option>
+      <option
+        key="user-1"
+        value="user-1"
+      >
+        user-1
+      </option>
+    </select>
+    <div
+      className="add-action-item-buttons-container"
+    >
+      <button
+        className="add-action-item-button"
+        id="add-action-item-button-id"
+        onClick={[Function]}
+        type="button"
+      >
+        Add Action Item
+      </button>
+      <button
+        className="add-action-item-button"
+        id="cancel-add-action-item-button-id"
+        onClick={[MockFunction]}
+        type="button"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -51,4 +51,21 @@ describe('Retro Service', () => {
 
         expect(Client.post).toHaveBeenCalledWith('/api/v1/retro-points', retro);
     });
+
+    it('Should create retro action items', async () => {
+        spyOn(Client, 'post').and.returnValue();
+        const actionItems = {name: 'retro action item'};
+
+        await RetroService.createActionItem(actionItems);
+
+        expect(Client.post).toHaveBeenCalledWith('/api/v1/retro-action-items', actionItems);
+    });
+
+    it('Should get action items', async () => {
+        spyOn(Client, 'get').and.returnValue();
+
+        await RetroService.getActionItems(100);
+
+        expect(Client.get).toHaveBeenCalledWith('/api/v1/retro-action-items?retro=100');
+    });
 });

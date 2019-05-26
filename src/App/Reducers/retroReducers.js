@@ -5,6 +5,7 @@ export const retro = (state, action) => {
     state = {
       retros: [],
       retroPoints: [],
+      actionItems: [],
     };
   }
 
@@ -13,6 +14,8 @@ export const retro = (state, action) => {
         return {...state, retros: [...action.payload]};
       case ActionTypes.ADD_RETRO_POINTS:
         return {...state, retroPoints: [...action.payload]};
+      case ActionTypes.ADD_RETRO_ACTION_ITEMS:
+        return {...state, actionItems: [...action.payload]};
       default:
         return {...state};
   }

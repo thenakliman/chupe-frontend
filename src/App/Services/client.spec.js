@@ -41,7 +41,6 @@ describe('REST client', () => {
           done();
       });
     });
-
   });
 
   describe('put', () => {

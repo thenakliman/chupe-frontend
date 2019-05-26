@@ -22,7 +22,7 @@ describe('Meeting Service', () => {
         expect(Client.post).toHaveBeenCalledWith(
         '/api/v1/meetings',
          meeting,
-         {'Content-Type' : 'text/plain'});
+         {'Content-Type': 'text/plain'});
     });
 
     it('should create meeting discussion item', async () => {

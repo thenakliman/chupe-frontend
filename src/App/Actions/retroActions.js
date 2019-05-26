@@ -6,10 +6,14 @@ import {showNotification} from './notificationActions';
 import {
   CREATE_RETRO_LOADER_ID,
   CREATE_RETRO_POINT_LOADER_ID,
+  CREATE_RETRO_ACTION_ITEM_LOADER_ID,
   CAST_VOTE_LOADER_ID,
   GET_RETROS_LOADER_ID,
+  GET_RETRO_ACTION_ITEMS_LOADER_ID,
   GET_RETRO_POINT_LOADER_ID,
   CREATE_RETRO_NOTIFICATION,
+  CREATE_RETRO_ACTION_ITEM_NOTIFICATION,
+  GET_RETRO_ACTION_ITEMS_NOTIFICATION,
   CREATE_RETRO_POINT_NOTIFICATION,
   GET_RETROS_NOTIFICATION,
   GET_RETRO_POINT_NOTIFICATION,
@@ -22,6 +26,10 @@ const addRetros = (retros) => ({
   payload: retros,
 });
 
+const addRetroActionItems = (actionItems) => ({
+  type: ActionTypes.ADD_RETRO_ACTION_ITEMS,
+  payload: actionItems,
+});
 
 export const getAllRetros = () => async (dispatch) => {
   dispatch(showLoader(GET_RETROS_LOADER_ID));
@@ -38,6 +46,20 @@ export const getAllRetros = () => async (dispatch) => {
   dispatch(hideLoader(GET_RETROS_LOADER_ID));
 };
 
+export const getActionItems = (retro) => async (dispatch) => {
+  dispatch(showLoader(GET_RETRO_ACTION_ITEMS_LOADER_ID));
+  try {
+    const actionItems = await RetroService.getActionItems(retro);
+    dispatch(addRetroActionItems(actionItems));
+  } catch (error) {
+    dispatch(showNotification(
+      GET_RETRO_ACTION_ITEMS_NOTIFICATION.id,
+      GET_RETRO_ACTION_ITEMS_NOTIFICATION.type,
+      GET_RETRO_ACTION_ITEMS_NOTIFICATION.message,
+    ));
+  }
+  dispatch(hideLoader(GET_RETRO_ACTION_ITEMS_LOADER_ID));
+};
 
 const addRetroPoints = (retroPoints) => ({
   type: ActionTypes.ADD_RETRO_POINTS,
@@ -88,6 +110,21 @@ export const createRetro = (retro) => async (dispatch) => {
     ));
   }
   dispatch(hideLoader(CREATE_RETRO_LOADER_ID));
+};
+
+export const createActionItem = (actionItem) => async (dispatch) => {
+  dispatch(showLoader(CREATE_RETRO_ACTION_ITEM_LOADER_ID));
+  try {
+    await RetroService.createActionItem(actionItem);
+    dispatch(getActionItems(actionItem.retroId));
+  } catch (error) {
+    dispatch(showNotification(
+      CREATE_RETRO_ACTION_ITEM_NOTIFICATION.id,
+      CREATE_RETRO_ACTION_ITEM_NOTIFICATION.type,
+      CREATE_RETRO_ACTION_ITEM_NOTIFICATION.message,
+    ));
+  }
+  dispatch(hideLoader(CREATE_RETRO_ACTION_ITEM_LOADER_ID));
 };
 
 export const createRetroPoint = (retroPoint) => async (dispatch) => {

@@ -175,6 +175,21 @@ export const GET_RETROS_NOTIFICATION = {
   message: 'Unable to fetch retros. Please try after sometime.',
 };
 
+
+export const CREATE_RETRO_ACTION_ITEM_LOADER_ID = 'CREATE_RETRO_ACTION_ITEM_LOADER_ID';
+export const CREATE_RETRO_ACTION_ITEM_NOTIFICATION = {
+  id: 'CREATE_RETRO_ACTION_ITEM_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to create retro action item. Please try after sometime.',
+};
+
+export const GET_RETRO_ACTION_ITEMS_LOADER_ID = 'GET_RETRO_ACTION_ITEMS_LOADER_ID';
+export const GET_RETRO_ACTION_ITEMS_NOTIFICATION = {
+  id: 'GET_RETRO_ACTION_ITEMS_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch retro action items. Please try after sometime.',
+};
+
 export const GET_RETRO_POINT_LOADER_ID = 'GET_RETRO_POINT_LOADER_ID';
 export const GET_RETRO_POINT_NOTIFICATION = {
   id: 'GET_RETRO_POINT_NOTIFICATION_ID',

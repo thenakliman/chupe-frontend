@@ -8,7 +8,7 @@ describe('Show fund component snapshot', () => {
         const match = {params: {id: 'test-owner'}};
         const funds = [
           {id: 10, amount: 10, transactionType: 'CREDIT'},
-          {id: 11, amount: 10, transactionType: 'DEBIT'}
+          {id: 11, amount: 10, transactionType: 'DEBIT'},
         ];
 
         const wrapper = shallow(<ShowFund fetchFunds={()=>{}}

@@ -1,0 +1,38 @@
+.add-action-item-button {
+    padding: 0.8rem 1rem;
+    color: white;
+    cursor: pointer;
+    margin: 2rem;
+}
+
+.add-action-item-container {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 4rem 3rem;
+    border: 1px solid #ccc;
+    top: 11rem;
+    left: 41rem;
+    position: fixed;
+    width: 35rem;
+}
+
+.action-item-due-date {
+  width: 10rem;
+  margin-bottom: 3rem;
+  padding: 0.5rem;
+}
+
+.action-item-assigned-to {
+  width: 10rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.add-action-item-creation-input {
+    padding: 0.8rem 0;
+    width: 100%;
+    font-size: 1.4rem;
+    margin: 2rem 0;
+    height: 6rem;
+}

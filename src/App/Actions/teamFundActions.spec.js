@@ -35,21 +35,21 @@ describe('team fund action', () => {
       expect(TeamFundService.fetchTeamFund).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: [
              {
-               owner: "james"
-             }
+               owner: 'james',
+             },
            ],
-           type: "ADD_TEAM_FUND"
+           type: 'ADD_TEAM_FUND',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     });
 
@@ -61,26 +61,26 @@ describe('team fund action', () => {
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([
          {
-           payload: "GET_FUND_TYPES_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_TYPES_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: [
              {
-               description: "Birthday",
-               id: 10
+               description: 'Birthday',
+               id: 10,
              },
              {
-               description: "OnSite",
-               id: 11
-             }
+               description: 'OnSite',
+               id: 11,
+             },
            ],
-           type: "ADD_TEAM_FUND_TYPES"
+           type: 'ADD_TEAM_FUND_TYPES',
          },
          {
-           payload: "GET_FUND_TYPES_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_TYPES_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     });
 
@@ -93,29 +93,29 @@ describe('team fund action', () => {
       expect(TeamFundService.addFund).toHaveBeenCalledWith(tFund);
       expect(store.getActions()).toEqual([
          {
-           payload: "ADD_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'ADD_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
-           payload: "ADD_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
+           payload: 'ADD_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
          },
          {
            payload: [
              {
-               owner: "james"
-             }
+               owner: 'james',
+             },
            ],
-           type: "ADD_TEAM_FUND"
+           type: 'ADD_TEAM_FUND',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     });
 
@@ -130,26 +130,26 @@ describe('team fund action', () => {
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: [
              {
                id: 10,
-               type: "Birthday"
+               type: 'Birthday',
              },
              {
                id: 11,
-               type: "OnSite"
-             }
+               type: 'OnSite',
+             },
            ],
-           type: "ADD_FUNDS_FOR_USER"
+           type: 'ADD_FUNDS_FOR_USER',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     });
 
@@ -164,26 +164,26 @@ describe('team fund action', () => {
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([
            {
-             payload: "GET_FUND_LOADER_ID",
-             type: "SHOW_LOADER"
+             payload: 'GET_FUND_LOADER_ID',
+             type: 'SHOW_LOADER',
            },
            {
              payload: [
                {
                  id: 10,
-                 type: "Unknown"
+                 type: 'Unknown',
                },
                {
                  id: 11,
-                 type: "OnSite"
-               }
+                 type: 'OnSite',
+               },
              ],
-             type: "ADD_FUNDS_FOR_USER"
+             type: 'ADD_FUNDS_FOR_USER',
            },
            {
-             payload: "GET_FUND_LOADER_ID",
-             type: "HIDE_LOADER"
-           }
+             payload: 'GET_FUND_LOADER_ID',
+             type: 'HIDE_LOADER',
+           },
          ]);
     });
 
@@ -195,21 +195,21 @@ describe('team fund action', () => {
       expect(TeamFundService.fetchTeamFund).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: {
-             id: "GET_FUND_NOTIFICATION_ID",
-             message: "Unable to fetch fund. Please try after sometime.",
-             type: "ERROR"
+             id: 'GET_FUND_NOTIFICATION_ID',
+             message: 'Unable to fetch fund. Please try after sometime.',
+             type: 'ERROR',
            },
-           type: "SHOW_NOTIFICATION"
+           type: 'SHOW_NOTIFICATION',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     });
 
@@ -221,21 +221,21 @@ describe('team fund action', () => {
       expect(TeamFundService.fetchFundTypes).toHaveBeenCalledWith();
       expect(store.getActions()).toEqual([
          {
-           payload: "GET_FUND_TYPES_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_TYPES_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: {
-             id: "GET_FUND_TYPES_NOTIFICATION_ID",
-             message: "Unable to fetch team fund types. Please try after sometime.",
-             type: "ERROR"
+             id: 'GET_FUND_TYPES_NOTIFICATION_ID',
+             message: 'Unable to fetch team fund types. Please try after sometime.',
+             type: 'ERROR',
            },
-           type: "SHOW_NOTIFICATION"
+           type: 'SHOW_NOTIFICATION',
          },
          {
-           payload: "GET_FUND_TYPES_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_TYPES_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
     });
 
@@ -247,21 +247,21 @@ describe('team fund action', () => {
       expect(TeamFundService.addFund).toHaveBeenCalledWith(fund);
       expect(store.getActions()).toEqual([
          {
-           payload: "ADD_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'ADD_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: {
-             id: "ADD_FUND_NOTIFICATION_ID",
-             message: "Unable to fetch team fund. Please try after sometime.",
-             type: "ERROR"
+             id: 'ADD_FUND_NOTIFICATION_ID',
+             message: 'Unable to fetch team fund. Please try after sometime.',
+             type: 'ERROR',
            },
-           type: "SHOW_NOTIFICATION"
+           type: 'SHOW_NOTIFICATION',
          },
          {
-           payload: "ADD_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'ADD_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
   });
 
@@ -275,29 +275,29 @@ describe('team fund action', () => {
       expect(TeamFundService.addFund).toHaveBeenCalledWith(fund);
       expect(store.getActions()).toEqual([
          {
-           payload: "ADD_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'ADD_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: {
-             id: "GET_FUND_NOTIFICATION_ID",
-             message: "Unable to fetch fund. Please try after sometime.",
-             type: "ERROR"
+             id: 'GET_FUND_NOTIFICATION_ID',
+             message: 'Unable to fetch fund. Please try after sometime.',
+             type: 'ERROR',
            },
-           type: "SHOW_NOTIFICATION"
+           type: 'SHOW_NOTIFICATION',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
          },
          {
-           payload: "ADD_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'ADD_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
   });
 
@@ -309,21 +309,21 @@ describe('team fund action', () => {
       expect(TeamFundService.getFundsForAUser).toHaveBeenCalledWith(owner);
       expect(store.getActions()).toEqual([
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "SHOW_LOADER"
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'SHOW_LOADER',
          },
          {
            payload: {
-             id: "GET_FUND_NOTIFICATION_ID",
-             message: "Unable to fetch fund. Please try after sometime.",
-             type: "ERROR"
+             id: 'GET_FUND_NOTIFICATION_ID',
+             message: 'Unable to fetch fund. Please try after sometime.',
+             type: 'ERROR',
            },
-           type: "SHOW_NOTIFICATION"
+           type: 'SHOW_NOTIFICATION',
          },
          {
-           payload: "GET_FUND_LOADER_ID",
-           type: "HIDE_LOADER"
-         }
+           payload: 'GET_FUND_LOADER_ID',
+           type: 'HIDE_LOADER',
+         },
        ]);
   });
 });
