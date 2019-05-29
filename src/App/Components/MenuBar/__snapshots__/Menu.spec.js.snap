@@ -42,7 +42,7 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
         href="#/retros"
         id="retros-tab"
       >
-        Retros
+        Retrospections
       </a>
       <a
         className="Tab"

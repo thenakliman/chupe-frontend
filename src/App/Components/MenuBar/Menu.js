@@ -74,7 +74,7 @@ export class MenuBar extends React.Component {
                  className={this.doesLocationMatchTab(location, 'retros')?
                             'Selected-Tab':
                             'Tab'}>
-                   Retros
+                   Retrospections
               </a>
               <a href='#/feedback-sessions'
                  id="feedback-session-tab"
