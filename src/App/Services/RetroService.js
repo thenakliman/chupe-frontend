@@ -1,4 +1,4 @@
-import {get, post} from './client';
+import {get, post, put} from './client';
 
 const CHUPE_RETRO_URL='/api/v1';
 
@@ -25,6 +25,10 @@ export const RetroService = {
 
   async createActionItem(actionItem) {
       return await post(`${CHUPE_RETRO_URL}/retro-action-items`, actionItem);
+  },
+
+  async changeStatus(retroId, status) {
+      return await put(`${CHUPE_RETRO_URL}/retro-status/${retroId}`, {status: status});
   },
 
   async castVote(retroPointId) {

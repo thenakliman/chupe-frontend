@@ -16,6 +16,7 @@ export class Retro extends React.Component {
       this.state = {creatingRetroPoint: false, creatingRetroPointType: ''};
       this.createRetroPoint = this.createRetroPoint.bind(this);
       this.createActionItem = this.createActionItem.bind(this);
+      this.changeStatus = this.changeStatus.bind(this);
       this.toggleCreatingRetroPoint = this.toggleCreatingRetroPoint.bind(this);
     }
 
@@ -29,6 +30,7 @@ export class Retro extends React.Component {
     componentWillMount() {
       this.props.getRetroPoints(this.props.match.params.id);
       this.props.getActionItems(this.props.match.params.id);
+      this.props.getAllRetros();
       this.props.getUsers();
     }
 
@@ -47,6 +49,10 @@ export class Retro extends React.Component {
       this.props.createActionItem(actionItem);
       this.toggleCreatingRetroPoint();
       this.setState({creatingRetroPointType: ''});
+    }
+
+    changeStatus(status) {
+      this.props.changeStatus(this.props.match.params.id, status);
     }
 
     renderActionItem() {
@@ -100,8 +106,26 @@ export class Retro extends React.Component {
     }
 
     render() {
+      const status = this.props.retros.filter(
+            retro => retro.id == this.props.match.params.id)[0].status;
+
+      const message = {
+        'CREATED': 'Start',
+        'IN_PROGRESS': 'Close'
+      };
+      const nextStatus = {
+        'CREATED': 'IN_PROGRESS',
+        'IN_PROGRESS': 'CLOSED'
+      }
+
       return (<div id='retro-points-container-id'
                   className='retro-points-container'>
+        {['CREATED', 'IN_PROGRESS'].includes(status) && <button
+                id={'change-status-id'}
+                className={'change-status-button'}
+                onClick={() => this.changeStatus(nextStatus[status])}>
+             {message[status]}
+        </button>}
         {this.state.creatingRetroPoint &&
          [DONE_WELL, NEED_IMPROVEMENT].includes(this.state.creatingRetroPointType) &&
           <AddRetroPoint
@@ -169,8 +193,10 @@ Retro.propTypes = {
   users: propTypes.array.isRequired,
   createActionItem: propTypes.func.isRequired,
   retroPoints: propTypes.array.isRequired,
+  getAllRetros: propTypes.array.isRequired,
   vote: propTypes.func.isRequired,
   getRetroPoints: propTypes.func.isRequired,
   createRetroPoint: propTypes.func.isRequired,
   getUsers: propTypes.func.isRequired,
+  changeStatus: propTypes.func.isRequired,
 };

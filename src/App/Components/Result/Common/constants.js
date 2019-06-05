@@ -196,3 +196,10 @@ export const GET_RETRO_POINT_NOTIFICATION = {
   type: NotificationType.ERROR,
   message: 'Unable to fetch retro points. Please try after sometime.',
 };
+
+export const CHANGE_RETRO_STATUS_ID = 'CHANGE_RETRO_STATUS_ID';
+export const CHANGE_RETRO_STATUS_NOTIFICATION = {
+  id: 'CHANGE_RETRO_STATUS_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to change status. Please try after sometime.',
+};

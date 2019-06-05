@@ -2,6 +2,7 @@ import {
  getAllRetros,
  getActionItems,
  getRetroPoints,
+ changeStatus,
  castVote,
  createRetroPoint,
  createActionItem,
@@ -269,6 +270,101 @@ describe('Get_RETROS action', () => {
          payload: 'CREATE_RETRO_LOADER_ID',
          type: 'HIDE_LOADER',
        },
+     ]);
+  });
+
+  it('Should show error message when change retro status fails', async () => {
+    spyOn(RetroService, 'changeStatus').and.throwError('failed');
+    await store.dispatch(changeStatus('id', 'status'));
+
+    expect(RetroService.changeStatus).toHaveBeenCalledWith('id', 'status');
+    expect(store.getActions()).toEqual([
+       {
+         payload: 'CHANGE_RETRO_STATUS_ID',
+         type: 'SHOW_LOADER',
+       },
+       {
+         payload: {
+           id: 'CHANGE_RETRO_STATUS_NOTIFICATION_ID',
+           message: 'Unable to change status. Please try after sometime.',
+           type: 'ERROR',
+         },
+         type: 'SHOW_NOTIFICATION',
+       },
+       {
+         payload: 'CHANGE_RETRO_STATUS_ID',
+         type: 'HIDE_LOADER',
+       },
+     ]);
+  });
+
+  it('Should show error notification when fetch notification fails for retro status change', async () => {
+    const retro = {name: 'retro-name'};
+    spyOn(RetroService, 'changeStatus');
+    spyOn(RetroService, 'getRetros').and.throwError('some error');
+
+    await store.dispatch(changeStatus('id', 'status'));
+
+    expect(RetroService.changeStatus).toHaveBeenCalledWith('id', 'status');
+    expect(RetroService.getRetros).toHaveBeenCalledWith();
+    expect(store.getActions()).toEqual([
+       {
+         payload: 'CHANGE_RETRO_STATUS_ID',
+         type: 'SHOW_LOADER',
+       },
+       {
+         payload: 'GET_RETROS_LOADER_ID',
+         type: 'SHOW_LOADER',
+       },
+       {
+         payload: {
+           id: 'GET_RETROS_NOTIFICATION_ID',
+           message: 'Unable to fetch retros. Please try after sometime.',
+           type: 'ERROR',
+         },
+         type: 'SHOW_NOTIFICATION',
+       },
+       {
+         payload: 'GET_RETROS_LOADER_ID',
+         type: 'HIDE_LOADER',
+       },
+       {
+         payload: 'CHANGE_RETRO_STATUS_ID',
+         type: 'HIDE_LOADER',
+       },
+     ]);
+  });
+
+  it('Should change retro status', async () => {
+    const retro = {name: 'retro-name'};
+    spyOn(RetroService, 'changeStatus');
+    spyOn(RetroService, 'getRetros').and.returnValues([]);
+
+    await store.dispatch(changeStatus('id', 'status'));
+
+    expect(RetroService.changeStatus).toHaveBeenCalledWith('id', 'status');
+    expect(RetroService.getRetros).toHaveBeenCalledWith();
+    expect(store.getActions()).toEqual([
+       {
+         payload: 'CHANGE_RETRO_STATUS_ID',
+         type: 'SHOW_LOADER',
+       },
+       {
+         payload: 'GET_RETROS_LOADER_ID',
+         type: 'SHOW_LOADER',
+       },
+       {
+         payload: 'CHANGE_RETRO_STATUS_ID',
+         type: 'HIDE_LOADER',
+       },
+       {
+         payload: [],
+         type: 'ADD_RETROS',
+       },
+       {
+         payload: 'GET_RETROS_LOADER_ID',
+         type: 'HIDE_LOADER',
+       }
      ]);
   });
 

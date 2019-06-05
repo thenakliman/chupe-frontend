@@ -5,6 +5,13 @@ exports[`Retro should match snapshot 1`] = `
   className="retro-points-container"
   id="retro-points-container-id"
 >
+  <button
+    className="change-status-button"
+    id="change-status-id"
+    onClick={[Function]}
+  >
+    Start
+  </button>
   <div
     className="retro-point-header-container"
   >

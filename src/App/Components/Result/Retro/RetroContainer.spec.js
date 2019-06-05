@@ -26,6 +26,12 @@ describe('Retro', () => {
     expect(props.users).toEqual(state.users);
   });
 
+  it('should map retros', () => {
+    const state = {retro: {retros: []}};
+    const props = mapStateToProps(state);
+    expect(props.retros).toEqual(state.retro.retros);
+  });
+
   it('should call fetch retro points on component mount', () => {
     const retroId = 1029;
     const fakeAction = 'fake-action';
@@ -89,6 +95,28 @@ describe('Retro', () => {
     mapDispatchToProps(dispatch).getUsers();
 
     expect(UserActions.getAllUsers).toHaveBeenCalledWith();
+    expect(dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('should change status', () => {
+    const fakeAction = 'fake-action';
+    const dispatch = jest.fn();
+    spyOn(RetroActions, 'changeStatus').and.returnValue(fakeAction);
+
+    mapDispatchToProps(dispatch).changeStatus('id', 'status');
+
+    expect(RetroActions.changeStatus).toHaveBeenCalledWith('id', 'status');
+    expect(dispatch).toHaveBeenCalledWith(fakeAction);
+  });
+
+  it('should have getAllRetros in props', () => {
+    const fakeAction = 'fake - action';
+    spyOn(RetroActions, 'getAllRetros').and.returnValue(fakeAction);
+    const dispatch = jest.fn();
+    const props = mapDispatchToProps(dispatch);
+
+    props.getAllRetros();
+
     expect(dispatch).toHaveBeenCalledWith(fakeAction);
   });
 });

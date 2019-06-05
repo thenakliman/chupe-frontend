@@ -18,6 +18,8 @@ import {
   GET_RETROS_NOTIFICATION,
   GET_RETRO_POINT_NOTIFICATION,
   CAST_VOTE_NOTIFICATION,
+  CHANGE_RETRO_STATUS_ID,
+  CHANGE_RETRO_STATUS_NOTIFICATION,
   } from '../Components/Result/Common/constants';
 
 
@@ -44,6 +46,21 @@ export const getAllRetros = () => async (dispatch) => {
     ));
   }
   dispatch(hideLoader(GET_RETROS_LOADER_ID));
+};
+
+export const changeStatus = (retroId, status) => async (dispatch) => {
+  dispatch(showLoader(CHANGE_RETRO_STATUS_ID));
+  try {
+    await RetroService.changeStatus(retroId, status);
+    dispatch(getAllRetros());
+  } catch (error) {
+    dispatch(showNotification(
+      CHANGE_RETRO_STATUS_NOTIFICATION.id,
+      CHANGE_RETRO_STATUS_NOTIFICATION.type,
+      CHANGE_RETRO_STATUS_NOTIFICATION.message,
+    ));
+  }
+  dispatch(hideLoader(CHANGE_RETRO_STATUS_ID));
 };
 
 export const getActionItems = (retro) => async (dispatch) => {

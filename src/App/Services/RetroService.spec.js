@@ -68,4 +68,13 @@ describe('Retro Service', () => {
 
         expect(Client.get).toHaveBeenCalledWith('/api/v1/retro-action-items?retro=100');
     });
+
+    it('Should change status', async () => {
+        spyOn(Client, 'put').and.returnValue();
+
+        await RetroService.changeStatus(100, 'CLOSED');
+
+        expect(Client.put)
+            .toHaveBeenCalledWith('/api/v1/retro-status/100', {status: 'CLOSED'});
+    });
 });
