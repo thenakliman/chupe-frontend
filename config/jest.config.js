@@ -20,5 +20,6 @@ module.exports = {
       "lines": 81,
       "statements": -22
     }
-  }
+  },
+  testEnvironment: 'node'
 }

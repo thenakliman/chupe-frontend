@@ -1,0 +1,42 @@
+{
+  "consumer": {
+    "name": "chupe-frontend"
+  },
+  "provider": {
+    "name": "chupe"
+  },
+  "interactions": [
+    {
+      "description": "when all retros are fetched",
+      "providerState": "should return all retros",
+      "request": {
+        "method": "GET",
+        "path": "/api/v1/retros",
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Authorization": "token"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "Application/json"
+        },
+        "body": [
+          {
+            "name": "retro name",
+            "maximumVote": 3,
+            "id": 101,
+            "status": "CREATED",
+            "createdBy": "James"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

@@ -107,16 +107,16 @@ export class Retro extends React.Component {
 
     render() {
       const status = this.props.retros.filter(
-            retro => retro.id == this.props.match.params.id)[0].status;
+            (retro) => retro.id == this.props.match.params.id)[0].status;
 
       const message = {
         'CREATED': 'Start',
-        'IN_PROGRESS': 'Close'
+        'IN_PROGRESS': 'Close',
       };
       const nextStatus = {
         'CREATED': 'IN_PROGRESS',
-        'IN_PROGRESS': 'CLOSED'
-      }
+        'IN_PROGRESS': 'CLOSED',
+      };
 
       return (<div id='retro-points-container-id'
                   className='retro-points-container'>

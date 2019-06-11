@@ -23,6 +23,7 @@
     "lintFix": "eslint src --fix"
   },
   "devDependencies": {
+    "@pact-foundation/pact": "^8.2.4",
     "axios": "^0.18.0",
     "axios-mock-adapter": "^1.15.0",
     "babel-cli": "^6.26.0",

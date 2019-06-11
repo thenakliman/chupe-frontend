@@ -364,7 +364,7 @@ describe('Get_RETROS action', () => {
        {
          payload: 'GET_RETROS_LOADER_ID',
          type: 'HIDE_LOADER',
-       }
+       },
      ]);
   });
 
