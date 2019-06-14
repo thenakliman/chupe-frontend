@@ -17,7 +17,7 @@ describe('Contract test', () => {
       port: 80,
       host: '127.0.0.1',
       log: path.resolve(process.cwd(), 'logs', 'pact.log'),
-      dir: path.resolve(process.cwd(), '__tests__/pact/json'),
+      dir: path.resolve(process.cwd(), '__tests__/pacts/json'),
       logLevel: 'DEBUG',
       pactfileWriteMode: 'update',
       spec: 2,

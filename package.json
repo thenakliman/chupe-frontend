@@ -19,6 +19,7 @@
     "build": "webpack --config config/webpack.config.js",
     "test": "jest --config config/jest.config.js",
     "contractTest": "jest __tests__/pacts/*.pact.js",
+    "publishPact": "node config/publishPact.js",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*[^spec].js",
     "lintFix": "eslint src --fix"
