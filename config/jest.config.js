@@ -2,7 +2,7 @@ module.exports = {
   "rootDir": "../",
   "verbose": true,
   "collectCoverage": true,
-  "testPathIgnorePatterns": ["/node_modules/"],
+  "testPathIgnorePatterns": ["/node_modules/", "pacts"],
   "collectCoverageFrom": ["./src/**/*.js"],
   "setupFiles": ["<rootDir>/config/setup.js"],
   "moduleNameMapper": {
@@ -20,6 +20,5 @@ module.exports = {
       "lines": 81,
       "statements": -22
     }
-  },
-  testEnvironment: 'node'
+  }
 }
