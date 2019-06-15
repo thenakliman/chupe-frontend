@@ -2,7 +2,7 @@ const pact = require('@pact-foundation/pact-node');
 const path = require('path');
 
 const opts = {
-  pactFilesOrDirs: [path.resolve(__dirname, '../__tests__/pacts/json/')],
+  pactFilesOrDirs: [path.resolve(__dirname, '../pacts')],
   pactBroker: 'http://localhost',
   tags: ['test'],
   consumerVersion: '1.0.0'

@@ -17,7 +17,7 @@ describe('Contract test', () => {
       port: 80,
       host: '127.0.0.1',
       log: path.resolve(process.cwd(), 'logs', 'pact.log'),
-      dir: path.resolve(process.cwd(), '__tests__/pacts/json'),
+      dir: path.resolve(process.cwd(), 'pacts'),
       logLevel: 'DEBUG',
       pactfileWriteMode: 'update',
       spec: 2,
@@ -56,7 +56,7 @@ describe('Contract test', () => {
        },
        willRespondWith: {
          status: 200,
-         headers: {'Content-Type': 'Application/json'},
+         headers: {'Content-Type': 'application/json'},
          body: retros,
         },
       });
