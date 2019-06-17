@@ -9,7 +9,7 @@ import adapter from 'axios/lib/adapters/http';
 
 
 describe('Contract test', () => {
-  const {Pact} = require('@pact-foundation/pact');
+  const {Pact, Matchers} = require('@pact-foundation/pact');
   const path = require('path');
   const provider = new Pact({
       consumer: 'chupe-frontend',
@@ -35,13 +35,13 @@ describe('Contract test', () => {
     let retros;
     beforeEach(() => {
       spyOn(cookie, 'getToken').and.returnValue('token');
-      retros = [{
+      retros = Matchers.like({
         'name': 'retro name',
         'maximumVote': 3,
         'id': 101,
         'status': 'CREATED',
         'createdBy': 'James',
-      }];
+      });
 
       provider.addInteraction({
        state: 'should return all retros',
@@ -57,7 +57,7 @@ describe('Contract test', () => {
        willRespondWith: {
          status: 200,
          headers: {'Content-Type': 'application/json'},
-         body: retros,
+         body: Matchers.eachLike(retros, {min: 1})
         },
       });
     });
@@ -70,6 +70,7 @@ describe('Contract test', () => {
           }).then(() => {
           provider.verify()
               .then(() => done(), (error) => {
+                  console.log("Failed to verify pact", error);
                   done.fail(error);
           });
         });
