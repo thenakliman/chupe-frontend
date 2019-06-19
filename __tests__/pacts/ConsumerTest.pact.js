@@ -23,27 +23,31 @@ describe('Contract test', () => {
       spec: 2,
     });
 
-    beforeAll((done) => {
-        provider.setup().then(() => done());
-    });
+  beforeAll((done) => {
+      provider.setup().then(() => done());
+  });
 
-    afterAll((done) => {
-        provider.finalize().then(() => done());
-    });
+  afterAll((done) => {
+      provider.finalize().then(() => done());
+  });
 
-  describe('when executed', () => {
+  afterEach(() => {
+    return provider.verify();
+  })
+
+  describe('Get Retro', () => {
     let retros;
     beforeEach(() => {
       spyOn(cookie, 'getToken').and.returnValue('token');
-      retros = Matchers.like({
+      retros = {
         'name': 'retro name',
         'maximumVote': 3,
         'id': 101,
         'status': 'CREATED',
         'createdBy': 'James',
-      });
+      };
 
-      provider.addInteraction({
+      return provider.addInteraction({
        state: 'should return all retros',
        uponReceiving: 'when all retros are fetched',
        withRequest: {
@@ -57,7 +61,7 @@ describe('Contract test', () => {
        willRespondWith: {
          status: 200,
          headers: {'Content-Type': 'application/json'},
-         body: Matchers.eachLike(retros, {min: 1})
+         body: Matchers.eachLike(Matchers.like(retros), {min: 1})
         },
       });
     });
@@ -65,15 +69,52 @@ describe('Contract test', () => {
     it('should return retros', (done) => {
       RetroService.getRetros()
         .then((response) => {
-            const retros = response;
-            expect(retros).toEqual(retros);
-          }).then(() => {
-          provider.verify()
-              .then(() => done(), (error) => {
-                  console.log("Failed to verify pact", error);
-                  done.fail(error);
-          });
+          expect(response).toEqual([retros]);
+          done();
         });
     });
+  });
+
+  describe('Get Retro Point', () => {
+    let retroPoint;
+    beforeEach(() => {
+      spyOn(cookie, 'getToken').and.returnValue('token');
+      retroPoint = {
+        id: 10,
+        retroId: 101,
+        description: "some description",
+        type: "NEED_IMROVEMENT",
+        addedBy: "someUser",
+        votes: 12
+      };
+
+      return provider.addInteraction({
+       state: 'should have retro points',
+       uponReceiving: 'returns all retros points for a retro',
+       withRequest: {
+         method: 'GET',
+         path: '/api/v1/retro-points',
+         query: {retroId: '10'},
+         headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Authorization': 'token',
+         },
+       },
+       willRespondWith: {
+         status: 200,
+         headers: {'Content-Type': 'application/json'},
+         body: Matchers.eachLike(Matchers.like(retroPoint), {min: 1})
+        },
+      });
+    });
+
+    it('should return retro points', (done) => {
+      const retroId = 10;
+      RetroService.getRetroPoints(retroId)
+        .then((response) => {
+          expect(response).toEqual([retroPoint]);
+          done();
+        })
+      });
   });
 });
