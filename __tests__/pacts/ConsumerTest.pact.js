@@ -117,4 +117,55 @@ describe('Contract test', () => {
         })
       });
   });
+
+  describe('get retro action items', () => {
+    let retroActionItem;
+    beforeEach(() => {
+      spyOn(cookie, 'getToken').and.returnValue('token');
+
+      retroActionItem = {
+        id: Matchers.integer(10),
+        description: Matchers.like('some description'),
+        status: Matchers.like('IN_PROGRESS'),
+        assignedTo: Matchers.like('assigned-to'),
+        createdBy: Matchers.like('created-by'),
+        deadlineToAct: Matchers.like('2019-05-14T14:54:42.296+0000')
+      };
+
+      return provider.addInteraction({
+       state: 'should have retro action items',
+       uponReceiving: 'returns retro action item',
+       withRequest: {
+         method: 'GET',
+         path: '/api/v1/retro-action-items',
+         query: {retro: '10'},
+         headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Authorization': 'token',
+         },
+       },
+       willRespondWith: {
+         status: 200,
+         headers: {'Content-Type': 'application/json'},
+         body: Matchers.eachLike(retroActionItem, {min: 1})
+        },
+      });
+    });
+
+    it('should return retro action items', (done) => {
+      const retroId = 10;
+      RetroService.getActionItems(retroId)
+        .then((response) => {
+          expect(response).toEqual([{
+            id: 10,
+            description: 'some description',
+            status: 'IN_PROGRESS',
+            assignedTo: 'assigned-to',
+            createdBy: 'created-by',
+            deadlineToAct: '2019-05-14T14:54:42.296+0000'
+          }]);
+          done();
+        })
+      });
+  });
 });
