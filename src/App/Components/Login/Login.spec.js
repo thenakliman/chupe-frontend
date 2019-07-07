@@ -19,7 +19,7 @@ describe('Login page', () => {
     History.history = {push: jest.fn()};
     const wrapper = shallow(<Login authenticate={()=>{}} username='lucky'/>);
     await wrapper.find('#login-page-get-started-button-id').simulate('click');
-    expect(History.history.push).toHaveBeenCalledWith('/users');
+    expect(History.history.push).toHaveBeenCalledWith('/dashboard');
   });
 
   it('should have input field for username', () => {

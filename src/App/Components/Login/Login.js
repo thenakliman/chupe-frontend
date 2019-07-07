@@ -37,7 +37,7 @@ export class Login extends React.Component {
       await this.props.authenticate(this.state.username, this.state.password);
 
       if (this.props.username) {
-        history.push('/users');
+        history.push('/dashboard');
       }
   }
   /** Renders Login component.
