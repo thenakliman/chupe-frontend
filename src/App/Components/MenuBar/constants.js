@@ -6,5 +6,5 @@ export const LOCATION_TO_TAB_MAPPING = {
   'retros': ['retros'],
   'feedbackSessions': ['feedback-sessions', 'feedbacks'],
   'meetings': ['meetings', 'meeting-discussion-items'],
-  'home': ['home'],
+  'home': ['dashboard'],
 };
