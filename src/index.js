@@ -38,6 +38,7 @@ import FeedbackSessionsContainer from './App/Components/Result/Feedback/Feedback
 import FeedbacksContainer from './App/Components/Result/Feedback/FeedbacksContainer';
 import MeetingsContainer from './App/Components/Result/Meeting/MeetingsContainer';
 import MeetingDiscussionItemsContainer from './App/Components/Result/Meeting/MeetingDiscussionItemsContainer';
+import ActionItemContainer from './App/Components/Result/ActionItem/ActionItemContainer';
 import Loader from './App/Components/Result/Common/Loader';
 import Notification from './App/Components/Result/Common/NotificationContainer';
 
@@ -169,11 +170,21 @@ const MeetingDiscussionItemsComponent = (props) => (
   </div>
 )
 
+const ActionItemsComponent = (props) => (
+  <div>
+    <MenuBar {...props}/>
+    <Notification />
+    <Loader/>
+    <ActionItemContainer {...props}/>
+  </div>
+)
+
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
        <div className={'root-div'}>
          <Route exact path="/" component={LoginContainer} />
+         <Route path="/dashboard" component={ActionItemsComponent}/>
          <Route path="/users" component={UserComponent}/>
          <Route path="/questions" component={ListQuestionComponent}/>
          <Route path="/team-funds" component={TeamFundComponent}/>

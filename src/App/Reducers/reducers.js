@@ -10,10 +10,12 @@ import {retro} from './retroReducers';
 import {feedback} from './feedbackReducers';
 import {meeting} from './meetingReducers';
 import {loaders} from './loaderReducers';
+import {actionItems} from './actionItemReducers';
 import {notifications} from './notificationReducers';
 
 
 export const rootReducers = combineReducers({
+  actionItems,
   answers,
   users,
   questions,

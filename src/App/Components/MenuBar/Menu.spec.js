@@ -91,4 +91,11 @@ describe('Menu Bar Component', () => {
         <MenuBar location={location}/>);
     expect(wrapper.find('#meetings-tab').length).toEqual(1);
   });
+
+  it('Should have home tabs', () => {
+    const location = {pathname: '/home'};
+    const wrapper = shallow(
+        <MenuBar location={location}/>);
+    expect(wrapper.find('#home-tab').length).toEqual(1);
+  });
 });

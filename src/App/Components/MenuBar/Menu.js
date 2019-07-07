@@ -41,6 +41,13 @@ export class MenuBar extends React.Component {
         <div>
           <header id="chupe-header" className="Header">
             <span className='manu-bar-tabs'>
+              <a href='#/dashboard'
+                 id="home-tab"
+                 className={this.doesLocationMatchTab(location, 'home')?
+                            'Selected-Tab':
+                            'Tab'}>
+                     Home
+              </a>
               <a href='#/users'
                  id="users-tab"
                  className={this.doesLocationMatchTab(location, 'users')?

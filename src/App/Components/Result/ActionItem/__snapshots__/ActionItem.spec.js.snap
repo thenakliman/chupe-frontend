@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionItem should match snapshot 1`] = `
+<div
+  className="action-item-container"
+  id="action-item-container-id"
+>
+  <div>
+    <table
+      id="all-action-items-ordered-list"
+    >
+      <thead>
+        <tr
+          className="action-item-table-header"
+        >
+          <th>
+             Description 
+          </th>
+          <th>
+             Type 
+          </th>
+          <th>
+             Deadline 
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        className="action-item-table-body"
+        id="all-action-item-table-body-id"
+      >
+        <tr
+          className="selectable-row"
+          id="action-item-row-id-undefined"
+          key="undefined"
+        >
+          <td
+            className="action-item-row"
+          >
+            description retro
+          </td>
+          <td>
+             
+            RETROSPECTION
+          </td>
+          <td>
+             
+            2019-06-05T00:00:00.000+0000
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

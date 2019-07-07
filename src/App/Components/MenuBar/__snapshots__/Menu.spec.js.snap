@@ -10,6 +10,13 @@ exports[`Menu Bar Snapshot should match snapshot 1`] = `
       className="manu-bar-tabs"
     >
       <a
+        className="Tab"
+        href="#/dashboard"
+        id="home-tab"
+      >
+        Home
+      </a>
+      <a
         className="Selected-Tab"
         href="#/users"
         id="users-tab"

@@ -203,3 +203,10 @@ export const CHANGE_RETRO_STATUS_NOTIFICATION = {
   type: NotificationType.ERROR,
   message: 'Unable to change status. Please try after sometime.',
 };
+
+export const GET_ACTION_ITEMS_LOADER_ID = 'GET_ACTION_ITEMS_LOADER_ID';
+export const GET_ACTION_ITEMS_NOTIFICATION = {
+  id: 'GET_ACTION_ITEMS_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch action items. Please try after sometime.',
+};
