@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import {
+  retroStateToMessageMapping,
   DONE_WELL,
   ACTION_ITEM,
   NEED_IMPROVEMENT} from './constants';
@@ -109,10 +110,6 @@ export class Retro extends React.Component {
       const status = this.props.retros.filter(
             (retro) => retro.id == this.props.match.params.id)[0].status;
 
-      const message = {
-        'CREATED': 'Start',
-        'IN_PROGRESS': 'Close',
-      };
       const nextStatus = {
         'CREATED': 'IN_PROGRESS',
         'IN_PROGRESS': 'CLOSED',
@@ -124,7 +121,7 @@ export class Retro extends React.Component {
                 id={'change-status-id'}
                 className={'change-status-button'}
                 onClick={() => this.changeStatus(nextStatus[status])}>
-             {message[status]}
+             {retroStateToMessageMapping[status]}
         </button>}
         {this.state.creatingRetroPoint &&
          [DONE_WELL, NEED_IMPROVEMENT].includes(this.state.creatingRetroPointType) &&
@@ -170,20 +167,22 @@ export class Retro extends React.Component {
             {this.renderBasedOnFilter(
                 (retroPoint) => DONE_WELL === retroPoint.type)}
         </div>
-        <div className='retro-point-header-container'>
-          <div className='retro-point-section'>Action Items</div>
-          <button id='retro-button-for-action-item-id'
-            className='add-retro-point'
-            type='button'
-            onClick={() => this.toggleCreatingRetroPoint(ACTION_ITEM)}
-          >
-              Add Action Item
-          </button>
-        </div>
-        <hr className='horizontal-line'/>
-        <div className='retro-point-category'>
-            {this.renderActionItem()}
-        </div>
+        {status === 'IN_PROGRESS' && <div className={'retro-action-item-container'}>
+          <div className='retro-point-header-container'>
+            <div className='retro-point-section'>Action Items</div>
+            <button id='retro-button-for-action-item-id'
+              className='add-retro-point'
+              type='button'
+              onClick={() => this.toggleCreatingRetroPoint(ACTION_ITEM)}
+            >
+                Add Action Item
+            </button>
+          </div>
+          <hr className='horizontal-line'/>
+          <div className='retro-point-category'>
+              {this.renderActionItem()}
+          </div>
+        </div>}
       </div>);
     }
 }

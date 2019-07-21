@@ -115,7 +115,30 @@ describe('Retro', () => {
     expect(wrapper.find('#retro-point-description-2').length).toBe(1);
   });
 
-  it('should show action item of retro point', () => {
+  it('should show action item of retro point in IN_PROGRESS state', () => {
+    const retroId = 1029;
+    const getActionItems = jest.fn();
+    const actionItems = [{
+        id: 2,
+        description: 'description retro',
+        assignedTo: 'aise-hi'
+    }];
+
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={[]}
+               retros={[{id: 1029, status: 'IN_PROGRESS'}]}
+               actionItems={actionItems}
+               getUsers={jest.fn()}
+               getAllRetros={jest.fn()}
+               getActionItems={getActionItems}
+               getRetroPoints={jest.fn()}
+        />);
+
+    expect(wrapper.find('#action-item-description-2').length).toBe(1);
+  });
+
+  it('should show action item of retro point in CREATED state', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
@@ -135,7 +158,30 @@ describe('Retro', () => {
                getRetroPoints={jest.fn()}
         />);
 
-    expect(wrapper.find('#action-item-description-2').length).toBe(1);
+    expect(wrapper.find('#action-item-description-2').length).toBe(0);
+  });
+
+  it('should show action item of retro point in DONE state', () => {
+    const retroId = 1029;
+    const getActionItems = jest.fn();
+    const actionItems = [{
+        id: 2,
+        description: 'description retro',
+        assignedTo: 'aise-hi'
+    }];
+
+    const wrapper = shallow(
+        <Retro match={{params: {id: retroId}}}
+               retroPoints={[]}
+               retros={[{id: 1029, status: 'CLOSED'}]}
+               actionItems={actionItems}
+               getUsers={jest.fn()}
+               getAllRetros={jest.fn()}
+               getActionItems={getActionItems}
+               getRetroPoints={jest.fn()}
+        />);
+
+    expect(wrapper.find('#action-item-description-2').length).toBe(0);
   });
 
   it('should show action item of retro point', () => {
@@ -380,7 +426,7 @@ describe('Retro', () => {
                vote={castVote}
                getUsers={jest.fn()}
                getAllRetros={jest.fn()}
-               retros={[{id: 1029, status: 'CREATED'}]}
+               retros={[{id: 1029, status: 'IN_PROGRESS'}]}
                getActionItems={jest.fn()}
                getRetroPoints={getRetroPoints}
                createRetroPoint={jest.fn()}

@@ -5,6 +5,10 @@
     flex-wrap: wrap;
 }
 
+.retro-action-item-container {
+  width: 100%;
+}
+
 .retro-point {
     margin: 1rem;
     width: 25rem;
