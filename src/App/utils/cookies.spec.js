@@ -1,7 +1,7 @@
 import * as cookies from './cookies';
 
 describe('getCookie', () => {
-  afterEach(()=>{
+  afterEach(() => {
     cookies.cookies.remove('token');
     cookies.cookies.remove('expiryTime');
   });
@@ -19,13 +19,13 @@ describe('getCookie', () => {
     const token = 'testToken';
     cookies.cookies.set('token', token);
     // todo(thenakliman) hack, use something better to set date of previous day
-    cookies.cookies.set('expiryTime', Date.now()+10000);
+    cookies.cookies.set('expiryTime', Date.now() + 10000);
     expect(cookies.getToken()).toEqual(token);
   });
 
   it('should return null if expiry time is less than current time', () => {
     cookies.cookies.set('token', 'TestToken');
-    cookies.cookies.set('expiryTime', `${Date.now()/1000 - 1}`);
+    cookies.cookies.set('expiryTime', `${Date.now() / 1000 - 1}`);
     expect(cookies.getToken()).toEqual(null);
   });
 
@@ -59,7 +59,7 @@ describe('set cookies', () => {
 
 describe('remove cookies', () => {
   beforeEach(() => {
-      cookies.setCookies(token);
+    cookies.setCookies(token);
   });
 
   it('should remove token cookies', () => {

@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import {AnswerService} from '../Services/AnswerService';
-import {getAnswers, addAnswer, updateAnswer} from './answerActions';
+import {addAnswer, getAnswers, updateAnswer} from './answerActions';
 
 describe('should create answer actions', () => {
   let store;
@@ -20,26 +20,26 @@ describe('should create answer actions', () => {
 
     expect(AnswerService.getAnswers).toHaveBeenCalledWith(questionId);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_ANSWERS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: [
-           {
-             id: 1011,
-           },
-           {
-             id: 1012,
-           },
-         ],
-         type: 'ADD_ANSWERS',
-       },
-       {
-         payload: 'GET_ANSWERS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_ANSWERS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: [
+          {
+            id: 1011,
+          },
+          {
+            id: 1012,
+          },
+        ],
+        type: 'ADD_ANSWERS',
+      },
+      {
+        payload: 'GET_ANSWERS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message if failed to get Answer', async () => {
@@ -48,23 +48,23 @@ describe('should create answer actions', () => {
     await store.dispatch(getAnswers(questionId));
     expect(AnswerService.getAnswers).toHaveBeenCalledWith(questionId);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_ANSWERS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_ANSWERS_NOTIFICATION_ID',
-           message: 'Unable to fetch answers. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_ANSWERS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_ANSWERS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_ANSWERS_NOTIFICATION_ID',
+          message: 'Unable to fetch answers. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_ANSWERS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('should dispatch add answer action', async () => {
@@ -75,22 +75,22 @@ describe('should create answer actions', () => {
 
     expect(AnswerService.addAnswer).toHaveBeenCalledWith(answer);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'ANSWER_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 1011,
-         },
-         type: 'ADD_ANSWER',
-       },
-       {
-         payload: 'ANSWER_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]
-      );
+          {
+            payload: 'ANSWER_LOADER_ID',
+            type: 'SHOW_LOADER',
+          },
+          {
+            payload: {
+              id: 1011,
+            },
+            type: 'ADD_ANSWER',
+          },
+          {
+            payload: 'ANSWER_LOADER_ID',
+            type: 'HIDE_LOADER',
+          },
+        ]
+    );
   });
 
   it('Should show error message if failed to add Answer', async () => {
@@ -101,23 +101,23 @@ describe('should create answer actions', () => {
 
     expect(AnswerService.addAnswer).toHaveBeenCalledWith(answer);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'ANSWER_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'ANSWER_NOTIFICATION_ID',
-           message: 'Unable to answer. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'ANSWER_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'ANSWER_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'ANSWER_NOTIFICATION_ID',
+          message: 'Unable to answer. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'ANSWER_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('should dispatch update answer action', async () => {
@@ -130,21 +130,21 @@ describe('should create answer actions', () => {
     expect(AnswerService.updateAnswer).toHaveBeenCalledWith(answerId, answer);
 
     expect(store.getActions()).toEqual([
-       {
-         payload: 'UPDATE_ANSWER_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 1033,
-         },
-         type: 'UPDATE_ANSWER',
-       },
-       {
-         payload: 'UPDATE_ANSWER_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'UPDATE_ANSWER_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 1033,
+        },
+        type: 'UPDATE_ANSWER',
+      },
+      {
+        payload: 'UPDATE_ANSWER_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message if failed to update Answer', async () => {
@@ -157,22 +157,22 @@ describe('should create answer actions', () => {
 
     expect(AnswerService.updateAnswer).toHaveBeenCalledWith(answerId, answer);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'UPDATE_ANSWER_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'UPDATE_ANSWER_NOTIFICATION_ID',
-           message: 'Unable to update answer. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'UPDATE_ANSWER_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'UPDATE_ANSWER_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'UPDATE_ANSWER_NOTIFICATION_ID',
+          message: 'Unable to update answer. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'UPDATE_ANSWER_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 });

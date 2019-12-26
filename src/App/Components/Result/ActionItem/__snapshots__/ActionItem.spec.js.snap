@@ -14,13 +14,13 @@ exports[`ActionItem should match snapshot 1`] = `
           className="action-item-table-header"
         >
           <th>
-             Description 
+             Description
           </th>
           <th>
-             Type 
+             Type
           </th>
           <th>
-             Deadline 
+             Deadline
           </th>
         </tr>
       </thead>

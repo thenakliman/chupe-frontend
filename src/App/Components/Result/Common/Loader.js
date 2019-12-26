@@ -7,13 +7,13 @@ import propTypes from 'prop-types';
 require('./Loader.css');
 
 function Loader(props) {
-    return (<div>
-      {
-        props.show && <div className='loader-container'>
-          <div className='loader'/>
-        </div>
-      }
-    </div>);
+  return (<div>
+    {
+      props.show && <div className='loader-container'>
+        <div className='loader'/>
+      </div>
+    }
+  </div>);
 }
 
 Loader.propTypes = {

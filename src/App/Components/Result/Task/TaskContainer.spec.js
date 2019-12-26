@@ -2,10 +2,8 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
-import TaskContainer from './TaskContainer';
 /* eslint-enable */
-import {mapStateToProps, mapDispatchToProps} from './TaskContainer';
+import TaskContainer, {mapDispatchToProps, mapStateToProps} from './TaskContainer';
 import configureStore from 'redux-mock-store';
 import * as TaskActions from '../../../Actions/taskActions';
 
@@ -46,9 +44,9 @@ describe('Task result container', () => {
     spyOn(TaskActions, 'getAllTasks').and.returnValue(action);
 
     mount(
-      <Provider store={store}>
-        <TaskContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <TaskContainer/>
+        </Provider>);
 
     expect(TaskActions.getAllTasks).toHaveBeenCalledWith();
     expect(store.dispatch).toHaveBeenCalledWith(action);

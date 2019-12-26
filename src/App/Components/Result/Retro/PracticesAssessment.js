@@ -1,41 +1,41 @@
 import React from 'react'
 import propTypes from 'prop-types'
 
-require('./PracticesAssessment.scss')
+require('./PracticesAssessment.scss');
 
 export class PracticesAssessment extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.props.fetchPractices()
   }
 
-  render () {
+  render() {
     return <div class='practices'>
-             <table>
-               <tbody>
-                 {this.props.practices.map((practice, index) => (
-                    <tr>
-                      <td>
-                        <div key={index}>
-                          {practice.description}
-                        </div>
-                      </td>
-                      <td>
-                        <span>Yes</span>
-                        <span>No</span>
-                      </td>
-                    </tr>
-                  ))}
-               </tbody>
-             </table>
-           </div>
+      <table>
+        <tbody>
+        {this.props.practices.map((practice, index) => (
+            <tr>
+              <td>
+                <div key={index}>
+                  {practice.description}
+                </div>
+              </td>
+              <td>
+                <span>Yes</span>
+                <span>No</span>
+              </td>
+            </tr>
+        ))}
+        </tbody>
+      </table>
+    </div>
   }
 }
 
 PracticesAssessment.propTypes = {
   practices: propTypes.array.isRequired,
   fetchPractices: propTypes.func.isRequired
-}
+};

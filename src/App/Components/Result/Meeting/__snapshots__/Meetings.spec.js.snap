@@ -32,13 +32,13 @@ exports[` 1`] = `
           className="meeting-table-header"
         >
           <th>
-             Id 
+             Id
           </th>
           <th>
-             Subject 
+             Subject
           </th>
           <th>
-             Created By 
+             Created By
           </th>
         </tr>
       </thead>

@@ -1,5 +1,5 @@
 import Cookies from 'universal-cookie';
-import {verify, decode} from 'jsonwebtoken';
+import {decode, verify} from 'jsonwebtoken';
 
 const TOKEN_COOKIE_KEY = 'token';
 const TOKEN_EXPIRY_COOKIE_KEY = 'expiryTime';
@@ -19,14 +19,14 @@ const removeCookie = (key, value) => {
 
 export const setCookies = (token) => {
   verify(token,
-         Config.signingKey,
-         {
-            algorithms: ['HS512'],
-            audience: audience,
-            issuer: issuer,
-            ignoreExpiration: false,
-         },
-         (e) => console.log(e)
+      Config.signingKey,
+      {
+        algorithms: ['HS512'],
+        audience: audience,
+        issuer: issuer,
+        ignoreExpiration: false,
+      },
+      (e) => console.log(e)
   );
 
   const decodedToken = decode(token);
@@ -61,7 +61,7 @@ export const getToken = () => {
   /* Date has been divided by 1000 because accuracy of expiry date is less */
   if (!cookies.get(TOKEN_COOKIE_KEY) ||
       !cookies.get(TOKEN_EXPIRY_COOKIE_KEY) ||
-      parseInt(cookies.get(TOKEN_EXPIRY_COOKIE_KEY)) < (Date.now()/1000)) {
+      parseInt(cookies.get(TOKEN_EXPIRY_COOKIE_KEY)) < (Date.now() / 1000)) {
     return null;
   }
 

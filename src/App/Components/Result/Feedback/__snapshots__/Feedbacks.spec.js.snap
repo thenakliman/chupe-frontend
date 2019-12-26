@@ -23,13 +23,13 @@ exports[` 1`] = `
         className="feedbacks-table-header"
       >
         <th>
-           Id 
+           Id
         </th>
         <th>
-           description 
+           description
         </th>
         <th>
-           Given By 
+           Given By
         </th>
       </tr>
     </thead>

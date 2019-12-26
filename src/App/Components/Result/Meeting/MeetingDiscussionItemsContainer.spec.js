@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import MeetingDiscussionItemsContainer from './MeetingDiscussionItemsContainer';
 /* eslint-enable */
 import {MeetingDiscussionItem} from './MeetingDiscussionItem';
@@ -16,8 +15,8 @@ describe('Meeting Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        meeting: {meetingDiscussionItems: [{id: 'meetingDiscussionItems'}]},
-        users: [{userName: 'user-name'}],
+      meeting: {meetingDiscussionItems: [{id: 'meetingDiscussionItems'}]},
+      users: [{userName: 'user-name'}],
     };
 
     store = configureStore()(initialState);
@@ -26,9 +25,9 @@ describe('Meeting Result container', () => {
 
   it('should have meetingDiscussionItems in props', () => {
     const container = mount(
-      <Provider store={store}>
-        <MeetingDiscussionItemsContainer match={{params: {id: 101}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingDiscussionItemsContainer match={{params: {id: 101}}}/>
+        </Provider>);
 
     const props = container.find(MeetingDiscussionItem).props();
     expect(props.meetingDiscussionItems).toEqual(initialState.meeting.meetingDiscussionItems);
@@ -36,9 +35,9 @@ describe('Meeting Result container', () => {
 
   it('should have users in props', () => {
     const container = mount(
-      <Provider store={store}>
-        <MeetingDiscussionItemsContainer match={{params: {id: 101}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingDiscussionItemsContainer match={{params: {id: 101}}}/>
+        </Provider>);
 
     const props = container.find(MeetingDiscussionItem).props();
     expect(props.users).toEqual(initialState.users);
@@ -47,13 +46,13 @@ describe('Meeting Result container', () => {
   it('should call getMeetingDiscussionItems', () => {
     const fakeAction = 'fake - action';
     spyOn(MeetingActions, 'getMeetingDiscussionItems')
-          .and.returnValue(fakeAction);
+        .and.returnValue(fakeAction);
 
     const meetingDiscussionItemId = 101;
     const container = mount(
-      <Provider store={store}>
-        <MeetingDiscussionItemsContainer match={{params: {id: meetingDiscussionItemId}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingDiscussionItemsContainer match={{params: {id: meetingDiscussionItemId}}}/>
+        </Provider>);
 
     container.find(MeetingDiscussionItem).props().getMeetingDiscussionItems(meetingDiscussionItemId);
     expect(MeetingActions.getMeetingDiscussionItems).toHaveBeenCalledWith(101);
@@ -68,9 +67,9 @@ describe('Meeting Result container', () => {
 
     const meetingDiscussionItemId = 101;
     const container = mount(
-      <Provider store={store}>
-        <MeetingDiscussionItemsContainer match={{params: {id: meetingDiscussionItemId}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingDiscussionItemsContainer match={{params: {id: meetingDiscussionItemId}}}/>
+        </Provider>);
 
     container.find(MeetingDiscussionItem).props().getAllUsers();
     expect(MeetingActions.getMeetingDiscussionItems).toHaveBeenCalledWith(101);
@@ -83,9 +82,9 @@ describe('Meeting Result container', () => {
 
     const meetingDiscussionItemId = 101;
     const container = mount(
-      <Provider store={store}>
-        <MeetingDiscussionItemsContainer match={{params: {id: meetingDiscussionItemId}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingDiscussionItemsContainer match={{params: {id: meetingDiscussionItemId}}}/>
+        </Provider>);
 
     const meetingDiscussionItem = {id: 20};
     container.find(MeetingDiscussionItem).props().createMeetingDiscussionItem(meetingDiscussionItem);

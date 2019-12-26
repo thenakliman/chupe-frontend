@@ -5,80 +5,80 @@ import {history} from '../../../utils/history';
 require('./FeedbackSessions.css');
 
 export class FeedbackSessions extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {description: ''};
-      this.createFeedbackSession = this.createFeedbackSession.bind(this);
-      this.viewFeedbacks = this.viewFeedbacks.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.state = {description: ''};
+    this.createFeedbackSession = this.createFeedbackSession.bind(this);
+    this.viewFeedbacks = this.viewFeedbacks.bind(this);
+  }
 
-    componentDidMount() {
-      this.props.getAllFeedbackSessions();
-    }
+  componentDidMount() {
+    this.props.getAllFeedbackSessions();
+  }
 
-    onDescriptionChange(newDescription) {
-      this.setState({description: newDescription});
-    }
+  onDescriptionChange(newDescription) {
+    this.setState({description: newDescription});
+  }
 
-    createFeedbackSession() {
-      this.props.createFeedbackSession({description: this.state.description});
-      this.setState({description: ''});
-    }
+  createFeedbackSession() {
+    this.props.createFeedbackSession({description: this.state.description});
+    this.setState({description: ''});
+  }
 
-    viewFeedbacks(id) {
-      history.push('/feedbacks/' + id);
-    }
+  viewFeedbacks(id) {
+    history.push('/feedbacks/' + id);
+  }
 
-    render() {
-      return (
-      <div id='feedbackSession-container-id'
-           className='feedbackSession-container'>
+  render() {
+    return (
+        <div id='feedbackSession-container-id'
+             className='feedbackSession-container'>
           <div className='feedback-sessions-create-container'>
-              <input id='feedbackSession-input-id'
-                className='feedbackSession-input'
-                value={this.state.description}
-                onChange={(event) =>
-                            this.onDescriptionChange(event.target.value)}
-              />
-              <button id='feedbackSession-button-id'
-                className='feedbackSession-button'
-                type='button'
-                onClick={this.createFeedbackSession}
-              >
-                Create Feedback Session
-              </button>
+            <input id='feedbackSession-input-id'
+                   className='feedbackSession-input'
+                   value={this.state.description}
+                   onChange={(event) =>
+                       this.onDescriptionChange(event.target.value)}
+            />
+            <button id='feedbackSession-button-id'
+                    className='feedbackSession-button'
+                    type='button'
+                    onClick={this.createFeedbackSession}
+            >
+              Create Feedback Session
+            </button>
           </div>
           <div>
             <table id='all-feedbackSessions-ordered-list'>
               <thead>
-                <tr className='feedbackSession-table-header'>
-                  <th> Id </th>
-                  <th> description </th>
-                  <th> Created By </th>
-                </tr>
+              <tr className='feedbackSession-table-header'>
+                <th> Id</th>
+                <th> description</th>
+                <th> Created By</th>
+              </tr>
               </thead>
               <tbody id='all-feedbackSession-table-body-id'
                      className={'feedbackSession-table-body'}>
               {
                 this.props.feedbackSessions.map((feedbackSession) => (
-                  <tr key={`${feedbackSession.id}`}
-                      id={`feedback-sessions-${feedbackSession.id}`}
-                      className={'selectable-row'}
-                      onClick={() => this.viewFeedbacks(feedbackSession.id)}>
-                    <td> {feedbackSession.id} </td>
-                    <td className='feedbackSession-row'>
-                            {feedbackSession.description}
-                    </td>
-                    <td> {feedbackSession.createdBy}</td>
-                  </tr>
+                    <tr key={`${feedbackSession.id}`}
+                        id={`feedback-sessions-${feedbackSession.id}`}
+                        className={'selectable-row'}
+                        onClick={() => this.viewFeedbacks(feedbackSession.id)}>
+                      <td> {feedbackSession.id} </td>
+                      <td className='feedbackSession-row'>
+                        {feedbackSession.description}
+                      </td>
+                      <td> {feedbackSession.createdBy}</td>
+                    </tr>
                 ))
               }
               </tbody>
             </table>
           </div>
-      </div>
-      );
-    }
+        </div>
+    );
+  }
 }
 
 FeedbackSessions.propTypes = {

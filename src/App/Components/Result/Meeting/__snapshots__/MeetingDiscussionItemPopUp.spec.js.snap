@@ -26,7 +26,7 @@ exports[`Show meeting discussion item pop up component should match snapshot 1`]
       <option
         value=""
       >
-         Select user 
+         Select user
       </option>
       <option
         key="user - 1"
@@ -51,19 +51,19 @@ exports[`Show meeting discussion item pop up component should match snapshot 1`]
       <option
         value=""
       >
-         Select Discussion Item type 
+         Select Discussion Item type
       </option>
       <option
         key="INFORMATION"
         value="INFORMATION"
       >
-         Information 
+         Information
       </option>
       <option
         key="ACTION_ITEM"
         value="ACTION_ITEM"
       >
-         Action Item 
+         Action Item
       </option>
     </select>
     <div

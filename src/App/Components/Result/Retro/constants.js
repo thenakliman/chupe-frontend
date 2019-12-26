@@ -7,9 +7,9 @@ export const retroState = {
   CREATED: "CREATED",
   IN_PROGRESS: "IN_PROGRESS",
   CLOSED: "CLOSED"
-}
+};
 
 export const retroStateToMessageMapping = {
   CREATED: "Start",
   IN_PROGRESS: "Close",
-}
+};

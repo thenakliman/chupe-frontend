@@ -31,14 +31,14 @@ thead tr {
 
 
 table {
-    background-color: #ffffff;
-    border-collapse: collapse;
-    border-spacing: 1rem;
-    text-align: center;
-    width: 100%;
+  background-color: #ffffff;
+  border-collapse: collapse;
+  border-spacing: 1rem;
+  text-align: center;
+  width: 100%;
 }
 
 th, td {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 1rem 0rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 0rem;
 }

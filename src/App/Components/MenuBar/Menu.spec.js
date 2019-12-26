@@ -9,7 +9,7 @@ describe('Menu Bar Snapshot', () => {
   it('should match snapshot', () => {
     const location = {pathname: '/users'};
     const wrapper = shallow(
-        <MenuBar location={location} />);
+        <MenuBar location={location}/>);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
@@ -34,7 +34,7 @@ describe('Menu Bar Component', () => {
     const pushMock = jest.fn();
     History.history = {push: pushMock};
     const wrapper = shallow(
-        <MenuBar location={location} />);
+        <MenuBar location={location}/>);
 
     wrapper.find('#menu-logout-container').simulate('click');
 
@@ -44,15 +44,15 @@ describe('Menu Bar Component', () => {
 
   it('Should have user class by default', () => {
     const location = {pathname: '/users'};
-    const wrapper = shallow(<MenuBar location={location} />);
+    const wrapper = shallow(<MenuBar location={location}/>);
     expect(wrapper.find('#users-tab').props().className
-      ).toEqual('Selected-Tab');
+    ).toEqual('Selected-Tab');
   });
 
   it('Should have questions tab', () => {
     const location = {pathname: '/questions'};
     const wrapper = shallow(
-        <MenuBar location={location} />);
+        <MenuBar location={location}/>);
     expect(wrapper.find('#questions-tab').length).toEqual(1);
   });
 
@@ -60,7 +60,7 @@ describe('Menu Bar Component', () => {
   it('Should have Team Fund tab', () => {
     const location = {pathname: '/team-funds'};
     const wrapper = shallow(
-        <MenuBar location={location} />);
+        <MenuBar location={location}/>);
     expect(wrapper.find('#team-funds-tab').length).toEqual(1);
   });
 

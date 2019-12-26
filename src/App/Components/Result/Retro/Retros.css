@@ -4,10 +4,10 @@
 }
 
 .create-retro-container {
-    position: fixed;
-    border: 1px solid #ccc;
-    top: 12rem;
-    left: 28rem;
+  position: fixed;
+  border: 1px solid #ccc;
+  top: 12rem;
+  left: 28rem;
 }
 
 .retro-pop-up-container {
@@ -41,24 +41,24 @@
 }
 
 .retro-button {
-    padding: 1rem 2rem;
-    margin-bottom: 2rem;
-    float: right;
-    color: white;
-    cursor: pointer;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  float: right;
+  color: white;
+  cursor: pointer;
 }
 
 .create-retro-button {
-    float: right;
-    color: white;
-    cursor: pointer;
-    padding: 0.8rem 0.8rem;
-    margin: 3rem 2rem;
-    width: 9rem;
+  float: right;
+  color: white;
+  cursor: pointer;
+  padding: 0.8rem 0.8rem;
+  margin: 3rem 2rem;
+  width: 9rem;
 }
 
 .create-retro-buttons-container {
-    margin: 1rem 11rem;
+  margin: 1rem 11rem;
 }
 
 .maximum-vote-count {

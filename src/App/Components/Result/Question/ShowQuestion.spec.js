@@ -3,19 +3,19 @@ import React from 'react';
 import {ShowQuestion} from './ShowQuestion';
 /* eslint-enable */
 import ReactDOM from 'react-dom';
-import {shallow, mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
-import {STATUS, PRIORITY} from './constants';
+import {PRIORITY, STATUS} from './constants';
 
 const questions = [{
-    question: 'question1',
-    id: 1,
-    description: 'test-description1',
-    owner: 'owner-1',
-    assignedTo: 'assigned-1',
-    status: STATUS.OPEN,
-    priority: PRIORITY.HIGH,
-  },
+  question: 'question1',
+  id: 1,
+  description: 'test-description1',
+  owner: 'owner-1',
+  assignedTo: 'assigned-1',
+  status: STATUS.OPEN,
+  priority: PRIORITY.HIGH,
+},
   {
     question: 'question2',
     id: 2,
@@ -27,27 +27,33 @@ const questions = [{
   }];
 
 const users = [{'userName': 'user1'}, {'userName': 'user2'}];
-const username='logged-in-user';
+const username = 'logged-in-user';
 
 describe('Show Question component snapshot', () => {
-    it('should match the snapshot', () => {
-        const wrapper = shallow(
-            <ShowQuestion
-              users={users}
-              questions={questions}
-              updateQuestion={()=>{}}
-              match={{params: {id: 2}}}
-              loggedInUser={username}
-              getAnswers={()=>{}}
-              answers={[]}
-              addAnswer={()=>{}}
-              getAllUsers={()=>{}}
-              getAllQuestions={()=>{}}
-              updateAnswer={()=>{}}
+  it('should match the snapshot', () => {
+    const wrapper = shallow(
+        <ShowQuestion
+            users={users}
+            questions={questions}
+            updateQuestion={() => {
+            }}
+            match={{params: {id: 2}}}
+            loggedInUser={username}
+            getAnswers={() => {
+            }}
+            answers={[]}
+            addAnswer={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />);
 
-        expect(toJson(wrapper)).toMatchSnapshot();
-    });
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });
 
 
@@ -55,17 +61,23 @@ describe('Show question component', () => {
   it('should have QuestionDescription for question summary', () => {
     const wrapper = shallow(
         <ShowQuestion
-          users= {users}
-          questions={questions}
-          match={{params: {id: 2}}}
-          answers={[]}
-          loggedInUser={username}
-          getAnswers={()=>{}}
-          addAnswer={()=>{}}
-          updateQuestion={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            users={users}
+            questions={questions}
+            match={{params: {id: 2}}}
+            answers={[]}
+            loggedInUser={username}
+            getAnswers={() => {
+            }}
+            addAnswer={() => {
+            }}
+            updateQuestion={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
 
@@ -82,26 +94,32 @@ describe('Show question component', () => {
   it('should have QuestionAnswerWrapper for question description', () => {
     const wrapper = shallow(
         <ShowQuestion
-          users= {users}
-          questions={questions}
-          updateQuestion={()=>{}}
-          match={{params: {id: 2}}}
-          loggedInUser={username}
-          getAnswers={()=>{}}getAllUsers
-          answers={[]}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            users={users}
+            questions={questions}
+            updateQuestion={() => {
+            }}
+            match={{params: {id: 2}}}
+            loggedInUser={username}
+            getAnswers={() => {
+            }} getAllUsers
+            answers={[]}
+            addAnswer={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
 
     const summaryWrapper = wrapper.find(
-      '#question-answer-description-wrapper-id');
+        '#question-answer-description-wrapper-id');
 
     expect(summaryWrapper.length).toEqual(1);
     expect(summaryWrapper.get(0).props.headerText
-        ).toEqual('Description Added by owner-2');
+    ).toEqual('Description Added by owner-2');
 
     expect(summaryWrapper.get(0).props.bodyText).toEqual('test-description2');
   });
@@ -109,17 +127,23 @@ describe('Show question component', () => {
   it('Component should have required questions properties', () => {
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          updateQuestion={()=>{}}
-          users={users}
-          match={{params: {id: 2}}}
-          loggedInUser={username}
-          getAnswers={()=>{}}
-          answers={[]}
-          addAnswer={()=>{}}getAllUsers
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            updateQuestion={() => {
+            }}
+            users={users}
+            match={{params: {id: 2}}}
+            loggedInUser={username}
+            getAnswers={() => {
+            }}
+            answers={[]}
+            addAnswer={() => {
+            }} getAllUsers
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
     expect(wrapper.state()).toEqual({
@@ -137,17 +161,22 @@ describe('Show question component', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          updateQuestion={mockedUpdateQuestion}
-          users={users}
-          match={{params: {id: 2}}}
-          getAnswers={()=>{}}
-          loggedInUser={username}
-          answers={[]}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            updateQuestion={mockedUpdateQuestion}
+            users={users}
+            match={{params: {id: 2}}}
+            getAnswers={() => {
+            }}
+            loggedInUser={username}
+            answers={[]}
+            addAnswer={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
     const description = 'test-10';
@@ -164,24 +193,29 @@ describe('Show question component', () => {
           assignedTo: 'assigned-2',
           status: STATUS.CLOSE,
           priority: PRIORITY.MEDIUM,
-       });
+        });
   });
 
   it('Component should not call update method on empty description', () => {
     const mockedUpdateQuestion = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          updateQuestion={mockedUpdateQuestion}
-          users={users}
-          getAnswers={()=>{}}
-          answers={[]}
-          match={{params: {id: 2}}}
-          loggedInUser={username}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            updateQuestion={mockedUpdateQuestion}
+            users={users}
+            getAnswers={() => {
+            }}
+            answers={[]}
+            match={{params: {id: 2}}}
+            loggedInUser={username}
+            addAnswer={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
     wrapper.find('#question-answer-description-wrapper-id')
@@ -196,7 +230,7 @@ describe('Show question component', () => {
           assignedTo: 'assigned-2',
           status: STATUS.OPEN,
           priority: PRIORITY.LOW,
-       });
+        });
   });
 
   it('should QuestionAnswerWrapper for each answer', () => {
@@ -205,17 +239,22 @@ describe('Show question component', () => {
     const answers = [{id: 1, answer: 'ans-1'}, {id: 20, answer: 'ans-2'}];
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          users={users}
-          getAnswers={mockedGetAnswers}
-          answers={answers}
-          match={{params: {id: questionId}}}
-          loggedInUser={username}
-          updateQuestion={()=>{}}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            users={users}
+            getAnswers={mockedGetAnswers}
+            answers={answers}
+            match={{params: {id: questionId}}}
+            loggedInUser={username}
+            updateQuestion={() => {
+            }}
+            addAnswer={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
     expect(wrapper.find('#show-question--answer-1-id').length).toEqual(1);
@@ -237,17 +276,21 @@ describe('Show question component', () => {
 
     const wrapper = mount(
         <ShowQuestion
-          questions={questions}
-          users={users}
-          getAnswers={mockedGetAnswers}
-          answers={answers}
-          match={{params: {id: questionId}}}
-          loggedInUser={username}
-          updateQuestion={()=>{}}
-          addAnswer={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={updateAnswer}
+            questions={questions}
+            users={users}
+            getAnswers={mockedGetAnswers}
+            answers={answers}
+            match={{params: {id: questionId}}}
+            loggedInUser={username}
+            updateQuestion={() => {
+            }}
+            addAnswer={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={updateAnswer}
         />
     );
 
@@ -258,24 +301,31 @@ describe('Show question component', () => {
       id: id,
       answer: newAnswer,
       questionId: questionId,
-      answeredBy: answeredBy});
+      answeredBy: answeredBy
+    });
   });
 
   it('should have a temporary question answer wrapper', () => {
     const questionId = 2;
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          users={users}
-          getAnswers={()=>{}}
-          answers={[]}
-          match={{params: {id: questionId}}}
-          loggedInUser={username}
-          addAnswer={()=>{}}
-          updateQuestion={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            users={users}
+            getAnswers={() => {
+            }}
+            answers={[]}
+            match={{params: {id: questionId}}}
+            loggedInUser={username}
+            addAnswer={() => {
+            }}
+            updateQuestion={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
 
@@ -287,22 +337,28 @@ describe('Show question component', () => {
     const questionId = 2;
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          users={users}
-          getAnswers={()=>{}}
-          answers={[]}
-          match={{params: {id: questionId}}}
-          loggedInUser={username}
-          updateQuestion={()=>{}}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          addAnswer={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            users={users}
+            getAnswers={() => {
+            }}
+            answers={[]}
+            match={{params: {id: questionId}}}
+            loggedInUser={username}
+            updateQuestion={() => {
+            }}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            addAnswer={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
     expect(
-      wrapper.find('#show-question-answer--temporary-id')
-        .get(0).props.isEditing
+        wrapper.find('#show-question-answer--temporary-id')
+            .get(0).props.isEditing
     ).toEqual(true);
   });
 
@@ -312,25 +368,31 @@ describe('Show question component', () => {
     const mockAddAnswer = jest.fn();
     const wrapper = shallow(
         <ShowQuestion
-          questions={questions}
-          users={users}assignedTo
-          getAnswers={()=>{}}
-          answers={[]}
-          match={{params: {id: questionId}}}
-          loggedInUser={username}
-          updateQuestion={()=>{}}
-          addAnswer={mockAddAnswer}
-          getAllUsers={()=>{}}
-          getAllQuestions={()=>{}}
-          updateAnswer={()=>{}}
+            questions={questions}
+            users={users} assignedTo
+            getAnswers={() => {
+            }}
+            answers={[]}
+            match={{params: {id: questionId}}}
+            loggedInUser={username}
+            updateQuestion={() => {
+            }}
+            addAnswer={mockAddAnswer}
+            getAllUsers={() => {
+            }}
+            getAllQuestions={() => {
+            }}
+            updateAnswer={() => {
+            }}
         />
     );
     wrapper.find(
-      '#show-question-answer--temporary-id').get(0).props.saveHandler(answer);
+        '#show-question-answer--temporary-id').get(0).props.saveHandler(answer);
     expect(mockAddAnswer).toHaveBeenCalledWith({
       answer: 'answer 1',
       answeredBy: username,
-      questionId: 2});
+      questionId: 2
+    });
   });
 
   describe('on mount', () => {
@@ -339,17 +401,22 @@ describe('Show question component', () => {
       const questionId = 2;
       shallow(
           <ShowQuestion
-            questions={questions}
-            users={users}
-            getAnswers={mockedGetAnswers}
-            answers={[]}
-            match={{params: {id: questionId}}}
-            loggedInUser={username}
-            updateQuestion={()=>{}}
-            addAnswer={()=>{}}
-            getAllUsers={()=>{}}
-            getAllQuestions={()=>{}}
-            updateAnswer={()=>{}}
+              questions={questions}
+              users={users}
+              getAnswers={mockedGetAnswers}
+              answers={[]}
+              match={{params: {id: questionId}}}
+              loggedInUser={username}
+              updateQuestion={() => {
+              }}
+              addAnswer={() => {
+              }}
+              getAllUsers={() => {
+              }}
+              getAllQuestions={() => {
+              }}
+              updateAnswer={() => {
+              }}
           />
       );
 
@@ -360,14 +427,19 @@ describe('Show question component', () => {
       const mockGetAllQuestions = jest.fn();
       shallow(<ShowQuestion questions={questions}
                             users={users}
-                            getAnswers={()=>{}}
+                            getAnswers={() => {
+                            }}
                             answers={[]}
                             match={{params: {id: 10}}}
                             loggedInUser={username}
-                            updateQuestion={()=>{}}
-                            addAnswer={()=>{}}
-                            getAllUsers={()=>{}}
-                            updateAnswer={()=>{}}
+                            updateQuestion={() => {
+                            }}
+                            addAnswer={() => {
+                            }}
+                            getAllUsers={() => {
+                            }}
+                            updateAnswer={() => {
+                            }}
                             getAllQuestions={mockGetAllQuestions}/>);
 
       expect(mockGetAllQuestions).not.toHaveBeenCalled();
@@ -377,14 +449,19 @@ describe('Show question component', () => {
       const mockGetAllQuestions = jest.fn();
       shallow(<ShowQuestion questions={[]}
                             users={users}
-                            getAnswers={()=>{}}
+                            getAnswers={() => {
+                            }}
                             answers={[]}
                             match={{params: {id: 10}}}
                             loggedInUser={username}
-                            updateQuestion={()=>{}}
-                            addAnswer={()=>{}}
-                            getAllUsers={()=>{}}
-                            updateAnswer={()=>{}}
+                            updateQuestion={() => {
+                            }}
+                            addAnswer={() => {
+                            }}
+                            getAllUsers={() => {
+                            }}
+                            updateAnswer={() => {
+                            }}
                             getAllQuestions={mockGetAllQuestions}/>);
 
       expect(mockGetAllQuestions).toHaveBeenCalledWith();
@@ -394,14 +471,19 @@ describe('Show question component', () => {
       const mockGetAllUsers = jest.fn();
       shallow(<ShowQuestion questions={[]}
                             users={[]}
-                            getAnswers={()=>{}}
+                            getAnswers={() => {
+                            }}
                             answers={[]}
                             match={{params: {id: 10}}}
-                            updateQuestion={()=>{}}
-                            addAnswer={()=>{}}
-                            getAllQuestions={()=>{}}
+                            updateQuestion={() => {
+                            }}
+                            addAnswer={() => {
+                            }}
+                            getAllQuestions={() => {
+                            }}
                             loggedInUser={username}
-                            updateAnswer={()=>{}}
+                            updateAnswer={() => {
+                            }}
                             getAllUsers={mockGetAllUsers}/>);
 
       expect(mockGetAllUsers).toHaveBeenCalled();
@@ -411,15 +493,20 @@ describe('Show question component', () => {
       const mockGetAllUsers = jest.fn();
       shallow(<ShowQuestion questions={[]}
                             users={users}
-                            getAnswers={()=>{}}
+                            getAnswers={() => {
+                            }}
                             answers={[]}
                             match={{params: {id: 10}}}
-                            updateQuestion={()=>{}}
-                            addAnswer={()=>{}}
-                            getAllQuestions={()=>{}}
+                            updateQuestion={() => {
+                            }}
+                            addAnswer={() => {
+                            }}
+                            getAllQuestions={() => {
+                            }}
                             loggedInUser={username}
-                            updateAnswer={()=>{}}
-                            getAllUsers={mockGetAllUsers} />);
+                            updateAnswer={() => {
+                            }}
+                            getAllUsers={mockGetAllUsers}/>);
 
       expect(mockGetAllUsers).not.toHaveBeenCalled();
     });
@@ -429,75 +516,97 @@ describe('Show question component', () => {
     const node = document.createElement('div');
     const component = ReactDOM.render(<ShowQuestion questions={[]}
                                                     users={[]}
-                                                    getAnswers={()=>{}}
+                                                    getAnswers={() => {
+                                                    }}
                                                     answers={[]}
                                                     loggedInUser={username}
                                                     match={{params: {id: 1}}}
-                                                    updateQuestion={()=>{}}
-                                                    addAnswer={()=>{}}
-                                                    getAllQuestions={()=>{}}
-                                                    updateAnswer={()=>{}}
-                                                    getAllUsers={()=>{}} />,
-                                       node);
+                                                    updateQuestion={() => {
+                                                    }}
+                                                    addAnswer={() => {
+                                                    }}
+                                                    getAllQuestions={() => {
+                                                    }}
+                                                    updateAnswer={() => {
+                                                    }}
+                                                    getAllUsers={() => {
+                                                    }}/>,
+        node);
 
     ReactDOM.render(<ShowQuestion questions={questions}
                                   users={users}
-                                  getAnswers={()=>{}}
+                                  getAnswers={() => {
+                                  }}
                                   answers={[]}
                                   match={{params: {id: 1}}}
                                   loggedInUser={username}
-                                  updateQuestion={()=>{}}
-                                  addAnswer={()=>{}}
-                                  getAllQuestions={()=>{}}
-                                  updateAnswer={()=>{}}
-                                  getAllUsers={()=>{}} />,
-                     node);
+                                  updateQuestion={() => {
+                                  }}
+                                  addAnswer={() => {
+                                  }}
+                                  getAllQuestions={() => {
+                                  }}
+                                  updateAnswer={() => {
+                                  }}
+                                  getAllUsers={() => {
+                                  }}/>,
+        node);
 
     expect(component.state).toEqual(questions[0]);
   });
 
   it('should call method to update question with given priority', () => {
-      const updateQuestion = jest.fn();
-      const wrapper = mount(<ShowQuestion questions={questions}
-                            users={[]}
-                            getAnswers={()=>{}}
-                            answers={[]}
-                            match={{params: {id: 1}}}
-                            updateQuestion={updateQuestion}
-                            addAnswer={()=>{}}
-                            getAllQuestions={()=>{}}
-                            loggedInUser={username}
-                            updateAnswer={()=>{}}
-                            getAllUsers={()=>{}}/>);
+    const updateQuestion = jest.fn();
+    const wrapper = mount(<ShowQuestion questions={questions}
+                                        users={[]}
+                                        getAnswers={() => {
+                                        }}
+                                        answers={[]}
+                                        match={{params: {id: 1}}}
+                                        updateQuestion={updateQuestion}
+                                        addAnswer={() => {
+                                        }}
+                                        getAllQuestions={() => {
+                                        }}
+                                        loggedInUser={username}
+                                        updateAnswer={() => {
+                                        }}
+                                        getAllUsers={() => {
+                                        }}/>);
 
-      const priority = 'LOW';
-      wrapper.find('#question-summary-priority')
+    const priority = 'LOW';
+    wrapper.find('#question-summary-priority')
         .simulate('change', {target: {value: priority}});
 
-      expect(updateQuestion).toHaveBeenCalledWith(
+    expect(updateQuestion).toHaveBeenCalledWith(
         questions,
         Object.assign({}, questions[0], {priority: priority}));
   });
 
   it('should call method to update question with given status', () => {
-      const updateQuestion = jest.fn();
-      const wrapper = mount(<ShowQuestion questions={questions}
-                            users={[]}
-                            getAnswers={()=>{}}
-                            answers={[]}
-                            match={{params: {id: 1}}}
-                            updateQuestion={updateQuestion}
-                            addAnswer={()=>{}}
-                            getAllQuestions={()=>{}}
-                            loggedInUser={username}
-                            updateAnswer={()=>{}}
-                            getAllUsers={()=>{}}/>);
+    const updateQuestion = jest.fn();
+    const wrapper = mount(<ShowQuestion questions={questions}
+                                        users={[]}
+                                        getAnswers={() => {
+                                        }}
+                                        answers={[]}
+                                        match={{params: {id: 1}}}
+                                        updateQuestion={updateQuestion}
+                                        addAnswer={() => {
+                                        }}
+                                        getAllQuestions={() => {
+                                        }}
+                                        loggedInUser={username}
+                                        updateAnswer={() => {
+                                        }}
+                                        getAllUsers={() => {
+                                        }}/>);
 
-      const status = 'OPEN';
-      wrapper.find('#question-summary-status')
+    const status = 'OPEN';
+    wrapper.find('#question-summary-status')
         .simulate('change', {target: {value: status}});
 
-      expect(updateQuestion).toHaveBeenCalledWith(
+    expect(updateQuestion).toHaveBeenCalledWith(
         questions,
         Object.assign({}, questions[0], {status: status}));
   });

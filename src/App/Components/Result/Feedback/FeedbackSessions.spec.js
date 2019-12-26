@@ -20,8 +20,8 @@ describe('Show feedback sessions component', () => {
     const getAllFeedbackSessions = jest.fn();
     shallow(
         <FeedbackSessions
-          feedbackSessions={feedbackSessions}
-          getAllFeedbackSessions={getAllFeedbackSessions}
+            feedbackSessions={feedbackSessions}
+            getAllFeedbackSessions={getAllFeedbackSessions}
         />
     );
 
@@ -32,8 +32,8 @@ describe('Show feedback sessions component', () => {
     const getAllFeedbackSessions = jest.fn();
     const wrapper = shallow(
         <FeedbackSessions
-          feedbackSessions={feedbackSessions}
-          getAllFeedbackSessions={getAllFeedbackSessions}
+            feedbackSessions={feedbackSessions}
+            getAllFeedbackSessions={getAllFeedbackSessions}
         />
     );
 
@@ -44,8 +44,8 @@ describe('Show feedback sessions component', () => {
     const getAllFeedbackSessions = jest.fn();
     const wrapper = shallow(
         <FeedbackSessions
-          feedbackSessions={feedbackSessions}
-          getAllFeedbackSessions={getAllFeedbackSessions}
+            feedbackSessions={feedbackSessions}
+            getAllFeedbackSessions={getAllFeedbackSessions}
         />
     );
 
@@ -56,8 +56,8 @@ describe('Show feedback sessions component', () => {
     const getAllFeedbackSessions = jest.fn();
     const wrapper = shallow(
         <FeedbackSessions
-          feedbackSessions={feedbackSessions}
-          getAllFeedbackSessions={getAllFeedbackSessions}
+            feedbackSessions={feedbackSessions}
+            getAllFeedbackSessions={getAllFeedbackSessions}
         />
     );
 
@@ -66,8 +66,8 @@ describe('Show feedback sessions component', () => {
 
   describe('should match snapshot', () => {
     const wrapper = shallow(<FeedbackSessions
-       feedbackSessions={feedbackSessions}
-       getAllFeedbackSessions={jest.fn()}
+        feedbackSessions={feedbackSessions}
+        getAllFeedbackSessions={jest.fn()}
     />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -75,8 +75,8 @@ describe('Show feedback sessions component', () => {
 
   describe('should have initial state with empty string', () => {
     const wrapper = shallow(<FeedbackSessions
-       feedbackSessions={feedbackSessions}
-       getAllFeedbackSessions={jest.fn()}
+        feedbackSessions={feedbackSessions}
+        getAllFeedbackSessions={jest.fn()}
     />);
 
     expect(wrapper.state().description).toEqual('');
@@ -84,8 +84,8 @@ describe('Show feedback sessions component', () => {
 
   describe('should change internal state of the component', () => {
     const wrapper = shallow(<FeedbackSessions
-       feedbackSessions={feedbackSessions}
-       getAllFeedbackSessions={jest.fn()}
+        feedbackSessions={feedbackSessions}
+        getAllFeedbackSessions={jest.fn()}
     />);
 
     const description = 'some description';
@@ -98,9 +98,9 @@ describe('Show feedback sessions component', () => {
   describe('should change internal state of the component', () => {
     const createFeedbackSession = jest.fn();
     const wrapper = shallow(<FeedbackSessions
-       feedbackSessions={feedbackSessions}
-       getAllFeedbackSessions={jest.fn()}
-       createFeedbackSession={createFeedbackSession}
+        feedbackSessions={feedbackSessions}
+        getAllFeedbackSessions={jest.fn()}
+        createFeedbackSession={createFeedbackSession}
     />);
 
     const description = 'some description';
@@ -110,15 +110,15 @@ describe('Show feedback sessions component', () => {
     wrapper.find('#feedbackSession-button-id').simulate('click');
 
     expect(createFeedbackSession)
-            .toHaveBeenCalledWith({description: description});
+        .toHaveBeenCalledWith({description: description});
   });
 
   describe('should push new route to history', () => {
     const createFeedbackSession = jest.fn();
     const wrapper = shallow(<FeedbackSessions
-       feedbackSessions={feedbackSessions}
-       getAllFeedbackSessions={jest.fn()}
-       createFeedbackSession={createFeedbackSession}
+        feedbackSessions={feedbackSessions}
+        getAllFeedbackSessions={jest.fn()}
+        createFeedbackSession={createFeedbackSession}
     />);
     History.history.push = jest.fn();
 
@@ -129,9 +129,9 @@ describe('Show feedback sessions component', () => {
   describe('should change state to empty string on create of session', () => {
     const createFeedbackSession = jest.fn();
     const wrapper = shallow(<FeedbackSessions
-       feedbackSessions={feedbackSessions}
-       getAllFeedbackSessions={jest.fn()}
-       createFeedbackSession={createFeedbackSession}
+        feedbackSessions={feedbackSessions}
+        getAllFeedbackSessions={jest.fn()}
+        createFeedbackSession={createFeedbackSession}
     />);
 
     const description = 'some description';

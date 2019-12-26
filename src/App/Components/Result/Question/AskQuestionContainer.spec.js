@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import AskQuestionContainer from './AskQuestionContainer';
 /* eslint-enable */
 import {AskQuestion} from './AskQuestion';
@@ -19,7 +18,7 @@ describe('Question Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        'users': [{'userName': 'user1'}, {'userName': 'user2'}],
+      'users': [{'userName': 'user1'}, {'userName': 'user2'}],
     };
 
     spyOn(Config, 'getUsername').and.returnValue(username);
@@ -32,9 +31,9 @@ describe('Question Result container', () => {
     spyOn(QuestionActions, 'askQuestion').and.returnValue({});
 
     const container = mount(
-      <Provider store={store}>
-        <AskQuestionContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <AskQuestionContainer/>
+        </Provider>);
 
     const props = container.find(AskQuestion).props();
     props.askQuestion(question);
@@ -45,9 +44,9 @@ describe('Question Result container', () => {
     spyOn(QuestionActions, 'askQuestion').and.returnValue({});
 
     const container = mount(
-      <Provider store={store}>
-        <AskQuestionContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <AskQuestionContainer/>
+        </Provider>);
 
     const props = container.find(AskQuestion).props();
     props.askQuestion();
@@ -57,9 +56,9 @@ describe('Question Result container', () => {
   it('should return all users called on component mount', () => {
     spyOn(QuestionActions, 'getAllQuestions');
     const container = mount(
-      <Provider store={store}>
-        <AskQuestionContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <AskQuestionContainer/>
+        </Provider>);
 
     expect(container.find(AskQuestion).props().users)
         .toEqual(initialState.users);
@@ -69,9 +68,9 @@ describe('Question Result container', () => {
     const action = 'some action';
     spyOn(UserActions, 'getAllUsers').and.returnValue(action);
     const container = mount(
-      <Provider store={store}>
-        <AskQuestionContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <AskQuestionContainer/>
+        </Provider>);
 
     container.find(AskQuestion).props().getAllUsers();
 
@@ -80,9 +79,9 @@ describe('Question Result container', () => {
 
   it('should provide logged in user as props', () => {
     const container = mount(
-      <Provider store={store}>
-        <AskQuestionContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <AskQuestionContainer/>
+        </Provider>);
 
     expect(container.find('AskQuestion').props().loggedInUser)
         .toEqual(username);

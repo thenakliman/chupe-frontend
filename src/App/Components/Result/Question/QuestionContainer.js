@@ -5,14 +5,14 @@ import {getUsername} from '../../../utils/cookies';
 
 
 const mapStateToProps = (state) => ({
-    questions: state.questions,
-    loggedInUser: getUsername(),
+  questions: state.questions,
+  loggedInUser: getUsername(),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    getQuestions: () => {
-        dispatch(getAllQuestions());
-    },
+  getQuestions: () => {
+    dispatch(getAllQuestions());
+  },
 });
 
 

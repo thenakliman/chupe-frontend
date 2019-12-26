@@ -1,17 +1,16 @@
 /* eslint-disable */
 import React from 'react';
-import {mapStateToProps, mapDispatchToProps} from './ShowFundContainer';
-import {Provider} from 'react-redux';
+import {mapDispatchToProps, mapStateToProps} from './ShowFundContainer';
 /* eslint-enable */
 import * as TeamFundAction from '../../../Actions/teamFundActions';
 
 describe('TeamFundContainer', () => {
   const funds = [{owner: 'username'}];
   const initialState = {
-        fund: {
-          teamMemberFunds: funds,
-        },
-    };
+    fund: {
+      teamMemberFunds: funds,
+    },
+  };
 
   beforeEach(() => {
   });

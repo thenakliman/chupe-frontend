@@ -1,14 +1,14 @@
 import {
- getAllRetros,
- getActionItems,
- getRetroPoints,
- changeStatus,
- castVote,
- createRetroPoint,
- createActionItem,
- createRetro} from './retroActions';
+  castVote,
+  changeStatus,
+  createActionItem,
+  createRetro,
+  createRetroPoint,
+  getActionItems,
+  getAllRetros,
+  getRetroPoints
+} from './retroActions';
 import configureStore from 'redux-mock-store';
-import {ActionTypes} from './ActionTypes';
 import {RetroService} from '../Services/RetroService';
 import thunk from 'redux-thunk';
 
@@ -25,23 +25,23 @@ describe('Get_RETROS action', () => {
     spyOn(RetroService, 'getRetros').and.returnValues(testRetro);
     await store.dispatch(getAllRetros());
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: [
-           {
-             name: 'fakeTask',
-           },
-         ],
-         type: 'ADD_RETROS',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: [
+          {
+            name: 'fakeTask',
+          },
+        ],
+        type: 'ADD_RETROS',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
     expect(RetroService.getRetros).toHaveBeenCalledWith();
   });
 
@@ -53,23 +53,23 @@ describe('Get_RETROS action', () => {
     await store.dispatch(getActionItems(retro));
 
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: [
-           {
-             name: 'fakeTask',
-           },
-         ],
-         type: 'ADD_RETRO_ACTION_ITEMS',
-       },
-       {
-         payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: [
+          {
+            name: 'fakeTask',
+          },
+        ],
+        type: 'ADD_RETRO_ACTION_ITEMS',
+      },
+      {
+        payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
     expect(RetroService.getActionItems).toHaveBeenCalledWith(retro);
   });
 
@@ -80,23 +80,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.getRetros).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_RETROS_NOTIFICATION_ID',
-           message: 'Unable to fetch retros. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_RETROS_NOTIFICATION_ID',
+          message: 'Unable to fetch retros. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message if failed to get retro action items', async () => {
@@ -106,23 +106,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.getActionItems).toHaveBeenCalledWith(retro);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_RETRO_ACTION_ITEMS_NOTIFICATION_ID',
-           message: 'Unable to fetch retro action items. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_RETRO_ACTION_ITEMS_NOTIFICATION_ID',
+          message: 'Unable to fetch retro action items. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should dispatch action for fetching retro-points', async () => {
@@ -132,23 +132,23 @@ describe('Get_RETROS action', () => {
     await store.dispatch(getRetroPoints(retroId));
 
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: [
-           {
-             name: 'fakeTask',
-           },
-         ],
-         type: 'ADD_RETRO_POINTS',
-       },
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: [
+          {
+            name: 'fakeTask',
+          },
+        ],
+        type: 'ADD_RETRO_POINTS',
+      },
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
 
     expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
   });
@@ -161,23 +161,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_RETRO_POINT_NOTIFICATION_ID',
-           message: 'Unable to fetch retro points. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_RETRO_POINT_NOTIFICATION_ID',
+          message: 'Unable to fetch retro points. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message when cast vote fails', async () => {
@@ -189,23 +189,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.castVote).toHaveBeenCalledWith(retroPointId);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CAST_VOTE_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'CAST_VOTE_NOTIFICATION_ID',
-           message: 'Unable to cast vote. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'CAST_VOTE_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CAST_VOTE_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'CAST_VOTE_NOTIFICATION_ID',
+          message: 'Unable to cast vote. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'CAST_VOTE_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should dispatch action for casting vote', async () => {
@@ -217,31 +217,31 @@ describe('Get_RETROS action', () => {
     await store.dispatch(castVote(retroId, retroPointId));
 
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CAST_VOTE_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'CAST_VOTE_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-       {
-         payload: [
-           {
-             name: 'fakeTask',
-           },
-         ],
-         type: 'ADD_RETRO_POINTS',
-       },
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CAST_VOTE_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'CAST_VOTE_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+      {
+        payload: [
+          {
+            name: 'fakeTask',
+          },
+        ],
+        type: 'ADD_RETRO_POINTS',
+      },
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
 
     expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
     expect(RetroService.castVote).toHaveBeenCalledWith(retroPointId);
@@ -254,23 +254,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.createRetro).toHaveBeenCalledWith(retro);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_RETRO_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'CREATE_RETRO_NOTIFICATION_ID',
-           message: 'Unable to create retro. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'CREATE_RETRO_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CREATE_RETRO_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'CREATE_RETRO_NOTIFICATION_ID',
+          message: 'Unable to create retro. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'CREATE_RETRO_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message when change retro status fails', async () => {
@@ -279,23 +279,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.changeStatus).toHaveBeenCalledWith('id', 'status');
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CHANGE_RETRO_STATUS_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'CHANGE_RETRO_STATUS_NOTIFICATION_ID',
-           message: 'Unable to change status. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'CHANGE_RETRO_STATUS_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CHANGE_RETRO_STATUS_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'CHANGE_RETRO_STATUS_NOTIFICATION_ID',
+          message: 'Unable to change status. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'CHANGE_RETRO_STATUS_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error notification when fetch notification fails for retro status change', async () => {
@@ -308,31 +308,31 @@ describe('Get_RETROS action', () => {
     expect(RetroService.changeStatus).toHaveBeenCalledWith('id', 'status');
     expect(RetroService.getRetros).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CHANGE_RETRO_STATUS_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_RETROS_NOTIFICATION_ID',
-           message: 'Unable to fetch retros. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-       {
-         payload: 'CHANGE_RETRO_STATUS_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CHANGE_RETRO_STATUS_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_RETROS_NOTIFICATION_ID',
+          message: 'Unable to fetch retros. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+      {
+        payload: 'CHANGE_RETRO_STATUS_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should change retro status', async () => {
@@ -345,27 +345,27 @@ describe('Get_RETROS action', () => {
     expect(RetroService.changeStatus).toHaveBeenCalledWith('id', 'status');
     expect(RetroService.getRetros).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CHANGE_RETRO_STATUS_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'CHANGE_RETRO_STATUS_ID',
-         type: 'HIDE_LOADER',
-       },
-       {
-         payload: [],
-         type: 'ADD_RETROS',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CHANGE_RETRO_STATUS_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'CHANGE_RETRO_STATUS_ID',
+        type: 'HIDE_LOADER',
+      },
+      {
+        payload: [],
+        type: 'ADD_RETROS',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should fetch all retros create retro', async () => {
@@ -379,31 +379,31 @@ describe('Get_RETROS action', () => {
     expect(RetroService.createRetro).toHaveBeenCalledWith(retro);
     expect(RetroService.getRetros).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_RETRO_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'CREATE_RETRO_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-       {
-         payload: [
-           {
-             id: 20,
-           },
-         ],
-         type: 'ADD_RETROS',
-       },
-       {
-         payload: 'GET_RETROS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CREATE_RETRO_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'CREATE_RETRO_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+      {
+        payload: [
+          {
+            id: 20,
+          },
+        ],
+        type: 'ADD_RETROS',
+      },
+      {
+        payload: 'GET_RETROS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message when create retro point', async () => {
@@ -414,23 +414,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.createRetroPoint).toHaveBeenCalledWith(retroPoint);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_RETRO_POINT_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'CREATE_RETRO_POINT_NOTIFICATION_ID',
-           message: 'Unable to create retro point. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'CREATE_RETRO_POINT_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CREATE_RETRO_POINT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'CREATE_RETRO_POINT_NOTIFICATION_ID',
+          message: 'Unable to create retro point. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'CREATE_RETRO_POINT_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show error message when create retro action fails', async () => {
@@ -441,23 +441,23 @@ describe('Get_RETROS action', () => {
 
     expect(RetroService.createActionItem).toHaveBeenCalledWith(actionItem);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'CREATE_RETRO_ACTION_ITEM_NOTIFICATION_ID',
-           message: 'Unable to create retro action item. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'CREATE_RETRO_ACTION_ITEM_NOTIFICATION_ID',
+          message: 'Unable to create retro action item. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should fetch all retros points on create retro', async () => {
@@ -472,31 +472,31 @@ describe('Get_RETROS action', () => {
     expect(RetroService.createRetroPoint).toHaveBeenCalledWith(retroPoint);
     expect(RetroService.getRetroPoints).toHaveBeenCalledWith(retroId);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_RETRO_POINT_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'CREATE_RETRO_POINT_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-       {
-         payload: [
-           {
-             id: 20,
-           },
-         ],
-         type: 'ADD_RETRO_POINTS',
-       },
-       {
-         payload: 'GET_RETRO_POINT_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CREATE_RETRO_POINT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'CREATE_RETRO_POINT_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+      {
+        payload: [
+          {
+            id: 20,
+          },
+        ],
+        type: 'ADD_RETRO_POINTS',
+      },
+      {
+        payload: 'GET_RETRO_POINT_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should fetch all retro actions items on create action items', async () => {
@@ -511,30 +511,30 @@ describe('Get_RETROS action', () => {
     expect(RetroService.createActionItem).toHaveBeenCalledWith(actionItem);
     expect(RetroService.getActionItems).toHaveBeenCalledWith(retroId);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-       {
-         payload: [
-           {
-             description: 'fake action item',
-           },
-         ],
-         type: 'ADD_RETRO_ACTION_ITEMS',
-       },
-       {
-         payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: 'CREATE_RETRO_ACTION_ITEM_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+      {
+        payload: [
+          {
+            description: 'fake action item',
+          },
+        ],
+        type: 'ADD_RETRO_ACTION_ITEMS',
+      },
+      {
+        payload: 'GET_RETRO_ACTION_ITEMS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 });

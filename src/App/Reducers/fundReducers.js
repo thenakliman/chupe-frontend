@@ -10,13 +10,13 @@ export const fund = (state, action) => {
   }
 
   switch (action.type) {
-      case ActionTypes.ADD_FUNDS_FOR_USER:
-        return {...state, teamMemberFunds: [...action.payload]};
-      case ActionTypes.ADD_TEAM_FUND_TYPES:
-        return {...state, fundTypes: [...action.payload]};
-      case ActionTypes.ADD_TEAM_FUND:
-        return {...state, teamFunds: [...action.payload]};
-      default:
-        return {...state};
+    case ActionTypes.ADD_FUNDS_FOR_USER:
+      return {...state, teamMemberFunds: [...action.payload]};
+    case ActionTypes.ADD_TEAM_FUND_TYPES:
+      return {...state, fundTypes: [...action.payload]};
+    case ActionTypes.ADD_TEAM_FUND:
+      return {...state, teamFunds: [...action.payload]};
+    default:
+      return {...state};
   }
 };

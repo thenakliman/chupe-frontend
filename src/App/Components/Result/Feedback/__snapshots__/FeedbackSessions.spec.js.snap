@@ -32,13 +32,13 @@ exports[` 1`] = `
           className="feedbackSession-table-header"
         >
           <th>
-             Id 
+             Id
           </th>
           <th>
-             description 
+             description
           </th>
           <th>
-             Created By 
+             Created By
           </th>
         </tr>
       </thead>

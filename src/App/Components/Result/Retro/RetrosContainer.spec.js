@@ -2,13 +2,11 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
-import RetrosContainer from './RetrosContainer';
+import RetrosContainer, {mapDispatchToProps} from './RetrosContainer';
 /* eslint-enable */
 import {Retros} from './Retros';
 import configureStore from 'redux-mock-store';
 import * as RetroActions from '../../../Actions/retroActions';
-import {mapDispatchToProps} from './RetrosContainer';
 
 
 describe('Question Result container', () => {
@@ -17,7 +15,7 @@ describe('Question Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        retro: {retros: [{'userName': 'user1'}, {'userName': 'user2'}]},
+      retro: {retros: [{'userName': 'user1'}, {'userName': 'user2'}]},
     };
 
     store = configureStore()(initialState);
@@ -29,9 +27,9 @@ describe('Question Result container', () => {
     spyOn(RetroActions, 'getAllRetros').and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <RetrosContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <RetrosContainer/>
+        </Provider>);
 
     const props = container.find(Retros).props();
     expect(props.retros).toEqual(initialState.retro.retros);
@@ -42,9 +40,9 @@ describe('Question Result container', () => {
     spyOn(RetroActions, 'getAllRetros').and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <RetrosContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <RetrosContainer/>
+        </Provider>);
 
     container.find(Retros).props();
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);

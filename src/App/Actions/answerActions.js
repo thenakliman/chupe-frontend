@@ -1,16 +1,16 @@
 import {AnswerService} from '../Services/AnswerService';
 import {ActionTypes} from './ActionTypes';
-import {showLoader, hideLoader} from './loaderActions';
+import {hideLoader, showLoader} from './loaderActions';
 import {showNotification} from './notificationActions';
 
 import {
   ANSWER_LOADER_ID,
-  UPDATE_ANSWER_LOADER_ID,
-  GET_ANSWERS_LOADER_ID,
   ANSWER_NOTIFICATION,
+  GET_ANSWERS_LOADER_ID,
   GET_ANSWERS_NOTIFICATION,
+  UPDATE_ANSWER_LOADER_ID,
   UPDATE_ANSWER_NOTIFICATION,
-  } from '../Components/Result/Common/constants';
+} from '../Components/Result/Common/constants';
 
 
 const addAnswers = (answers) => ({
@@ -35,9 +35,9 @@ export const getAnswers = (questionId) => async (dispatch) => {
     dispatch(addAnswers(answers));
   } catch (error) {
     dispatch(showNotification(
-      GET_ANSWERS_NOTIFICATION.id,
-      GET_ANSWERS_NOTIFICATION.type,
-      GET_ANSWERS_NOTIFICATION.message,
+        GET_ANSWERS_NOTIFICATION.id,
+        GET_ANSWERS_NOTIFICATION.type,
+        GET_ANSWERS_NOTIFICATION.message,
     ));
   }
   dispatch(hideLoader(GET_ANSWERS_LOADER_ID));
@@ -50,9 +50,9 @@ export const updateAnswer = (answerId, answerDetail) => async (dispatch) => {
     dispatch(updateAnswerAction(answer));
   } catch (error) {
     dispatch(showNotification(
-      UPDATE_ANSWER_NOTIFICATION.id,
-      UPDATE_ANSWER_NOTIFICATION.type,
-      UPDATE_ANSWER_NOTIFICATION.message,
+        UPDATE_ANSWER_NOTIFICATION.id,
+        UPDATE_ANSWER_NOTIFICATION.type,
+        UPDATE_ANSWER_NOTIFICATION.message,
     ));
   }
   dispatch(hideLoader(UPDATE_ANSWER_LOADER_ID));

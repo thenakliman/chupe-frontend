@@ -1,13 +1,14 @@
 import propTypes from 'prop-types';
 import React from 'react';
 import * as constants from '../constants';
+
 require('./Task.css');
 
 /**
-* Task result component of the application.
-*
-* @author: thenakliman
-*/
+ * Task result component of the application.
+ *
+ * @author: thenakliman
+ */
 export class Task extends React.Component {
   /** Constructor for the component.
    *  @param {object} props
@@ -72,24 +73,25 @@ export class Task extends React.Component {
     this.props.createTask(task);
     this.setState({description: ''});
   }
-/**
-* Task result component of the application.
-*
-* @return {Object} TaskResult component.
-*/
+
+  /**
+   * Task result component of the application.
+   *
+   * @return {Object} TaskResult component.
+   */
   render() {
     const states = [
-        constants.CREATED,
-        constants.IN_PROGRESS,
-        constants.ON_HOLD,
-        constants.DONE,
+      constants.CREATED,
+      constants.IN_PROGRESS,
+      constants.ON_HOLD,
+      constants.DONE,
     ];
 
     const toCompleteTasks = [...this.props.tasks].filter((task) =>
         [constants.CREATED, constants.IN_PROGRESS].includes(task.state) ||
         (this.state.displayAllTask));
 
-    toCompleteTasks.sort((task1, task2) => task1.id < task2.id? -1 : 1);
+    toCompleteTasks.sort((task1, task2) => task1.id < task2.id ? -1 : 1);
 
     return (
         <div className='task-result-container'>
@@ -98,7 +100,7 @@ export class Task extends React.Component {
                    className='task-input-description'
                    value={this.state.description}
                    onChange={
-                      (e) => this.handleDescriptionChange(e.target.value)}/>
+                     (e) => this.handleDescriptionChange(e.target.value)}/>
 
             <button id='task-create-button'
                     className='task-button'
@@ -111,7 +113,7 @@ export class Task extends React.Component {
               <button id='tasks-button'
                       className='task-button'
                       onClick={this.displayAllTask}>
-                {this.state.displayAllTask?'Pending Tasks':'All Tasks'}
+                {this.state.displayAllTask ? 'Pending Tasks' : 'All Tasks'}
               </button>
             </div>
             <table id='team-fund-table-id'
@@ -129,24 +131,24 @@ export class Task extends React.Component {
               <tbody>
                 {
                   toCompleteTasks.map((task, index) => (
-                    <tr key={index}>
-                      <td>{index}</td>
-                      <td>{task.description}</td>
-                      {
-                        states.map((state) => (
-                          <td key={state}>
-                            <input
-                              className={'task-state-radio-button'}
-                              id={`task-state-radio-button-${state}-${task.id}`}
-                              type="checkbox"
-                              name={`state-${index}`}
-                              onChange={
-                                () => this.handleChangeInState(task.id, state)}
-                              checked={state === task.state} />
-                          </td>
-                        ))
-                    }
-                    </tr>
+                      <tr key={index}>
+                        <td>{index}</td>
+                        <td>{task.description}</td>
+                        {
+                          states.map((state) => (
+                              <td key={state}>
+                                <input
+                                    className={'task-state-radio-button'}
+                                    id={`task-state-radio-button-${state}-${task.id}`}
+                                    type="checkbox"
+                                    name={`state-${index}`}
+                                    onChange={
+                                      () => this.handleChangeInState(task.id, state)}
+                                    checked={state === task.state}/>
+                              </td>
+                          ))
+                        }
+                      </tr>
                   ))
                 }
               </tbody>

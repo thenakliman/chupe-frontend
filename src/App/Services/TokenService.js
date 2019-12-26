@@ -10,12 +10,12 @@ const tokenURL = '/token';
  * @return {string} token received
  */
 export async function get(url, headers) {
-    return await axios.get(url, {headers: headers})
-    .then((response)=>response.headers.authorization)
-    .catch((error) => {
+  return await axios.get(url, {headers: headers})
+      .then((response) => response.headers.authorization)
+      .catch((error) => {
         // todo(thenakliman): Add test for this branch
         console.log(error.message);
-    });
+      });
 }
 
 /** Returns token

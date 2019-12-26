@@ -14,14 +14,15 @@ describe('REST client', () => {
     it('should make a get call', (done) => {
       let mock = new MockAdapter(axios);
       const questionData = {
-          data: [{'question': 'what?'}, {'question': 'when?'}]};
+        data: [{'question': 'what?'}, {'question': 'when?'}]
+      };
       const url = '/api/v1/question';
 
       mock.onGet(url).reply(200, questionData);
 
       get(url, {key1: 'value'}).then((response) => {
-          expect(response.data).toEqual(questionData.data);
-          done();
+        expect(response.data).toEqual(questionData.data);
+        done();
       });
     });
   });
@@ -30,15 +31,16 @@ describe('REST client', () => {
     it('should make a post call', (done) => {
       let mock = new MockAdapter(axios);
       const questionData = {
-          data: [{'question': 'what?'}, {'question': 'when?'}]};
+        data: [{'question': 'what?'}, {'question': 'when?'}]
+      };
       const url = '/api/v1/question';
       const body = {question: 100};
 
       mock.onPost(url, body).reply(200, questionData);
 
       post(url, body).then((response) => {
-          expect(response.data).toEqual(questionData.data);
-          done();
+        expect(response.data).toEqual(questionData.data);
+        done();
       });
     });
   });
@@ -47,7 +49,8 @@ describe('REST client', () => {
     it('should make a put call', (done) => {
       let mock = new MockAdapter(axios);
       const questionData = {
-          data: [{'question': 'what?'}, {'question': 'when?'}]};
+        data: [{'question': 'what?'}, {'question': 'when?'}]
+      };
       const url = '/api/v1/question';
       const body = {question: 100};
 
@@ -55,8 +58,8 @@ describe('REST client', () => {
       mock.onPut(url, body).reply(200, questionData);
 
       put(url, body).then((response) => {
-          expect(response.data).toEqual(questionData.data);
-          done();
+        expect(response.data).toEqual(questionData.data);
+        done();
       });
     });
   });

@@ -1,6 +1,5 @@
 import {shallow} from 'enzyme';
 /* eslint-disable */
-import {Provider} from 'react-redux';
 import React from 'react';
 import {Notification} from './Notification';
 /* eslint-enable */
@@ -21,12 +20,12 @@ describe('Notification', () => {
     };
 
     const container = shallow(<Notification
-      notifications={[notification]}
-      hideNotification={jest.fn()}
+        notifications={[notification]}
+        hideNotification={jest.fn()}
     />);
 
     expect(
-      container.find('.notification-message-container .error').length).toBe(1);
+        container.find('.notification-message-container .error').length).toBe(1);
   });
 
   it('should show success notification', () => {
@@ -37,12 +36,12 @@ describe('Notification', () => {
     };
 
     const container = shallow(<Notification
-      notifications={[notification]}
-      hideNotification={jest.fn()}
+        notifications={[notification]}
+        hideNotification={jest.fn()}
     />);
 
     expect(container.find('.notification-message-container .success')
-          .length).toBe(1);
+        .length).toBe(1);
   });
 
   it('should show notification', () => {
@@ -53,12 +52,12 @@ describe('Notification', () => {
     };
 
     const container = shallow(<Notification
-      notifications={[notification]}
-      hideNotification={jest.fn()}
+        notifications={[notification]}
+        hideNotification={jest.fn()}
     />);
 
     expect(
-      container.find('.notification-message-container').length).toBe(1);
+        container.find('.notification-message-container').length).toBe(1);
   });
 
   it('should show warning notification', () => {
@@ -69,12 +68,12 @@ describe('Notification', () => {
     };
 
     const container = shallow(<Notification
-      notifications={[notification]}
-      hideNotification={jest.fn()}
+        notifications={[notification]}
+        hideNotification={jest.fn()}
     />);
 
     expect(container.find('.notification-message-container .warning')
-          .length).toBe(1);
+        .length).toBe(1);
   });
 
   it('should call hide notification', () => {
@@ -87,8 +86,8 @@ describe('Notification', () => {
     const hideNotification = jest.fn();
 
     shallow(<Notification
-      notifications={[notification]}
-      hideNotification={hideNotification}
+        notifications={[notification]}
+        hideNotification={hideNotification}
     />);
 
     expect(hideNotification).toHaveBeenCalledWith('notification-10');
@@ -112,15 +111,15 @@ describe('Notification', () => {
     };
 
     const container = shallow(<Notification
-      notifications={[notification1, notification2, notification3]}
-      hideNotification={jest.fn()}
+        notifications={[notification1, notification2, notification3]}
+        hideNotification={jest.fn()}
     />);
 
     expect(container.find('.notification-message-container .success')
-            .length).toBe(1);
+        .length).toBe(1);
     expect(container.find('.notification-message-container .error')
-            .length).toBe(1);
+        .length).toBe(1);
     expect(container.find('.notification-message-container .warning')
-            .length).toBe(1);
+        .length).toBe(1);
   });
 });

@@ -67,8 +67,8 @@ describe('Show create retro pop up component', () => {
     wrapper.find('#create-retro-button-id').simulate('click');
 
     expect(createRetro).toHaveBeenCalledWith({
-        name: testName,
-        maximumVote: maximumVote,
+      name: testName,
+      maximumVote: maximumVote,
     });
   });
 });

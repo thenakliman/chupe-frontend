@@ -10,27 +10,27 @@ describe('Login reducers', () => {
   };
 
   const initialStore = {
-      userName: null,
+    userName: null,
   };
 
   it('should store username', () => {
-      const loggedInUser = loggedInUserDetails(initialStore, setUserAction);
-      expect(loggedInUser.userName).toEqual(username);
+    const loggedInUser = loggedInUserDetails(initialStore, setUserAction);
+    expect(loggedInUser.userName).toEqual(username);
   });
 
   it('should keep null in username for other actions', () => {
-      const loggedInUser = loggedInUserDetails(
-          initialStore,
-          {type: 'fake-action', payload: username});
+    const loggedInUser = loggedInUserDetails(
+        initialStore,
+        {type: 'fake-action', payload: username});
 
-      expect(loggedInUser.userName).toEqual(null);
+    expect(loggedInUser.userName).toEqual(null);
   });
 
   it('should keep in username if initially store is empty', () => {
-      const loggedInUser = loggedInUserDetails(
-          undefined,
-          {type: 'fake-action', payload: username});
+    const loggedInUser = loggedInUserDetails(
+        undefined,
+        {type: 'fake-action', payload: username});
 
-      expect(loggedInUser.userName).toEqual(null);
+    expect(loggedInUser.userName).toEqual(null);
   });
 });

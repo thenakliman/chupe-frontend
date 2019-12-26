@@ -24,13 +24,13 @@ export class Notification extends React.Component {
     }
 
     return (<div>
-      { this.props.notifications.map((notification) =>
-        <div className={Notification.getClassName(notification.type)}
-             key={notification.id}>
-             {this.props.hideNotification(notification.id)}
-          <b><i>{notification.message}</i></b>
-        </div>
-        )
+      {this.props.notifications.map((notification) =>
+          <div className={Notification.getClassName(notification.type)}
+               key={notification.id}>
+            {this.props.hideNotification(notification.id)}
+            <b><i>{notification.message}</i></b>
+          </div>
+      )
       }
     </div>);
   }

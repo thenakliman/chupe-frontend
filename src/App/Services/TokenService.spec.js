@@ -15,25 +15,25 @@ describe('Token Service', () => {
 
   describe('if token does not exist in cookie', () => {
     it('should return received token', async () => {
-        let mock = new MockAdapter(axios);
-        const token = 'a fake token for testing purpose';
-        const username = 'hazari_sahab';
-        spyOn(CookiesUtil, 'getToken').and.returnValue(null);
-        spyOn(CookiesUtil, 'setCookies');
+      let mock = new MockAdapter(axios);
+      const token = 'a fake token for testing purpose';
+      const username = 'hazari_sahab';
+      spyOn(CookiesUtil, 'getToken').and.returnValue(null);
+      spyOn(CookiesUtil, 'setCookies');
 
-        const url = '/token?username=' + username;
-        const headers = {
-          headers: {
-            Authorization: 'Basic aGF6YXJpX3NhaGFiOnVuZGVmaW5lZA==',
-          },
-        };
-        mock.onGet(url, headers).reply(200, {}, {authorization: token});
+      const url = '/token?username=' + username;
+      const headers = {
+        headers: {
+          Authorization: 'Basic aGF6YXJpX3NhaGFiOnVuZGVmaW5lZA==',
+        },
+      };
+      mock.onGet(url, headers).reply(200, {}, {authorization: token});
 
-        const receivedToken = await TokenService.getToken(username, 'abc123');
+      const receivedToken = await TokenService.getToken(username, 'abc123');
 
-        expect(receivedToken).toEqual(token);
-        expect(CookiesUtil.getToken).toHaveBeenCalledWith();
-        expect(CookiesUtil.setCookies).toHaveBeenCalledWith(token);
+      expect(receivedToken).toEqual(token);
+      expect(CookiesUtil.getToken).toHaveBeenCalledWith();
+      expect(CookiesUtil.setCookies).toHaveBeenCalledWith(token);
     });
   });
 });

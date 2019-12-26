@@ -1,10 +1,6 @@
 import {TeamFund} from './TeamFund';
 import {connect} from 'react-redux';
-import {
-  fetchTeamFund,
-  fetchFundTypes,
-  addFund,
-} from '../../../Actions/teamFundActions';
+import {addFund, fetchFundTypes, fetchTeamFund,} from '../../../Actions/teamFundActions';
 
 
 const mapStateToProps = (state) => ({

@@ -22,49 +22,49 @@ export class FeedbackPopUp extends React.Component {
 
   onSubmit() {
     this.props.onSubmit({
-        description: this.state.description,
-        givenTo: this.state.feedbackGivenToUser,
+      description: this.state.description,
+      givenTo: this.state.feedbackGivenToUser,
     });
   }
 
   render() {
     return (
-      <div className={'feedback-pop-up-container'}>
-      <div className={'feedback-pop-up-inner'}>
-        <div>
-          Feedback:
-        </div>
-        <textarea className={'feedback-description'}
-                  value={this.state.feedback}
-                  onChange={(event) => this.handleDescriptionChange(event.target.value)}
-                  resize={'none'}/>
+        <div className={'feedback-pop-up-container'}>
+          <div className={'feedback-pop-up-inner'}>
+            <div>
+              Feedback:
+            </div>
+            <textarea className={'feedback-description'}
+                      value={this.state.feedback}
+                      onChange={(event) => this.handleDescriptionChange(event.target.value)}
+                      resize={'none'}/>
 
-        Feedback To:
-        <select value={this.state.feedbackGivenToUser}
-                className={'select-user-feedback'}
-                onChange={(event) => this.handleFeedbackTargetChange(event.target.value)}
-        >
-        <option key={''} value={''}> Select user </option>
-        {
-          this.props.users.map((user) =>
-            <option key={user.userName} value={user.userName}>
-              {user.userName}
-            </option>)
-        }
-        </select>
-        <div className={'button-container'}>
-          <button className={'feedback-buttons'}
-                  id={'feedback-submit-button'}
-                  onClick={this.onSubmit}>
-              Submit
-          </button>
-          <button className={'feedback-buttons'}
-                  id={'feedback-cancel-button'} onClick={this.props.onCancel}>
-              Cancel
-          </button>
+            Feedback To:
+            <select value={this.state.feedbackGivenToUser}
+                    className={'select-user-feedback'}
+                    onChange={(event) => this.handleFeedbackTargetChange(event.target.value)}
+            >
+              <option key={''} value={''}> Select user</option>
+              {
+                this.props.users.map((user) =>
+                    <option key={user.userName} value={user.userName}>
+                      {user.userName}
+                    </option>)
+              }
+            </select>
+            <div className={'button-container'}>
+              <button className={'feedback-buttons'}
+                      id={'feedback-submit-button'}
+                      onClick={this.onSubmit}>
+                Submit
+              </button>
+              <button className={'feedback-buttons'}
+                      id={'feedback-cancel-button'} onClick={this.props.onCancel}>
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      </div>
     );
   }
 }

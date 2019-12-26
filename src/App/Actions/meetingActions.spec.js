@@ -1,11 +1,6 @@
-import {
-  getMeetings,
-  getMeetingDiscussionItems,
-  createMeeting,
-  createMeetingDiscussionItem} from './meetingActions';
+import {createMeeting, createMeetingDiscussionItem, getMeetingDiscussionItems, getMeetings} from './meetingActions';
 
 import configureStore from 'redux-mock-store';
-import {ActionTypes} from './ActionTypes';
 import {MeetingService} from '../Services/MeetingService';
 import thunk from 'redux-thunk';
 
@@ -24,15 +19,15 @@ describe('Meeting action', () => {
 
     await store.dispatch(getMeetings());
     expect(store.getActions()).toEqual([{
-       payload: 'GET_MEETING_LOADER_ID',
-       type: 'SHOW_LOADER',
-     }, {
-       payload: [{'name': 'fakeTask'}],
-       type: 'ADD_MEETINGS',
-     }, {
-       payload: 'GET_MEETING_LOADER_ID',
-       type: 'HIDE_LOADER',
-     }]);
+      payload: 'GET_MEETING_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: [{'name': 'fakeTask'}],
+      type: 'ADD_MEETINGS',
+    }, {
+      payload: 'GET_MEETING_LOADER_ID',
+      type: 'HIDE_LOADER',
+    }]);
     expect(MeetingService.getMeetings).toHaveBeenCalledWith();
   });
 
@@ -43,18 +38,19 @@ describe('Meeting action', () => {
 
     expect(MeetingService.getMeetings).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([{
-         payload: 'GET_MEETING_LOADER_ID',
-         type: 'SHOW_LOADER',
-       }, {
-         payload: {
-             id: 'GET_MEETING_NOTIFICATION_ID',
-             message: 'Unable to get meeting. Please try after sometime.',
-             type: 'ERROR'},
-         type: 'SHOW_NOTIFICATION',
-       }, {
-         payload: 'GET_MEETING_LOADER_ID',
-          type: 'HIDE_LOADER',
-     }]);
+      payload: 'GET_MEETING_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: {
+        id: 'GET_MEETING_NOTIFICATION_ID',
+        message: 'Unable to get meeting. Please try after sometime.',
+        type: 'ERROR'
+      },
+      type: 'SHOW_NOTIFICATION',
+    }, {
+      payload: 'GET_MEETING_LOADER_ID',
+      type: 'HIDE_LOADER',
+    }]);
   });
 
   it('Should dispatch action for create meeting', async () => {
@@ -64,23 +60,23 @@ describe('Meeting action', () => {
 
     await store.dispatch(createMeeting(meeting));
     expect(store.getActions()).toEqual([{
-         payload: 'CREATE_MEETING_LOADER_ID',
-         type: 'SHOW_LOADER',
-       }, {
-         payload: 'GET_MEETING_LOADER_ID',
-         type: 'SHOW_LOADER',
-       }, {
-         payload: 'CREATE_MEETING_LOADER_ID',
-         type: 'HIDE_LOADER',
-       }, {
-         payload: {'name': 'fakeTask'},
-         type: 'ADD_MEETINGS',
-       }, {
-         payload: 'GET_MEETING_LOADER_ID',
-         type: 'HIDE_LOADER',
-   }]);
+      payload: 'CREATE_MEETING_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: 'GET_MEETING_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: 'CREATE_MEETING_LOADER_ID',
+      type: 'HIDE_LOADER',
+    }, {
+      payload: {'name': 'fakeTask'},
+      type: 'ADD_MEETINGS',
+    }, {
+      payload: 'GET_MEETING_LOADER_ID',
+      type: 'HIDE_LOADER',
+    }]);
 
-   expect(MeetingService.saveMeeting).toHaveBeenCalledWith(meeting);
+    expect(MeetingService.saveMeeting).toHaveBeenCalledWith(meeting);
   });
 
   it('Should show error message if failed to create meeting', async () => {
@@ -91,18 +87,19 @@ describe('Meeting action', () => {
 
     expect(MeetingService.saveMeeting).toHaveBeenCalledWith(meeting);
     expect(store.getActions()).toEqual([{
-         payload: 'CREATE_MEETING_LOADER_ID',
-         type: 'SHOW_LOADER',
-       }, {
-       payload: {
-          id: 'CREATE_MEETING_NOTIFICATION_ID',
-          message: 'Unable to create meeting. Please try after sometime.',
-          type: 'ERROR'},
-       type: 'SHOW_NOTIFICATION',
-       }, {
-         payload: 'CREATE_MEETING_LOADER_ID',
-         type: 'HIDE_LOADER',
-       }]);
+      payload: 'CREATE_MEETING_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: {
+        id: 'CREATE_MEETING_NOTIFICATION_ID',
+        message: 'Unable to create meeting. Please try after sometime.',
+        type: 'ERROR'
+      },
+      type: 'SHOW_NOTIFICATION',
+    }, {
+      payload: 'CREATE_MEETING_LOADER_ID',
+      type: 'HIDE_LOADER',
+    }]);
   });
 
   it('Should dispatch action for fetching meeting discussion items', async () => {
@@ -112,14 +109,14 @@ describe('Meeting action', () => {
 
     await store.dispatch(getMeetingDiscussionItems(meetingId));
     expect(store.getActions()).toEqual([{
-       payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
-       type: 'SHOW_LOADER',
-     }, {
-       payload: [{'id': 10}],
-       type: 'ADD_MEETING_DISCUSSION_ITEMS',
-     }, {
-       payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
-       type: 'HIDE_LOADER',
+      payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: [{'id': 10}],
+      type: 'ADD_MEETING_DISCUSSION_ITEMS',
+    }, {
+      payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
+      type: 'HIDE_LOADER',
     }]);
     expect(MeetingService.getMeetingDiscussionItems).toHaveBeenCalledWith(meetingId);
   });
@@ -130,23 +127,23 @@ describe('Meeting action', () => {
 
     await store.dispatch(getMeetingDiscussionItems(meetingId));
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_MEETING_DISCUSSION_ITEM_NOTIFICATION_ID',
-           message: 'Unable to fetch meeting discussion item. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_MEETING_DISCUSSION_ITEM_NOTIFICATION_ID',
+          message: 'Unable to fetch meeting discussion item. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_MEETING_DISCUSSION_ITEM_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
     expect(MeetingService.getMeetingDiscussionItems).toHaveBeenCalledWith(meetingId);
   });
 
@@ -161,10 +158,10 @@ describe('Meeting action', () => {
       payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
       type: 'SHOW_LOADER',
     },
-    {
-      payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
-      type: 'HIDE_LOADER',
-    }]);
+      {
+        payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
+        type: 'HIDE_LOADER',
+      }]);
 
     expect(MeetingService.saveMeetingDiscussionItem).toHaveBeenCalledWith(meetingDiscussionItem);
   });
@@ -176,22 +173,22 @@ describe('Meeting action', () => {
 
     expect(MeetingService.saveMeetingDiscussionItem).toHaveBeenCalledWith(meetingDiscussionItem);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'CREATE_MEETING_DISCUSSION_ITEM_NOTIFICATION_ID',
-           message: 'Unable to create meeting discussion item. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
-    });
+      {
+        payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'CREATE_MEETING_DISCUSSION_ITEM_NOTIFICATION_ID',
+          message: 'Unable to create meeting discussion item. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'CREATE_MEETING_DISCUSSION_ITEM_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
+  });
 });

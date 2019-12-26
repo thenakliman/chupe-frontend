@@ -1,10 +1,6 @@
-import {addQuestions} from './questionActions';
+import {addQuestions, askQuestion, getAllQuestions, updateLoaderStatus, updateQuestion} from './questionActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
-import {getAllQuestions} from './questionActions';
-import {askQuestion,
-        updateLoaderStatus,
-        updateQuestion} from './questionActions';
 import {QuestionService} from '../Services/QuestionService';
 import thunk from 'redux-thunk';
 import * as History from '../utils/history';
@@ -34,23 +30,23 @@ describe('ADD_QUESTIONS action', () => {
     await store.dispatch(getAllQuestions(testQuestions));
     expect(QuestionService.getQuestions).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_QUESTIONS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: [
-           {
-             question: 'My Question',
-           },
-         ],
-         type: 'ADD_QUESTIONS',
-       },
-       {
-         payload: 'GET_QUESTIONS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'GET_QUESTIONS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: [
+          {
+            question: 'My Question',
+          },
+        ],
+        type: 'ADD_QUESTIONS',
+      },
+      {
+        payload: 'GET_QUESTIONS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should show console error on dispatch failure', async () => {
@@ -59,24 +55,24 @@ describe('ADD_QUESTIONS action', () => {
     await store.dispatch(getAllQuestions());
     expect(QuestionService.getQuestions).toHaveBeenCalledWith();
     expect(store.getActions()).toEqual([
-       {
-         payload: 'GET_QUESTIONS_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: {
-           id: 'GET_QUESTIONS_NOTIFICATION_ID',
-           message: 'Unable to fetch questions. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: 'GET_QUESTIONS_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
- });
+      {
+        payload: 'GET_QUESTIONS_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_QUESTIONS_NOTIFICATION_ID',
+          message: 'Unable to fetch questions. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_QUESTIONS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
+  });
 });
 
 describe('Update loader status for asking question', () => {
@@ -104,23 +100,23 @@ describe('ASK_QUESTIONS action', () => {
     await store.dispatch(askQuestion(testQuestion));
     expect(QuestionService.askQuestion).toHaveBeenCalledWith(testQuestion);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'ASK_QUESTION_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: true,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: false,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: 'ASK_QUESTION_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'ASK_QUESTION_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: true,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: false,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: 'ASK_QUESTION_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
     expect(History.history.push).toHaveBeenCalledWith('/questions');
   });
 
@@ -130,31 +126,31 @@ describe('ASK_QUESTIONS action', () => {
     await store.dispatch(askQuestion(testQuestion));
     expect(QuestionService.askQuestion).toHaveBeenCalledWith(testQuestion);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'ASK_QUESTION_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: true,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: {
-           id: 'ASK_QUESTION_NOTIFICATION_ID',
-           message: 'Unable to ask question. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: false,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: 'ASK_QUESTION_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'ASK_QUESTION_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: true,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: {
+          id: 'ASK_QUESTION_NOTIFICATION_ID',
+          message: 'Unable to ask question. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: false,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: 'ASK_QUESTION_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
   it('Should dispatch update loader status on failure', async () => {
     const testQuestion = {'question': 'My Question'};
@@ -162,31 +158,31 @@ describe('ASK_QUESTIONS action', () => {
     await store.dispatch(updateQuestion([], testQuestion));
     expect(QuestionService.updateQuestion).toHaveBeenCalledWith(testQuestion);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'UPDATE_QUESTION_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: true,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: {
-           id: 'UPDATE_QUESTION_NOTIFICATION_ID',
-           message: 'Unable to update questions. Please try after sometime.',
-           type: 'ERROR',
-         },
-         type: 'SHOW_NOTIFICATION',
-       },
-       {
-         payload: false,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: 'UPDATE_QUESTION_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'UPDATE_QUESTION_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: true,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: {
+          id: 'UPDATE_QUESTION_NOTIFICATION_ID',
+          message: 'Unable to update questions. Please try after sometime.',
+          type: 'ERROR',
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: false,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: 'UPDATE_QUESTION_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 
   it('Should dispatch update loader and addQuestions', async () => {
@@ -196,35 +192,35 @@ describe('ASK_QUESTIONS action', () => {
     await store.dispatch(updateQuestion(questions, testQuestion));
     expect(QuestionService.updateQuestion).toHaveBeenCalledWith(testQuestion);
     expect(store.getActions()).toEqual([
-       {
-         payload: 'UPDATE_QUESTION_LOADER_ID',
-         type: 'SHOW_LOADER',
-       },
-       {
-         payload: true,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: [
-           {
-             'id': 2,
-             'q': 10,
-           },
-           {
-             'id': 1,
-             'q': 30,
-           },
-         ],
-         type: 'ADD_QUESTIONS',
-       },
-       {
-         payload: false,
-         type: 'UPDATE_LOADER_STATUS',
-       },
-       {
-         payload: 'UPDATE_QUESTION_LOADER_ID',
-         type: 'HIDE_LOADER',
-       },
-     ]);
+      {
+        payload: 'UPDATE_QUESTION_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: true,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: [
+          {
+            'id': 2,
+            'q': 10,
+          },
+          {
+            'id': 1,
+            'q': 30,
+          },
+        ],
+        type: 'ADD_QUESTIONS',
+      },
+      {
+        payload: false,
+        type: 'UPDATE_LOADER_STATUS',
+      },
+      {
+        payload: 'UPDATE_QUESTION_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
   });
 });

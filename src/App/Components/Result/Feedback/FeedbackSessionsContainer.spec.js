@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import FeedbackSessionsContainer from './FeedbackSessionsContainer';
 /* eslint-enable */
 import {FeedbackSessions} from './FeedbackSessions';
@@ -15,7 +14,7 @@ describe('Feedback Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        feedback: {feedbackSessions: [{id: 'feedback-session'}]},
+      feedback: {feedbackSessions: [{id: 'feedback-session'}]},
     };
 
     store = configureStore()(initialState);
@@ -28,9 +27,9 @@ describe('Feedback Result container', () => {
         .and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <FeedbackSessionsContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbackSessionsContainer/>
+        </Provider>);
 
     const props = container.find(FeedbackSessions).props();
     expect(props.feedbackSessions)
@@ -40,12 +39,12 @@ describe('Feedback Result container', () => {
   it('should have getAllFeedbackSessions in props', () => {
     const fakeAction = 'fake - action';
     spyOn(FeedbackActions, 'getAllFeedbackSessions')
-          .and.returnValue(fakeAction);
+        .and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <FeedbackSessionsContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbackSessionsContainer/>
+        </Provider>);
 
     container.find(FeedbackSessions).props();
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
@@ -54,15 +53,15 @@ describe('Feedback Result container', () => {
   it('should call createFeedbackSession', () => {
     const fakeAction = 'fake - action';
     spyOn(FeedbackActions, 'createFeedbackSession')
-          .and.returnValue(fakeAction);
+        .and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <FeedbackSessionsContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbackSessionsContainer/>
+        </Provider>);
 
     container.find('#feedbackSession-button-id').simulate('click');
     expect(FeedbackActions.createFeedbackSession)
-            .toHaveBeenCalledWith({description: ''});
+        .toHaveBeenCalledWith({description: ''});
   });
 });

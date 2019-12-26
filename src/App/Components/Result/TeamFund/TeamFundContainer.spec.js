@@ -19,8 +19,8 @@ describe('TeamFundContainer', () => {
       fund: {
         teamFunds: teamFund,
         fundTypes: fundTypes,
-        },
-        loggedInUserDetails: {userName: loggedInUser},
+      },
+      loggedInUserDetails: {userName: loggedInUser},
     };
 
     store = configureStore()(initialState);
@@ -29,27 +29,27 @@ describe('TeamFundContainer', () => {
 
   it('Should have teamFund props for a component', () => {
     const wrapper = mount(
-      <Provider store={store}>
-        <TeamFund />
-      </Provider>);
+        <Provider store={store}>
+          <TeamFund/>
+        </Provider>);
 
     expect(wrapper.find('TeamFund').props().teamFund).toEqual(teamFund);
   });
 
   it('Should have fundTypes props for a component', () => {
     const wrapper = mount(
-      <Provider store={store}>
-        <TeamFund />
-      </Provider>);
+        <Provider store={store}>
+          <TeamFund/>
+        </Provider>);
 
     expect(wrapper.find('TeamFund').props().fundTypes).toEqual(fundTypes);
   });
 
   it('Should have loggedInUser props for a component', () => {
     const wrapper = mount(
-      <Provider store={store}>
-        <TeamFund />
-      </Provider>);
+        <Provider store={store}>
+          <TeamFund/>
+        </Provider>);
 
     expect(wrapper.find('TeamFund').props().loggedInUser).toEqual(loggedInUser);
   });
@@ -59,9 +59,9 @@ describe('TeamFundContainer', () => {
     spyOn(TeamFundAction, 'fetchTeamFund').and.returnValue(fakeAction);
 
     const wrapper = mount(
-      <Provider store={store}>
-        <TeamFund />
-      </Provider>);
+        <Provider store={store}>
+          <TeamFund/>
+        </Provider>);
 
     wrapper.find('TeamFund').props().fetchTeamFund();
 
@@ -74,9 +74,9 @@ describe('TeamFundContainer', () => {
     spyOn(TeamFundAction, 'fetchFundTypes').and.returnValue(fakeAction);
 
     const wrapper = mount(
-      <Provider store={store}>
-        <TeamFund />
-      </Provider>);
+        <Provider store={store}>
+          <TeamFund/>
+        </Provider>);
 
     wrapper.find('TeamFund').props().fetchFundTypes();
 
@@ -89,9 +89,9 @@ describe('TeamFundContainer', () => {
     spyOn(TeamFundAction, 'addFund').and.returnValue(fakeAction);
 
     const wrapper = mount(
-      <Provider store={store}>
-        <TeamFund />
-      </Provider>);
+        <Provider store={store}>
+          <TeamFund/>
+        </Provider>);
 
     const fakeFund = {amount: 100};
     wrapper.find('TeamFund').props().addFund(fakeFund);

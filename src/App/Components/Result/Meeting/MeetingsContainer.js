@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {Meetings} from './Meetings';
-import {getMeetings, createMeeting} from '../../../Actions/meetingActions';
+import {createMeeting, getMeetings} from '../../../Actions/meetingActions';
 
 const mapStateToProps = (state) => ({
   meetings: state.meeting.meetings,

@@ -4,28 +4,29 @@ import React from 'react';
 require('./UserResult.css');
 
 /**
-* User result component of the application.
-*
-* @author: thenakliman
-*/
+ * User result component of the application.
+ *
+ * @author: thenakliman
+ */
 export class UserResult extends React.Component {
-/** Fetch users from the backend and update in the store. */
+  /** Fetch users from the backend and update in the store. */
   componentDidMount() {
     this.props.getUsers();
   }
-/**
-* User result component of the application.
-*
-* @return {Object} UserResult component.
-*/
+
+  /**
+   * User result component of the application.
+   *
+   * @return {Object} UserResult component.
+   */
   render() {
     return (
         <div className='UserResult'>
           {
-            this.props.users.map((user) =>(
+            this.props.users.map((user) => (
                 <div key={`${user.userName}`} className={'user-tile'}>
-                    <img src='fake' className='user-image'/>
-                    <div>{user.firstName} {user.lastName}</div>
+                  <img src='fake' className='user-image'/>
+                  <div>{user.firstName} {user.lastName}</div>
                 </div>))
           }
         </div>

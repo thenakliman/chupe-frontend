@@ -1,12 +1,8 @@
 import {ShowQuestion} from './ShowQuestion';
 import {connect} from 'react-redux';
-import {updateQuestion,
-        getAllQuestions} from '../../../Actions/questionActions';
+import {getAllQuestions, updateQuestion} from '../../../Actions/questionActions';
 import {getAllUsers} from '../../../Actions/userActions';
-import {
-  getAnswers,
-  addAnswer,
-  updateAnswer} from '../../../Actions/answerActions';
+import {addAnswer, getAnswers, updateAnswer} from '../../../Actions/answerActions';
 import {getUsername} from '../../../utils/cookies';
 
 /** Maps state of the ShowQuestion component from store
@@ -15,13 +11,13 @@ import {getUsername} from '../../../utils/cookies';
  * @return {object} question metadata
  */
 export function mapStateToProps(state) {
-    return {
-      users: state.users,
-      questions: state.questions,
-      answers: state.answers,
-      loggedInUser: getUsername(),
-    };
-};
+  return {
+    users: state.users,
+    questions: state.questions,
+    answers: state.answers,
+    loggedInUser: getUsername(),
+  };
+}
 
 export const mapDispatchToProps = (dispatch) => ({
   updateQuestion: (questions, newQuestion) =>

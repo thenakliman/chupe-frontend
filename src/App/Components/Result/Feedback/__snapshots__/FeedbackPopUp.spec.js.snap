@@ -24,7 +24,7 @@ exports[`Show feedback pop up component should match snapshot 1`] = `
       <option
         value=""
       >
-         Select user 
+         Select user
       </option>
       <option
         key="user - 1"

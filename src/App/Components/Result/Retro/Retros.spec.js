@@ -2,7 +2,7 @@
 import React from 'react';
 import {Retros} from './Retros';
 /* eslint-enable */
-import {shallow, mount} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
 import * as history from '../../../utils/history';
 
@@ -10,7 +10,7 @@ const retros = [{
   name: 'retro - 1',
   id: 10,
   createdBy: 'fake user - 1',
-  }, {
+}, {
   name: 'retro - 2',
   id: 11,
   createdBy: 'fake user - 2',
@@ -21,8 +21,8 @@ describe('Show retro component', () => {
     const getAllRetros = jest.fn();
     shallow(
         <Retros
-          retros={retros}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -33,8 +33,8 @@ describe('Show retro component', () => {
     const getAllRetros = jest.fn();
     const wrapper = shallow(
         <Retros
-          retros={retros}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -45,8 +45,8 @@ describe('Show retro component', () => {
     const getAllRetros = jest.fn();
     const wrapper = shallow(
         <Retros
-          retros={retros}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -59,9 +59,9 @@ describe('Show retro component', () => {
     const createRetro = jest.fn();
     const wrapper = shallow(
         <Retros
-          retros={retros}
-          createRetro={createRetro}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            createRetro={createRetro}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -76,9 +76,9 @@ describe('Show retro component', () => {
     const createRetro = jest.fn();
     const wrapper = mount(
         <Retros
-          retros={retros}
-          createRetro={createRetro}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            createRetro={createRetro}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -94,8 +94,8 @@ describe('Show retro component', () => {
 
     wrapper.find('#create-retro-button-id').simulate('click');
     expect(createRetro).toHaveBeenCalledWith({
-        name: testName,
-        maximumVote: maximumVote,
+      name: testName,
+      maximumVote: maximumVote,
     });
   });
 
@@ -104,9 +104,9 @@ describe('Show retro component', () => {
     const createRetro = jest.fn();
     const wrapper = mount(
         <Retros
-          retros={retros}
-          createRetro={createRetro}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            createRetro={createRetro}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -119,9 +119,9 @@ describe('Show retro component', () => {
     const createRetro = jest.fn();
     const wrapper = shallow(
         <Retros
-          retros={retros}
-          createRetro={createRetro}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            createRetro={createRetro}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -134,8 +134,8 @@ describe('Show retro component', () => {
     const getAllRetros = jest.fn();
     const wrapper = shallow(
         <Retros
-          retros={retros}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -148,8 +148,8 @@ describe('Show retro component', () => {
     history.history = {push: jest.fn()};
     const wrapper = shallow(
         <Retros
-          retros={retros}
-          getAllRetros={getAllRetros}
+            retros={retros}
+            getAllRetros={getAllRetros}
         />
     );
 
@@ -159,8 +159,8 @@ describe('Show retro component', () => {
 
   describe('should match snapshot', () => {
     const wrapper = shallow(<Retros
-       retros={retros}
-       getAllRetros={jest.fn()}
+        retros={retros}
+        getAllRetros={jest.fn()}
     />);
 
     expect(toJson(wrapper)).toMatchSnapshot();

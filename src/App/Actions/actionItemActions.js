@@ -1,12 +1,9 @@
 import {ActionItemService} from '../Services/ActionItemService';
 import {ActionTypes} from './ActionTypes';
-import {showLoader, hideLoader} from './loaderActions';
+import {hideLoader, showLoader} from './loaderActions';
 import {showNotificationFromObject} from './notificationActions';
 
-import {
-  GET_ACTION_ITEMS_LOADER_ID,
-  GET_ACTION_ITEMS_NOTIFICATION
-  } from '../Components/Result/Common/constants';
+import {GET_ACTION_ITEMS_LOADER_ID, GET_ACTION_ITEMS_NOTIFICATION} from '../Components/Result/Common/constants';
 
 
 const addActionItems = (actionItems) => ({

@@ -1,7 +1,6 @@
-import {addUsers} from './userActions';
+import {addUsers, getAllUsers} from './userActions';
 import configureStore from 'redux-mock-store';
 import {ActionTypes} from './ActionTypes';
-import {getAllUsers} from './userActions';
 import {UserService} from '../Services/UserService';
 import thunk from 'redux-thunk';
 

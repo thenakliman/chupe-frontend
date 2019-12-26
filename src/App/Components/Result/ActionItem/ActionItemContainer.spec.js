@@ -1,8 +1,7 @@
 /* eslint-disable */
 import React from 'react';
-import {shallow} from 'enzyme';
 /* eslint-enable */
-import {mapStateToProps, mapDispatchToProps} from './ActionItemContainer';
+import {mapDispatchToProps, mapStateToProps} from './ActionItemContainer';
 import * as RetroActions from '../../../Actions/actionItemActions';
 
 

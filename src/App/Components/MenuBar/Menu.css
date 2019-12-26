@@ -7,41 +7,41 @@
 }
 
 .Header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #ffffff;
-    color: #000000;
-    width: 100%;
-    text-align: left;
-    font-size: 1.3rem;
-    position: fixed;
-    top: 0;
-    z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  color: #000000;
+  width: 100%;
+  text-align: left;
+  font-size: 1.3rem;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 .Tab {
-    padding: .8rem 3rem;
-    text-align: center;
-    color: #000000;
-    text-decoration: none;
+  padding: .8rem 3rem;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
 }
 
 .Selected-Tab {
-    padding: .8rem 1.5rem;
-    text-align: center;
-    color: #000000;
-    background: #f4f4f4;
-    text-decoration: none;
-    font-weight: 600;
+  padding: .8rem 1.5rem;
+  text-align: center;
+  color: #000000;
+  background: #f4f4f4;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .menu-logout-container {
-    font-size: 1rem;
-    font-weight: 100;
-    cursor: pointer;
-    padding: 1rem;
+  font-size: 1rem;
+  font-weight: 100;
+  cursor: pointer;
+  padding: 1rem;
 }
 
 .manu-bar-tabs {
-    display: flex;
+  display: flex;
 }

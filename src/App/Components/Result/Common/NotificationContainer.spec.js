@@ -15,12 +15,12 @@ describe('Notification container', () => {
     spyOn(store, 'dispatch');
 
     const container = mount(
-      <Provider store={store}>
-        <NotificationContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <NotificationContainer/>
+        </Provider>);
 
     expect(container.find('Notification').props().notifications)
-            .toEqual(notifications);
+        .toEqual(notifications);
   });
 
   it('should call setTimeout', () => {
@@ -30,8 +30,8 @@ describe('Notification container', () => {
     global.setTimeout = jest.fn();
 
     mount(<Provider store={store}>
-              <NotificationContainer/>
-          </Provider>);
+      <NotificationContainer/>
+    </Provider>);
 
     expect(global.setTimeout).toHaveBeenCalledWith(expect.any(Function), 10000);
   });

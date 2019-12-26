@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import MeetingsContainer from './MeetingsContainer';
 /* eslint-enable */
 import {Meetings} from './Meetings';
@@ -15,7 +14,7 @@ describe('Feedback Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        meeting: {meetings: [{id: 'meeting-id'}]},
+      meeting: {meetings: [{id: 'meeting-id'}]},
     };
 
     store = configureStore()(initialState);
@@ -27,9 +26,9 @@ describe('Feedback Result container', () => {
     spyOn(MeetingActions, 'getMeetings').and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <MeetingsContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingsContainer/>
+        </Provider>);
 
     const props = container.find(Meetings).props();
     expect(props.meetings)
@@ -41,9 +40,9 @@ describe('Feedback Result container', () => {
     spyOn(MeetingActions, 'getMeetings').and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <MeetingsContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingsContainer/>
+        </Provider>);
 
     container.find(Meetings).props();
     expect(store.dispatch).toHaveBeenCalledWith(fakeAction);
@@ -54,9 +53,9 @@ describe('Feedback Result container', () => {
     spyOn(MeetingActions, 'createMeeting').and.returnValue(fakeAction);
 
     const container = mount(
-      <Provider store={store}>
-        <MeetingsContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <MeetingsContainer/>
+        </Provider>);
 
     container.find('#meeting-button-id').simulate('click');
     expect(MeetingActions.createMeeting).toHaveBeenCalledWith('');

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {Retros} from './Retros';
-import {getAllRetros, createRetro} from '../../../Actions/retroActions';
+import {createRetro, getAllRetros} from '../../../Actions/retroActions';
 
 
 const mapStateToProps = (state) => ({

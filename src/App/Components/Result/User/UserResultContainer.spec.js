@@ -2,10 +2,8 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
-import UserResultContainer from './UserResultContainer';
 /* eslint-enable */
-import {mapStateToProps} from './UserResultContainer';
+import UserResultContainer, {mapStateToProps} from './UserResultContainer';
 import configureStore from 'redux-mock-store';
 import * as UserActions from '../../../Actions/userActions';
 
@@ -36,9 +34,9 @@ describe('User result container', () => {
     spyOn(UserActions, 'getAllUsers').and.returnValue(action);
 
     mount(
-      <Provider store={store}>
-        <UserResultContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <UserResultContainer/>
+        </Provider>);
 
     expect(UserActions.getAllUsers).toHaveBeenCalledWith();
     expect(store.dispatch).toHaveBeenCalledWith(action);

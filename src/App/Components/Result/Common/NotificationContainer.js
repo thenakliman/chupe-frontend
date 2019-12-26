@@ -8,8 +8,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   hideNotification: (id) => {
-      setTimeout(() => dispatch(hideNotification(id)), 10000);
-},
+    setTimeout(() => dispatch(hideNotification(id)), 10000);
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notification);

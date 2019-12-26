@@ -22,8 +22,8 @@ describe('Login Actions', () => {
 
     expect(TokenService.getToken).toHaveBeenCalledWith(username, password);
     expect(store.getActions()).toEqual([{
-        payload: username,
-        type: ActionTypes.SET_USERNAME,
+      payload: username,
+      type: ActionTypes.SET_USERNAME,
     }]);
   });
 

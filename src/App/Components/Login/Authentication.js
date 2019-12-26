@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import LoginContainer from './LoginContainer';
+
 /* eslint-enable */
 
 /** Require authentication component */
@@ -26,12 +27,12 @@ export class RequireAuthentication extends React.Component {
    */
   render() {
     return (
-      <div>
-        {!this.state.isAuthorized?
-          <LoginContainer id='login-container'
-                          onAuthorization={this.setUserAuthorization}/>:
-          null};
-      </div>
+        <div>
+          {!this.state.isAuthorized ?
+              <LoginContainer id='login-container'
+                              onAuthorization={this.setUserAuthorization}/> :
+              null};
+        </div>
     );
   }
 }

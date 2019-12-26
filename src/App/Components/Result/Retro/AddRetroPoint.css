@@ -1,24 +1,24 @@
 .add-retro-point-button {
-    padding: 0.8rem 1rem;
-    color: white;
+  padding: 0.8rem 1rem;
+  color: white;
 
-    cursor: pointer;
-    margin: 2rem;
+  cursor: pointer;
+  margin: 2rem;
 }
 
 .add-retro-point-container {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    padding: 4rem 3rem;
-    border: 1px solid #ccc;
-    margin: 7% 32%;
-    position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 4rem 3rem;
+  border: 1px solid #ccc;
+  margin: 7% 32%;
+  position: fixed;
 }
 
 .add-retro-point-creation-input {
-    padding: 0.8rem 0;
-    width: 100%;
-    font-size: 1.4rem;
-    margin: 2rem 0;
+  padding: 0.8rem 0;
+  width: 100%;
+  font-size: 1.4rem;
+  margin: 2rem 0;
 }

@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import FeedbacksContainer from './FeedbacksContainer';
 /* eslint-enable */
 import {Feedbacks} from './Feedbacks';
@@ -16,8 +15,8 @@ describe('Feedback Result container', () => {
 
   beforeEach(() => {
     initialState = {
-        feedback: {feedbacks: [{id: 'feedbacks'}]},
-        users: [{userName: 'user-name'}],
+      feedback: {feedbacks: [{id: 'feedbacks'}]},
+      users: [{userName: 'user-name'}],
     };
 
     store = configureStore()(initialState);
@@ -26,9 +25,9 @@ describe('Feedback Result container', () => {
 
   it('should have feedbacks in props', () => {
     const container = mount(
-      <Provider store={store}>
-        <FeedbacksContainer match={{params: {id: 101}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbacksContainer match={{params: {id: 101}}}/>
+        </Provider>);
 
     const props = container.find(Feedbacks).props();
     expect(props.feedbacks).toEqual(initialState.feedback.feedbacks);
@@ -36,9 +35,9 @@ describe('Feedback Result container', () => {
 
   it('should have users in props', () => {
     const container = mount(
-      <Provider store={store}>
-        <FeedbacksContainer match={{params: {id: 101}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbacksContainer match={{params: {id: 101}}}/>
+        </Provider>);
 
     const props = container.find(Feedbacks).props();
     expect(props.users).toEqual(initialState.users);
@@ -51,9 +50,9 @@ describe('Feedback Result container', () => {
 
     const feedbackSessionId = 101;
     const container = mount(
-      <Provider store={store}>
-        <FeedbacksContainer match={{params: {id: feedbackSessionId}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbacksContainer match={{params: {id: feedbackSessionId}}}/>
+        </Provider>);
 
     container.find(Feedbacks).props().getAllFeedbacks(feedbackSessionId);
     expect(FeedbackActions.getAllFeedbacks).toHaveBeenCalledWith(101);
@@ -68,9 +67,9 @@ describe('Feedback Result container', () => {
 
     const feedbackSessionId = 101;
     const container = mount(
-      <Provider store={store}>
-        <FeedbacksContainer match={{params: {id: feedbackSessionId}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbacksContainer match={{params: {id: feedbackSessionId}}}/>
+        </Provider>);
 
     container.find(Feedbacks).props().getAllUsers();
     expect(FeedbackActions.getAllFeedbacks).toHaveBeenCalledWith(101);
@@ -83,9 +82,9 @@ describe('Feedback Result container', () => {
 
     const feedbackSessionId = 101;
     const container = mount(
-      <Provider store={store}>
-        <FeedbacksContainer match={{params: {id: feedbackSessionId}}}/>
-      </Provider>);
+        <Provider store={store}>
+          <FeedbacksContainer match={{params: {id: feedbackSessionId}}}/>
+        </Provider>);
 
     const feedback = {id: 20};
     container.find(Feedbacks).props().giveFeedback(feedback);

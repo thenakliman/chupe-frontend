@@ -46,16 +46,17 @@ export class QuestionAnswerWrapper extends React.Component {
   handleDescriptionChange(event) {
     this.setState({bodyText: event.target.value});
   }
+
   /** Provide rendering for the Question Answer
    * @return {object} returns QuestionAnswerWrapper
-  */
+   */
   render() {
     return (
-      <div id='question-answer-wrapper-id'
-           className='question-answer-wrapper'
-      >
-        <table id='question-wrappper-table-id'>
-          <thead className='question-answer-header'>
+        <div id='question-answer-wrapper-id'
+             className='question-answer-wrapper'
+        >
+          <table id='question-wrappper-table-id'>
+            <thead className='question-answer-header'>
             <tr className='table-border'>
               <th className='table-border'
                   id='question-answer-wrapper-table-header-id'>
@@ -69,37 +70,37 @@ export class QuestionAnswerWrapper extends React.Component {
                       className='edit-button'
                       onClick={this.toggleEditingMode}
                 >
-                  {this.state.isEditingHeader?'Save':'Edit'}
+                  {this.state.isEditingHeader ? 'Save' : 'Edit'}
                 </span>
               </th>
             </tr>
-          </thead>
-          <tbody className='table-border'>
+            </thead>
+            <tbody className='table-border'>
             <tr className='table-border'>
               <td className='table-border'
                   id='question-answer-wrapper-table-body-id'>
-                {this.state.isEditingHeader?
-                  <textarea
-                    id="question-answer-wrapper-table-textarea-id"
-                    placeholder="Answer the question"
-                    className="description-textarea"
-                    value={this.state.bodyText}
-                    onChange={this.handleDescriptionChange}/>
-                  :this.state.bodyText}
+                {this.state.isEditingHeader ?
+                    <textarea
+                        id="question-answer-wrapper-table-textarea-id"
+                        placeholder="Answer the question"
+                        className="description-textarea"
+                        value={this.state.bodyText}
+                        onChange={this.handleDescriptionChange}/>
+                    : this.state.bodyText}
               </td>
             </tr>
-          </tbody>
-        </table>
-        <div> { this.state.isEditingHeader &&
+            </tbody>
+          </table>
+          <div> {this.state.isEditingHeader &&
           <button id='question-answer-wrapper-save-button-id'
                   className='question-answer-wrapper-save-button'
                   onClick={this.toggleEditingMode}
           >
             Reply
           </button>
-        }
+          }
+          </div>
         </div>
-      </div>
     );
   }
 }

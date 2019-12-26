@@ -6,13 +6,13 @@ import {getAllUsers} from '../../../Actions/userActions';
 import {getUsername} from '../../../utils/cookies';
 
 const mapStateToProps = (state) => ({
-    users: state.users,
-    loggedInUser: getUsername(),
+  users: state.users,
+  loggedInUser: getUsername(),
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-    askQuestion: (question) => dispatch(askQuestion(question)),
-    getAllUsers: () => dispatch(getAllUsers()),
+  askQuestion: (question) => dispatch(askQuestion(question)),
+  getAllUsers: () => dispatch(getAllUsers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AskQuestion);

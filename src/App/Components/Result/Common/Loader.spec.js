@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import Loader from './Loader';
 /* eslint-enable */
 import configureStore from 'redux-mock-store';
@@ -14,9 +13,9 @@ describe('Loader container', () => {
     spyOn(store, 'dispatch');
 
     const container = mount(
-      <Provider store={store}>
-        <Loader/>
-      </Provider>);
+        <Provider store={store}>
+          <Loader/>
+        </Provider>);
 
     expect(container.find('.loader-container').length).toBe(1);
     expect(container.find('.loader').length).toBe(1);
@@ -27,9 +26,9 @@ describe('Loader container', () => {
     spyOn(store, 'dispatch');
 
     const container = mount(
-      <Provider store={store}>
-        <Loader/>
-      </Provider>);
+        <Provider store={store}>
+          <Loader/>
+        </Provider>);
 
     expect(container.find('.loader-container').length).toBe(1);
     expect(container.find('.loader').length).toBe(1);
@@ -40,9 +39,9 @@ describe('Loader container', () => {
     spyOn(store, 'dispatch');
 
     const container = mount(
-      <Provider store={store}>
-        <Loader/>
-      </Provider>);
+        <Provider store={store}>
+          <Loader/>
+        </Provider>);
 
     expect(container.find('.loader-container').length).toBe(0);
     expect(container.find('.loader').length).toBe(0);

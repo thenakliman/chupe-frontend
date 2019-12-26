@@ -6,11 +6,12 @@ import {AddRedeemTeamFund} from './AddRedeemTeamFund';
 /* eslint-enable */
 
 require('./TeamFund.css');
+
 /**
-* Team Fund component of the application.
-*
-* @author: thenakliman
-*/
+ * Team Fund component of the application.
+ *
+ * @author: thenakliman
+ */
 export class TeamFund extends React.Component {
   /** Constructor, sets initial state and bind methods
    * @param {object} props initial state
@@ -23,6 +24,7 @@ export class TeamFund extends React.Component {
     this.onClickRedeem = this.onClickRedeem.bind(this);
     this.addFund = this.addFund.bind(this);
   }
+
   /** Fetch team fund while mounting this component */
   componentWillMount() {
     this.props.fetchTeamFund();
@@ -42,9 +44,9 @@ export class TeamFund extends React.Component {
     }
 
     this.setState({
-        hasPopup: !this.state.hasPopup,
-        owner: currentOwner,
-        transactionType: transactionType,
+      hasPopup: !this.state.hasPopup,
+      owner: currentOwner,
+      transactionType: transactionType,
     });
   }
 
@@ -66,7 +68,7 @@ export class TeamFund extends React.Component {
    * @param {string} owner
    */
   onClickDetail(owner) {
-    history.push('/funds/'+owner);
+    history.push('/funds/' + owner);
   }
 
   /** Add fund.
@@ -87,38 +89,38 @@ export class TeamFund extends React.Component {
   }
 
   /**
-  * Team Fund result component of the application.
-  *
-  * @return {Object} UserResult component.
-  */
+   * Team Fund result component of the application.
+   *
+   * @return {Object} UserResult component.
+   */
   render() {
     return (
         <div id='team-fund-container-id' className='team-fund-container'>
-          { this.state.hasPopup &&
-            <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
-                               addFund={this.addFund}
-                               closePopup={() => this.addRedeemFund(null)}
-                               fundTypes={this.props.fundTypes}/>
+          {this.state.hasPopup &&
+          <AddRedeemTeamFund fetchFundTypes={this.props.fetchFundTypes}
+                             addFund={this.addFund}
+                             closePopup={() => this.addRedeemFund(null)}
+                             fundTypes={this.props.fundTypes}/>
           }
           <table id='team-fund-table-id'>
             <thead>
-              <tr>
-                <th>S.No</th>
-                <th>Username</th>
-                <th>Amount</th>
-              </tr>
+            <tr>
+              <th>S.No</th>
+              <th>Username</th>
+              <th>Amount</th>
+            </tr>
             </thead>
             <tbody>
-            { this.props.teamFund.map((teamMember, index) => (
+            {this.props.teamFund.map((teamMember, index) => (
                 <tr key={`${teamMember.owner}`}>
-                  <td>{index+1}</td>
+                  <td>{index + 1}</td>
                   <td>{teamMember.owner}</td>
                   <td>
                     <span className='user-amount-container'>
                       <span
-                        className='fund-operation-negative-sign'
-                        id={`fund-operation-negative-sign-${teamMember.owner}`}
-                        onClick={() => this.onClickRedeem(teamMember.owner)}>
+                          className='fund-operation-negative-sign'
+                          id={`fund-operation-negative-sign-${teamMember.owner}`}
+                          onClick={() => this.onClickRedeem(teamMember.owner)}>
                         -
                       </span>
                       <span className={'user-fund'}>
@@ -130,15 +132,15 @@ export class TeamFund extends React.Component {
                       </u>
                       </span>
                       <span
-                        className='fund-operation-positive-sign'
-                        id={`fund-operation-positive-sign-${teamMember.owner}`}
-                        onClick={() => this.onClickAdd(teamMember.owner)}>
+                          className='fund-operation-positive-sign'
+                          id={`fund-operation-positive-sign-${teamMember.owner}`}
+                          onClick={() => this.onClickAdd(teamMember.owner)}>
                         +
                       </span>
                     </span>
                   </td>
                 </tr>
-              ))
+            ))
             }
             </tbody>
           </table>

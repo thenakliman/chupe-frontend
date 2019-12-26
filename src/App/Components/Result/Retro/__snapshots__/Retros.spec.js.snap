@@ -22,16 +22,16 @@ exports[` 1`] = `
           className="retro-table-header"
         >
           <th>
-             Id 
+             Id
           </th>
           <th>
-             Name 
+             Name
           </th>
           <th>
-             Created By 
+             Created By
           </th>
           <th>
-             Maximum Vote 
+             Maximum Vote
           </th>
         </tr>
       </thead>

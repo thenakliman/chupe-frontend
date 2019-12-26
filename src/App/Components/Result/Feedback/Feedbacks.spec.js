@@ -18,11 +18,11 @@ const feedbacks = [{
 describe('Show feedback component', () => {
   describe('should match snapshot', () => {
     const wrapper = shallow(<Feedbacks
-       match={{params: {id: 101}}}
-       feedbacks={feedbacks}
-       getAllFeedbacks={jest.fn()}
-       getAllUsers={jest.fn()}
-       giveFeedback={jest.fn()}
+        match={{params: {id: 101}}}
+        feedbacks={feedbacks}
+        getAllFeedbacks={jest.fn()}
+        getAllUsers={jest.fn()}
+        giveFeedback={jest.fn()}
     />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -33,11 +33,11 @@ describe('Show feedback component', () => {
     const feedbackSessionId = 101;
     shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={feedbacks}
-          getAllFeedbacks={getAllFeedbacks}
-          getAllUsers={jest.fn()}
-          giveFeedback={jest.fn()}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={feedbacks}
+            getAllFeedbacks={getAllFeedbacks}
+            getAllUsers={jest.fn()}
+            giveFeedback={jest.fn()}
         />
     );
 
@@ -49,11 +49,11 @@ describe('Show feedback component', () => {
     const feedbackSessionId = 101;
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={feedbacks}
-          getAllFeedbacks={getAllFeedbacks}
-          getAllUsers={jest.fn()}
-          giveFeedback={jest.fn()}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={feedbacks}
+            getAllFeedbacks={getAllFeedbacks}
+            getAllUsers={jest.fn()}
+            giveFeedback={jest.fn()}
         />
     );
 
@@ -65,11 +65,11 @@ describe('Show feedback component', () => {
     const feedbackSessionId = 101;
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={feedbacks}
-          getAllFeedbacks={getAllFeedbacks}
-          getAllUsers={jest.fn()}
-          giveFeedback={jest.fn()}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={feedbacks}
+            getAllFeedbacks={getAllFeedbacks}
+            getAllUsers={jest.fn()}
+            giveFeedback={jest.fn()}
         />
     );
 
@@ -82,11 +82,11 @@ describe('Show feedback component', () => {
     const getAllUsers = jest.fn();
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={feedbacks}
-          getAllFeedbacks={getAllFeedbacks}
-          getAllUsers={getAllUsers}
-          giveFeedback={jest.fn()}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={feedbacks}
+            getAllFeedbacks={getAllFeedbacks}
+            getAllUsers={getAllUsers}
+            giveFeedback={jest.fn()}
         />
     );
 
@@ -99,11 +99,11 @@ describe('Show feedback component', () => {
     const createFeedback = jest.fn();
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={feedbacks}
-          getAllFeedbacks={getAllFeedbacks}
-          getAllUsers={jest.fn()}
-          giveFeedback={createFeedback}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={feedbacks}
+            getAllFeedbacks={getAllFeedbacks}
+            getAllUsers={jest.fn()}
+            giveFeedback={createFeedback}
         />
     );
 
@@ -118,11 +118,11 @@ describe('Show feedback component', () => {
     const createFeedback = jest.fn();
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={feedbacks}
-          getAllFeedbacks={getAllFeedbacks}
-          getAllUsers={jest.fn()}
-          giveFeedback={createFeedback}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={feedbacks}
+            getAllFeedbacks={getAllFeedbacks}
+            getAllUsers={jest.fn()}
+            giveFeedback={createFeedback}
         />
     );
 
@@ -136,12 +136,12 @@ describe('Show feedback component', () => {
     const users = [{id: 10}];
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={[]}
-          users={users}
-          getAllFeedbacks={jest.fn()}
-          getAllUsers={jest.fn()}
-          giveFeedback={jest.fn()}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={[]}
+            users={users}
+            getAllFeedbacks={jest.fn()}
+            getAllUsers={jest.fn()}
+            giveFeedback={jest.fn()}
         />
     );
 
@@ -155,12 +155,12 @@ describe('Show feedback component', () => {
     const users = [{id: 10}];
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={[]}
-          users={users}
-          getAllFeedbacks={jest.fn()}
-          getAllUsers={jest.fn()}
-          giveFeedback={jest.fn()}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={[]}
+            users={users}
+            getAllFeedbacks={jest.fn()}
+            getAllUsers={jest.fn()}
+            giveFeedback={jest.fn()}
         />
     );
 
@@ -176,19 +176,19 @@ describe('Show feedback component', () => {
     const giveFeedback = jest.fn();
     const wrapper = shallow(
         <Feedbacks
-          match={{params: {id: feedbackSessionId}}}
-          feedbacks={[]}
-          users={users}
-          getAllFeedbacks={jest.fn()}
-          getAllUsers={jest.fn()}
-          giveFeedback={giveFeedback}
+            match={{params: {id: feedbackSessionId}}}
+            feedbacks={[]}
+            users={users}
+            getAllFeedbacks={jest.fn()}
+            getAllUsers={jest.fn()}
+            giveFeedback={giveFeedback}
         />
     );
 
     wrapper.setState({isGivingFeedback: true});
     const feedback = {
-        description: 'description data',
-        giveTo: 'user',
+      description: 'description data',
+      giveTo: 'user',
     };
 
     wrapper.find(FeedbackPopUp).props().onSubmit(feedback);

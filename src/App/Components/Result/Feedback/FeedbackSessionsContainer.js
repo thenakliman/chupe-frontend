@@ -1,8 +1,6 @@
 import {connect} from 'react-redux';
 import {FeedbackSessions} from './FeedbackSessions';
-import {
-  getAllFeedbackSessions,
-  createFeedbackSession} from '../../../Actions/feedbackActions';
+import {createFeedbackSession, getAllFeedbackSessions} from '../../../Actions/feedbackActions';
 
 
 const mapStateToProps = (state) => ({
@@ -12,7 +10,7 @@ const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   getAllFeedbackSessions: () => dispatch(getAllFeedbackSessions()),
   createFeedbackSession: (feedbackSession) => dispatch(
-                            createFeedbackSession(feedbackSession)),
+      createFeedbackSession(feedbackSession)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedbackSessions);

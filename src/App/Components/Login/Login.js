@@ -19,34 +19,35 @@ export class Login extends React.Component {
 
 
   /** Handle changes on the question fields
-  * @param {object} event containing new modified value
-  */
+   * @param {object} event containing new modified value
+   */
   handleUsername(event) {
-      this.setState({username: event.target.value});
+    this.setState({username: event.target.value});
   }
 
   /** Handle changes on the question fields
-  * @param {object} event containing new modified value
-  */
+   * @param {object} event containing new modified value
+   */
   handlePassword(event) {
-      this.setState({password: event.target.value});
+    this.setState({password: event.target.value});
   }
 
   /** handle starting of the app */
   async handleSubmit() {
-      await this.props.authenticate(this.state.username, this.state.password);
+    await this.props.authenticate(this.state.username, this.state.password);
 
-      if (this.props.username) {
-        history.push('/dashboard');
-      }
+    if (this.props.username) {
+      history.push('/dashboard');
+    }
   }
+
   /** Renders Login component.
    * @return {object} returns login component
    */
   render() {
     return (
-      <div>
-        <form id='login-form-id' className='login-form'>
+        <div>
+          <form id='login-form-id' className='login-form'>
             <div className='login-page-username-div'>
               <div>
                 <label>Username</label>
@@ -81,8 +82,8 @@ export class Login extends React.Component {
                 Get Started
               </button>
             </div>
-        </form>
-      </div>
+          </form>
+        </div>
     );
   }
 }

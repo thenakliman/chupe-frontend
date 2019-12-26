@@ -18,12 +18,12 @@ const meetingDiscussionItems = [{
 describe('Show meeting discussion item component', () => {
   describe('should match snapshot', () => {
     const wrapper = shallow(<MeetingDiscussionItem
-       match={{params: {id: 101}}}
-       meetingDiscussionItems={meetingDiscussionItems}
-       getMeetingDiscussionItems={jest.fn()}
-       getAllUsers={jest.fn()}
-       users={[]}
-       createMeetingDiscussionItem={jest.fn()}
+        match={{params: {id: 101}}}
+        meetingDiscussionItems={meetingDiscussionItems}
+        getMeetingDiscussionItems={jest.fn()}
+        getAllUsers={jest.fn()}
+        users={[]}
+        createMeetingDiscussionItem={jest.fn()}
     />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -34,12 +34,12 @@ describe('Show meeting discussion item component', () => {
     const meetingId = 101;
     shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={meetingDiscussionItems}
-          getMeetingDiscussionItems={getMeetingDiscussionItems}
-          getAllUsers={jest.fn()}
-          users={[]}
-          createMeetingDiscussionItem={jest.fn()}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={meetingDiscussionItems}
+            getMeetingDiscussionItems={getMeetingDiscussionItems}
+            getAllUsers={jest.fn()}
+            users={[]}
+            createMeetingDiscussionItem={jest.fn()}
         />
     );
 
@@ -51,12 +51,12 @@ describe('Show meeting discussion item component', () => {
     const meetingId = 101;
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={meetingDiscussionItems}
-          getMeetingDiscussionItems={getMeetingDiscussionItems}
-          getAllUsers={jest.fn()}
-          users={[]}
-          createMeetingDiscussionItem={jest.fn()}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={meetingDiscussionItems}
+            getMeetingDiscussionItems={getMeetingDiscussionItems}
+            getAllUsers={jest.fn()}
+            users={[]}
+            createMeetingDiscussionItem={jest.fn()}
         />
     );
 
@@ -68,12 +68,12 @@ describe('Show meeting discussion item component', () => {
     const meetingId = 101;
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={meetingDiscussionItems}
-          getMeetingDiscussionItems={getMeetingDiscussionItems}
-          getAllUsers={jest.fn()}
-          users={[]}
-          createMeetingDiscussionItem={jest.fn()}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={meetingDiscussionItems}
+            getMeetingDiscussionItems={getMeetingDiscussionItems}
+            getAllUsers={jest.fn()}
+            users={[]}
+            createMeetingDiscussionItem={jest.fn()}
         />
     );
 
@@ -86,12 +86,12 @@ describe('Show meeting discussion item component', () => {
     const getAllUsers = jest.fn();
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={meetingDiscussionItems}
-          getMeetingDiscussionItems={getMeetingDiscussionItems}
-          users={[]}
-          getAllUsers={getAllUsers}
-          createMeetingDiscussionItem={jest.fn()}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={meetingDiscussionItems}
+            getMeetingDiscussionItems={getMeetingDiscussionItems}
+            users={[]}
+            getAllUsers={getAllUsers}
+            createMeetingDiscussionItem={jest.fn()}
         />
     );
 
@@ -104,11 +104,11 @@ describe('Show meeting discussion item component', () => {
     const createFeedback = jest.fn();
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={meetingDiscussionItems}
-          getMeetingDiscussionItems={getMeetingDiscussionItems}
-          getAllUsers={jest.fn()}
-          createMeetingDiscussionItem={createFeedback}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={meetingDiscussionItems}
+            getMeetingDiscussionItems={getMeetingDiscussionItems}
+            getAllUsers={jest.fn()}
+            createMeetingDiscussionItem={createFeedback}
         />
     );
 
@@ -123,11 +123,11 @@ describe('Show meeting discussion item component', () => {
     const createFeedback = jest.fn();
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={meetingDiscussionItems}
-          getMeetingDiscussionItems={getMeetingDiscussionItems}
-          getAllUsers={jest.fn()}
-          createMeetingDiscussionItem={createFeedback}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={meetingDiscussionItems}
+            getMeetingDiscussionItems={getMeetingDiscussionItems}
+            getAllUsers={jest.fn()}
+            createMeetingDiscussionItem={createFeedback}
         />
     );
 
@@ -141,12 +141,12 @@ describe('Show meeting discussion item component', () => {
     const users = [{id: 10}];
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={[]}
-          users={users}
-          getMeetingDiscussionItems={jest.fn()}
-          getAllUsers={jest.fn()}
-          createMeetingDiscussionItem={jest.fn()}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={[]}
+            users={users}
+            getMeetingDiscussionItems={jest.fn()}
+            getAllUsers={jest.fn()}
+            createMeetingDiscussionItem={jest.fn()}
         />
     );
 
@@ -160,12 +160,12 @@ describe('Show meeting discussion item component', () => {
     const users = [{id: 10}];
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={[]}
-          users={users}
-          getMeetingDiscussionItems={jest.fn()}
-          getAllUsers={jest.fn()}
-          createMeetingDiscussionItem={jest.fn()}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={[]}
+            users={users}
+            getMeetingDiscussionItems={jest.fn()}
+            getAllUsers={jest.fn()}
+            createMeetingDiscussionItem={jest.fn()}
         />
     );
 
@@ -181,18 +181,18 @@ describe('Show meeting discussion item component', () => {
     const createMeetingDiscussionItem = jest.fn();
     const wrapper = shallow(
         <MeetingDiscussionItem
-          match={{params: {id: meetingId}}}
-          meetingDiscussionItems={[]}
-          users={users}
-          getMeetingDiscussionItems={jest.fn()}
-          getAllUsers={jest.fn()}
-          createMeetingDiscussionItem={createMeetingDiscussionItem}
+            match={{params: {id: meetingId}}}
+            meetingDiscussionItems={[]}
+            users={users}
+            getMeetingDiscussionItems={jest.fn()}
+            getAllUsers={jest.fn()}
+            createMeetingDiscussionItem={createMeetingDiscussionItem}
         />
     );
 
     wrapper.setState({isAddingMeetingDiscussionItem: true});
     const meetingDiscussionItem = {
-        subject: 'subject data',
+      subject: 'subject data',
     };
 
     wrapper.find(MeetingDiscussionItemPopUp).props().onSubmit(meetingDiscussionItem);

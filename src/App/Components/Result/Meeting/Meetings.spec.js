@@ -20,8 +20,8 @@ describe('Show meetings component', () => {
     const getAllMeetings = jest.fn();
     shallow(
         <Meetings
-          meetings={meetings}
-          getAllMeetings={getAllMeetings}
+            meetings={meetings}
+            getAllMeetings={getAllMeetings}
         />
     );
 
@@ -32,8 +32,8 @@ describe('Show meetings component', () => {
     const getAllMeetings = jest.fn();
     const wrapper = shallow(
         <Meetings
-          meetings={meetings}
-          getAllMeetings={getAllMeetings}
+            meetings={meetings}
+            getAllMeetings={getAllMeetings}
         />
     );
 
@@ -44,8 +44,8 @@ describe('Show meetings component', () => {
     const getAllMeetings = jest.fn();
     const wrapper = shallow(
         <Meetings
-          meetings={meetings}
-          getAllMeetings={getAllMeetings}
+            meetings={meetings}
+            getAllMeetings={getAllMeetings}
         />
     );
 
@@ -56,8 +56,8 @@ describe('Show meetings component', () => {
     const getAllMeetings = jest.fn();
     const wrapper = shallow(
         <Meetings
-          meetings={meetings}
-          getAllMeetings={getAllMeetings}
+            meetings={meetings}
+            getAllMeetings={getAllMeetings}
         />
     );
 
@@ -66,8 +66,8 @@ describe('Show meetings component', () => {
 
   describe('should match snapshot', () => {
     const wrapper = shallow(<Meetings
-       meetings={meetings}
-       getAllMeetings={jest.fn()}
+        meetings={meetings}
+        getAllMeetings={jest.fn()}
     />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -75,8 +75,8 @@ describe('Show meetings component', () => {
 
   describe('should have initial state with empty string', () => {
     const wrapper = shallow(<Meetings
-       meetings={meetings}
-       getAllMeetings={jest.fn()}
+        meetings={meetings}
+        getAllMeetings={jest.fn()}
     />);
 
     expect(wrapper.state().subject).toEqual('');
@@ -84,8 +84,8 @@ describe('Show meetings component', () => {
 
   describe('should change internal state of the component', () => {
     const wrapper = shallow(<Meetings
-       meetings={meetings}
-       getAllMeetings={jest.fn()}
+        meetings={meetings}
+        getAllMeetings={jest.fn()}
     />);
 
     const subject = 'some subject';
@@ -98,9 +98,9 @@ describe('Show meetings component', () => {
   describe('should change internal state of the component on change', () => {
     const createMeeting = jest.fn();
     const wrapper = shallow(<Meetings
-       meetings={meetings}
-       getAllMeetings={jest.fn()}
-       createMeeting={createMeeting}
+        meetings={meetings}
+        getAllMeetings={jest.fn()}
+        createMeeting={createMeeting}
     />);
 
     const subject = 'some subject';
@@ -110,15 +110,15 @@ describe('Show meetings component', () => {
     wrapper.find('#meeting-button-id').simulate('click');
 
     expect(createMeeting)
-            .toHaveBeenCalledWith(subject);
+        .toHaveBeenCalledWith(subject);
   });
 
   describe('should push new route to history', () => {
     const createMeeting = jest.fn();
     const wrapper = shallow(<Meetings
-       meetings={meetings}
-       getAllMeetings={jest.fn()}
-       createMeeting={createMeeting}
+        meetings={meetings}
+        getAllMeetings={jest.fn()}
+        createMeeting={createMeeting}
     />);
     History.history.push = jest.fn();
 
@@ -129,9 +129,9 @@ describe('Show meetings component', () => {
   describe('should change state to empty string on create of session', () => {
     const createMeeting = jest.fn();
     const wrapper = shallow(<Meetings
-       meetings={meetings}
-       getAllMeetings={jest.fn()}
-       createMeeting={createMeeting}
+        meetings={meetings}
+        getAllMeetings={jest.fn()}
+        createMeeting={createMeeting}
     />);
 
     const subject = 'some subject';

@@ -8,11 +8,11 @@ form {
 }
 
 p {
- padding: 1rem;
- display: flex;
+  padding: 1rem;
+  display: flex;
 }
 
-label{
+label {
   width: 20rem;
 }
 
@@ -31,12 +31,12 @@ textarea {
 }
 
 select {
-    padding: 0.3rem 1.5rem;
+  padding: 0.3rem 1.5rem;
 }
 
 .ask-question-submit-button {
-      padding: 0.8rem;
-      margin: 5rem;
-      color: white;
+  padding: 0.8rem;
+  margin: 5rem;
+  color: white;
 
 }

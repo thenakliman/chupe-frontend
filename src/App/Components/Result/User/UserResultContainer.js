@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {getAllUsers} from '../../../Actions/userActions';
 
 export const mapStateToProps = (state) => ({
-    users: state.users,
+  users: state.users,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-    getUsers: () => {
-        dispatch(getAllUsers());
-    },
+  getUsers: () => {
+    dispatch(getAllUsers());
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserResult);

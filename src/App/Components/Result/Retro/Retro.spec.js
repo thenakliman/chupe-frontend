@@ -11,15 +11,15 @@ import toJson from 'enzyme-to-json';
 describe('Retro', () => {
   it('should have retro point container', () => {
     const wrapper = shallow(
-         <Retro match={{params: {id: 1029}}}
-                retroPoints={[]}
-                retros={[{id: 1029, status: 'CREATED'}]}
-                getAllRetros={jest.fn()}
-                getActionItems={jest.fn()}
-                getRetroPoints={jest.fn()}
-                getUsers={jest.fn()}
-                actionItems={[]}
-         />);
+        <Retro match={{params: {id: 1029}}}
+               retroPoints={[]}
+               retros={[{id: 1029, status: 'CREATED'}]}
+               getAllRetros={jest.fn()}
+               getActionItems={jest.fn()}
+               getRetroPoints={jest.fn()}
+               getUsers={jest.fn()}
+               actionItems={[]}
+        />);
     expect(wrapper.find('#retro-points-container-id').length).toBe(1);
   });
 
@@ -95,10 +95,10 @@ describe('Retro', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
 
     const wrapper = shallow(
@@ -119,9 +119,9 @@ describe('Retro', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
-        id: 2,
-        description: 'description retro',
-        assignedTo: 'aise-hi'
+      id: 2,
+      description: 'description retro',
+      assignedTo: 'aise-hi'
     }];
 
     const wrapper = shallow(
@@ -142,9 +142,9 @@ describe('Retro', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
-        id: 2,
-        description: 'description retro',
-        assignedTo: 'aise-hi'
+      id: 2,
+      description: 'description retro',
+      assignedTo: 'aise-hi'
     }];
 
     const wrapper = shallow(
@@ -165,9 +165,9 @@ describe('Retro', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
-        id: 2,
-        description: 'description retro',
-        assignedTo: 'aise-hi'
+      id: 2,
+      description: 'description retro',
+      assignedTo: 'aise-hi'
     }];
 
     const wrapper = shallow(
@@ -188,9 +188,9 @@ describe('Retro', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
-        id: 2,
-        description: 'description retro',
-        assignedTo: 'aise-hi'
+      id: 2,
+      description: 'description retro',
+      assignedTo: 'aise-hi'
     }];
 
     const wrapper = shallow(
@@ -205,7 +205,7 @@ describe('Retro', () => {
         />);
 
     wrapper.setState({
-        creatingRetroPoint: true, creatingRetroPointType: 'ACTION_ITEM'
+      creatingRetroPoint: true, creatingRetroPointType: 'ACTION_ITEM'
     });
 
     expect(wrapper.find(AddActionItem).length).toBe(1);
@@ -215,9 +215,9 @@ describe('Retro', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
-        id: 2,
-        description: 'description retro',
-        assignedTo: 'aise-hi'
+      id: 2,
+      description: 'description retro',
+      assignedTo: 'aise-hi'
     }];
 
     const createRetroPoint = jest.fn();
@@ -234,7 +234,7 @@ describe('Retro', () => {
         />);
 
     wrapper.setState({
-        creatingRetroPoint: true, creatingRetroPointType: 'DONE_WELL'
+      creatingRetroPoint: true, creatingRetroPointType: 'DONE_WELL'
     });
 
     wrapper.find(AddRetroPoint).props().createRetroPoint("description");
@@ -243,14 +243,14 @@ describe('Retro', () => {
       type: "DONE_WELL",
       retroId: retroId
     });
-  })
+  });
   it('should show pop up for addActionItem', () => {
     const retroId = 1029;
     const getActionItems = jest.fn();
     const actionItems = [{
-        id: 2,
-        description: 'description retro',
-        assignedTo: 'aise-hi'
+      id: 2,
+      description: 'description retro',
+      assignedTo: 'aise-hi'
     }];
     const createActionItem = jest.fn();
 
@@ -268,9 +268,9 @@ describe('Retro', () => {
 
     wrapper.setState({creatingRetroPointType: 'ACTION_ITEM'});
     const retro = {
-        description: "some description",
-        assignedTO: "assigned",
-        deadlineToAct: "some date"
+      description: "some description",
+      assignedTO: "assigned",
+      deadlineToAct: "some date"
     };
 
     wrapper.instance().createActionItem(retro);
@@ -282,10 +282,10 @@ describe('Retro', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -306,10 +306,10 @@ describe('Retro', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -331,10 +331,10 @@ describe('Retro', () => {
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -357,10 +357,10 @@ describe('Retro', () => {
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -384,10 +384,10 @@ describe('Retro', () => {
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -404,8 +404,8 @@ describe('Retro', () => {
 
     wrapper.find('#retro-button-for-done-well-id').simulate('click');
     expect(wrapper.state()).toEqual({
-        creatingRetroPoint: true,
-        creatingRetroPointType: 'DONE_WELL'
+      creatingRetroPoint: true,
+      creatingRetroPointType: 'DONE_WELL'
     });
   });
 
@@ -414,10 +414,10 @@ describe('Retro', () => {
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -434,8 +434,8 @@ describe('Retro', () => {
 
     wrapper.find('#retro-button-for-action-item-id').simulate('click');
     expect(wrapper.state()).toEqual({
-        creatingRetroPoint: true,
-        creatingRetroPointType: 'ACTION_ITEM'
+      creatingRetroPoint: true,
+      creatingRetroPointType: 'ACTION_ITEM'
     });
   });
 
@@ -444,10 +444,10 @@ describe('Retro', () => {
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}
@@ -464,8 +464,8 @@ describe('Retro', () => {
 
     wrapper.find('#retro-button-for-need-improvement-id').simulate('click');
     expect(wrapper.state()).toEqual({
-        creatingRetroPoint: true,
-        creatingRetroPointType: 'NEED_IMPROVEMENT'
+      creatingRetroPoint: true,
+      creatingRetroPointType: 'NEED_IMPROVEMENT'
     });
   });
 
@@ -474,10 +474,10 @@ describe('Retro', () => {
     const getRetroPoints = jest.fn();
     const castVote = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const createRetroPoint = jest.fn();
     const wrapper = shallow(
@@ -495,9 +495,10 @@ describe('Retro', () => {
     const description = 'description';
     wrapper.instance().createRetroPoint(description);
     expect(createRetroPoint).toHaveBeenCalledWith({
-        description: description,
-        retroId: retroId,
-        type: ''});
+      description: description,
+      retroId: retroId,
+      type: ''
+    });
   });
 
   it('should show Start button when in CREATED state', () => {
@@ -614,10 +615,10 @@ describe('Retro', () => {
     const retroId = 1029;
     const getRetroPoints = jest.fn();
     const retroPoints = [{
-        description: 'description retro',
-        id: 2,
-        votes: 2,
-        type: 'NEED_IMPROVEMENT'
+      description: 'description retro',
+      id: 2,
+      votes: 2,
+      type: 'NEED_IMPROVEMENT'
     }];
     const wrapper = shallow(
         <Retro match={{params: {id: retroId}}}

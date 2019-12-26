@@ -2,7 +2,6 @@ import {mount} from 'enzyme';
 /* eslint-disable */
 import {Provider} from 'react-redux';
 import React from 'react';
-import {shallow} from 'enzyme';
 import LoginContainer from './LoginContainer';
 /* eslint-enable */
 import configureStore from 'redux-mock-store';
@@ -15,9 +14,9 @@ describe('Login in  Container', () => {
   let store;
   beforeEach(() => {
     initialState = {
-        loggedInUserDetails: {
-          userName: null,
-        },
+      loggedInUserDetails: {
+        userName: null,
+      },
     };
 
     store = configureStore()(initialState);
@@ -29,9 +28,9 @@ describe('Login in  Container', () => {
     spyOn(LoginActions, 'authenticate').and.returnValue(testAction);
 
     const wrapper = mount(
-      <Provider store={store}>
-        <LoginContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <LoginContainer/>
+        </Provider>);
     const username = 'test-username';
     const password = 'test-password';
 
@@ -43,9 +42,9 @@ describe('Login in  Container', () => {
 
   it('Should set username to null', () => {
     const wrapper = mount(
-      <Provider store={store}>
-        <LoginContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <LoginContainer/>
+        </Provider>);
 
     expect(wrapper.find(Login).props().username).toEqual(null);
   });
@@ -56,9 +55,9 @@ describe('Login in  Container', () => {
     store = configureStore()(initialState);
 
     const wrapper = mount(
-      <Provider store={store}>
-        <LoginContainer/>
-      </Provider>);
+        <Provider store={store}>
+          <LoginContainer/>
+        </Provider>);
 
     expect(wrapper.find(Login).props().username).toEqual(username);
   });

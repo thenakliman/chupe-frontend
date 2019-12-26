@@ -23,16 +23,16 @@ exports[` 1`] = `
         className="meeting-discussion-item-table-header"
       >
         <th>
-           Id 
+           Id
         </th>
         <th>
-           Subject 
+           Subject
         </th>
         <th>
-           Assigned To 
+           Assigned To
         </th>
         <th>
-           Created By 
+           Created By
         </th>
       </tr>
     </thead>

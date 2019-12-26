@@ -1,15 +1,15 @@
 import {connect} from 'react-redux';
 import {Retro} from './Retro';
 import {getAllUsers} from '../../../Actions/userActions';
-import {getAllRetros} from '../../../Actions/retroActions';
-
 import {
-  getRetroPoints,
-  getActionItems,
-  createActionItem,
   castVote,
   changeStatus,
-  createRetroPoint} from '../../../Actions/retroActions';
+  createActionItem,
+  createRetroPoint,
+  getActionItems,
+  getAllRetros,
+  getRetroPoints
+} from '../../../Actions/retroActions';
 
 export const mapStateToProps = (state) => ({
   retroPoints: state.retro.retroPoints,
