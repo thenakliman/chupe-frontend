@@ -1,3 +1,6 @@
+@import url("App/styles/utilities.css");
+@import url("App/styles/variables.css");
+
 * {
   font-family: Times New Roman, Times, Arial, serif;
 }
@@ -14,13 +17,17 @@ button {
   color: #ffffff
 }
 
+.button--small {
+  padding: 0.8rem 1.5rem;
+}
+
 thead tr {
   background-color: #dcd0c0;
   font-size: 1.3rem;
 }
 
 .selectable-row:hover {
-  background-color: #f2f2f2;
+  background-color: #f9f9f9;
   transition: background-color 0.5s ease;
   cursor: pointer;
 }
@@ -40,5 +47,5 @@ table {
 
 th, td {
   border-bottom: 1px solid #e0e0e0;
-  padding: 1rem 0rem;
+  padding: 1rem 0;
 }

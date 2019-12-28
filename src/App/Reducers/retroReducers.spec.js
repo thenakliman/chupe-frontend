@@ -5,7 +5,7 @@ import {ActionTypes} from '../Actions/ActionTypes';
 describe('Retro reducer', () => {
   it('Check initial state is empty', () => {
     const nextState = retro(undefined, {type: 'FAKE_ACTION'});
-    expect(nextState).toEqual({retros: [], retroPoints: [], actionItems: []});
+    expect(nextState).toEqual({retros: [], retroPoints: [], actionItems: [], practices: []});
   });
 
   it('Check state is updated on ADD_RETROS action', () => {
@@ -42,5 +42,17 @@ describe('Retro reducer', () => {
     const nextState = retro([], addRetroActionItems);
 
     expect(nextState).toEqual({actionItems: retroActionItems});
+  });
+
+  it('Check state is updated on ADD_BEST_PRACTICES action', () => {
+    const bestPractices = [{id: 100}];
+    const addBestPractices = {
+      type: ActionTypes.ADD_BEST_PRACTICES,
+      payload: bestPractices,
+    };
+
+    const nextState = retro([], addBestPractices);
+
+    expect(nextState).toEqual({practices: bestPractices});
   });
 });

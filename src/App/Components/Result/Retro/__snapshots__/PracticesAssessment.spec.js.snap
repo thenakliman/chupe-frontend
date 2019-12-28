@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`practices assessments should match snapshot 1`] = `
+<div
+  className="practices"
+>
+  <div
+    className="practices__heading"
+  >
+    Best Practices
+  </div>
+  <div
+    className="description"
+    key="0"
+  >
+    <div
+      className="description__text"
+    >
+      some practices
+    </div>
+    <div
+      className="description__btns"
+    >
+      <label
+        className="description__label"
+      >
+        <input
+          checked={true}
+          className="description__btn"
+          id="yes-0"
+          name="applicable"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        Yes
+      </label>
+      <label
+        className="description__label"
+      >
+        <input
+          checked={false}
+          className="description__btn"
+          id="no-0"
+          name="applicable"
+          onChange={[Function]}
+          type="checkbox"
+        />
+        No
+      </label>
+    </div>
+  </div>
+  <button
+    className="button--small u-margin-top-small"
+    onClick={[Function]}
+  >
+    Save
+  </button>
+</div>
+`;
