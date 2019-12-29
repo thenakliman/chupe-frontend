@@ -5,7 +5,7 @@ import * as Client from './client';
 describe('Question Service', () => {
   it('Returns data when get answers is called', async () => {
     const answerData = {
-      data: [{id: 101}, {id: 102}]
+      data: [{id: 101}, {id: 102}],
     };
 
     spyOn(Client, 'get').and.returnValue(answerData);

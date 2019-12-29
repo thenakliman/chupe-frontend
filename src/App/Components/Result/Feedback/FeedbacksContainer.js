@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {Feedbacks} from './Feedbacks';
-import {createFeedback, getAllFeedbacks,} from '../../../Actions/feedbackActions';
+import {createFeedback, getAllFeedbacks} from '../../../Actions/feedbackActions';
 import {getAllUsers} from '../../../Actions/userActions';
 
 

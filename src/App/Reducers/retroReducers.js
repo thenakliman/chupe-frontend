@@ -7,7 +7,7 @@ export const retro = (state, action) => {
       retroPoints: [],
       actionItems: [],
       practices: [],
-      practicesAssessment: []
+      practicesAssessment: [],
     };
   }
 

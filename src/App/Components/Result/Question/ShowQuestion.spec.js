@@ -301,7 +301,7 @@ describe('Show question component', () => {
       id: id,
       answer: newAnswer,
       questionId: questionId,
-      answeredBy: answeredBy
+      answeredBy: answeredBy,
     });
   });
 
@@ -391,7 +391,7 @@ describe('Show question component', () => {
     expect(mockAddAnswer).toHaveBeenCalledWith({
       answer: 'answer 1',
       answeredBy: username,
-      questionId: 2
+      questionId: 2,
     });
   });
 

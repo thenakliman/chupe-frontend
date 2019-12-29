@@ -8,7 +8,7 @@ import {
   createRetroPoint,
   getActionItems,
   getAllRetros,
-  getRetroPoints
+  getRetroPoints,
 } from '../../../Actions/retroActions';
 
 export const mapStateToProps = (state) => ({

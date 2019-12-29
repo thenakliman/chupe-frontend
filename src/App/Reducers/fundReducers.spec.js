@@ -16,7 +16,7 @@ describe('Team Fund Reducer', () => {
   it('should add team funds to redux', () => {
     const newState = fund(initialState, {
       type: ActionTypes.ADD_FUNDS_FOR_USER,
-      payload: memberFunds
+      payload: memberFunds,
     });
 
     expect(newState).toEqual({
@@ -29,7 +29,7 @@ describe('Team Fund Reducer', () => {
   it('should return existing state when invalid action', () => {
     const newState = fund(initialState, {
       type: 'INVALID_ACTION',
-      payload: memberFunds
+      payload: memberFunds,
     });
 
     expect(newState).toEqual(initialState);
@@ -51,7 +51,7 @@ describe('Team Fund Reducer', () => {
   it('should add team fund types to redux', () => {
     const newState = fund(initialState, {
       type: ActionTypes.ADD_TEAM_FUND_TYPES,
-      payload: teamFundTypes
+      payload: teamFundTypes,
     });
 
     expect(newState).toEqual({
@@ -64,7 +64,7 @@ describe('Team Fund Reducer', () => {
   it('should add team funds to redux', () => {
     const newState = fund(initialState, {
       type: ActionTypes.ADD_TEAM_FUND,
-      payload: teamFunds
+      payload: teamFunds,
     });
 
     expect(newState).toEqual({

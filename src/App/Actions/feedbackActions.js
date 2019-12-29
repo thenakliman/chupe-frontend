@@ -10,7 +10,7 @@ import {
   GET_FEEDBACK_LOADER_ID,
   GET_FEEDBACK_NOTIFICATION,
   GET_FEEDBACK_SESSION_LOADER_ID,
-  GET_FEEDBACK_SESSION_NOTIFICATION
+  GET_FEEDBACK_SESSION_NOTIFICATION,
 } from '../Components/Result/Common/constants';
 
 const addFeedbackSessions = (feedbackSessions) => ({

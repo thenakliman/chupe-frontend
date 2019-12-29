@@ -10,7 +10,7 @@ describe('Retro reducer', () => {
       retroPoints: [],
       actionItems: [],
       practices: [],
-      practicesAssessment: []
+      practicesAssessment: [],
     });
   });
 

@@ -1,6 +1,6 @@
-import React from 'react'
-import propTypes from 'prop-types'
-import {history} from "../../../utils/history";
+import React from 'react';
+import propTypes from 'prop-types';
+import {history} from '../../../utils/history';
 
 require('./PracticesAssessment.css');
 
@@ -23,7 +23,7 @@ export class PracticesAssessment extends React.Component {
   }
 
   onPracticeAssessmentChange(id, answer) {
-    const assessmentPosition = this.state.assessments.findIndex(assessment => assessment.bestPracticeId === id);
+    const assessmentPosition = this.state.assessments.findIndex((assessment) => assessment.bestPracticeId === id);
     const assessments = [...this.state.assessments];
     assessments[assessmentPosition].answer = answer;
     this.setState({assessments: assessments});
@@ -33,11 +33,11 @@ export class PracticesAssessment extends React.Component {
     let assessments = this.state.assessments;
     if (assessments.length === 0) {
       assessments = this.props.practices.map(
-          assessment => ({bestPracticeId: assessment.id, answer: true}));
+          (assessment) => ({bestPracticeId: assessment.id, answer: true}));
       this.setState({assessments: assessments});
     }
 
-    return assessments.find(assessment => assessment.bestPracticeId === id).answer
+    return assessments.find((assessment) => assessment.bestPracticeId === id).answer;
   }
 
   render() {
@@ -52,7 +52,7 @@ export class PracticesAssessment extends React.Component {
               <label className={'description__label'}>
                 <input className={'description__btn'}
                        id={`yes-${index}`}
-                       type={"checkbox"}
+                       type={'checkbox'}
                        name={'applicable'}
                        onChange={() => this.onPracticeAssessmentChange(practice.id, true)}
                        checked={this.doesFollow(practice.id)}/>
@@ -61,7 +61,7 @@ export class PracticesAssessment extends React.Component {
               <label className={'description__label'}>
                 <input className={'description__btn'}
                        id={`no-${index}`}
-                       type={"checkbox"}
+                       type={'checkbox'}
                        name={'applicable'}
                        onChange={() => this.onPracticeAssessmentChange(practice.id, false)}
                        checked={!this.doesFollow(practice.id)}/>
@@ -74,12 +74,12 @@ export class PracticesAssessment extends React.Component {
               onClick={this.savePracticesAssessment}>
         Save
       </button>
-    </div>
+    </div>;
   }
 }
 
 PracticesAssessment.propTypes = {
   practices: propTypes.array.isRequired,
   fetchPractices: propTypes.func.isRequired,
-  savePracticeAssessment: propTypes.func.isRequired
+  savePracticeAssessment: propTypes.func.isRequired,
 };

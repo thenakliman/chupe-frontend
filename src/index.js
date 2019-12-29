@@ -1,10 +1,10 @@
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk';
 import React from 'react'; // eslint-disable-line no-unused-vars
-import {render} from 'react-dom'
+import {render} from 'react-dom';
 import {Provider} from 'react-redux'; // eslint-disable-line no-unused-vars
-import {applyMiddleware, createStore} from 'redux'
-import {composeWithDevTools} from 'redux-devtools-extension'
-import {rootReducers} from './App/Reducers/reducers'
+import {applyMiddleware, createStore} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import {rootReducers} from './App/Reducers/reducers';
 /* eslint-disable */
 import {ConnectedRouter, connectRouter} from 'connected-react-router'
 import {Route} from 'react-router'

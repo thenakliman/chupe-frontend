@@ -97,7 +97,7 @@ describe('Show feedback pop up component', () => {
 
     wrapper.find('#feedback-submit-button').simulate('click');
     expect(onSubmit).toHaveBeenCalledWith({
-      description: 'fake', givenTo: 'user'
+      description: 'fake', givenTo: 'user',
     });
   });
 

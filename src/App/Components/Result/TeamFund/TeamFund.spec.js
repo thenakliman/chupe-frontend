@@ -301,7 +301,7 @@ describe('Team Fund component', () => {
       wrapper.setState({
         hasPopup: true,
         owner: 'username1',
-        transactionType: 'CREDIT'
+        transactionType: 'CREDIT',
       });
     });
 
@@ -339,7 +339,7 @@ describe('Team Fund component', () => {
       wrapper.find('#team-fund-submit-button-id').simulate('click');
 
       expect(wrapper.state()).toEqual({
-        hasPopup: false, owner: null, transactionType: ''
+        hasPopup: false, owner: null, transactionType: '',
       });
 
       expect(addFund).toHaveBeenCalledWith(

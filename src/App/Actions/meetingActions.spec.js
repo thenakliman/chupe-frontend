@@ -44,7 +44,7 @@ describe('Meeting action', () => {
       payload: {
         id: 'GET_MEETING_NOTIFICATION_ID',
         message: 'Unable to get meeting. Please try after sometime.',
-        type: 'ERROR'
+        type: 'ERROR',
       },
       type: 'SHOW_NOTIFICATION',
     }, {
@@ -93,7 +93,7 @@ describe('Meeting action', () => {
       payload: {
         id: 'CREATE_MEETING_NOTIFICATION_ID',
         message: 'Unable to create meeting. Please try after sometime.',
-        type: 'ERROR'
+        type: 'ERROR',
       },
       type: 'SHOW_NOTIFICATION',
     }, {

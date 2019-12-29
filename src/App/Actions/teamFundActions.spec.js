@@ -1,4 +1,4 @@
-import {addFund, fetchFundsForAUser, fetchFundTypes, fetchTeamFund,} from './teamFundActions';
+import {addFund, fetchFundsForAUser, fetchFundTypes, fetchTeamFund} from './teamFundActions';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import {TeamFundService} from '../Services/TeamFundService';

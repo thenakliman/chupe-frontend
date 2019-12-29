@@ -38,7 +38,7 @@ describe('should fetch action items', () => {
   });
 
   it('should dispatch action on failure of action item fetch', async () => {
-    spyOn(ActionItemService, 'getActionItems').and.throwError("some error");
+    spyOn(ActionItemService, 'getActionItems').and.throwError('some error');
 
     await store.dispatch(getActionItems());
 
@@ -50,9 +50,9 @@ describe('should fetch action items', () => {
           },
           {
             payload: {
-              id: "GET_ACTION_ITEMS_NOTIFICATION_ID",
-              message: "Unable to fetch action items. Please try after sometime.",
-              type: "ERROR",
+              id: 'GET_ACTION_ITEMS_NOTIFICATION_ID',
+              message: 'Unable to fetch action items. Please try after sometime.',
+              type: 'ERROR',
             },
             type: 'SHOW_NOTIFICATION',
           },

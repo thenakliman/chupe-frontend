@@ -217,7 +217,7 @@ describe('Feedback action', () => {
       payload: {
         id: 'CREATE_FEEDBACK_NOTIFICATION_ID',
         message: 'Unable to create feedback. Please try after sometime.',
-        type: 'ERROR'
+        type: 'ERROR',
       },
       type: 'SHOW_NOTIFICATION',
     }, {

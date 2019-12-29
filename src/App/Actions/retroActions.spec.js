@@ -6,7 +6,7 @@ import {
   createRetroPoint,
   getActionItems,
   getAllRetros,
-  getRetroPoints
+  getRetroPoints,
 } from './retroActions';
 import configureStore from 'redux-mock-store';
 import {RetroService} from '../Services/RetroService';

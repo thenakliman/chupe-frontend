@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {MeetingDiscussionItem} from './MeetingDiscussionItem';
-import {createMeetingDiscussionItem, getMeetingDiscussionItems,} from '../../../Actions/meetingActions';
+import {createMeetingDiscussionItem, getMeetingDiscussionItems} from '../../../Actions/meetingActions';
 import {getAllUsers} from '../../../Actions/userActions';
 
 

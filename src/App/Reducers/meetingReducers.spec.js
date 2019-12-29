@@ -11,7 +11,7 @@ describe('Meeting Reducer', () => {
     const meetings = [{id: 'feedbacks'}];
     const newState = meeting(initialState, {
       type: ActionTypes.ADD_MEETINGS,
-      payload: meetings
+      payload: meetings,
     });
 
     expect(newState.meetings).toEqual(meetings);
@@ -21,7 +21,7 @@ describe('Meeting Reducer', () => {
     const meetingDiscussionItems = [{id: 'meeting'}];
     const newState = meeting(initialState, {
       type: ActionTypes.ADD_MEETING_DISCUSSION_ITEMS,
-      payload: meetingDiscussionItems
+      payload: meetingDiscussionItems,
     });
 
     expect(newState.meetingDiscussionItems).toEqual(meetingDiscussionItems);
@@ -31,7 +31,7 @@ describe('Meeting Reducer', () => {
     const meetings = [{id: 'meeting'}];
     const newState = meeting(initialState, {
       type: 'INVALID_ACTION',
-      payload: meetings
+      payload: meetings,
     });
 
     expect(newState.meetings).toEqual([]);
@@ -41,7 +41,7 @@ describe('Meeting Reducer', () => {
     const meetingDiscussionItems = [{id: 'meeting-discussion-item'}];
     const newState = meeting(initialState, {
       type: 'INVALID_ACTION',
-      payload: meetingDiscussionItems
+      payload: meetingDiscussionItems,
     });
 
     expect(newState.meetingDiscussionItems).toEqual([]);

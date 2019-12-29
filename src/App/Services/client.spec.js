@@ -14,7 +14,7 @@ describe('REST client', () => {
     it('should make a get call', (done) => {
       let mock = new MockAdapter(axios);
       const questionData = {
-        data: [{'question': 'what?'}, {'question': 'when?'}]
+        data: [{'question': 'what?'}, {'question': 'when?'}],
       };
       const url = '/api/v1/question';
 
@@ -31,7 +31,7 @@ describe('REST client', () => {
     it('should make a post call', (done) => {
       let mock = new MockAdapter(axios);
       const questionData = {
-        data: [{'question': 'what?'}, {'question': 'when?'}]
+        data: [{'question': 'what?'}, {'question': 'when?'}],
       };
       const url = '/api/v1/question';
       const body = {question: 100};
@@ -49,7 +49,7 @@ describe('REST client', () => {
     it('should make a put call', (done) => {
       let mock = new MockAdapter(axios);
       const questionData = {
-        data: [{'question': 'what?'}, {'question': 'when?'}]
+        data: [{'question': 'what?'}, {'question': 'when?'}],
       };
       const url = '/api/v1/question';
       const body = {question: 100};

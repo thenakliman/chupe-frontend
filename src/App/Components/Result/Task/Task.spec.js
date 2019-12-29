@@ -96,7 +96,7 @@ describe('Task result component', () => {
 
     expect(wrapper.state()).toEqual({
       description: taskDescription,
-      displayAllTask: false
+      displayAllTask: false,
     });
   });
 
@@ -183,7 +183,7 @@ describe('Task result component', () => {
     expect(updateTask).toHaveBeenCalledWith({
       description: 'task1',
       id: 1,
-      state: 'CREATED'
+      state: 'CREATED',
     });
   });
 

@@ -1,6 +1,6 @@
-import React from 'react'
-import propTypes from 'prop-types'
-import {ACTION_ITEM, DONE_WELL, NEED_IMPROVEMENT, retroStateToMessageMapping} from './constants'
+import React from 'react';
+import propTypes from 'prop-types';
+import {ACTION_ITEM, DONE_WELL, NEED_IMPROVEMENT, retroStateToMessageMapping} from './constants';
 /* eslint-disable */
 import {AddRetroPoint} from './AddRetroPoint'
 import {AddActionItem} from './AddActionItem'
@@ -15,14 +15,14 @@ export class Retro extends React.Component {
     this.createRetroPoint = this.createRetroPoint.bind(this);
     this.createActionItem = this.createActionItem.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
-    this.toggleCreatingRetroPoint = this.toggleCreatingRetroPoint.bind(this)
+    this.toggleCreatingRetroPoint = this.toggleCreatingRetroPoint.bind(this);
   }
 
   toggleCreatingRetroPoint(type) {
     this.setState({
       creatingRetroPoint: !this.state.creatingRetroPoint,
-      creatingRetroPointType: type
-    })
+      creatingRetroPointType: type,
+    });
   }
 
   componentWillMount() {
@@ -36,10 +36,10 @@ export class Retro extends React.Component {
     this.props.createRetroPoint({
       description: description,
       type: this.state.creatingRetroPointType,
-      retroId: this.props.match.params.id
+      retroId: this.props.match.params.id,
     });
     this.toggleCreatingRetroPoint();
-    this.setState({creatingRetroPointType: ''})
+    this.setState({creatingRetroPointType: ''});
   }
 
   createActionItem(actionItem) {
@@ -47,11 +47,11 @@ export class Retro extends React.Component {
     actionItem['retroId'] = this.props.match.params.id;
     this.props.createActionItem(actionItem);
     this.toggleCreatingRetroPoint();
-    this.setState({creatingRetroPointType: ''})
+    this.setState({creatingRetroPointType: ''});
   }
 
   changeStatus(status) {
-    this.props.changeStatus(this.props.match.params.id, status)
+    this.props.changeStatus(this.props.match.params.id, status);
   }
 
   renderActionItem() {
@@ -69,7 +69,7 @@ export class Retro extends React.Component {
             {actionItem.description}
           </div>
         </div>
-    )
+    );
   }
 
   renderBasedOnFilter(filterFunction) {
@@ -89,16 +89,16 @@ export class Retro extends React.Component {
                 {retroPoint.description}
               </div>
             </div>
-    )
+    );
   }
 
   render() {
     const status = this.props.retros.filter(
-        (retro) => retro.id === this.props.match.params.id)[0].status;
+        (retro) => retro.id === parseInt(this.props.match.params.id))[0].status;
 
     const nextStatus = {
       'CREATED': 'IN_PROGRESS',
-      'IN_PROGRESS': 'CLOSED'
+      'IN_PROGRESS': 'CLOSED',
     };
 
     return (<div id='retro-points-container-id' className='retro-points-container'>
@@ -166,7 +166,7 @@ export class Retro extends React.Component {
           {this.renderActionItem()}
         </div>
       </div>}
-    </div>)
+    </div>);
   }
 }
 
@@ -180,5 +180,5 @@ Retro.propTypes = {
   getRetroPoints: propTypes.func.isRequired,
   createRetroPoint: propTypes.func.isRequired,
   getUsers: propTypes.func.isRequired,
-  changeStatus: propTypes.func.isRequired
+  changeStatus: propTypes.func.isRequired,
 };

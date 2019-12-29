@@ -54,7 +54,7 @@ describe('should create best practices actions', () => {
         payload: {
           id: 'GET_BEST_PRACTICES_NOTIFICATION_ID',
           type: 'ERROR',
-          message: 'Unable to fetch best practices. Please try after sometime.'
+          message: 'Unable to fetch best practices. Please try after sometime.',
         },
         type: 'SHOW_NOTIFICATION',
       },
@@ -96,7 +96,7 @@ describe('should create best practices actions', () => {
         payload: {
           id: 'SAVE_BEST_PRACTICES_ASSESSMENTS_NOTIFICATION_ID',
           type: 'ERROR',
-          message: 'Unable to save best practices assessments. Please try after sometime.'
+          message: 'Unable to save best practices assessments. Please try after sometime.',
         },
         type: 'SHOW_NOTIFICATION',
       },
@@ -140,7 +140,7 @@ describe('should create best practices actions', () => {
         payload: {
           id: 'GET_PRACTICES_ASSESSMENT_NOTIFICATION_ID',
           type: 'ERROR',
-          message: 'Unable to fetch practices assessments. Please try after sometime.'
+          message: 'Unable to fetch practices assessments. Please try after sometime.',
         },
         type: 'SHOW_NOTIFICATION',
       },

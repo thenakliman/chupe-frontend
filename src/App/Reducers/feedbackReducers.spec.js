@@ -12,7 +12,7 @@ describe('Feedback Reducer', () => {
     const feedbacks = [{id: 'feedbacks'}];
     const newState = feedback(initialState, {
       type: ActionTypes.ADD_FEEDBACKS,
-      payload: feedbacks
+      payload: feedbacks,
     });
 
     expect(newState.feedbacks).toEqual(feedbacks);
@@ -22,7 +22,7 @@ describe('Feedback Reducer', () => {
     const feedbackSessions = [{id: 'feedback-sessions'}];
     const newState = feedback(initialState, {
       type: ActionTypes.ADD_FEEDBACK_SESSIONS,
-      payload: feedbackSessions
+      payload: feedbackSessions,
     });
 
     expect(newState.feedbackSessions).toEqual(feedbackSessions);
@@ -32,7 +32,7 @@ describe('Feedback Reducer', () => {
     const feedbackSessions = [{id: 'feedback-sessions'}];
     const newState = feedback(initialState, {
       type: 'INVALID_ACTION',
-      payload: feedbackSessions
+      payload: feedbackSessions,
     });
 
     expect(newState.feedbackSessions).toEqual([]);
@@ -42,7 +42,7 @@ describe('Feedback Reducer', () => {
     const feedbackSessions = [{id: 'feedback-sessions'}];
     const newState = feedback(initialState, {
       type: 'INVALID_ACTION',
-      payload: feedbackSessions
+      payload: feedbackSessions,
     });
 
     expect(newState.feedbacks).toEqual([]);

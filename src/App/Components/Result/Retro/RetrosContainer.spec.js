@@ -18,7 +18,7 @@ describe('Question Result container', () => {
     initialState = {
       retro: {
         retros: [{'userName': 'user1'}, {'userName': 'user2'}],
-        practicesAssessment: [{bestPracticeId: 1, answer: true}]
+        practicesAssessment: [{bestPracticeId: 1, answer: true}],
       },
     };
 

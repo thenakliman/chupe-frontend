@@ -30,7 +30,7 @@ export class Retros extends React.Component {
       } else {
         history.push('/retro/' + id);
       }
-    })
+    });
   }
 
   createRetro(retro) {
