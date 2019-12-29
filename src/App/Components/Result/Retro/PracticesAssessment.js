@@ -1,5 +1,6 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import {history} from "../../../utils/history";
 
 require('./PracticesAssessment.css');
 
@@ -9,10 +10,16 @@ export class PracticesAssessment extends React.Component {
     this.state = {assessments: []};
     this.onPracticeAssessmentChange = this.onPracticeAssessmentChange.bind(this);
     this.doesFollow = this.doesFollow.bind(this);
+    this.savePracticesAssessment = this.savePracticesAssessment.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchPractices();
+  }
+
+  savePracticesAssessment() {
+    this.props.savePracticeAssessment(this.props.match.params.id, this.state.assessments)
+        .then(() => history.push(`/retro/${this.props.match.params.id}`));
   }
 
   onPracticeAssessmentChange(id, answer) {
@@ -64,7 +71,7 @@ export class PracticesAssessment extends React.Component {
           </div>
       ))}
       <button className={'button--small u-margin-top-small'}
-              onClick={() => this.props.savePracticeAssessment(this.props.match.params.id, this.state.assessments)}>
+              onClick={this.savePracticesAssessment}>
         Save
       </button>
     </div>

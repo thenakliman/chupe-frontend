@@ -98,6 +98,13 @@ export const GET_BEST_PRACTICES_NOTIFICATION = {
   message: 'Unable to fetch best practices. Please try after sometime.'
 };
 
+export const GET_PRACTICES_ASSESSMENT_LOADER_ID = 'GET_PRACTICES_ASSESSMENT_LOADER_ID';
+export const GET_PRACTICES_ASSESSMENT_NOTIFICATION = {
+  id: 'GET_PRACTICES_ASSESSMENT_NOTIFICATION_ID',
+  type: NotificationType.ERROR,
+  message: 'Unable to fetch practices assessments. Please try after sometime.'
+};
+
 export const GET_BEST_PRACTICES_ASSESSMENTS_LOADER_ID = 'GET_BEST_PRACTICES_ASSESSMENTS_LOADER_ID';
 export const GET_BEST_PRACTICES_ASSESSMENTS_NOTIFICATION = {
   id: 'GET_BEST_PRACTICES_ASSESSMENTS_NOTIFICATION_ID',

@@ -146,10 +146,13 @@ describe('Show retro component', () => {
   it('should show retro on click of retro point', () => {
     const getAllRetros = jest.fn();
     history.history = {push: jest.fn()};
+    const getPracticesAssessment = jest.fn(() => Promise.resolve());
     const wrapper = shallow(
         <Retros
+            match={{params: {id: 11}}}
             retros={retros}
             getAllRetros={getAllRetros}
+            getPracticesAssessment={getPracticesAssessment}
         />
     );
 

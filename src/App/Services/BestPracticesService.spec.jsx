@@ -38,7 +38,7 @@ describe('BestPractices Service', () => {
 
       const receivedBestPractices = await PracticesService.getBestPracticesAssessment(retroId);
 
-      expect(Client.get).toHaveBeenCalledWith(`/api/v1/retros/${retroId}/best-practices-assessments`);
+      expect(Client.get).toHaveBeenCalledWith(`/api/v1/retros/${retroId}/practices-assessment`);
       expect(receivedBestPractices).toEqual(bestPracticesAssessments);
     });
   });
@@ -58,7 +58,7 @@ describe('BestPractices Service', () => {
 
       const receivedBestPractices = await PracticesService.saveBestPracticesAssessments(retroId, bestPracticesAssessments);
 
-      expect(Client.post).toHaveBeenCalledWith(`/api/v1/retros/${retroId}/best-practices-assessments`, bestPracticesAssessments);
+      expect(Client.post).toHaveBeenCalledWith(`/api/v1/retros/${retroId}/practices-assessment`, bestPracticesAssessments);
       expect(receivedBestPractices).toEqual(bestPracticesAssessments);
     });
   })

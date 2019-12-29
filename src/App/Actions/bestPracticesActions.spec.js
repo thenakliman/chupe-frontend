@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import {PracticesService} from '../Services/BestPracticesService';
-import {getBestPractices, savePracticeAssessment} from './bestPracticesActions';
+import {getBestPractices, getPracticesAssessment, savePracticeAssessment} from './bestPracticesActions';
 
 describe('should create best practices actions', () => {
   let store;
@@ -102,6 +102,50 @@ describe('should create best practices actions', () => {
       },
       {
         payload: 'SAVE_BEST_PRACTICES_ASSESSMENTS_LOADER_ID',
+        type: 'HIDE_LOADER',
+      },
+    ]);
+  });
+
+  it('should dispatch save practices assessment action', async () => {
+    const practicesAssessment = [{bestPracticeId: 1011, answer: true}, {bestPracticeId: 1012, answer: false}];
+    spyOn(PracticesService, 'getBestPracticesAssessment').and.returnValues(practicesAssessment);
+    const retroId = 100;
+    await store.dispatch(getPracticesAssessment(retroId));
+
+    expect(PracticesService.getBestPracticesAssessment).toHaveBeenCalledWith(retroId);
+    expect(store.getActions()).toEqual([{
+      payload: 'GET_PRACTICES_ASSESSMENT_LOADER_ID',
+      type: 'SHOW_LOADER',
+    }, {
+      payload: practicesAssessment,
+      type: 'ADD_PRACTICES_ASSESSMENT',
+    }, {
+      payload: 'GET_PRACTICES_ASSESSMENT_LOADER_ID',
+      type: 'HIDE_LOADER',
+    }]);
+  });
+
+  it('Should show error message if failed to practices assessment', async () => {
+    spyOn(PracticesService, 'getBestPracticesAssessment').and.throwError('failed');
+    const retroId = 100;
+    await store.dispatch(getPracticesAssessment(retroId));
+    expect(PracticesService.getBestPracticesAssessment).toHaveBeenCalledWith(retroId);
+    expect(store.getActions()).toEqual([
+      {
+        payload: 'GET_PRACTICES_ASSESSMENT_LOADER_ID',
+        type: 'SHOW_LOADER',
+      },
+      {
+        payload: {
+          id: 'GET_PRACTICES_ASSESSMENT_NOTIFICATION_ID',
+          type: 'ERROR',
+          message: 'Unable to fetch practices assessments. Please try after sometime.'
+        },
+        type: 'SHOW_NOTIFICATION',
+      },
+      {
+        payload: 'GET_PRACTICES_ASSESSMENT_LOADER_ID',
         type: 'HIDE_LOADER',
       },
     ]);

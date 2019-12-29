@@ -43,7 +43,7 @@ describe('practices assessments', () => {
   });
 
   it('should save assessment on click of save', () => {
-    const savePracticeAssessment = jest.fn();
+    const savePracticeAssessment = jest.fn(() => Promise.resolve());
     const practices = [{
       id: 1010, description: "some practices - 1"
     }, {

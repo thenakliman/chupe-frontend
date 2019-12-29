@@ -24,7 +24,13 @@ export class Retros extends React.Component {
   }
 
   viewRetro(id) {
-    history.push('/retro/' + id);
+    this.props.getPracticesAssessment(id).then(() => {
+      if (this.props.practicesAssessment.length === 0) {
+        history.push(`/retro-practices-assessment/${id}`);
+      } else {
+        history.push('/retro/' + id);
+      }
+    })
   }
 
   createRetro(retro) {
@@ -85,6 +91,8 @@ export class Retros extends React.Component {
 
 Retros.propTypes = {
   retros: propTypes.array,
+  practicesAssessment: propTypes.array.isRequired,
   getAllRetros: propTypes.func.isRequired,
+  getPracticesAssessment: propTypes.func.isRequired,
   createRetro: propTypes.func.isRequired,
 };
