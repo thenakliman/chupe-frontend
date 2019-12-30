@@ -21,6 +21,12 @@
   border: 1px solid #999;
 }
 
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
 .retro-point-description {
   padding: 0.5rem;
 }

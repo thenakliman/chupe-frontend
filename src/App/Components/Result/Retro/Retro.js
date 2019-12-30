@@ -4,7 +4,7 @@ import {ACTION_ITEM, DONE_WELL, NEED_IMPROVEMENT, retroStateToMessageMapping} fr
 /* eslint-disable */
 import {AddRetroPoint} from './AddRetroPoint'
 import {AddActionItem} from './AddActionItem'
-import {history} from '../../../utils/history'
+import {ActionItemTile, RetroPointTile} from "./tiles/Tile";
 /* eslint-enable */
 require('./Retro.css');
 
@@ -43,7 +43,6 @@ export class Retro extends React.Component {
   }
 
   createActionItem(actionItem) {
-    history.push('/practices-assessment');
     actionItem['retroId'] = this.props.match.params.id;
     this.props.createActionItem(actionItem);
     this.toggleCreatingRetroPoint();
@@ -55,41 +54,28 @@ export class Retro extends React.Component {
   }
 
   renderActionItem() {
-    return this.props.actionItems.map(
-        (actionItem) => <div key={actionItem.id} id={`action-item-${actionItem.id}`} className={'action-item'}>
-          <div className={'action-item-header'}>
-            <div className={'action-item-text'} id={`action-item-text-${actionItem.id}`}>
-              Assigned To:
-            </div>
-            <div className={'action-item-assigned'} id={`action-item-${actionItem.id}`}>
-              {actionItem.assignedTo}
-            </div>
-          </div>
-          <div className={'retro-point-description'} id={`action-item-description-${actionItem.id}`}>
-            {actionItem.description}
-          </div>
-        </div>
-    );
+    return <div className={'tiles'}>
+      {
+        this.props.actionItems.map(
+            actionItem => <ActionItemTile assignedTo={actionItem.assignedTo}
+                                          description={actionItem.description}/>)
+      }
+    </div>
   }
 
-  renderBasedOnFilter(filterFunction) {
-    return this.props.retroPoints.map(
-        (retroPoint) => filterFunction(retroPoint) &&
-            <div key={retroPoint.id} id={`retro-point-${retroPoint.id}`} className={'retro-point'}>
-              <div className={'retro-point-header'}>
-                <div className={'retro-point-vote-text'} id={`retro-point-vote-text-${retroPoint.id}`}
-                     onClick={() => this.props.vote(this.props.match.params.id, retroPoint.id)}>
-                  Vote
-                </div>
-                <div className={'retro-point-votes'} id={`retro-point-votes-${retroPoint.id}`}>
-                  {retroPoint.votes}
-                </div>
-              </div>
-              <div className={'retro-point-description'} id={`retro-point-description-${retroPoint.id}`}>
-                {retroPoint.description}
-              </div>
-            </div>
-    );
+  renderBasedOnFilter(filterFunction, className) {
+    return <div className={'tiles'}>
+      {
+        this.props.retroPoints
+            .filter((retroPoint) => filterFunction(retroPoint))
+            .map(retroPoint => <RetroPointTile retroId={this.props.match.params.id}
+                                               retroPointId={retroPoint.id}
+                                               votes={retroPoint.votes}
+                                               className={className}
+                                               onVoteCast={this.props.vote}
+                                               description={retroPoint.description}/>)
+      }
+    </div>
   }
 
   render() {
@@ -131,7 +117,7 @@ export class Retro extends React.Component {
       <hr className='horizontal-line'/>
       <div className='retro-point-category'>
         {this.renderBasedOnFilter(
-            (retroPoint) => NEED_IMPROVEMENT === retroPoint.type)}
+            (retroPoint) => NEED_IMPROVEMENT === retroPoint.type, 'u-red-background-color')}
       </div>
       <div className='retro-point-header-container'>
         <div className='retro-point-section'>
@@ -148,9 +134,9 @@ export class Retro extends React.Component {
       <hr className='horizontal-line'/>
       <div className='retro-point-category'>
         {this.renderBasedOnFilter(
-            (retroPoint) => DONE_WELL === retroPoint.type)}
+            (retroPoint) => DONE_WELL === retroPoint.type, 'u-green-background-color')}
       </div>
-      {status === 'IN_PROGRESS' && <div className={'retro-action-item-container'}>
+      {['IN_PROGRESS', 'CLOSED'].includes(status) && <div className={'retro-action-item-container'}>
         <div className='retro-point-header-container'>
           <div className='retro-point-section'>Action Items</div>
           <button id='retro-button-for-action-item-id'

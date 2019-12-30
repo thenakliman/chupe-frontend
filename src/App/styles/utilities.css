@@ -1,3 +1,19 @@
 .u-margin-top-small {
   margin-top: 1rem;
 }
+
+.u-green-background-color {
+  background-color: #008800;
+}
+
+.u-red-background-color {
+  background-color: #ed0404;
+}
+
+.u-white-font-color {
+  color: #ffffff;
+}
+
+.u-brown-background-color {
+  background-color: #f4b729;
+}

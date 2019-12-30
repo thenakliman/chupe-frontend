@@ -36,33 +36,15 @@ exports[`Retro should match snapshot 1`] = `
     className="retro-point-category"
   >
     <div
-      className="retro-point"
-      id="retro-point-2"
-      key="2"
+      className="tiles"
     >
-      <div
-        className="retro-point-header"
-      >
-        <div
-          className="retro-point-vote-text"
-          id="retro-point-vote-text-2"
-          onClick={[Function]}
-        >
-          Vote
-        </div>
-        <div
-          className="retro-point-votes"
-          id="retro-point-votes-2"
-        >
-          2
-        </div>
-      </div>
-      <div
-        className="retro-point-description"
-        id="retro-point-description-2"
-      >
-        description retro
-      </div>
+      <RetroPointTile
+        className="u-red-background-color"
+        description="description retro"
+        retroId={1029}
+        retroPointId={2}
+        votes={2}
+      />
     </div>
   </div>
   <div
@@ -87,6 +69,10 @@ exports[`Retro should match snapshot 1`] = `
   />
   <div
     className="retro-point-category"
-  />
+  >
+    <div
+      className="tiles"
+    />
+  </div>
 </div>
 `;

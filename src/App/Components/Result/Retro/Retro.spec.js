@@ -6,6 +6,7 @@ import {AddRetroPoint} from './AddRetroPoint';
 /* eslint-disable */
 import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
+import {ActionItemTile, RetroPointTile} from "./tiles/Tile";
 
 
 describe('Retro', () => {
@@ -112,7 +113,7 @@ describe('Retro', () => {
                getRetroPoints={getRetroPoints}
         />);
 
-    expect(wrapper.find('#retro-point-description-2').length).toBe(1);
+    expect(wrapper.find(RetroPointTile).length).toBe(1);
   });
 
   it('should show action item of retro point in IN_PROGRESS state', () => {
@@ -135,7 +136,7 @@ describe('Retro', () => {
                getRetroPoints={jest.fn()}
         />);
 
-    expect(wrapper.find('#action-item-description-2').length).toBe(1);
+    expect(wrapper.find(ActionItemTile).length).toBe(1);
   });
 
   it('should show action item of retro point in CREATED state', () => {
@@ -158,7 +159,7 @@ describe('Retro', () => {
                getRetroPoints={jest.fn()}
         />);
 
-    expect(wrapper.find('#action-item-description-2').length).toBe(0);
+    expect(wrapper.find(ActionItemTile).length).toBe(0);
   });
 
   it('should show action item of retro point in DONE state', () => {
@@ -181,7 +182,7 @@ describe('Retro', () => {
                getRetroPoints={jest.fn()}
         />);
 
-    expect(wrapper.find('#action-item-description-2').length).toBe(0);
+    expect(wrapper.find(ActionItemTile).length).toBe(1);
   });
 
   it('should show action item of retro point', () => {
@@ -276,80 +277,6 @@ describe('Retro', () => {
     wrapper.instance().createActionItem(retro);
 
     expect(createActionItem).toHaveBeenCalledWith({...retro, retroId: retroId});
-  });
-
-  it('should have retro point vote id', () => {
-    const retroId = 1029;
-    const getRetroPoints = jest.fn();
-    const retroPoints = [{
-      description: 'description retro',
-      id: 2,
-      votes: 2,
-      type: 'NEED_IMPROVEMENT'
-    }];
-    const wrapper = shallow(
-        <Retro match={{params: {id: retroId}}}
-               retroPoints={retroPoints}
-               actionItems={[]}
-               castVote={jest.fn()}
-               retros={[{id: 1029, status: 'CREATED'}]}
-               getAllRetros={jest.fn()}
-               getActionItems={jest.fn()}
-               getUsers={jest.fn()}
-               getRetroPoints={getRetroPoints}
-        />);
-
-    expect(wrapper.find('#retro-point-votes-2').length).toBe(1);
-  });
-
-  it('should have retro point vote text', () => {
-    const retroId = 1029;
-    const getRetroPoints = jest.fn();
-    const retroPoints = [{
-      description: 'description retro',
-      id: 2,
-      votes: 2,
-      type: 'NEED_IMPROVEMENT'
-    }];
-    const wrapper = shallow(
-        <Retro match={{params: {id: retroId}}}
-               retroPoints={retroPoints}
-               actionItems={[]}
-               castVote={jest.fn()}
-               getAllRetros={jest.fn()}
-               getUsers={jest.fn()}
-               retros={[{id: 1029, status: 'CREATED'}]}
-               getActionItems={jest.fn()}
-               getRetroPoints={getRetroPoints}
-        />);
-
-    expect(wrapper.find('#retro-point-vote-text-2').length).toBe(1);
-  });
-
-  it('should call cast vote on click of vote text', () => {
-    const retroId = 1029;
-    const getRetroPoints = jest.fn();
-    const castVote = jest.fn();
-    const retroPoints = [{
-      description: 'description retro',
-      id: 2,
-      votes: 2,
-      type: 'NEED_IMPROVEMENT'
-    }];
-    const wrapper = shallow(
-        <Retro match={{params: {id: retroId}}}
-               retroPoints={retroPoints}
-               actionItems={[]}
-               vote={castVote}
-               getAllRetros={jest.fn()}
-               retros={[{id: 1029, status: 'CREATED'}]}
-               getUsers={jest.fn()}
-               getActionItems={jest.fn()}
-               getRetroPoints={getRetroPoints}
-        />);
-
-    wrapper.find('#retro-point-vote-text-2').simulate('click');
-    expect(castVote).toHaveBeenCalledWith(retroId, 2);
   });
 
   it('should have createRetroPoint and creatingRetroPointType set', () => {

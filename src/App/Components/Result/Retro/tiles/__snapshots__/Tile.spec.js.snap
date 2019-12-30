@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Show ActionItemTile should match snapshot 1`] = `
+<div
+  className="tile u-brown-background-color u-white-font-color"
+>
+  <div
+    className="tile__description"
+  >
+    description
+  </div>
+  <div
+    className="footer"
+  >
+    <div>
+      Assigned To:
+    </div>
+    <div
+      className="footer__name"
+    >
+      assigned to
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Show RetroPointTile should match snapshot 1`] = `
+<div
+  className="tile u-white-font-color u-red-background-color"
+>
+  <div
+    className="tile__description"
+  >
+    some description
+  </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="footer__vote-text"
+      onClick={[Function]}
+    >
+      Vote
+    </div>
+    <div
+      className="footer__votes"
+    >
+      3
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,36 @@
+@import "/src/App/styles/variables.css";
+
+.tile {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.tile .footer {
+  display: flex;
+  flex-direction: row;
+  padding: 3px 4px;
+  border-top: 1px solid black;
+  font-size: 0.8rem;
+}
+
+.tile .footer__name {
+  margin-left: 0.5rem;
+}
+
+.tile__description {
+  padding: 0.7rem 4px;
+  min-height: 5rem;
+  min-width: 15rem;
+  max-width: 30rem;
+}
+
+.footer__votes {
+  margin-left: 0.61rem;
+}
+
+.footer__vote-text {
+  cursor: pointer;
+  font-weight: 600;
+}
