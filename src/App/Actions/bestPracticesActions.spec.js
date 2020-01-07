@@ -127,7 +127,7 @@ describe('should create best practices actions', () => {
   });
 
   it('Should show error message if failed to practices assessment', async () => {
-    spyOn(PracticesService, 'getBestPracticesAssessment').and.throwError('failed');
+    spyOn(PracticesService, 'getBestPracticesAssessment').and.returnValue(Promise.reject({response: {status: 500}}));
     const retroId = 100;
     await store.dispatch(getPracticesAssessment(retroId));
     expect(PracticesService.getBestPracticesAssessment).toHaveBeenCalledWith(retroId);

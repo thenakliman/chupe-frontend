@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import {history} from '../../../utils/history';
 
-require('./PracticesAssessment.css');
+require('./PracticesAssessment.scss');
 
 export class PracticesAssessment extends React.Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
 
-require('./Loader.css');
+require('./Loader.scss');
 
 function Loader(props) {
   return (<div>

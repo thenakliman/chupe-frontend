@@ -22,9 +22,6 @@ exports[` 1`] = `
           className="retro-table-header"
         >
           <th>
-             Id
-          </th>
-          <th>
              Name
           </th>
           <th>
@@ -45,11 +42,6 @@ exports[` 1`] = `
           key="10"
           onClick={[Function]}
         >
-          <td>
-             
-            10
-             
-          </td>
           <td
             className="retro-row"
           >
@@ -69,11 +61,6 @@ exports[` 1`] = `
           key="11"
           onClick={[Function]}
         >
-          <td>
-             
-            11
-             
-          </td>
           <td
             className="retro-row"
           >
