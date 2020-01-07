@@ -58,7 +58,6 @@ export class Retros extends React.Component {
             <table id='all-retros-ordered-list'>
               <thead>
               <tr className='retro-table-header'>
-                <th> Id</th>
                 <th> Name</th>
                 <th> Created By</th>
                 <th> Maximum Vote</th>
@@ -72,7 +71,6 @@ export class Retros extends React.Component {
                         id={`retro-row-id-${retro.id}`}
                         onClick={() => this.viewRetro(retro.id)}
                         className={'selectable-row'}>
-                      <td> {retro.id} </td>
                       <td className='retro-row'>
                         {retro.name}
                       </td>

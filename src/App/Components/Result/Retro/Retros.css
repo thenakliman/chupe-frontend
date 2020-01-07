@@ -31,6 +31,9 @@
 
 .retro-row {
   cursor: pointer;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .retro-creation-input {

@@ -40,7 +40,9 @@ export const getPracticesAssessment = (retroId) => async (dispatch) => {
     const practicesAssessment = await PracticesService.getBestPracticesAssessment(retroId);
     dispatch(addPracticesAssessment(practicesAssessment));
   } catch (error) {
-    dispatch(showNotificationFromObject(GET_PRACTICES_ASSESSMENT_NOTIFICATION));
+    if(error.response.status !== 404) {
+      dispatch(showNotificationFromObject(GET_PRACTICES_ASSESSMENT_NOTIFICATION));
+    }
   }
   dispatch(hideLoader(GET_PRACTICES_ASSESSMENT_LOADER_ID));
 };
